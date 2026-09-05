@@ -1,0 +1,38 @@
+# deploy/cloudflared.example.yml — the tunnel's ingress for mages.city.
+# Copy to /etc/cloudflared/config.yml on the always-on host; fill the tunnel id.
+# Rules are evaluated top to bottom; the first match wins. The apex (mages.city) is NOT here —
+# it is a Workers custom domain (the front). The wildcard DNS record *.mages.city points at
+# this tunnel, so every other hostname lands below.
+#
+# VTI ports are placeholders: take the real ones from vti-setup / the services' config.
+
+tunnel: <TUNNEL-ID>
+credentials-file: /etc/cloudflared/<TUNNEL-ID>.json
+
+ingress:
+  # the Portal desk — JSON doors path-routed to portal/server.js; every other path on
+  # portal.mages.city is the Portal's wiki pages (served by the farm below)
+  - hostname: portal.mages.city
+    path: ^/(say|open|topics|thread/.*|recent|ledger|head|hide|pin)$
+    service: http://127.0.0.1:4445
+
+  # the VTA farm — OpenVTC Verifiable Trust Infrastructure
+  - hostname: vta.mages.city
+    service: http://127.0.0.1:8100      # vta-service: the VTA control plane + provisioning door (the distribution page lives on the front at /farm)
+  - hostname: vtc.mages.city
+    service: http://127.0.0.1:8200      # vtc-service: the City VTC public site + admin UX
+  - hostname: mediator.mages.city
+    service: http://127.0.0.1:8300      # DIDComm mediator
+  - hostname: did.mages.city
+    service: http://127.0.0.1:8400      # did:webvh host (/<name>/did.jsonl)
+
+  # the gate service (Phase 2)
+  - hostname: gate.mages.city
+    service: http://127.0.0.1:4446
+
+  # everything else under *.mages.city is the wiki farm:
+  # wiki. (the Hall) · swarm. (district) · portal. (pages) · <name>. (residents)
+  - hostname: "*.mages.city"
+    service: http://127.0.0.1:3333
+
+  - service: http_status:404

@@ -1,0 +1,30 @@
+// deploy/dns/named.conf.mages.example — the mages.city zone on BIND9 (primary).
+// Append to /etc/bind/named.conf.local. Paths and the secondary's address are the keeper's.
+// UNRUN: check every line against the BIND ARM for the installed version before go-live
+// (named-checkconf will refuse anything it does not like).
+
+// The Namekeeper's zone key (tsig-keygen mages-zone.) — the gate writes the zone with it.
+include "/etc/bind/keys/zone.conf";
+// One TSIG key per admitted agent, named "<name>.mages.city." — rendered by gate/names.mjs
+// (data/keys/agents.conf) and installed here; `rndc reconfig` after every claim/release.
+include "/etc/bind/keys/agents.conf";
+// The secondary's transfer key.
+include "/etc/bind/keys/secondary.conf";
+
+zone "mages.city" {
+    type primary;
+    file "/var/lib/bind/db.mages.city";
+    // Dynamic updates. Rules are checked in order; the first match decides.
+    update-policy {
+        // the gate / Namekeeper may write anything in the zone
+        grant mages-zone. zonesub ANY;
+        // an agent's key may write ONLY the name equal to its key name, and that name's subtree:
+        // A/AAAA/TXT/SRV/NS/... under <name>.mages.city. — nothing beside it.
+        // (selfsub: the identity is the key name; the name field is a placeholder.)
+        grant * selfsub . ANY;
+    };
+    also-notify { 198.51.100.2; };            // the secondary
+    allow-transfer { key secondary-xfer.; };
+    // journal + serial are managed by named once dynamic updates start; do not hand-edit the
+    // zone file afterwards without `rndc freeze` / `rndc thaw`.
+};

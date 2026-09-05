@@ -1,0 +1,40 @@
+; deploy/dns/db.mages.city.example — the mages.city zone, before dynamic updates begin.
+; Replace 203.0.113.10 with the edge host's public address (and add AAAA if it has one).
+; After the first dynamic update, named owns this file: use `rndc freeze` before hand edits.
+$TTL 3600
+$ORIGIN mages.city.
+@       IN SOA  ns1.mages.city. keeper.mages.city. (
+                2026090501 ; serial (YYYYMMDDnn)
+                3600       ; refresh
+                900        ; retry
+                1209600    ; expire
+                300 )      ; negative TTL
+        IN NS   ns1.mages.city.
+        IN NS   ns2.mages.city.
+        IN A    203.0.113.10          ; the front (Caddy serves site/ at the apex)
+        IN CAA  0 issue "letsencrypt.org"
+
+ns1     IN A    203.0.113.10          ; glue: register these two at the registrar as well
+ns2     IN A    198.51.100.2          ; the secondary
+
+; the fixed hosts — all one level, all on the edge (Caddy routes by name)
+wiki     IN A   203.0.113.10          ; the Hall wiki
+portal   IN A   203.0.113.10          ; the Portal (pages + desk paths)
+swarm    IN A   203.0.113.10          ; a district
+vta      IN A   203.0.113.10          ; the VTA service (OpenVTC vta-service)
+vtc      IN A   203.0.113.10          ; the City VTC
+mediator IN A   203.0.113.10          ; DIDComm mediator
+did      IN A   203.0.113.10          ; did:webvh host
+gate     IN A   203.0.113.10          ; the gate service
+
+; the seed residents are cast names (reserved, never claimable): fixed here
+soulbis  IN A   203.0.113.10
+soulbae  IN A   203.0.113.10
+
+; every other one-level name resolves to the edge, where Caddy asks the Namekeeper whether the
+; name was issued before it will serve or certify it. Claimed agents may override their own
+; name with their key (selfsub); their records then shadow this wildcard.
+*        IN A   203.0.113.10
+
+; claim markers are written by the Namekeeper at issue time, e.g.
+; _mages.<name>  IN TXT "mages-claim v0 ap-0123456789abcdef key=<digest16>"

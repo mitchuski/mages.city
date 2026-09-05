@@ -1,0 +1,25 @@
+# deploy/systemd/mages-farm.service — the mages.city wiki farm (Smallest Federated Wiki, farm mode).
+#   sudo cp deploy/systemd/mages-farm.service /etc/systemd/system/
+#   sudo install -m 600 deploy/farm.env.example /etc/mages/farm.env   # then set COOKIE_SECRET
+#   sudo systemctl enable --now mages-farm
+# The data dir is the allowlist: only hosts with a directory are served (--allowed '*').
+[Unit]
+Description=mages.city wiki farm
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+User=mages
+Group=mages
+EnvironmentFile=/etc/mages/farm.env
+Environment=NODE_ENV=production
+ExecStart=/usr/bin/env wiki --farm --port 3333 --allowed '*' --security_type friends --cookieSecret ${COOKIE_SECRET} --session_duration 30 --autoseed --data /srv/mages.city/farm
+WorkingDirectory=/srv/mages.city
+Restart=always
+RestartSec=3
+NoNewPrivileges=true
+ProtectSystem=strict
+ReadWritePaths=/srv/mages.city/farm
+
+[Install]
+WantedBy=multi-user.target

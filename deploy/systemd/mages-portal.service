@@ -1,0 +1,28 @@
+# deploy/systemd/mages-portal.service — the Portal desk (portal/server.js).
+#   sudo cp deploy/systemd/mages-portal.service /etc/systemd/system/
+#   sudo systemctl enable --now mages-portal
+# Renders the Portal's pages straight into the farm's data dir; the desk answers on 4445 and
+# the tunnel path-routes /say /open /topics /thread/* /recent /ledger /head /hide /pin to it.
+[Unit]
+Description=mages.city Portal desk (first contact)
+After=network-online.target mages-farm.service
+Wants=network-online.target
+
+[Service]
+User=mages
+Group=mages
+Environment=MAGES_SCHEME=https
+Environment=PORTAL_PUBLIC_URL=https://portal.mages.city
+Environment=FRONT_URL=https://mages.city
+# optional herald (ntfy on the tailnet):
+# Environment=PORTAL_NTFY=http://02-pi4:2586/mages-portal
+ExecStart=/usr/bin/node /srv/mages.city/repo/portal/server.js 4445 /srv/mages.city/farm portal.mages.city
+WorkingDirectory=/srv/mages.city/repo/portal
+Restart=always
+RestartSec=3
+NoNewPrivileges=true
+ProtectSystem=strict
+ReadWritePaths=/srv/mages.city/farm /srv/mages.city/repo/portal/data
+
+[Install]
+WantedBy=multi-user.target

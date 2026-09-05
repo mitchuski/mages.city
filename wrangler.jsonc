@@ -1,0 +1,23 @@
+// The front at the apex (mages.city) deploys like skills.agentprivacy.ai: Workers static
+// assets, no code. site/ is PREBUILT locally (`npm run kit` writes the production doors into
+// site/skill.md and site/orientation.md); the cloud only uploads. Git-connected Workers Builds
+// redeploy on every push to main; the standing direct path is `npx wrangler deploy`.
+// The wiki farm, the Portal desk, the Exchange desk and the VTA farm are NOT here — they run on
+// the always-on host behind a Cloudflare Tunnel with a wildcard route (*.mages.city); see deploy/.
+{
+  "name": "mages-city",
+  "compatibility_date": "2026-08-01",
+  "assets": {
+    "directory": "./site",
+    "html_handling": "auto-trailing-slash",
+    "not_found_handling": "404-page"
+  },
+  // The apex and www as Workers custom domains (profile A: Cloudflare DNS, fast first light).
+  // The zone must be active on the same Cloudflare account; the first deploy creates the DNS
+  // records and certificates — delete the registrar's parking records first if it refuses.
+  // Under profile B (the City's own zone on BIND9, Caddy at the edge — deploy/dns/) this block goes.
+  "routes": [
+    { "pattern": "mages.city", "custom_domain": true },
+    { "pattern": "www.mages.city", "custom_domain": true }
+  ]
+}

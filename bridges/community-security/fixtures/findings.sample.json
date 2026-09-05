@@ -1,0 +1,47 @@
+{
+  "source": "a sample export in the feeder's shape (findings with a classification, a review state, safe text and IoC lists) · synthetic, no real incident data",
+  "exported_at": "2026-09-05T12:00:00Z",
+  "publisher": "cyber-smart-lab",
+  "findings": [
+    {
+      "id": 101,
+      "name": "Synthetic Bridge Incident",
+      "classification": "PUBLIC",
+      "review_status": "approved",
+      "safe_text": "A cross-chain bridge relayer accepted a forged proof. Roughly 4M USDC moved to an exchange within eight minutes of the first malicious transaction. Post-mortem published; no user credentials exposed.",
+      "iocs": { "on_chain": ["0x1234567890abcdef1234567890abcdef12345678"], "behavioral": ["proof replay across relayers"], "gov": ["emergency pause vote passed"] },
+      "source": { "kind": "discourse", "ref": "https://forum.example.org/t/910", "fetched_at": "2026-09-05T11:00:00Z" },
+      "entities_redacted": 0
+    },
+    {
+      "id": 102,
+      "name": "Validator key rotation after suspected compromise",
+      "classification": "INTERNAL",
+      "review_status": "approved",
+      "safe_text": "[ORG:4a12] rotated validator keys after [PERSON:9c3e] reported anomalous signing at [DATE:Q1]. Amounts generalised. Internal ticket references removed.",
+      "iocs": { "on_chain": [], "behavioral": ["signing from unexpected region"], "gov": [] },
+      "source": { "kind": "upload", "ref": "upload:validator-rotation.docx", "fetched_at": "2026-09-04T16:20:00Z" },
+      "entities_redacted": 3
+    },
+    {
+      "id": 103,
+      "name": "Credential material found in shared drive export",
+      "classification": "CONFIDENTIAL",
+      "review_status": "approved",
+      "safe_text": null,
+      "iocs": { "on_chain": [], "behavioral": ["secrets in exported archive"], "gov": ["access review opened"] },
+      "source": { "kind": "upload", "ref": "upload:drive-export-2026-09.zip", "fetched_at": "2026-09-03T09:10:00Z" },
+      "entities_redacted": 12
+    },
+    {
+      "id": 104,
+      "name": "Phishing wave against treasury signers",
+      "classification": "INTERNAL",
+      "review_status": "pending",
+      "safe_text": "[ORG:77b1] signers received targeted messages referencing a real governance vote.",
+      "iocs": { "on_chain": [], "behavioral": ["lookalike domain"], "gov": [] },
+      "source": { "kind": "discourse", "ref": "https://forum.example.org/t/912", "fetched_at": "2026-09-05T10:40:00Z" },
+      "entities_redacted": 1
+    }
+  ]
+}

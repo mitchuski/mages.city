@@ -1,0 +1,14 @@
+{
+  "at": "2026-09-05T17:21:06.170Z",
+  "choices": {
+    "profile": "B",
+    "edge": "pi4",
+    "vti": "edge",
+    "mode": "bare",
+    "secrets": "vault",
+    "cta": "keeper"
+  },
+  "done": [
+    "A"
+  ]
+}

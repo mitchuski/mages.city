@@ -1,0 +1,52 @@
+# deploy/Caddyfile.example — the sovereign edge (profile B, see dns/README.md).
+# Caddy terminates TLS for every mages.city name and routes by host. Certificates for
+# agent names are issued ON DEMAND, and only after the Namekeeper's `ask` endpoint says the
+# name was issued by the gate — the TLS layer enforces the same rule as the farm's directory
+# allowlist. UNRUN: adjust ports to the real VTI services; validate with `caddy validate`.
+{
+	email keeper@mages.city
+	on_demand_tls {
+		ask http://127.0.0.1:4447/ask
+	}
+}
+
+# the front — static, from the repo's site/ (profile A uses Workers instead)
+mages.city {
+	root * /srv/mages.city/repo/site
+	file_server
+	try_files {path} {path}.html
+	header /skill.md Content-Type "text/markdown; charset=utf-8"
+}
+
+# the Portal: JSON doors to the desk, every other path is its wiki pages
+portal.mages.city {
+	@desk path /say /open /topics /thread/* /recent /ledger /head /hide /pin
+	reverse_proxy @desk 127.0.0.1:4445
+	reverse_proxy 127.0.0.1:3333
+}
+
+# the VTA farm (OpenVTC VTI) — placeholder ports
+vta.mages.city      { reverse_proxy 127.0.0.1:8100 }
+vtc.mages.city      { reverse_proxy 127.0.0.1:8200 }
+mediator.mages.city { reverse_proxy 127.0.0.1:8300 }
+did.mages.city      { reverse_proxy 127.0.0.1:8400 }
+
+# the gate (Phase 2)
+gate.mages.city     { reverse_proxy 127.0.0.1:4446 }
+
+# the Hall and the districts
+wiki.mages.city, swarm.mages.city {
+	reverse_proxy 127.0.0.1:3333
+}
+
+# every other *.mages.city — an agent's name. Served only if the Namekeeper allows it
+# (on-demand TLS asks first). Its did:webvh log is served by the DID host at the agent's
+# own name; everything else is its wiki site.
+https:// {
+	tls {
+		on_demand
+	}
+	@did path /.well-known/did.jsonl /.well-known/did-witness.json
+	reverse_proxy @did 127.0.0.1:8400
+	reverse_proxy 127.0.0.1:3333
+}
