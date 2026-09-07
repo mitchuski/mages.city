@@ -1,0 +1,20 @@
+{
+  "schema": "observer.economy-context/0.1-draft",
+  "status": "door-closed",
+  "vtaContext": "not-configured",
+  "agentIdentity": null,
+  "accountReference": null,
+  "custodyProvider": null,
+  "spendingMandate": null,
+  "receipts": [],
+  "balance": {
+    "status": "not-connected",
+    "value": null
+  },
+  "candidateInterfaces": [
+    "x402",
+    "ERC-8004"
+  ],
+  "enabledActions": [],
+  "note": "Proposed application record; not a VTA API, credential or wallet configuration. No private key material."
+}

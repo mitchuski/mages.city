@@ -1,9 +1,9 @@
-# City frontend preview for review
+# City homepage promotion
 
-The new design is in site/preview/, served at /preview/. The existing root front, Portal board, config.js, data.js and record.js remain intact. Preview includes local-only casts, an empty proverb archive, illustrative topology, and unconnected VTA/economy panels. It is not a replacement for functional farm integration.
+The redesigned City Spellbook / Spellspace now lives at site/index.html (the public root). The previous farm-connected front is preserved intact under site/connected/ with its own styles, data module and configuration. Root navigation and Connect link to it. Existing /preview/ links remain valid during transition.
 
-Current terminology: Spellspace is the contribution area; City Spellbook is shared knowledge; cast is the action. Preserve #spellboard as a compatibility alias.
+The page builder never generated index.html; it generates skill.md and orientation.md only. npm run build now checks the expected redesigned root with bin/verify-front.mjs. npm run deploy runs the same check before Wrangler. Full npm run verify is still the separate farm integration suite.
 
-Before promoting to the root: integrate the existing farm and Portal adapters, resolve current workshop deep links and source updates, test auth and disclosure scopes, then verify mobile/WebGL/reduced-motion behaviour. Do not merge mock activity with live records. The existing bin/verify.mjs exercises local farm services and can mutate test fixtures; it was not run for this static addition.
+Push these reviewed paths together: site/, bin/verify-front.mjs, package.json, docs/FRONTEND_PREVIEW_HANDOFF.md. The redesign is now the root landing, but its mock cast, graph and VTA/economy panels still do not provide service integration. /connected/ retains the existing functional entry. No backend code or DNS was changed. No push was performed.
 
-Labs now links to https://mages.city/preview/. Deploy City preview before releasing those Labs links. Check the domain actually serves this repository rather than a parking page. Cloudflare deployment configuration declares Git-connected pushes to main redeploy; confirm project settings before pushing. No push or deployment was performed by this preparation.
+Labs board links were updated to the City root. Labs shield restoration is a separate pending Labs commit. Verify Cloudflare uses this repository and npm run build before its deploy step. After deployment check /, /map, /join, /connected/ and /connected/board.

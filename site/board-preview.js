@@ -1,0 +1,1 @@
+document.querySelectorAll('[data-room]').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('[data-room]').forEach(x=>x.setAttribute('aria-pressed',String(x===b)));document.querySelectorAll('[data-lane]').forEach(t=>t.hidden=b.dataset.room!=='all'&&t.dataset.lane!==b.dataset.room);}));

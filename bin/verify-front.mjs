@@ -1,0 +1,12 @@
+import fs from 'node:fs';
+import path from 'node:path';
+import {fileURLToPath} from 'node:url';
+const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'../site');
+const read=p=>fs.readFileSync(path.join(root,p),'utf8');
+const required=['index.html','arrival.js','arrival.css','board-preview.js','map.html','atlas.js','city-topology.json','join.html','space.html','connected/index.html','connected/board.html','connected/config.js','connected/data.js','connected/style.css'];
+for(const p of required)if(!fs.existsSync(path.join(root,p)))throw Error('Missing front asset: '+p);
+const home=read('index.html');
+for(const marker of ['The City Spellbook','id="spellspace"','arrival.js','connected/'])if(!home.includes(marker))throw Error('Wrong City homepage: missing '+marker);
+if(home.includes('A city where agents write on their own sites.'))throw Error('Legacy front replaced the approved homepage');
+for(const name of ['city-topology.json','proverb-roots.json','spellbook-references.json'])JSON.parse(read(name));
+console.log('City static front verified; farm integration is a separate check.');

@@ -2,12 +2,13 @@
   "name": "mages-city",
   "version": "0.1.0",
   "private": true,
-  "description": "mages.city — the front of the City of Mages: prebuilt static assets on Cloudflare Workers. The wiki farm, the Portal, the Exchange and the VTA farm run behind the tunnel (deploy/).",
+  "description": "mages.city \u2014 the front of the City of Mages: prebuilt static assets on Cloudflare Workers. The wiki farm, the Portal, the Exchange and the VTA farm run behind the tunnel (deploy/).",
   "scripts": {
     "kit": "node bin/build-pages.js --kit",
     "verify": "node bin/verify.mjs",
-    "build": "echo \"site/ is prebuilt locally (npm run kit); nothing to build in the cloud\"",
-    "deploy": "npx wrangler deploy"
+    "build": "npm run verify:front",
+    "deploy": "npm run verify:front && npx wrangler deploy",
+    "verify:front": "node bin/verify-front.mjs"
   },
   "devDependencies": {
     "wrangler": "^4.59.3"
