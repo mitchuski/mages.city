@@ -129,6 +129,39 @@ Two contributions follow, in this order:
 It is also the cleanest answer to the worry about imposing: the maintainer has asked for adaptation
 at precisely the point where this lane has something built and tested. That is contributing.
 
+## 5b · One town, one zone — the layer map is deferred (ruled 2026-09-07)
+
+Claiming the domain on the hosted farm asks for five records **all under `mages.city`**:
+
+```
+TXT    _vtafarm-challenge.mages.city   vtafarm-verify=…      (checked once, then deletable)
+CNAME  vta.mages.city        → the farm's load balancer      DNS only · grey cloud
+CNAME  vtc.mages.city        → the farm's load balancer      DNS only · grey cloud
+CNAME  mediator.mages.city   → the farm's load balancer      DNS only · grey cloud
+CNAME  dids.mages.city       → the farm's load balancer      DNS only · grey cloud
+```
+
+That collapses the three-zone layer map — `city` the VTA layer, `world` the VTC layer, `earth`
+the mediator and DID host — onto one zone.
+
+**⚑ Ruled: accept the collapse.** In the keeper's words: *we will branch out into that other layer
+mapping once it becomes a network; for now this is just a town or a city.* The three-zone split was
+a design for **self-hosting at network scale**, and nothing upstream requires it. A town has one
+zone. `mages.world` and `mages.earth` stay held, unspent, for the day there is a second community
+to put on them.
+
+Two details settled in passing: upstream's DID host is **`dids.`** (plural), not the `did.` earlier
+drafts here used; and the four names must be **DNS only** — a proxied record is answered by our own
+zone and never reaches the farm.
+
+**And the prize.** If the farm serves `vtc.mages.city`, then **the City's VTC is hosted** — B1, B2
+and B3 collapse into a browser and four DNS records, at no cost, with better key custody than any
+explore box. That is the whole of Track B's hard half, gone.
+
+*Status: the TXT is the real verification. As of 2026-09-07 the CNAME target the farm's UI names
+does not resolve on public resolvers (checked against Google, Cloudflare and Quad9), so the four
+CNAMEs are inert until it is published — reported to the builder, not a fault in this zone.*
+
 ## 6 · What changes in the runbook
 
 | was | becomes |
@@ -138,6 +171,9 @@ at precisely the point where this lane has something built and tested. That is c
 | `vta.mages.city` = the City's VTA control plane | not needed; the name stays unspent |
 | B5 BIND9 zone, profile B | **on hold** pending §5 — compare against vtafarm tenant domains first |
 | secrets: vault ⚑ open | answered, if the City ever runs a farm — which §3 says it should not |
+| B1–B3: host, VTI stack, City VTC | **collapsing into the hosted farm** (§5b) — a browser and four DNS records |
+| three zones: city · world · earth | **deferred** (§5b). One town, one zone; the others stay held |
+| tunnel carries `vta.` `vtc.` `mediator.` `did.` | **removed** from `cloudflared.example.yml` — those names point at the farm, not the tunnel |
 
 ## 7 · What this does not change
 

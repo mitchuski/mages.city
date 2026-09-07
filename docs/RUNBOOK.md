@@ -261,6 +261,20 @@ either way, hosting is unaffected.
 
 ## Track B — the VTC underneath it
 
+> **Revised again 2026-09-07, and it mostly disappears.** The keeper claimed `mages.city` on the
+> hosted VTA Farm, which asks for `vta.` `vtc.` `mediator.` `dids.` as **DNS-only CNAMEs on the one
+> zone** — collapsing the three-zone layer map. **Ruled: accept it.** *"We will branch out into that
+> other layer mapping once it becomes a network; for now this is just a town or a city."*
+>
+> If the farm serves `vtc.mages.city`, **B1, B2 and B3 become a browser and four DNS records** — no
+> host to buy, no stack to stand up, no bootstrap guide to reverse-engineer, and better key custody
+> than an explore box. What remains of Track B is B4, the gate's bridge into the VTC, which was
+> always ours to write. See `docs/VTAFARM.md` §5b.
+>
+> Consequences already applied: the four VTI hostnames are **removed from
+> `deploy/cloudflared.example.yml`** (they point at the farm, not the tunnel), and the DID host is
+> **`dids.`** — upstream's plural, which earlier drafts here got wrong.
+
 > **Revised 2026-09-07 by `docs/VTAFARM.md`.** The hosted VTA Farm's own implementation
 > (`ic3software/vtafarm-k8s`) turned out to be the deployment `vti-setup/sysop/deploy` calls "to be
 > documented" — and reading it settles that **the City should not run a farm**. Running one means

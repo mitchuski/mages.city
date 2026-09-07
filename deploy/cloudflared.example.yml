@@ -16,15 +16,25 @@ ingress:
     path: ^/(say|open|topics|thread/.*|recent|ledger|head|hide|pin)$
     service: http://127.0.0.1:4445
 
-  # the VTA farm — OpenVTC Verifiable Trust Infrastructure
-  - hostname: vta.mages.city
-    service: http://127.0.0.1:8100      # vta-service: the VTA control plane + provisioning door (the distribution page lives on the front at /farm)
-  - hostname: vtc.mages.city
-    service: http://127.0.0.1:8200      # vtc-service: the City VTC public site + admin UX
-  - hostname: mediator.mages.city
-    service: http://127.0.0.1:8300      # DIDComm mediator
-  - hostname: did.mages.city
-    service: http://127.0.0.1:8400      # did:webvh host (/<name>/did.jsonl)
+  # the Exchange desk — same shape: JSON doors to exchange/desk.js, pages from the farm.
+  # (Added 2026-09-07 with mages-exchange.service; the desk was running with no route.)
+  - hostname: exchange.mages.city
+    path: ^/(offer|request|grant|adopt|attest|catalog|standing|graph|recent)$
+    service: http://127.0.0.1:4448
+
+  # The VTI stack is NOT in this tunnel (ruled 2026-09-07).
+  #
+  #   vta.mages.city · vtc.mages.city · mediator.mages.city · dids.mages.city
+  #
+  # are CNAMEs to the hosted VTA Farm's load balancer, DNS-only (grey cloud), created in the
+  # Cloudflare dashboard. They must NOT appear here: a hostname is answered by whatever its DNS
+  # points at, and these point at the farm. Leaving stale rules below would only mislead.
+  #
+  # Note `dids.` (plural) — upstream's own name, and the farm's. Earlier drafts here said `did.`.
+  #
+  # If the City ever self-hosts the stack, the rules come back with the upstream ports:
+  #   vta 8100 · vtc 8200 · mediator 7037 · dids 8534
+  # but see docs/VTAFARM.md: the City is a community operator, not a farm operator.
 
   # the gate service (Phase 2)
   - hostname: gate.mages.city
