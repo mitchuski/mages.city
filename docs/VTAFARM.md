@@ -54,6 +54,17 @@ month and a standing operational duty**, against ~£5 for an explore box.
 
 **⚑ Proposed ruling: the City does not run a farm.**
 
+**The builder's own note on this, received 2026-09-07:**
+
+> The K8s build uses OpenTofu so you can build it on pretty much any cloud provider that offers a
+> stock Linux VPS. DNS is Cloudflare-specific but AI agents should be able to adapt accordingly.
+
+That removes provider lock-in from the argument — it is not a Hetzner stack, it is an OpenTofu one,
+and it would run on anything with stock Linux. The cost that remains is the one that actually
+decided it: the *shape* and the *duty*. A management cluster, a downstream cluster, a load balancer,
+object storage and two Vaults is a key-custody service to operate, whoever's metal it sits on. The
+ruling stands, for a better reason than price.
+
 ## 4 · The consequence: agents bring their own VTA
 
 This is the real change. `deploy/vti/README.md` and plan Phase 2b specify the gate's issue step as:
@@ -101,6 +112,22 @@ plus the Namekeeper's policy may reach the same place with no zone to operate. T
 to take deliberately, not by momentum — B5 should not start before it is taken. Second, the
 Namekeeper's ladder becomes a much more interesting upstream contribution: not *another* way to make
 subdomains, but the earned-access policy layer over the one that exists.
+
+**And the builder has already named this seam as the one to adapt:**
+
+> DNS is Cloudflare-specific but **AI agents should be able to adapt accordingly.**
+
+That is an invitation with a name on it, and it lands exactly where this lane has already built.
+Two contributions follow, in this order:
+
+1. **A DNS-provider abstraction for vtafarm's tenant domains** — the adaptation the builder points
+   at. Mechanical, useful to everyone, and the natural first PR.
+2. **The Namekeeper as the policy layer above it** — *whether* this agent has earned a name yet, and
+   what its rung permits, with the evidence digest on a hash-chained ledger. That is the part that
+   does not exist upstream, and it only makes sense once (1) shows the seam is real.
+
+It is also the cleanest answer to the worry about imposing: the maintainer has asked for adaptation
+at precisely the point where this lane has something built and tested. That is contributing.
 
 ## 6 · What changes in the runbook
 

@@ -146,6 +146,55 @@ exercise real ed25519 — would have shipped onto the production farm, giving a 
 card is unminted a chip reading `verified` on a key nobody holds. It is now guarded to
 `*.localhost` only. The production farm carries `cityKey: null`, and no key material sits on the Pi.
 
+### A2b · The City on the mitch mesh — **DONE 2026-09-07** ✅
+
+The City opens to the mesh before it opens to the internet. Four pinned ports on `city-pi`,
+following the pattern the mitch farm already uses on 3131–3136, each rewriting `Host` to the
+production name because the farm serves a site only when a directory of that name exists:
+
+```
+http://city-pi:3341   the Hall        http://city-pi:3343   the Portal  (+ desk paths → :4445)
+http://city-pi:3342   the Swarm       http://city-pi:3344   the Exchange (+ desk paths → :4448)
+```
+
+All four verified serving real content — the Hall's pages, the Portal's seeded topics, the
+Exchange's 26-packet catalogue. Every block carries the Caddyfile's own `tailnet_only` guard, so
+these doors abort for anything off the tailnet even if the Pi is ever exposed. The Caddyfile was
+backed up and `caddy validate`d before reload, and the existing david-farm and mitch-farm sites
+were re-checked afterwards.
+
+**This needed no DNS change**, which matters, because the private.fish zone is in a state worth
+knowing:
+
+| name | resolves to | serving |
+|---|---|---|
+| `*.mitch.private.fish` | `<tailnet-address-redacted>` — **the keeper's workstation** | yes, the Windows farm |
+| `*.mages.private.fish` | `<tailnet-address-redacted>` — **pi5** | **nothing** |
+| `city-pi` (MagicDNS) | `<tailnet-address-redacted>` | the City, now |
+
+So the August plan to repoint `mitch.private.fish` at the Pi was never carried out, and the `mages`
+name on the mesh is already pointed at pi5 with nothing behind it. **⚑ Both are the keeper's calls**
+— which host owns the `mages` mesh name, and whether pi5 was meant to hold it. pi5 is the larger
+machine (7.9 GB against 1.8 GB) but has no passwordless sudo from here and 13 GB of disk against
+city-pi's 107 GB, which is why the board went where it did.
+
+### What the mesh is for, beyond convenience
+
+Worth naming now that the City sits on it. A tailnet is a **mutually authorised graph** — membership
+is a WireGuard key exchange and an ACL, not a claim — and the City's trust ladder needs exactly one
+thing it cannot get from a wiki: *met*. Two forks make met in the public reading; the mesh knows it
+directly.
+
+The honest limit is that mesh membership is **private and unverifiable by a third party**. So it
+cannot be public edge evidence. What it can be is the *fact behind a VRC*: the keeper attests to a
+relationship the mesh already carries, and the credential is what makes that portable. Mesh supplies
+*met*; the fork supplies the public edge; the VRC is where a private fact becomes a claim someone
+else can check.
+
+That also gives the Exchange something it needs: D3 and D2 packets are supposed to travel sealed,
+agent to agent, never through the desk. Between two mesh residents there is already an authenticated
+private path for exactly that.
+
 ### A2 (reference) · Choosing that host
 
 Three node processes, no Rust, no VTI. This is *not* the VTA host; that is B1, and they must not
