@@ -130,6 +130,25 @@ let roster = { residents: [], districts: [], all: [] };
   const chip = C.chip(bae, forks);
   check('data: resident soulbae → mage persona, 30/30 carried, chip says unproven + vouched ×1', bae.persona === 'soulbae' && bae.alignment === 'mage' && bae.skills.carried === 30 && bae.skills.total === 30 && /unproven/.test(chip) && /vouched ×1/.test(chip), chip);
   check('data: the vouch is the fork soulbis→soulbae/first-light', forks.length === 1 && forks[0].from === R('soulbis') && forks[0].slug === 'first-light', JSON.stringify(forks));
+  // the chip stops counting and starts verifying: soulbis publishes a signed record, soulbae
+  // publishes none, and the front reads the difference off the page it was handed.
+  const bis = await C.resident(R('soulbis'));
+  const bisChip = C.chip(bis, await C.forksReceived(roster.all, R('soulbis')));
+  check('data: soulbis publishes a signed VTA record and the front VERIFIES it (κ · did:key · walks)',
+    bis.cityKey?.verified === true && bis.cityKey.live === true && bis.cityKey.walks === 3 && /^did:key:z6Mk/.test(bis.cityKey.did) && /κ [0-9a-f]{8} verified/.test(bisChip),
+    bisChip);
+  check('data: soulbae publishes no record and reads unproven — less shown, not a lower score',
+    bae.cityKey?.present === false && bae.cityKey.verified === false && /unproven/.test(chip), bae.cityKey?.why);
+  // one edited byte under the signature and the chip stops saying verified — read the real
+  // slot off the real page, change it, and check the front refuses it by name.
+  const { readCityKeySlot } = await import(pathToFileURL(path.join(ROOT, 'site', 'record.js')).href);
+  const proofsPage = await C.page(R('soulbis'), 'proofs');
+  const slot = JSON.parse((proofsPage.story || []).find(i => i.type === 'code').text).cityKey;
+  const edited = await readCityKeySlot({ ...slot, vta: { ...slot.vta, walks: 99 } });
+  const relabelled = await readCityKeySlot({ ...slot, kappa: 'sha256:' + '0'.repeat(64) });
+  check('data: an edited walk count and a relabelled κ are both refused, each with its reason',
+    edited.verified === false && /signature does not verify/.test(edited.why) && relabelled.verified === false && /κ the record did not sign/.test(relabelled.why),
+    `${edited.why.slice(0, 34)}… | ${relabelled.why}`);
 }
 
 // 7 · the Portal: card, seeded topics, chain valid, page on the farm
@@ -292,6 +311,50 @@ let said = null;
   check('citykey: evidence → the Namekeeper\'s rung (vouched) and the chip (light · 3 packets · 1 walks)', rung(ev) === 2 && ev.proven && ev.sealed === 1 && ev.revealed === 1 && ev.refractive === 1 && CK.chipOf(ev, ev.vouches) === 'light · 3 packets · 1 walks · vouched ×2', CK.chipOf(ev, ev.vouches));
   const bare = CK.verifyKey({ name: 'bare', version: 1, palette: key.palette, descriptions: {} });
   check('citykey: an unexported working key is valid and unproven, not refused', bare.ok && bare.kappa.ok === null && CK.chipOf(CK.evidenceOf({ name: 'bare', version: 1, palette: key.palette, descriptions: {} })).startsWith('blade · unproven'), bare.findings[0]);
+}
+
+// 11e · the record beside the key (site/record.js) — the City verifies what the Swordsman signed.
+// The signer lives in the other lane (~/agentprivacy-mcp/lib/sign.mjs). These rows are the seam:
+// if either side ever changes its canonical form, its did:key derivation or the bytes it signs
+// over, the City would start refusing real records — so the drift is caught HERE, not in public.
+{
+  const RC = await import(pathToFileURL(path.join(ROOT, 'site', 'record.js')).href);
+  const CK = await import(pathToFileURL(path.join(ROOT, 'gate', 'citykey.mjs')).href);
+  const key = { name: 'seam key', version: 1, kind: 'city-key', identity: { swordsman: 'ap-0123456789abcdef' }, lattice: { 31: 60 }, weight: 60, prior: CK.sha256('before') };
+  check('record: the browser verifier and the gate reader derive the same κ from the same key (byte parity)',
+    (await RC.kappaOf(key)) === CK.kappaOf(key) && RC.canonical(key, ['kappa']) === CK.canonical(key, ['kappa']),
+    (await RC.kappaOf(key)).slice(0, 26) + '…');
+
+  // sign with node:crypto exactly as the Swordsman does, verify with WebCrypto in the front
+  const seed = crypto.randomBytes(32).toString('hex');
+  const priv = crypto.createPrivateKey({ key: Buffer.concat([Buffer.from('302e020100300506032b657004220420', 'hex'), Buffer.from(seed, 'hex')]), format: 'der', type: 'pkcs8' });
+  const pub = crypto.createPublicKey(priv).export({ type: 'spki', format: 'der' }).subarray(-32).toString('hex');
+  const kappa = await RC.kappaOf(key);
+  const rec = { kind: RC.VTA_KIND, publicKeyHex: pub, participantId: RC.participantIdOf(pub), did: RC.didKeyOf(pub), kappa, prior: key.prior, at: new Date().toISOString(), walks: 4, vrcs: [] };
+  rec.sig = crypto.sign(null, Buffer.from(RC.recordMessage(rec), 'utf8'), priv).toString('hex');
+  const v = await RC.verifyRecord(rec, key);
+  check('record: an ed25519 record signed the Swordsman\'s way verifies in the front, and names THIS key (L5)',
+    v.ok === true && v.keyMatches === true && /^did:key:z6Mk/.test(v.did) && v.participantId === 'ap-' + pub.slice(0, 16),
+    `${v.did.slice(0, 24)}… · walks ${v.walks}`);
+  check('record: did:key derives the same on both sides of the seam',
+    RC.didKeyOf(pub) === CK.didKeyOf(pub), CK.didKeyOf(pub).slice(0, 28) + '…');
+
+  const wrongKey = { ...key, weight: 61 };
+  const paired = await RC.verifyRecord(rec, wrongKey);
+  const forged = await RC.verifyRecord({ ...rec, kappa: 'sha256:' + 'a'.repeat(64) });
+  check('record: a record paired with the wrong key, and a re-labelled κ, are refused with the reason named',
+    paired.ok === false && /re-derives to/.test(paired.why) && forged.ok === false && /signature does not verify/.test(forged.why),
+    paired.why.slice(0, 52) + '…');
+
+  const fresh = await RC.evolvedSince(rec, new Date(Date.now() - 864e5).toISOString(), { horizonDays: 90 });
+  const stale = await RC.readCityKeySlot({ kappa, prior: key.prior, did: rec.did, publicKeyHex: pub, signedAt: rec.at, vta: rec }, { horizonDays: 90, now: new Date(Date.now() + 200 * 864e5) });
+  check('record: evolved_since holds for a fresh evolution; past the horizon the same record reads stale, not invalid',
+    fresh.ok === true && stale.verified === true && stale.live === false,
+    `signed ${fresh.signedAt.slice(0, 10)} · expires ${String(stale.expires).slice(0, 10)}`);
+
+  const noCard = await RC.verifyCard({ publicKeyHex: pub, participantId: 'ap-' + pub.slice(0, 16), signature: 'ab'.repeat(64), displayName: 'x', grimoires: [], privacy: {}, trustTier: 'blade' });
+  check('record: an AgentCard whose ceremony signature does not check is refused — the City never re-issues identity',
+    noCard.ok === false && /signature does not verify/.test(noCard.why), noCard.why);
 }
 
 // 12 · the Namekeeper (gate/names.mjs) — DNS write access earned on the trust graph, dry-run

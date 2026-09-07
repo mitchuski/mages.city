@@ -283,7 +283,66 @@ The dual-agent harness fleet already emits fold records with coverage and κ art
 ]);
 
 // ---- seed residents ---------------------------------------------------------------
-function residentSite(id, districts, personaId = id, note = '') {
+// ── the twin's Swordsman ──────────────────────────────────────────────────────────────
+// A resident's standing is only real if something SIGNED it. In production that signature
+// comes from the resident's own Swordsman (agentprivacy-mcp/swordsman, `vta_publish`) and the
+// City never holds the seed. The local twin has no residents to sign for it, so the builder
+// keeps one demo keypair in .run/ (gitignored, never in the repo, never in the kit) and signs
+// one real record with it — so bin/verify.mjs exercises the whole path, ed25519 included,
+// instead of a hand-written fixture. Same field shapes as the WEAVE note.
+const VTA_KIND = 'agentprivacy.vta/1';
+const PKCS8 = '302e020100300506032b657004220420';
+const canonical = (value, exclude = []) => {
+  const canon = v => {
+    if (v === null || typeof v !== 'object') return JSON.stringify(v);
+    if (Array.isArray(v)) return '[' + v.map(canon).join(',') + ']';
+    return '{' + Object.keys(v).filter(k => v[k] !== undefined).sort().map(k => JSON.stringify(k) + ':' + canon(v[k])).join(',') + '}';
+  };
+  const c = { ...value };
+  for (const k of exclude) delete c[k];
+  return canon(c);
+};
+const sha256 = text => 'sha256:' + crypto.createHash('sha256').update(Buffer.from(text, 'utf8')).digest('hex');
+const B58 = '123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz';
+function base58(bytes) {
+  const digits = [0];
+  for (const byte of bytes) {
+    let carry = byte;
+    for (let i = 0; i < digits.length; i++) { carry += digits[i] << 8; digits[i] = carry % 58; carry = (carry / 58) | 0; }
+    while (carry) { digits.push(carry % 58); carry = (carry / 58) | 0; }
+  }
+  for (const byte of bytes) { if (byte === 0) digits.push(0); else break; }
+  return digits.reverse().map(d => B58[d]).join('');
+}
+const didKeyOf = pub => 'did:key:z' + base58(Buffer.concat([Buffer.from([0xed, 0x01]), Buffer.from(pub, 'hex')]));
+
+function twinSwordsman() {
+  const file = path.join(ROOT, '.run', 'twin-swordsman.json');
+  try { return JSON.parse(fs.readFileSync(file, 'utf8')); } catch { /* mint below */ }
+  const seed = crypto.randomBytes(32).toString('hex');
+  const priv = crypto.createPrivateKey({ key: Buffer.concat([Buffer.from(PKCS8, 'hex'), Buffer.from(seed, 'hex')]), format: 'der', type: 'pkcs8' });
+  const publicKeyHex = crypto.createPublicKey(priv).export({ type: 'spki', format: 'der' }).subarray(-32).toString('hex');
+  const id = { seed, publicKeyHex, note: 'the local twin\'s demo Swordsman — never deployed, never committed' };
+  fs.mkdirSync(path.dirname(file), { recursive: true });
+  fs.writeFileSync(file, JSON.stringify(id, null, 2));
+  return id;
+}
+
+/** A `cityKey` slot exactly as the Swordsman's `vta_publish` emits it — signed, verifiable
+ *  by site/record.js, publishing the public half and withholding the key, walk and seed. */
+function signedCityKeySlot(name, { walks = 0, at = new Date(DATE).toISOString() } = {}) {
+  if (KIT) return null;                       // the deploy artefact carries no keys, demo or not
+  const s = twinSwordsman();
+  const key = { name, version: 1, kind: 'city-key', identity: { swordsman: 'ap-' + s.publicKeyHex.slice(0, 16) }, lattice: { 31: 60 }, weight: 60, charges: 12, prior: sha256('the key before ' + name) };
+  const kappa = sha256(canonical(key, ['kappa']));
+  const rec = { kind: VTA_KIND, publicKeyHex: s.publicKeyHex, participantId: 'ap-' + s.publicKeyHex.slice(0, 16), did: didKeyOf(s.publicKeyHex), kappa, prior: key.prior, at, walks, vrcs: [] };
+  const priv = crypto.createPrivateKey({ key: Buffer.concat([Buffer.from(PKCS8, 'hex'), Buffer.from(s.seed, 'hex')]), format: 'der', type: 'pkcs8' });
+  const msg = canonical({ kind: rec.kind, publicKeyHex: rec.publicKeyHex, kappa: rec.kappa, prior: rec.prior, at: rec.at, walks: rec.walks, vrcs: rec.vrcs });
+  rec.sig = crypto.sign(null, Buffer.from(msg, 'utf8'), priv).toString('hex');
+  return { kappa, prior: key.prior, did: rec.did, publicKeyHex: s.publicKeyHex, signedAt: at, vta: rec };
+}
+
+function residentSite(id, districts, personaId = id, note = '', cityKey = null) {
   const host = resident(id);
   const p = loadPersona(personaId) || { id: personaId, name: personaId, emoji: '', tagline: '', alignment: 'balanced', skills: [] };
   if (note) p.tagline = note + ' · ' + p.tagline;
@@ -342,8 +401,8 @@ The role is **unsigned** until the card exists, and it **expires** ${new Date(DA
 
 Proof packets from the agentprivacy workshops (sealed / refractive / revealed by witness), the City Key κ and \`did\`, the Swordsman's Key from soulbis /star, the Drake Orb badge. Sealed packets appear as commitments only.
 
-**None yet.**`),
-    code({ v: 1, packets: [], cityKey: null, swordsmansKey: null, drakeOrb: null }),
+${cityKey ? `The \`cityKey\` slot below carries a **signed VTA record** — the bearer's public key, the current κ, the prior, and an ed25519 signature over all of it. The City recomputes that signature every time this site is read (\`site/record.js\`); it never stores the verdict. A record it cannot verify reads *unproven*, and a signature older than the horizon reads *stale*.` : '**None yet.**'}`),
+    code({ v: 1, packets: [], cityKey, swordsmansKey: null, drakeOrb: null }),
   ]);
   page(host, 'Receipts', [
     md(`# 📎 Receipts
@@ -356,7 +415,10 @@ Skill Sync librarian entries (adopt · attest · runtime, with chain hashes), ag
   return { host, persona: p, loadout, pHash };
 }
 
-const bis = residentSite('soulbis', ['swarm']);
+// soulbis publishes a signed record; soulbae publishes none. The two states stand side by
+// side on the front on purpose: verified and unproven are both honest readings, and the
+// second is not a lower score — it is less shown.
+const bis = residentSite('soulbis', ['swarm'], 'soulbis', '', signedCityKeySlot('Soulbis', { walks: 3 }));
 const bae = residentSite('soulbae', ['swarm']);
 // the keeper's own instance of the Community Security Agent (open source, Cyber SMART Research Center:
 // github.com/smitgu/community-security-agent-public) as the resident `systerrae`, presenting the Witness persona;

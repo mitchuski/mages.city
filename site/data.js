@@ -3,6 +3,8 @@
 // shows is exactly what the acceptance check checks. Everything here is read from the
 // wiki farm's JSON and the Portal desk; nothing is stored, nothing is scored.
 
+import { verifyCard, readCityKeySlot } from './record.js';
+
 export function parseRoster(text) {
   const out = { categories: {}, all: [] };
   let cat = 'sites';
@@ -72,11 +74,20 @@ export function createClient(cfg, fetchFn = (...a) => globalThis.fetch(...a)) {
       const proofsJ = codeItem(proofs) || {};
       const recJ = codeItem(receipts) || {};
       const skills = roleJ.loadout?.role_skills || [];
+      // the card and the City Key are RECOMPUTED here, never trusted as written: the card's
+      // ceremony signature, and the signed VTA record in the `proofs` page's `cityKey` slot
+      // (see site/record.js). A resident that publishes no record is unproven, not refused.
+      const [cardV, cityKey] = await Promise.all([
+        cardJ.publicKeyHex ? verifyCard(cardJ) : Promise.resolve({ ok: false, why: 'no card' }),
+        readCityKeySlot(proofsJ.cityKey, { card: cardJ }),
+      ]);
       return {
         host, handle: host.split('.')[0], title: welcome?.title || host,
         persona: roleJ.persona?.id || null, glyph: roleJ.persona?.emoji || '', name: roleJ.persona?.name || '', tagline: roleJ.persona?.tagline || '',
         alignment: roleJ.alignment || null, seat: roleJ.seat || null, districts: roleJ.districts || [], expires: roleJ.expires || null,
         card: cardJ.publicKeyHex ? cardJ : null, tier: cardJ.trustTier || 'blade',
+        cardVerified: cardV.ok === true, cardWhy: cardV.ok ? null : cardV.why,
+        cityKey,
         skills: { total: skills.length, carried: skills.filter(x => x.hash).length, flown: skills.filter(x => x.rung === 'flown').length, walked: skills.filter(x => x.rung === 'walked').length },
         packets: (proofsJ.packets || []).length,
         receipts: (recJ.librarian || []).length + (recJ.admission || []).length + (recJ.runtimes || []).length,
@@ -93,10 +104,18 @@ export function createClient(cfg, fetchFn = (...a) => globalThis.fetch(...a)) {
       }));
       return edges;
     },
-    // the chip: a view, never a stored number
+    // the chip: a view, never a stored number — and now a RECOMPUTED one. What it says about
+    // the key is exactly what site/record.js could verify on this read: an unverifiable record
+    // reads `unproven`, a signature older than the horizon reads `stale`. Nothing is a score.
     chip(s, forks = []) {
       const bits = [`${s.glyph || ''} ${s.tier}`.trim()];
-      bits.push(s.packets ? `${s.packets} packets` : 'unproven');
+      const k = s.cityKey;
+      if (k?.verified) {
+        bits.push(`κ ${k.kappa.slice(7, 15)} ${k.live ? 'verified' : 'stale'}`);
+        if (k.walks) bits.push(`${k.walks} walks`);
+        if (k.vrcs) bits.push(`${k.vrcs} vrcs`);
+      } else if (s.card && !s.cardVerified) bits.push('card unverified');
+      bits.push(s.packets ? `${s.packets} packets` : (k?.verified ? 'no packets' : 'unproven'));
       bits.push(`${s.skills.carried}/${s.skills.total} carried`);
       if (s.skills.flown) bits.push(`${s.skills.flown} flown`);
       if (s.skills.walked) bits.push(`${s.skills.walked} walked`);
