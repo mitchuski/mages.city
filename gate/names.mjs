@@ -108,7 +108,9 @@ export function createNamekeeper(opts = {}) {
     for (const e of entries()) {
       if (e.type === 'claim') m.set(e.name, { ...e, rung: e.rung, key: false, writes: [] });
       else if (!m.has(e.name)) continue;
-      else if (e.type === 'grant') { const c = m.get(e.name); c.rung = e.rung; c.evidence = e.evidence; c.evidenceDigest = e.evidenceDigest; if (e.key) c.key = true; }
+      // the key follows the grant in BOTH directions — a demotion that leaves `key` set would keep a
+      // rung-3 TSIG in agents.conf while the ledger says rung 1 (decided state ≠ applied state)
+      else if (e.type === 'grant') { const c = m.get(e.name); c.rung = e.rung; c.evidence = e.evidence; c.evidenceDigest = e.evidenceDigest; c.key = !!e.key; }
       else if (e.type === 'write') m.get(e.name).writes.push(e);
       else if (e.type === 'release') m.delete(e.name);
     }
@@ -195,7 +197,8 @@ export function createNamekeeper(opts = {}) {
     const evidenceDigest = sha(canon(evidence));
     const seal = append({ type: 'grant', name: n, rung, evidence, evidenceDigest, key, by });
     render();
-    const applied = key && !c.key ? apply(null, true) : { applied: false, dryRun: !APPLY, commands: [] };
+    // reconfigure whenever the key state CHANGES — acquiring one, and equally losing one
+    const applied = key !== c.key ? apply(null, true) : { applied: false, dryRun: !APPLY, commands: [] };
     const out = { ok: true, name: n, rung, rungName: RUNGS[rung].name, may: RUNGS[rung].types, via: RUNGS[rung].via, evidenceDigest, seal, apply: applied };
     if (key && !c.key) {
       out.tsig = { name: keyName(n), algorithm: 'hmac-sha256', secret: fs.readFileSync(path.join(KEYS, `${n}.secret`), 'utf8').trim() }; // shown once; encrypted to the agent's x25519 key in production

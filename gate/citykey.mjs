@@ -97,8 +97,29 @@ export function verifyKey(key, packets = []) {
   if (key.did && key.identity?.publicKeyHex) { const d = didKeyOf(key.identity.publicKeyHex); didOk = d === key.did; if (!didOk) findings.push(`did ${key.did} is not did:key of identity.publicKeyHex (${d})`); }
   else if (key.did) findings.push('did present without identity.publicKeyHex — cannot bind it to the card key');
   const walks = (key.walks || []).map(w => ({ name: w.name || null, steps: (w.steps || []).length, elementsOk: (w.steps || []).every(s => /^sha256:[0-9a-f]{64}$/.test(s.element || '')) }));
+  // Four states, kept apart on purpose. `absent` (nothing was claimed) and `unavailable` (a claim
+  // was made but the material to check it was not supplied) are NOT `match`, and neither is a
+  // failure. Collapsing them is how an unchecked claim comes to read as a checked one.
+  const state = (claimed, checkable, agrees) =>
+    !claimed ? 'absent' : !checkable ? 'unavailable' : agrees ? 'match' : 'mismatch';
+  const states = {
+    kappa: state(!!key.kappa, true, kappaOk),
+    packetProofs: state(packets.length > 0, true, bad.length === 0),
+    packetsRoot: state(!!key.packets?.root, packets.length > 0, rootOk),
+    did: state(!!key.did, !!key.identity?.publicKeyHex, didOk),
+  };
+  // what was asserted but never actually checked — the list a consumer must read before
+  // showing anything as verified, and before any authority decision is taken
+  const unverified = Object.entries(states)
+    .filter(([, v]) => v === 'unavailable' || v === 'absent')
+    .map(([k]) => k);
+
   return {
+    // `ok` means NOTHING CONTRADICTED — it is not "everything was checked". A key claiming
+    // packets that were never supplied is still ok:true, with packetsRoot:'unavailable'.
+    // Branch on `states`, never on `ok` alone, and never turn `ok` into a permission.
     ok: kappaOk !== false && bad.length === 0 && rootOk !== false && didOk !== false,
+    states, unverified,
     kappa: { stamped: key.kappa || null, expected, ok: kappaOk },
     packets: { given: packets.length, verified: pk.filter(p => p.ok).length, root: key.packets || null, rootOk, byMode: pk.reduce((m, p) => { if (p.ok) m[p.mode] = (m[p.mode] || 0) + 1; return m; }, {}) },
     identity: { publicKeyHex: key.identity?.publicKeyHex || null, participantId: participantIdOf(key.identity?.publicKeyHex), trustTier: key.identity?.trustTier || null, drakeOrb: key.identity?.drakeOrb || null, did: key.did || null, didOk },
@@ -116,6 +137,14 @@ export function evidenceOf(key, packets = [], graph = {}) {
   return {
     // the Namekeeper's rungOf() reads these four
     member: !!graph.member, vouches: Number(graph.vouches) || 0, met: Number(graph.met) || 0, vwc: Number(graph.vwc) || 0,
+    // ...and these four arrive from the CALLER, unchecked. Nothing in this function verifies a
+    // membership, counts a vouch, or validates a witness credential; `graph` is an assertion, not
+    // a finding. Say so, so a rung is never granted on the strength of having been asked nicely.
+    // The verified gatherer that would make these findings is the missing piece — not the ladder.
+    graphVerified: false,
+    graphSource: 'caller-supplied',
+    keyStates: v.states,
+    unverified: [...v.unverified, 'member', 'vouches', 'met', 'vwc'],
     // the chip reads these
     tier: v.identity.trustTier || 'blade', participantId: v.identity.participantId, did: v.identity.did, didOk: v.identity.didOk,
     packets: proven, sealed: v.packets.byMode.sealed || 0, revealed: v.packets.byMode.revealed || 0, refractive: v.packets.byMode.refractive || 0,
