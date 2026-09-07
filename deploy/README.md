@@ -32,6 +32,14 @@ holds in both profiles; only the edge and the DNS differ.
 
 One level of subdomain everywhere, so Cloudflare's universal certificate (`mages.city` + `*.mages.city`) covers all of it.
 
+> **Changed 2026-09-07 — the four trust hosts are hosted, not self-run.** `vta.`, `vtc.`,
+> `mediator.` and the DID host are CNAMEd to FirstPerson's VTA Farm (`lb.firstperson.dev`,
+> unproxied) rather than served from the VTI stack on our own host. The rows above describe
+> the self-hosted profile, which stays documented and remains the fallback. The records in
+> force, and two open issues — the CNAME target not resolving yet, and **`dids.` here versus
+> `did.` in this table**, which produce different `did:webvh` identifiers — are in
+> [`dns/RECORDS_2026-09-07_vta-farm.md`](dns/RECORDS_2026-09-07_vta-farm.md).
+
 ## 1 · DNS (Cloudflare, after the nameservers move)
 
 | record | value | note |
