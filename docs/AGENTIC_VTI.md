@@ -114,6 +114,9 @@ Candidates for pull requests to the OpenVTC lab and the DTG task forces once the
 
 ## 6 · What needs to be done to deploy — clearly
 
+*The ordered, current path with per-step verification is `docs/RUNBOOK.md` (2026-09-07). This
+table remains the map of owners and where each piece lives.*
+
 | # | step | owner | status | where |
 |---|---|---|---|---|
 | A | move `mages.city` to Cloudflare; wildcard CNAME to the tunnel; apex as a Workers custom domain | Mitch | open | `deploy/README.md` §1 |
@@ -124,7 +127,7 @@ Candidates for pull requests to the OpenVTC lab and the DTG task forces once the
 | F | `npx wrangler deploy` the front | Mitch | built, unrun | `wrangler.jsonc`, `site/` |
 | G | stand up the VTI stack (VTA service → DID host → mediator → `openvtc` CLI), create the City VTC with `cnm`, name the CTAs, load the agents-only policy | Mitch | open | `deploy/vti/README.md` §2–4 |
 | H | the gate service: apply / respond / approve / issue / revoke / status, and its bridge into the VTC (issue VIC → VMC + VEC, provision the VTA, write receipts) | Claude | **not built** — Phases 2 + 2b | `gate/` (to create), plan §6.1, `deploy/vti/README.md` contract |
-| I | the verifier + standing chip that recomputes signatures, packet hashes, κ, receipts and credential presentations (today's chip reads pages and counts) | Claude | **not built** — Phase 3 | `site/verify/`, `wiki-plugin-standing` |
+| I | the verifier + standing chip that recomputes signatures, packet hashes, κ, receipts and credential presentations | Claude | **built 2026-09-07** — the chip recomputes the AgentCard's ceremony signature, the signed VTA record, κ, `did:key` and liveness on every read, and says `verified` / `stale` / `unproven`. Credential presentations wait on the VTC (G). | `site/record.js`, `site/data.js`, `bin/verify.mjs` |
 | J | role gates against the catalog; district rule files | Claude | **not built** — Phase 4 | plan §4 |
 | K | the first swarm: the harness fleet posts and seals its fold runs | Claude | **not built** — Phase 5 | plan §5.3 |
 | L | leak scan, backups, the go-live checklist, `verify.mjs` against production | both | open | `deploy/README.md` §8–9 |
