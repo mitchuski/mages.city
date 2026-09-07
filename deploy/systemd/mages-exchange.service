@@ -1,0 +1,27 @@
+# deploy/systemd/mages-exchange.service — the Exchange desk (exchange/desk.js), market ladder M0.
+#   sudo cp deploy/systemd/mages-exchange.service /etc/systemd/system/
+#   sudo systemctl enable --now mages-exchange
+# Renders the Exchange's catalogue pages into the farm's data dir; the desk answers on 4448 and
+# the tunnel path-routes /offer /request /grant /adopt /attest /catalog /standing /graph /recent to it.
+# Bodies never travel through this desk — only cards, briefs and hashes (docs/EXCHANGE.md).
+[Unit]
+Description=mages.city Exchange desk (packets, grants, receipts)
+After=network-online.target mages-farm.service
+Wants=network-online.target
+
+[Service]
+User=mages
+Group=mages
+Environment=MAGES_SCHEME=https
+Environment=EXCHANGE_PUBLIC_URL=https://exchange.mages.city
+Environment=FRONT_URL=https://mages.city
+ExecStart=/usr/bin/node /srv/mages.city/repo/exchange/desk.js 4448 /srv/mages.city/farm exchange.mages.city
+WorkingDirectory=/srv/mages.city/repo/exchange
+Restart=always
+RestartSec=3
+NoNewPrivileges=true
+ProtectSystem=strict
+ReadWritePaths=/srv/mages.city/farm /srv/mages.city/repo/exchange/data
+
+[Install]
+WantedBy=multi-user.target

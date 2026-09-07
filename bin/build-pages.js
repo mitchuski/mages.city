@@ -331,7 +331,11 @@ function twinSwordsman() {
 /** A `cityKey` slot exactly as the Swordsman's `vta_publish` emits it — signed, verifiable
  *  by site/record.js, publishing the public half and withholding the key, walk and seed. */
 function signedCityKeySlot(name, { walks = 0, at = new Date(DATE).toISOString() } = {}) {
-  if (KIT) return null;                       // the deploy artefact carries no keys, demo or not
+  // The demo record belongs to the LOCAL TWIN only. On the kit, or on any real TLD, this returns
+  // null: a seed resident whose card is unminted must never carry a chip reading `verified` on a
+  // key nobody controls. The City's rule is that nothing says more than a record shows, and a
+  // fixture standing in public would be exactly that — a claim with no one behind it.
+  if (KIT || !/\.localhost$/.test(TLD)) return null;
   const s = twinSwordsman();
   const key = { name, version: 1, kind: 'city-key', identity: { swordsman: 'ap-' + s.publicKeyHex.slice(0, 16) }, lattice: { 31: 60 }, weight: 60, charges: 12, prior: sha256('the key before ' + name) };
   const kappa = sha256(canonical(key, ['kappa']));

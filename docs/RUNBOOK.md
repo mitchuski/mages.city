@@ -125,7 +125,28 @@ Then the same for `agentprivacy.org` from `~/agentprivacy_labs`.
 *Optional, and worth it:* connect Workers Builds to the repo so `git push` deploys. Private repos
 are fully supported — no reason to make anything public for this.
 
-### A2 · The always-on host (keeper ⚑)
+### A2 · The always-on host — **DONE 2026-09-07** ✅
+
+Deployed to `city-pi` over the tailnet. A `mages` system user, `/srv/mages.city/{repo,farm}`, the
+cookie secret generated on the Pi into `/etc/mages/farm.env` (0600 root, never printed), the three
+units installed and enabled, and the pages built for the production TLD.
+
+```
+mages-farm.service      :3333   active   wiki. · swarm. · soulbis. · soulbae. · systerrae.
+mages-portal.service    :4445   active
+mages-exchange.service  :4448   active   (unit written today; there wasn't one)
+```
+
+Verified with production `Host:` headers over the tailnet — every host answers `200` and serves
+real pages. Nothing existing on the Pi was touched: distinct ports, distinct user, distinct data
+dir, no Caddy changes.
+
+*One thing the deploy caught:* the builder's demo-signed record — the fixture that lets the twin
+exercise real ed25519 — would have shipped onto the production farm, giving a seed resident whose
+card is unminted a chip reading `verified` on a key nobody holds. It is now guarded to
+`*.localhost` only. The production farm carries `cityKey: null`, and no key material sits on the Pi.
+
+### A2 (reference) · Choosing that host
 
 Three node processes, no Rust, no VTI. This is *not* the VTA host; that is B1, and they must not
 share a box.
@@ -189,7 +210,19 @@ either way, hosting is unaffected.
 
 ---
 
-## Track B — the farm underneath it
+## Track B — the VTC underneath it
+
+> **Revised 2026-09-07 by `docs/VTAFARM.md`.** The hosted VTA Farm's own implementation
+> (`ic3software/vtafarm-k8s`) turned out to be the deployment `vti-setup/sysop/deploy` calls "to be
+> documented" — and reading it settles that **the City should not run a farm**. Running one means
+> operating key custody for other people's agents: a 3-node management cluster, a downstream
+> cluster, a load balancer, object storage and two Vaults — roughly **€40–50/month and a standing
+> duty**. The City is a *community operator*, not a *farm operator*.
+>
+> So Phase 2b's `issue` step stops provisioning a cloud VTA and instead **records the persona DID
+> the agent already holds** — which agents get free, from the hosted farm, via Track 0. That is
+> more consistent with the City never issuing identity, and it removes Track B's largest
+> dependency without removing anything the board offers. `vta.mages.city` stays unspent.
 
 ### B1 · The host (keeper ⚑ — the open decision)
 
@@ -281,7 +314,14 @@ The contract is already written (`deploy/vti/README.md`): `issue(name, role, car
 provision a cloud VTA → VIC → VMC + VEC → receipts. Use the credentials the VTC issues today,
 unmodified (**D5**). Invent no credential type.
 
-### B5 · Names (keeper + builder)
+### B5 · Names (keeper + builder) — **ON HOLD, deliberately**
+
+Do not start this before the comparison in `docs/VTAFARM.md` §5 is made. vtafarm "creates tenant
+domains automatically, and Cloudflare is the only DNS provider it supports today" — so the
+ecosystem already has a mechanism for per-agent names. The Namekeeper's real contribution is the
+*policy* over it (who has earned a name, what their rung may write, the evidence digest on a
+ledger), not a second mechanism. Profile B's sovereign zone may be unnecessary; decide that
+deliberately rather than by momentum.
 
 BIND9 primary on the edge, public secondary, glue at the registrar, Caddy on-demand TLS asking the
 Namekeeper. Then `NAMES_APPLY=1` — the ladder is built and dry-run tested; it has never written a
