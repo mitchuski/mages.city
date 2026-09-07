@@ -25,8 +25,8 @@ on the marker.
 
 | when | actor | action | evidence | outcome |
 |---|---|---|---|---|
-| 17:17 | agent | `git clone https://github.com/OpenVTC/verifiable-trust-infrastructure` | `~/verifiable-trust-infrastructure` @ `487326bb` (2026-09-05, "feat(pnm-cli): add memory command group (#1222)") | cloned |
-| 17:18 | agent | `git clone https://github.com/OpenVTC/vti-setup` | `~/vti-setup` @ `f937d98` (2026-08-30) | cloned |
+| 17:17 | agent | `git clone https://github.com/OpenVTC/verifiable-trust-infrastructure` | `~/openvtc/verifiable-trust-infrastructure` @ `487326bb` (2026-09-05, "feat(pnm-cli): add memory command group (#1222)") | cloned |
+| 17:18 | agent | `git clone https://github.com/OpenVTC/vti-setup` | `~/openvtc/vti-setup` @ `f937d98` (2026-08-30) | cloned |
 | 17:18 | agent | `rustup update stable` | `rustc 1.98.1 (2026-09-01)` from 1.91.1; workspace `rust-version = "1.95.0"`, edition 2024 | toolchain ok |
 | ~17:20 | agent | build 1: `cargo build --release -p pnm-cli -p cnm-cli -p vta-service -p vtc-service -p didcomm-test -p vta-mcp` (piped) | session task output `bd2itj32m` | **failed**: `openssl-sys 0.9.117` — "Could not find directory of OpenSSL installation" (`webauthn-rs` → `openssl`); exit masked by the pipe |
 | 17:24 | agent | detached: `git clone --depth 1 microsoft/vcpkg ~/vcpkg`; `bootstrap-vcpkg.bat -disableMetrics`; `vcpkg install openssl:x64-windows-static-md` | `~/vcpkg-openssl.log`, `~/vcpkg-openssl.done` | **EXIT=0**, `openssl@3.6.4`, 3.5 min (17:27) |
