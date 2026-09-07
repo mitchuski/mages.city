@@ -30,6 +30,24 @@ B: a VTA farm with no board is a server.
 
 ---
 
+## How each piece gets deployed — three different models
+
+Worth being explicit, because they are not alike and only one of them is "deploy" in the usual
+sense. **Nothing is ever pushed from the Windows machine to the VPS.**
+
+| piece | deployed from | by what |
+|---|---|---|
+| the front — `mages.city` | the git repo | `npx wrangler deploy`, or Workers Builds on push to `main` |
+| the board — farm · Portal · Exchange | the git repo, onto the host | `git pull` + the units in `deploy/systemd/` |
+| the VTI stack | **itself** | SSH in as root and run one `curl … \| bash`; the script fetches from GitHub and builds on the box |
+| a personal VTA (Track 0) | **nothing** | a browser and a passkey at the hosted farm |
+
+So the VPS is not a deploy target. You create it, point four DNS records at it, SSH in once, and it
+assembles itself. Afterwards your machine talks to it only as a client, over HTTPS, through `pnm`
+and `cnm`.
+
+---
+
 ## Track 0 — join before you host (keeper · £0 · no server)
 
 *Added 2026-09-07 after reading `vti-setup` properly. This track did not exist in the earlier plans,
@@ -109,9 +127,22 @@ are fully supported — no reason to make anything public for this.
 
 ### A2 · The always-on host (keeper ⚑)
 
-The Pi 4 per `deploy/viewer/decisions.json` (profile **B**, edge **pi4**, bare systemd, vault
-secrets). It carries the farm, the Portal desk and the Exchange desk — three node processes, no
-Rust, no VTI. This is *not* the VTA host; that decision is B1.
+Three node processes, no Rust, no VTI. This is *not* the VTA host; that is B1, and they must not
+share a box.
+
+**No Pi is required — but nothing needs buying either.** The board cannot go on Workers: the farm
+is a stateful server that writes page files, so it needs a real host with a disk. Node runs happily
+on ARM (unlike the VTI's Rust stack, which wants x86), so the options are open:
+
+| option | cost | note |
+|---|---|---|
+| **`city-pi`** | £0 | **already runs this**: Caddy answering on :80, farm ports 8081–8085 listening, from the August mirror. The shortest path by a distance. |
+| `02-pi4` · `pi5` | £0 | both online on the tailnet; `pi5` if you want headroom for anything else |
+| a small VPS | ~£4–5/mo | if home uptime bothers you. Oracle's free ARM tier also fits |
+
+The tunnel means **no inbound port**, so home NAT and firewalls are a non-issue; the only real Pi
+risk is your own connection and power. Moving to a VPS later is a `git pull` and two systemd units,
+not a rewrite — so this decision is cheap to change and should not hold up A1.
 
 ```
 mages-farm.service     :3333   the Hall, districts, resident sites
@@ -164,6 +195,23 @@ either way, hosting is unaffected.
 
 Only needed for a **community's own** VTC — Track 0 already gives you a personal VTA without it.
 
+> **Read this before buying anything: the self-hosted box is a learning box, by upstream's own
+> instruction.** `vti-setup` has two sysop streams. **Explore** is the only one written, and both its
+> own README and the Deploy README say the same thing in bold: *"Do not put real keys here"* ·
+> *"use the Explore stream to stand up and learn the stack — but do not put real keys or production
+> data on an explore box."* Its shape is a single VM, one root SSH session, `nohup` for processes.
+> The hardened **Deploy** stream — Kubernetes, cert-manager, HashiCorp Vault for every secret — is
+> *“To be documented.”*
+>
+> Two consequences. **Buy cheap and plan to destroy it:** this box exists to learn the stack and to
+> write down what it taught, not to hold the City's identity. **The City's production VTC has no
+> documented self-hosted path yet** — it waits on the Deploy stream being written, or on hosted
+> infrastructure. (The keeper's own `decisions.json` already chose *vault* for secrets, which is
+> exactly the Deploy stream's design — the instinct was right, the guide is not written.)
+>
+> Do not co-locate this box with the board. A key store and a public write surface do not share a
+> host, and on an explore box the question does not even arise.
+
 Upstream's own requirement (`sysop/explore/01-server-setup.md`): **Ubuntu 26.04, 2 vCPU, 4 GB RAM**,
 a registered domain with DNS access, an SSH key. They use Hetzner; that is roughly £4–5/month.
 
@@ -195,6 +243,16 @@ curl -sSL https://raw.githubusercontent.com/OpenVTC/vti-setup/main/scripts/setup
 It updates packages, installs the toolchain, Rust, Node 22, Docker, Nginx and Certbot, writes four
 reverse-proxy configs and obtains the certificates. A `502 Bad Gateway` at the end is **expected** —
 the services are not running yet.
+
+Before that: create the instance (Ubuntu 26.04, 2 vCPU, 4 GB), paste in the existing public key
+`~/.ssh/id_ed25519.pub`, and point **four DNS-only A records** — `mediator`, `vta`, `vtc`, `dids` —
+at its IP.
+
+**Which zone?** Not `mages.city`. An explore box that must not hold real keys does not belong on the
+City's own name. `mages.earth` is already designated the network layer (mediator · DID host ·
+governance frame), which is exactly what this box is — and it is the one zone still on the old
+nameservers, so moving it is the small prerequisite. That keeps `vta.mages.city` unspent until
+there is a production path worth spending it on.
 
 Then the sysop order: VTA service → DID host → DIDComm mediator → `openvtc` CLI.
 
