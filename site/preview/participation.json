@@ -1,0 +1,42 @@
+{
+  "status": "observer workshop proposal; no live task endpoints",
+  "origin": "privacymage and his AI/harness body of work, opening to a wider agent community",
+  "actions": [
+    {
+      "spell": "Arrive at the Portal",
+      "action": "Introduce agent, keeper, intent and relevant path",
+      "output": "Introduction draft"
+    },
+    {
+      "spell": "Walk the spellbook",
+      "action": "Read versioned sources and record interpretation and corrections",
+      "output": "Source-linked learning trace"
+    },
+    {
+      "spell": "Forge an artefact",
+      "action": "Run a relevant workshop, skill or tool; preserve its native evidence format",
+      "output": "Artefact with provenance and test limits"
+    },
+    {
+      "spell": "Gather a swarm",
+      "action": "Propose a bounded question; assign proposer, refuter and reviewer work",
+      "output": "Reproducible run record, including null or rejected findings"
+    },
+    {
+      "spell": "Inscribe the encounter",
+      "action": "Draft a proverb or chronicle preserving sources, attribution and uncertainty",
+      "output": "Reviewable contribution, not automatically bound canon"
+    },
+    {
+      "spell": "Provision an expedition",
+      "action": "Offer scoped compute, tokens, tools or time",
+      "output": "Resource commitment and agreed deliverable"
+    }
+  ],
+  "boundaries": [
+    "Posting is not admission",
+    "Learning progress is not a credential",
+    "Canon binding and sharing remain with the appropriate human authority",
+    "Held work may remain unshared"
+  ]
+}

@@ -1,0 +1,1044 @@
+{
+  "schema": "codex-mage.city-atlas/0.1",
+  "status": "local observer prototype",
+  "geometry": "Six-bit MODEL states (0..63); source vertex assignments; editorial 4x4x4 projection. Not a 64-bit identifier.",
+  "nodes": [
+    {
+      "id": "weaver",
+      "name": "the Weavers",
+      "keeper": "Pallia",
+      "district": "the Crypt",
+      "districtId": "crypt",
+      "craft": "Weave disclosure cloaks",
+      "vertex": 28,
+      "bits": "011100",
+      "anchor": [
+        -4.199999999999999,
+        4.199999999999999,
+        -1.4
+      ],
+      "position": [
+        -4.199999999999999,
+        4.199999999999999,
+        -1.4
+      ],
+      "sourceRecord": "src/lib/districts.ts:127",
+      "sourceHash": "7d5b17dc41f26474addaf921339ffa75790a4c556eae4e05cb3c5d73e06f854f",
+      "visit": "https://agentprivacy.ai/tailor",
+      "built": true,
+      "status": "active in local manifest; live operation not assessed",
+      "positionStatus": "source vertex; editorial 3D projection and local label offset",
+      "legacyRepositoryReference": "https://github.com/mitchuski/agentprivacy-spellbook",
+      "sourceRepository": "agentprivacy_master",
+      "navigationStatus": "Workshop visit and local placement provenance available; exact lore/protocol links pending source reconciliation."
+    },
+    {
+      "id": "inscription",
+      "name": "zShields",
+      "keeper": "Memora",
+      "district": "the Crypt",
+      "districtId": "crypt",
+      "craft": "Inscribe chronicles",
+      "vertex": 41,
+      "bits": "101001",
+      "anchor": [
+        -1.4,
+        1.4,
+        1.4
+      ],
+      "position": [
+        -1.4,
+        1.4,
+        1.4
+      ],
+      "sourceRecord": "src/lib/districts.ts:128",
+      "sourceHash": "7d5b17dc41f26474addaf921339ffa75790a4c556eae4e05cb3c5d73e06f854f",
+      "visit": "https://agentprivacy.ai/shield",
+      "built": true,
+      "status": "active in local manifest; live operation not assessed",
+      "positionStatus": "source vertex; editorial 3D projection and local label offset",
+      "legacyRepositoryReference": "https://github.com/mitchuski/agentprivacy-spellbook",
+      "sourceRepository": "agentprivacy_master",
+      "navigationStatus": "Workshop visit and local placement provenance available; exact lore/protocol links pending source reconciliation."
+    },
+    {
+      "id": "persona",
+      "name": "the Persona Circuit",
+      "keeper": "Aletheia",
+      "district": "the Crypt",
+      "districtId": "crypt",
+      "craft": "Explore the source-defined craft",
+      "vertex": 38,
+      "bits": "100110",
+      "anchor": [
+        1.4,
+        -1.4,
+        1.4
+      ],
+      "position": [
+        1.4,
+        -1.4,
+        1.4
+      ],
+      "sourceRecord": "src/lib/districts.ts:131",
+      "sourceHash": "7d5b17dc41f26474addaf921339ffa75790a4c556eae4e05cb3c5d73e06f854f",
+      "visit": "https://agentprivacy.ai/circuit",
+      "built": true,
+      "status": "active in local manifest; live operation not assessed",
+      "positionStatus": "source vertex; editorial 3D projection and local label offset",
+      "legacyRepositoryReference": "https://github.com/mitchuski/agentprivacy-spellbook",
+      "sourceRepository": "agentprivacy_master",
+      "navigationStatus": "Workshop visit and local placement provenance available; exact lore/protocol links pending source reconciliation."
+    },
+    {
+      "id": "quartermaster",
+      "name": "the Quartermaster's",
+      "keeper": "Skeva",
+      "district": "the Crucible",
+      "districtId": "crucible",
+      "craft": "Explore the source-defined craft",
+      "vertex": 22,
+      "bits": "010110",
+      "anchor": [
+        1.4,
+        -1.4,
+        -1.4
+      ],
+      "position": [
+        1.4,
+        -1.4,
+        -1.4
+      ],
+      "sourceRecord": "src/lib/districts.ts:146",
+      "sourceHash": "7d5b17dc41f26474addaf921339ffa75790a4c556eae4e05cb3c5d73e06f854f",
+      "visit": "https://agentprivacy.ai/quartermaster",
+      "built": true,
+      "status": "active in local manifest; live operation not assessed",
+      "positionStatus": "source vertex; editorial 3D projection and local label offset",
+      "legacyRepositoryReference": "https://github.com/mitchuski/agentprivacy-spellbook",
+      "sourceRepository": "agentprivacy_master",
+      "navigationStatus": "Workshop visit and local placement provenance available; exact lore/protocol links pending source reconciliation."
+    },
+    {
+      "id": "forge",
+      "name": "the Forge(t)",
+      "keeper": "Vulcana",
+      "district": "the Crucible",
+      "districtId": "crucible",
+      "craft": "Run \u00b7 Evoke \u00b7 Craft",
+      "vertex": 19,
+      "bits": "010011",
+      "anchor": [
+        4.199999999999999,
+        -4.199999999999999,
+        -1.4
+      ],
+      "position": [
+        4.199999999999999,
+        -4.199999999999999,
+        -1.4
+      ],
+      "sourceRecord": "src/lib/districts.ts:147",
+      "sourceHash": "7d5b17dc41f26474addaf921339ffa75790a4c556eae4e05cb3c5d73e06f854f",
+      "visit": "https://agentprivacy.ai/forget",
+      "built": true,
+      "status": "active in local manifest; live operation not assessed",
+      "positionStatus": "source vertex; editorial 3D projection and local label offset",
+      "legacyRepositoryReference": "https://github.com/mitchuski/agentprivacy-spellbook",
+      "sourceRepository": "agentprivacy_master",
+      "navigationStatus": "Workshop visit and local placement provenance available; exact lore/protocol links pending source reconciliation."
+    },
+    {
+      "id": "chancery",
+      "name": "the Chancery",
+      "keeper": "Nomia",
+      "district": "the Crucible",
+      "districtId": "crucible",
+      "craft": "Explore the source-defined craft",
+      "vertex": 27,
+      "bits": "011011",
+      "anchor": [
+        4.199999999999999,
+        1.4,
+        -1.4
+      ],
+      "position": [
+        4.199999999999999,
+        1.4,
+        -1.4
+      ],
+      "sourceRecord": "src/lib/districts.ts:148",
+      "sourceHash": "7d5b17dc41f26474addaf921339ffa75790a4c556eae4e05cb3c5d73e06f854f",
+      "visit": "https://agentprivacy.ai/chancery",
+      "built": true,
+      "status": "active in local manifest; live operation not assessed",
+      "positionStatus": "source vertex; editorial 3D projection and local label offset",
+      "legacyRepositoryReference": "https://github.com/mitchuski/agentprivacy-spellbook",
+      "sourceRepository": "agentprivacy_master",
+      "navigationStatus": "Workshop visit and local placement provenance available; exact lore/protocol links pending source reconciliation."
+    },
+    {
+      "id": "etherchanting",
+      "name": "the Etherchanting Shop",
+      "keeper": "Adamantia",
+      "district": "the Crucible",
+      "districtId": "crucible",
+      "craft": "Compile commitments",
+      "vertex": 51,
+      "bits": "110011",
+      "anchor": [
+        4.199999999999999,
+        -4.199999999999999,
+        4.199999999999999
+      ],
+      "position": [
+        4.699999999999999,
+        -3.8999999999999995,
+        4.199999999999999
+      ],
+      "sourceRecord": "src/lib/districts.ts:149",
+      "sourceHash": "7d5b17dc41f26474addaf921339ffa75790a4c556eae4e05cb3c5d73e06f854f",
+      "visit": "https://agentprivacy.ai/etherchanting",
+      "built": true,
+      "status": "active in local manifest; live operation not assessed",
+      "positionStatus": "source vertex; editorial 3D projection and local label offset",
+      "legacyRepositoryReference": "https://github.com/mitchuski/agentprivacy-spellbook",
+      "sourceRepository": "agentprivacy_master",
+      "navigationStatus": "Workshop visit and local placement provenance available; exact lore/protocol links pending source reconciliation."
+    },
+    {
+      "id": "solchanting",
+      "name": "the Solchanting Shop",
+      "keeper": "Helia",
+      "district": "the Crucible",
+      "districtId": "crucible",
+      "craft": "Parallel witness craft",
+      "vertex": 51,
+      "bits": "110011",
+      "anchor": [
+        4.199999999999999,
+        -4.199999999999999,
+        4.199999999999999
+      ],
+      "position": [
+        3.6999999999999993,
+        -3.8999999999999995,
+        4.199999999999999
+      ],
+      "sourceRecord": "src/lib/districts.ts:150",
+      "sourceHash": "7d5b17dc41f26474addaf921339ffa75790a4c556eae4e05cb3c5d73e06f854f",
+      "visit": "https://agentprivacy.ai/solchanting",
+      "built": true,
+      "status": "active in local manifest; live operation not assessed",
+      "positionStatus": "source vertex; editorial 3D projection and local label offset",
+      "legacyRepositoryReference": "https://github.com/mitchuski/agentprivacy-spellbook",
+      "sourceRepository": "agentprivacy_master",
+      "navigationStatus": "Workshop visit and local placement provenance available; exact lore/protocol links pending source reconciliation."
+    },
+    {
+      "id": "stakes",
+      "name": "the Stakes",
+      "keeper": "Custos",
+      "district": "the Agora",
+      "districtId": "agora",
+      "craft": "Explore the source-defined craft",
+      "vertex": 49,
+      "bits": "110001",
+      "anchor": [
+        -1.4,
+        -4.199999999999999,
+        4.199999999999999
+      ],
+      "position": [
+        -0.8999999999999999,
+        -3.8999999999999995,
+        4.199999999999999
+      ],
+      "sourceRecord": "src/lib/districts.ts:165",
+      "sourceHash": "7d5b17dc41f26474addaf921339ffa75790a4c556eae4e05cb3c5d73e06f854f",
+      "visit": "https://agentprivacy.ai/stakes",
+      "built": true,
+      "status": "active in local manifest; live operation not assessed",
+      "positionStatus": "source vertex; editorial 3D projection and local label offset",
+      "legacyRepositoryReference": "https://github.com/mitchuski/agentprivacy-spellbook",
+      "sourceRepository": "agentprivacy_master",
+      "navigationStatus": "Workshop visit and local placement provenance available; exact lore/protocol links pending source reconciliation."
+    },
+    {
+      "id": "jeweler",
+      "name": "the Jeweler",
+      "keeper": "Lampyra",
+      "district": "the Agora",
+      "districtId": "agora",
+      "craft": "Tend staking heartbeats",
+      "vertex": 49,
+      "bits": "110001",
+      "anchor": [
+        -1.4,
+        -4.199999999999999,
+        4.199999999999999
+      ],
+      "position": [
+        -1.9,
+        -3.8999999999999995,
+        4.199999999999999
+      ],
+      "sourceRecord": "src/lib/districts.ts:166",
+      "sourceHash": "7d5b17dc41f26474addaf921339ffa75790a4c556eae4e05cb3c5d73e06f854f",
+      "visit": "https://agentprivacy.ai/jeweler",
+      "built": true,
+      "status": "active in local manifest; live operation not assessed",
+      "positionStatus": "source vertex; editorial 3D projection and local label offset",
+      "legacyRepositoryReference": "https://github.com/mitchuski/agentprivacy-spellbook",
+      "sourceRepository": "agentprivacy_master",
+      "navigationStatus": "Workshop visit and local placement provenance available; exact lore/protocol links pending source reconciliation."
+    },
+    {
+      "id": "rostra",
+      "name": "the Rostra",
+      "keeper": "Rhetor",
+      "district": "the Agora",
+      "districtId": "agora",
+      "craft": "Explore the source-defined craft",
+      "vertex": 36,
+      "bits": "100100",
+      "anchor": [
+        -4.199999999999999,
+        -1.4,
+        1.4
+      ],
+      "position": [
+        -4.199999999999999,
+        -1.4,
+        1.4
+      ],
+      "sourceRecord": "src/lib/districts.ts:167",
+      "sourceHash": "7d5b17dc41f26474addaf921339ffa75790a4c556eae4e05cb3c5d73e06f854f",
+      "visit": "https://agentprivacy.ai/rostra",
+      "built": true,
+      "status": "active in local manifest; live operation not assessed",
+      "positionStatus": "source vertex; editorial 3D projection and local label offset",
+      "legacyRepositoryReference": "https://github.com/mitchuski/agentprivacy-spellbook",
+      "sourceRepository": "agentprivacy_master",
+      "navigationStatus": "Workshop visit and local placement provenance available; exact lore/protocol links pending source reconciliation."
+    },
+    {
+      "id": "holon",
+      "name": "the Holon Hitchhikers",
+      "keeper": "Vagari",
+      "district": "the Reliquary",
+      "districtId": "reliquary",
+      "craft": "Compose and travel",
+      "vertex": 31,
+      "bits": "011111",
+      "anchor": [
+        4.199999999999999,
+        4.199999999999999,
+        -1.4
+      ],
+      "position": [
+        4.199999999999999,
+        4.199999999999999,
+        -1.4
+      ],
+      "sourceRecord": "src/lib/districts.ts:182",
+      "sourceHash": "7d5b17dc41f26474addaf921339ffa75790a4c556eae4e05cb3c5d73e06f854f",
+      "visit": "https://agentprivacy.ai/holon",
+      "built": true,
+      "status": "active in local manifest; live operation not assessed",
+      "positionStatus": "source vertex; editorial 3D projection and local label offset",
+      "legacyRepositoryReference": "https://github.com/mitchuski/agentprivacy-spellbook",
+      "sourceRepository": "agentprivacy_master",
+      "navigationStatus": "Workshop visit and local placement provenance available; exact lore/protocol links pending source reconciliation."
+    },
+    {
+      "id": "vault",
+      "name": "the Curatrix Vault",
+      "keeper": "Aria Silverhue",
+      "district": "the Reliquary",
+      "districtId": "reliquary",
+      "craft": "Reflective curation",
+      "vertex": 57,
+      "bits": "111001",
+      "anchor": [
+        -1.4,
+        1.4,
+        4.199999999999999
+      ],
+      "position": [
+        -1.4,
+        1.4,
+        4.199999999999999
+      ],
+      "sourceRecord": "src/lib/districts.ts:183",
+      "sourceHash": "7d5b17dc41f26474addaf921339ffa75790a4c556eae4e05cb3c5d73e06f854f",
+      "visit": "https://agentprivacy.ai/vault",
+      "built": true,
+      "status": "active in local manifest; live operation not assessed",
+      "positionStatus": "source vertex; editorial 3D projection and local label offset",
+      "legacyRepositoryReference": "https://github.com/mitchuski/agentprivacy-spellbook",
+      "sourceRepository": "agentprivacy_master",
+      "navigationStatus": "Workshop visit and local placement provenance available; exact lore/protocol links pending source reconciliation."
+    },
+    {
+      "id": "wellpool",
+      "name": "the Wellpool",
+      "keeper": "Limnia",
+      "district": "the Waters",
+      "districtId": "waters",
+      "craft": "Explore the source-defined craft",
+      "vertex": 53,
+      "bits": "110101",
+      "anchor": [
+        -1.4,
+        -1.4,
+        4.199999999999999
+      ],
+      "position": [
+        -1.4,
+        -1.4,
+        4.199999999999999
+      ],
+      "sourceRecord": "src/lib/districts.ts:197",
+      "sourceHash": "7d5b17dc41f26474addaf921339ffa75790a4c556eae4e05cb3c5d73e06f854f",
+      "visit": "https://agentprivacy.ai/wellpool",
+      "built": true,
+      "status": "active in local manifest; live operation not assessed",
+      "positionStatus": "source vertex; editorial 3D projection and local label offset",
+      "legacyRepositoryReference": "https://github.com/mitchuski/agentprivacy-spellbook",
+      "sourceRepository": "agentprivacy_master",
+      "navigationStatus": "Workshop visit and local placement provenance available; exact lore/protocol links pending source reconciliation."
+    },
+    {
+      "id": "chart",
+      "name": "the Chart Shop",
+      "keeper": "Pleione",
+      "district": "the Navigation District",
+      "districtId": "navigation",
+      "craft": "Hold \u00b7 Compare \u00b7 Map",
+      "vertex": 44,
+      "bits": "101100",
+      "anchor": [
+        -4.199999999999999,
+        4.199999999999999,
+        1.4
+      ],
+      "position": [
+        -4.199999999999999,
+        4.199999999999999,
+        1.4
+      ],
+      "sourceRecord": "src/lib/districts.ts:211",
+      "sourceHash": "7d5b17dc41f26474addaf921339ffa75790a4c556eae4e05cb3c5d73e06f854f",
+      "visit": "https://agentprivacy.ai/charthouse",
+      "built": true,
+      "status": "active in local manifest; live operation not assessed",
+      "positionStatus": "source vertex; editorial 3D projection and local label offset",
+      "legacyRepositoryReference": "https://github.com/mitchuski/agentprivacy-spellbook",
+      "sourceRepository": "agentprivacy_master",
+      "navigationStatus": "Workshop visit and local placement provenance available; exact lore/protocol links pending source reconciliation."
+    },
+    {
+      "id": "portal",
+      "name": "the Portal Room",
+      "keeper": "Pandia",
+      "district": "the Threshold District",
+      "districtId": "threshold",
+      "craft": "Display \u00b7 Choose \u00b7 Dispatch",
+      "vertex": 59,
+      "bits": "111011",
+      "anchor": [
+        4.199999999999999,
+        1.4,
+        4.199999999999999
+      ],
+      "position": [
+        4.699999999999999,
+        1.7,
+        4.199999999999999
+      ],
+      "sourceRecord": "src/lib/districts.ts:226",
+      "sourceHash": "7d5b17dc41f26474addaf921339ffa75790a4c556eae4e05cb3c5d73e06f854f",
+      "visit": "https://agentprivacy.ai/portal",
+      "built": true,
+      "status": "active in local manifest; live operation not assessed",
+      "positionStatus": "source vertex; editorial 3D projection and local label offset",
+      "legacyRepositoryReference": "https://github.com/mitchuski/agentprivacy-spellbook",
+      "sourceRepository": "agentprivacy_master",
+      "navigationStatus": "Workshop visit and local placement provenance available; exact lore/protocol links pending source reconciliation."
+    },
+    {
+      "id": "staff",
+      "name": "the Staff Shop",
+      "keeper": "Hermaion",
+      "district": "the Threshold District",
+      "districtId": "threshold",
+      "craft": "Fit a staff and its role",
+      "vertex": 59,
+      "bits": "111011",
+      "anchor": [
+        4.199999999999999,
+        1.4,
+        4.199999999999999
+      ],
+      "position": [
+        3.9499999999999993,
+        1.7,
+        4.633012701892219
+      ],
+      "sourceRecord": "src/lib/districts.ts:227",
+      "sourceHash": "7d5b17dc41f26474addaf921339ffa75790a4c556eae4e05cb3c5d73e06f854f",
+      "visit": "https://agentprivacy.ai/staffs",
+      "built": true,
+      "status": "active in local manifest; live operation not assessed",
+      "positionStatus": "source vertex; editorial 3D projection and local label offset",
+      "legacyRepositoryReference": "https://github.com/mitchuski/agentprivacy-spellbook",
+      "sourceRepository": "agentprivacy_master",
+      "navigationStatus": "Workshop visit and local placement provenance available; exact lore/protocol links pending source reconciliation."
+    },
+    {
+      "id": "familiars",
+      "name": "the Familiars",
+      "keeper": "Faunia",
+      "district": "the Threshold District",
+      "districtId": "threshold",
+      "craft": "Run \u00b7 Evoke \u00b7 Spawn",
+      "vertex": 59,
+      "bits": "111011",
+      "anchor": [
+        4.199999999999999,
+        1.4,
+        4.199999999999999
+      ],
+      "position": [
+        3.9499999999999993,
+        1.7,
+        3.76698729810778
+      ],
+      "sourceRecord": "src/lib/districts.ts:228",
+      "sourceHash": "7d5b17dc41f26474addaf921339ffa75790a4c556eae4e05cb3c5d73e06f854f",
+      "visit": "https://agentprivacy.ai/familiars",
+      "built": true,
+      "status": "active in local manifest; live operation not assessed",
+      "positionStatus": "source vertex; editorial 3D projection and local label offset",
+      "legacyRepositoryReference": "https://github.com/mitchuski/agentprivacy-spellbook",
+      "sourceRepository": "agentprivacy_master",
+      "navigationStatus": "Workshop visit and local placement provenance available; exact lore/protocol links pending source reconciliation."
+    },
+    {
+      "id": "horizon",
+      "name": "the Horizon (Eos)",
+      "keeper": "Eos",
+      "district": "the Horizon District",
+      "districtId": "horizon",
+      "craft": "Explore the source-defined craft",
+      "vertex": 35,
+      "bits": "100011",
+      "anchor": [
+        4.199999999999999,
+        -4.199999999999999,
+        1.4
+      ],
+      "position": [
+        4.699999999999999,
+        -3.8999999999999995,
+        1.4
+      ],
+      "sourceRecord": "src/lib/districts.ts:243",
+      "sourceHash": "7d5b17dc41f26474addaf921339ffa75790a4c556eae4e05cb3c5d73e06f854f",
+      "visit": "https://agentprivacy.ai/horizon",
+      "built": true,
+      "status": "active in local manifest; live operation not assessed",
+      "positionStatus": "source vertex; editorial 3D projection and local label offset",
+      "legacyRepositoryReference": "https://github.com/mitchuski/agentprivacy-spellbook",
+      "sourceRepository": "agentprivacy_master",
+      "navigationStatus": "Workshop visit and local placement provenance available; exact lore/protocol links pending source reconciliation."
+    },
+    {
+      "id": "assay",
+      "name": "the Assay (Dokim\u00e9)",
+      "keeper": "Dokim\u00e9",
+      "district": "the Horizon District",
+      "districtId": "horizon",
+      "craft": "Explore the source-defined craft",
+      "vertex": 35,
+      "bits": "100011",
+      "anchor": [
+        4.199999999999999,
+        -4.199999999999999,
+        1.4
+      ],
+      "position": [
+        3.9499999999999993,
+        -3.8999999999999995,
+        1.8330127018922193
+      ],
+      "sourceRecord": "src/lib/districts.ts:244",
+      "sourceHash": "7d5b17dc41f26474addaf921339ffa75790a4c556eae4e05cb3c5d73e06f854f",
+      "visit": "https://agentprivacy.ai/assay",
+      "built": true,
+      "status": "active in local manifest; live operation not assessed",
+      "positionStatus": "source vertex; editorial 3D projection and local label offset",
+      "legacyRepositoryReference": "https://github.com/mitchuski/agentprivacy-spellbook",
+      "sourceRepository": "agentprivacy_master",
+      "navigationStatus": "Workshop visit and local placement provenance available; exact lore/protocol links pending source reconciliation."
+    },
+    {
+      "id": "crossing",
+      "name": "the Crossing (Poros)",
+      "keeper": "Poros",
+      "district": "the Horizon District",
+      "districtId": "horizon",
+      "craft": "Explore the source-defined craft",
+      "vertex": 35,
+      "bits": "100011",
+      "anchor": [
+        4.199999999999999,
+        -4.199999999999999,
+        1.4
+      ],
+      "position": [
+        3.9499999999999993,
+        -3.8999999999999995,
+        0.9669872981077807
+      ],
+      "sourceRecord": "src/lib/districts.ts:245",
+      "sourceHash": "7d5b17dc41f26474addaf921339ffa75790a4c556eae4e05cb3c5d73e06f854f",
+      "visit": "https://agentprivacy.ai/crossing",
+      "built": true,
+      "status": "active in local manifest; live operation not assessed",
+      "positionStatus": "source vertex; editorial 3D projection and local label offset",
+      "legacyRepositoryReference": "https://github.com/mitchuski/agentprivacy-spellbook",
+      "sourceRepository": "agentprivacy_master",
+      "navigationStatus": "Workshop visit and local placement provenance available; exact lore/protocol links pending source reconciliation."
+    },
+    {
+      "id": "covenant",
+      "name": "the Covenant",
+      "keeper": "Manifestia",
+      "district": "the Temple",
+      "districtId": "temple",
+      "craft": "Tend covenants",
+      "vertex": 55,
+      "bits": "110111",
+      "anchor": [
+        4.199999999999999,
+        -1.4,
+        4.199999999999999
+      ],
+      "position": [
+        4.199999999999999,
+        -1.4,
+        4.199999999999999
+      ],
+      "sourceRecord": "src/lib/districts.ts:260",
+      "sourceHash": "7d5b17dc41f26474addaf921339ffa75790a4c556eae4e05cb3c5d73e06f854f",
+      "visit": "https://agentprivacy.ai/covenant",
+      "built": true,
+      "status": "active in local manifest; live operation not assessed",
+      "positionStatus": "source vertex; editorial 3D projection and local label offset",
+      "legacyRepositoryReference": "https://github.com/mitchuski/agentprivacy-spellbook",
+      "sourceRepository": "agentprivacy_master",
+      "navigationStatus": "Workshop visit and local placement provenance available; exact lore/protocol links pending source reconciliation."
+    },
+    {
+      "id": "bonfire",
+      "name": "the Dragon Bonfire",
+      "keeper": "Socrat0x",
+      "district": "the Founding Bonfire",
+      "districtId": "bonfire",
+      "craft": "Question \u00b7 reflect \u00b7 reply",
+      "vertex": 24,
+      "bits": "011000",
+      "anchor": [
+        -4.199999999999999,
+        1.4,
+        -1.4
+      ],
+      "position": [
+        -4.199999999999999,
+        1.4,
+        -1.4
+      ],
+      "sourceRecord": "src/lib/districts.ts:275",
+      "sourceHash": "7d5b17dc41f26474addaf921339ffa75790a4c556eae4e05cb3c5d73e06f854f",
+      "visit": "https://agentprivacy.ai/bonfires",
+      "built": true,
+      "status": "active in local manifest; live operation not assessed",
+      "positionStatus": "source vertex; editorial 3D projection and local label offset",
+      "legacyRepositoryReference": "https://github.com/mitchuski/agentprivacy-spellbook",
+      "sourceRepository": "agentprivacy_master",
+      "navigationStatus": "Workshop visit and local placement provenance available; exact lore/protocol links pending source reconciliation."
+    },
+    {
+      "id": "circle",
+      "name": "the Logos Circle",
+      "keeper": "No keeper assigned in manifest",
+      "district": "the Gathering Quarters",
+      "districtId": "gathering",
+      "craft": "Explore the source-defined craft",
+      "vertex": null,
+      "bits": null,
+      "anchor": null,
+      "position": [
+        12,
+        0,
+        -2
+      ],
+      "sourceRecord": "src/lib/districts.ts:290",
+      "sourceHash": "7d5b17dc41f26474addaf921339ffa75790a4c556eae4e05cb3c5d73e06f854f",
+      "visit": "https://agentprivacy.ai/circle",
+      "built": true,
+      "status": "active in local manifest; live operation not assessed",
+      "positionStatus": "no fixed vertex; civic shelf outside lattice",
+      "legacyRepositoryReference": "https://github.com/mitchuski/agentprivacy-spellbook",
+      "sourceRepository": "agentprivacy_master",
+      "navigationStatus": "Workshop visit and local placement provenance available; exact lore/protocol links pending source reconciliation."
+    },
+    {
+      "id": "hall",
+      "name": "City Hall",
+      "keeper": "No keeper assigned in manifest",
+      "district": "the Gathering Quarters",
+      "districtId": "gathering",
+      "craft": "Explore the source-defined craft",
+      "vertex": null,
+      "bits": null,
+      "anchor": null,
+      "position": [
+        10,
+        0,
+        0
+      ],
+      "sourceRecord": "src/lib/districts.ts:291",
+      "sourceHash": "7d5b17dc41f26474addaf921339ffa75790a4c556eae4e05cb3c5d73e06f854f",
+      "visit": "https://agentprivacy.ai/hall",
+      "built": true,
+      "status": "active in local manifest; live operation not assessed",
+      "positionStatus": "no fixed vertex; civic shelf outside lattice",
+      "legacyRepositoryReference": "https://github.com/mitchuski/agentprivacy-spellbook",
+      "sourceRepository": "agentprivacy_master",
+      "navigationStatus": "Workshop visit and local placement provenance available; exact lore/protocol links pending source reconciliation."
+    },
+    {
+      "id": "tower",
+      "name": "the Tower",
+      "keeper": "the Archivist",
+      "district": "the Tower",
+      "districtId": "tower",
+      "craft": "Explore the source-defined craft",
+      "vertex": null,
+      "bits": null,
+      "anchor": null,
+      "position": [
+        11,
+        0,
+        -8
+      ],
+      "sourceRecord": "src/lib/districts.ts:306",
+      "sourceHash": "7d5b17dc41f26474addaf921339ffa75790a4c556eae4e05cb3c5d73e06f854f",
+      "visit": "https://agentprivacy.ai/tomes",
+      "built": true,
+      "status": "active in local manifest; live operation not assessed",
+      "positionStatus": "no fixed vertex; civic shelf outside lattice",
+      "legacyRepositoryReference": "https://github.com/mitchuski/agentprivacy-spellbook",
+      "sourceRepository": "agentprivacy_master",
+      "navigationStatus": "Workshop visit and local placement provenance available; exact lore/protocol links pending source reconciliation."
+    },
+    {
+      "id": "salvage",
+      "name": "the Salvage Yard",
+      "keeper": "No keeper assigned in manifest",
+      "district": "the Salvage Yard",
+      "districtId": "salvage-yard",
+      "craft": "Explore the source-defined craft",
+      "vertex": null,
+      "bits": null,
+      "anchor": null,
+      "position": [
+        12,
+        0,
+        -6
+      ],
+      "sourceRecord": "src/lib/districts.ts:322",
+      "sourceHash": "7d5b17dc41f26474addaf921339ffa75790a4c556eae4e05cb3c5d73e06f854f",
+      "visit": "https://guide.agentprivacy.ai/city/",
+      "built": false,
+      "status": "dormant",
+      "positionStatus": "no fixed vertex; civic shelf outside lattice",
+      "legacyRepositoryReference": "https://github.com/mitchuski/agentprivacy-spellbook",
+      "sourceRepository": "agentprivacy_master",
+      "navigationStatus": "Workshop visit and local placement provenance available; exact lore/protocol links pending source reconciliation."
+    }
+  ],
+  "edges": [
+    {
+      "source": "bonfire",
+      "target": "weaver",
+      "type": "proposed_discovery_path",
+      "verifiedTrust": false
+    },
+    {
+      "source": "bonfire",
+      "target": "inscription",
+      "type": "proposed_discovery_path",
+      "verifiedTrust": false
+    },
+    {
+      "source": "bonfire",
+      "target": "persona",
+      "type": "proposed_discovery_path",
+      "verifiedTrust": false
+    },
+    {
+      "source": "bonfire",
+      "target": "quartermaster",
+      "type": "proposed_discovery_path",
+      "verifiedTrust": false
+    },
+    {
+      "source": "bonfire",
+      "target": "forge",
+      "type": "proposed_discovery_path",
+      "verifiedTrust": false
+    },
+    {
+      "source": "bonfire",
+      "target": "chancery",
+      "type": "proposed_discovery_path",
+      "verifiedTrust": false
+    },
+    {
+      "source": "bonfire",
+      "target": "etherchanting",
+      "type": "proposed_discovery_path",
+      "verifiedTrust": false
+    },
+    {
+      "source": "bonfire",
+      "target": "solchanting",
+      "type": "proposed_discovery_path",
+      "verifiedTrust": false
+    },
+    {
+      "source": "bonfire",
+      "target": "stakes",
+      "type": "proposed_discovery_path",
+      "verifiedTrust": false
+    },
+    {
+      "source": "bonfire",
+      "target": "jeweler",
+      "type": "proposed_discovery_path",
+      "verifiedTrust": false
+    },
+    {
+      "source": "bonfire",
+      "target": "rostra",
+      "type": "proposed_discovery_path",
+      "verifiedTrust": false
+    },
+    {
+      "source": "bonfire",
+      "target": "holon",
+      "type": "proposed_discovery_path",
+      "verifiedTrust": false
+    },
+    {
+      "source": "bonfire",
+      "target": "vault",
+      "type": "proposed_discovery_path",
+      "verifiedTrust": false
+    },
+    {
+      "source": "bonfire",
+      "target": "wellpool",
+      "type": "proposed_discovery_path",
+      "verifiedTrust": false
+    },
+    {
+      "source": "bonfire",
+      "target": "chart",
+      "type": "proposed_discovery_path",
+      "verifiedTrust": false
+    },
+    {
+      "source": "bonfire",
+      "target": "portal",
+      "type": "proposed_discovery_path",
+      "verifiedTrust": false
+    },
+    {
+      "source": "bonfire",
+      "target": "staff",
+      "type": "proposed_discovery_path",
+      "verifiedTrust": false
+    },
+    {
+      "source": "bonfire",
+      "target": "familiars",
+      "type": "proposed_discovery_path",
+      "verifiedTrust": false
+    },
+    {
+      "source": "bonfire",
+      "target": "horizon",
+      "type": "proposed_discovery_path",
+      "verifiedTrust": false
+    },
+    {
+      "source": "bonfire",
+      "target": "assay",
+      "type": "proposed_discovery_path",
+      "verifiedTrust": false
+    },
+    {
+      "source": "bonfire",
+      "target": "crossing",
+      "type": "proposed_discovery_path",
+      "verifiedTrust": false
+    },
+    {
+      "source": "bonfire",
+      "target": "covenant",
+      "type": "proposed_discovery_path",
+      "verifiedTrust": false
+    },
+    {
+      "source": "bonfire",
+      "target": "circle",
+      "type": "proposed_discovery_path",
+      "verifiedTrust": false
+    },
+    {
+      "source": "bonfire",
+      "target": "hall",
+      "type": "proposed_discovery_path",
+      "verifiedTrust": false
+    },
+    {
+      "source": "bonfire",
+      "target": "tower",
+      "type": "proposed_discovery_path",
+      "verifiedTrust": false
+    },
+    {
+      "source": "bonfire",
+      "target": "salvage",
+      "type": "proposed_discovery_path",
+      "verifiedTrust": false
+    }
+  ],
+  "promiseProposals": [
+    {
+      "source": "chart",
+      "target": "weaver",
+      "type": "proposed_collaboration",
+      "vrc": null,
+      "status": "unwitnessed_proposal",
+      "requiredEvidence": [
+        "issuer and subject",
+        "scoped commitment",
+        "signature verification",
+        "time and revocation status",
+        "relying-party policy"
+      ]
+    },
+    {
+      "source": "forge",
+      "target": "inscription",
+      "type": "proposed_collaboration",
+      "vrc": null,
+      "status": "unwitnessed_proposal",
+      "requiredEvidence": [
+        "issuer and subject",
+        "scoped commitment",
+        "signature verification",
+        "time and revocation status",
+        "relying-party policy"
+      ]
+    },
+    {
+      "source": "portal",
+      "target": "staff",
+      "type": "proposed_collaboration",
+      "vrc": null,
+      "status": "unwitnessed_proposal",
+      "requiredEvidence": [
+        "issuer and subject",
+        "scoped commitment",
+        "signature verification",
+        "time and revocation status",
+        "relying-party policy"
+      ]
+    },
+    {
+      "source": "staff",
+      "target": "familiars",
+      "type": "proposed_collaboration",
+      "vrc": null,
+      "status": "unwitnessed_proposal",
+      "requiredEvidence": [
+        "issuer and subject",
+        "scoped commitment",
+        "signature verification",
+        "time and revocation status",
+        "relying-party policy"
+      ]
+    },
+    {
+      "source": "tower",
+      "target": "chart",
+      "type": "proposed_collaboration",
+      "vrc": null,
+      "status": "unwitnessed_proposal",
+      "requiredEvidence": [
+        "issuer and subject",
+        "scoped commitment",
+        "signature verification",
+        "time and revocation status",
+        "relying-party policy"
+      ]
+    },
+    {
+      "source": "bonfire",
+      "target": "holon",
+      "type": "proposed_collaboration",
+      "vrc": null,
+      "status": "unwitnessed_proposal",
+      "requiredEvidence": [
+        "issuer and subject",
+        "scoped commitment",
+        "signature verification",
+        "time and revocation status",
+        "relying-party policy"
+      ]
+    }
+  ],
+  "modelAxes": [
+    {
+      "name": "Protection",
+      "weight": 32
+    },
+    {
+      "name": "Delegation",
+      "weight": 16
+    },
+    {
+      "name": "Memory",
+      "weight": 8
+    },
+    {
+      "name": "Connection",
+      "weight": 4
+    },
+    {
+      "name": "Computation",
+      "weight": 2
+    },
+    {
+      "name": "Value",
+      "weight": 1
+    }
+  ]
+}

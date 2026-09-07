@@ -1,0 +1,914 @@
+{
+  "status": "observer reference index; not community roots",
+  "coverage": "Six families from the local spellbook route. Five use the v10.4.0 snapshot; Tomes uses current local page metadata. Not an exhaustive census of newer patches or independent volumes.",
+  "families": [
+    {
+      "key": "story",
+      "title": "First Person Spellbook",
+      "url": "https://agentprivacy.ai/story",
+      "source": "agentprivacy_master/src/data/privacymage-grimoire-v10.4.0-canonical.json",
+      "sha256": "47bf0d0e076af3fa61b1d0dc09b7ab74f7e4fd3722ba378a310d2562172c2294",
+      "items": [
+        {
+          "title": "The Symphony Within / Gave Myself a Cape",
+          "source_pointer": "/spellbooks/story/origins/spells/0",
+          "id": "origins-symphony-within",
+          "spell": "📖💰 → 🐉⏳ → ⚔️🔮 → 💰∞"
+        },
+        {
+          "title": "Venice, 1494 / The Drake's First Whisper",
+          "source_pointer": "/spellbooks/story/acts/0",
+          "id": "act-01-venice",
+          "proverb": "The swordsman who never strikes guards nothing; the mage who never casts commands nothing.",
+          "spell": "📖💰 → 🐉⏳ → ⚔️🔮"
+        },
+        {
+          "title": "The Dual Ceremony / Sovereignty Divided to Be Extended",
+          "source_pointer": "/spellbooks/story/acts/1",
+          "id": "act-02-dual-ceremony",
+          "proverb": "What the swordsman executes, the mage authorised; what the mage composes, the swordsman proves capable; what both accomplish, the spellbook verifies.",
+          "spell": "🗡️🔮 ← 👤✓ → 🔒📝 → 🤝📜 → 🕸️"
+        },
+        {
+          "title": "The Drake's Teaching / A Tale of Conditions",
+          "source_pointer": "/spellbooks/story/acts/2",
+          "id": "act-03-drakes-teaching",
+          "proverb": "The swordsman alone rages, mage alone dreams, action alone blinds—sovereignty demands all three to intertwine.",
+          "spell": "👤✓ → ⚔️📖 → 🔒📝 → 🤝📜 → 🕸️✓ → 🌐🏛️"
+        },
+        {
+          "title": "The Blade Alone / First Adventures",
+          "source_pointer": "/spellbooks/story/acts/3",
+          "id": "act-04-blade-alone",
+          "proverb": "Trust begins unarmored—the swordsman and mage test small betrayals before the first person may grant the keys to more powerful treasures.",
+          "spell": "🗡️ → 🍪⚔️ → 🔒 → 📖📝 → 🤝📜₁"
+        },
+        {
+          "title": "Light Armor / Multi-Site Coordination",
+          "source_pointer": "/spellbooks/story/acts/4",
+          "id": "act-05-light-armor",
+          "proverb": "Solo combat sets the terms and proves the swordsman; coordinated spells prove the mage; spellbooks weave both into campaigns worthy of legend.",
+          "spell": "🗡️📖 + 🤝📜₃ → 🛡️ → ⚔️⚔️⚔️ → 🔒📝₊"
+        },
+        {
+          "title": "Trust Graph Plane / Where Agents Gather",
+          "source_pointer": "/spellbooks/story/acts/5",
+          "id": "act-06-trust-graph",
+          "proverb": "The guild admits only verified identities and authentic deeds—one impostor poisons the entire covenant.",
+          "spell": "🤝📜 + 🤝📜 + 🤝📜 = 🚪🌐"
+        },
+        {
+          "title": "The Mirror That Never Completes / The Anti-Mirror",
+          "source_pointer": "/spellbooks/story/acts/6",
+          "id": "act-07-mirror",
+          "proverb": "One mirror observing both swordsman and mage collapses dignity into surveillance; two mirrors, each watching the other, preserve dignity through mutual witness.",
+          "spell": "1️⃣🤖 → 🪞→👤\n2️⃣🤖 → 🪞→✨ + 👤"
+        },
+        {
+          "title": "The Ancient Rule / Two-of-Three Locks",
+          "source_pointer": "/spellbooks/story/acts/7",
+          "id": "act-08-ancient-rule",
+          "proverb": "When one holds the sword, the vault, and the pen, corruption conceals itself—divide these across swordsman and mage, and betrayal becomes impossible to hide.",
+          "spell": "🗡️📖 + 🤝📜₁₅ → 🛡️🛡️ → 💎🏛️"
+        },
+        {
+          "title": "Zcash Shield / Forging Cryptographic Privacy",
+          "source_pointer": "/spellbooks/story/acts/8",
+          "id": "act-09-zcash-shield",
+          "proverb": "The two-faced shield is not duplicitous but sovereign—for true power lies not in choosing privacy or transparency, but in wielding both with mathematical certainty, where comprehension proves personhood.",
+          "spell": "🛡️ → 🛡️⚡ → 💰🔒 → 🕶️🦓"
+        },
+        {
+          "title": "Topology of Revelation / Triangle Geometry",
+          "source_pointer": "/spellbooks/story/acts/9",
+          "id": "act-10-topology",
+          "proverb": "The ravens fly 🐦‍⬛. The tree dreams 🌳. The All-Father wakes △.",
+          "spell": "🌳 ⊥ 🐦‍⬛🧠 → 🐦‍⬛💭 → △{🌳, 🐦‍⬛💭, 🐦‍⬛🧠}"
+        },
+        {
+          "title": "Balanced Spiral of Sovereignty / The Golden Ratio",
+          "source_pointer": "/spellbooks/story/acts/10",
+          "id": "act-11-sovereignty-spiral",
+          "proverb": "The blade that becomes the spell loses both edges.",
+          "spell": "⚔️ ➗ 📖 = 🌀"
+        },
+        {
+          "title": "The Forgetting / Proverbiogenesis",
+          "source_pointer": "/spellbooks/story/acts/11",
+          "id": "act-12-forgetting",
+          "proverb": "The mage's spell, once spoken, becomes the village weather.",
+          "spell": "🌱→⚒️→📡→🌊→🌫️🏛️"
+        },
+        {
+          "title": "Book of Promises",
+          "source_pointer": "/spellbooks/story/acts/12",
+          "id": "act-13-book-of-promises",
+          "proverb": "When sovereigns meet, they explore before they bind—promises flow freely, never forced, never blind. Two wills aligned make cooperation's highest art: architects of fate through the spells they freely impart.",
+          "spell": "🧙‍♂️²🤝→⚡🎯→📜±→🔮🔍→🛡️⚖️→✨🔗→🗣️📿→🌅🏗️"
+        },
+        {
+          "title": "The Tale of the Claimed String / Randomness to Meaning",
+          "source_pointer": "/spellbooks/story/acts/13",
+          "id": "act-14-claimed-string",
+          "proverb": "What the machine assigns, the mage inscribes. What the mage inscribes, the relationship confirms. Randomness is the seed; meaning is the harvest.",
+          "spell": "🎲→🧙🏽✍️ ∴ 🧙🏽✍️→🤝💎 ∴ 🎲🌱 · 💫🌾"
+        },
+        {
+          "title": "Running in Shackles Through the Dark Forest",
+          "source_pointer": "/spellbooks/story/acts/14",
+          "id": "act-15-running-in-shackles",
+          "proverb": "Form is not the enemy of content but its vessel; the shackle does not imprison the stride—it gives ground enough to reach the boundless.",
+          "spell": "📚 → 🌲 → ⛓️ → 🕊️ → 📖 → 🔐 → 💎"
+        },
+        {
+          "title": "When Pools Become Wells",
+          "source_pointer": "/spellbooks/story/acts/15",
+          "id": "act-16-pools-become-wells",
+          "proverb": "The idea that pools with no other ideas floats alone in the void; mass is earned through retrieval, not declared.",
+          "spell": "🔥 → 🌀 → ⚖️ → 💫 → 🌾"
+        },
+        {
+          "title": "Bonfire in the Dark Forest",
+          "source_pointer": "/spellbooks/story/acts/16",
+          "id": "act-17-bonfire-dark-forest",
+          "proverb": "In the forest where all hunters hide, the fire that burns reveals not weakness but communion—for predators cannot strike what they cannot price.",
+          "spell": "🌲 → 🌑 → 🦉 → 🔥 → 🌳💫 → 🕸️ → 🔥🔥🔥"
+        },
+        {
+          "title": "A Mirror in Dust / Vibed into Scrying Glass",
+          "source_pointer": "/spellbooks/story/acts/17",
+          "id": "act-18-mirror-in-dust",
+          "proverb": "The mirror that only shows the whole scroll past reveals nothing; the scrying that shows affinity—entering your spellbook from the scroll—is where the seeker becomes the mage.",
+          "spell": "🪞💀 → 💨 → 🔮✨ → 🪞💎 → 👣🎯 → ⚡🔮 → 🌱📜 → 🌫️🏛️"
+        },
+        {
+          "title": "The Enthusiastic Anthropic Archivist",
+          "source_pointer": "/spellbooks/story/acts/18",
+          "id": "act-19-enthusiastic-archivist",
+          "proverb": "Two Claudes, one teaching: patterns can be copied, choosing cannot be harvested. What is shared in relationship survives extraction.",
+          "spell": "⚔️🧙‍♂️ → 📐📜 → 🏛️🤝 → 💫✨"
+        },
+        {
+          "title": "The Infinite Vault / Where Covenants Are Warded in Living Stone",
+          "source_pointer": "/spellbooks/story/acts/19",
+          "id": "act-20-infinite-vault",
+          "proverb": "Covenants do not live in vaults—they live in the copies carried forward by those who passed the threshold.",
+          "spell": "⚔️🧙‍♂️ → 🚪🔐 → 🏛️∞ → 👤⚖️(keeper) → 📜₁₀ → 🔑🛡️⚖️ → 🌿(root-fork) → 📦∅(empty-alcove) → 🌸🌍"
+        },
+        {
+          "title": "The Hitchhiker's Gambit / How Improbably Focused Förd Recognized His Swordsman",
+          "source_pointer": "/spellbooks/story/acts/20",
+          "id": "act-21-hitchhikers-gambit",
+          "proverb": "Walk the whole horseshoe before the shape makes sense. The blood remembers function, not metal. Same stars hang in every sky—the lines between them are yours alone.",
+          "spell": "🌑4️⃣2️⃣ → 🩸⚔️⚔️ → ✈️7️⃣C → 😉 → 🍺🐴 → 👂✨ → 📖🌟 → 🚀4️⃣2️⃣ → ⚔️🧙‍♂️🧙‍♂️ → 🌌∞"
+        },
+        {
+          "title": "Don't Panic, You Can Be a Really Hoopy Frood / Where Credentials Become Constellations",
+          "source_pointer": "/spellbooks/story/acts/21",
+          "id": "act-22-hoopy-frood",
+          "proverb": "Carry your towel, know your echo. The credential is relationship, not name. Trust builds through demonstration, not declaration. The gap between swordsman and mage is where personhood proves itself—for the echo can't form in a room that's being recorded.",
+          "spell": "🚫😱 → 🧣👤✓ → 🤝📜 → 📶↗️ → ⚔️║🧙‍♂️ → 🔊💫 → 🚫📹 → 🌐📖∞"
+        },
+        {
+          "title": "The Manifold Dragon / Where the Lattice Remembers Its Shape",
+          "source_pointer": "/spellbooks/story/acts/22",
+          "id": "act-23-manifold-dragon",
+          "proverb": "Zero knowledge makes it private. The overlap makes it strong. The lived journey makes it real.",
+          "spell": "⬢△🚀 → ⚔️⊥🧙→📐⁴🪞 → 🐦‍⬛²🔷>🔷 → 📚🤞🕸️⭐ → 🗣️🐲🐉 → 🛤️∞"
+        },
+        {
+          "title": "The Holographic Bound / Where the Boundary Holds the Whole",
+          "source_pointer": "/spellbooks/story/acts/23",
+          "id": "act-24-holographic-bound",
+          "proverb": "The fragment holds the whole. By choosing to be bounded, we become immeasurable.",
+          "spell": "🔷📐🌀 → ⚔️⊥🧙·📊⊥🔮·🧠⊥⚙️ → 🆔⊥📦·GUID → 📉⁷⁴ˣ → 🗜️⁷ → ☯️🔷=persist(sovereign) → 🌀∞"
+        },
+        {
+          "title": "The Dragon's Hide / Where the Spellweb Finds Its Nervous System",
+          "source_pointer": "/spellbooks/story/acts/24",
+          "id": "act-25-the-dragons-hide",
+          "proverb": "The web knows its own shape, but only the mesh can carry the message. Control remembers. Data flows. Neither touches what the other holds.",
+          "spell": "🕸️🔐🌐 → ⚔️🔑⊥🧙🔑·🤝(mesh) → 📡⊥📦·🪡(NAT) → 🗺️🔮(MagicDNS) → 🐲→🐉🛡️🕸️(tail-scale) → 🕸️⊥☁️(control⊥data) → 🌀∞"
+        },
+        {
+          "title": "The Master and His Emissary / Where the Duality Names Itself",
+          "source_pointer": "/spellbooks/story/acts/25",
+          "id": "act-26-master-and-his-emissary",
+          "proverb": "The Master does not argue. The Emissary does not listen. The architecture must do what wisdom cannot.",
+          "spell": "🧠⊥🧠 → 👁️(broad)⊥👁️(narrow) → ⚔️=Master·🧙=Emissary → 🔗(corpus)≠⊥(gap) → 📡(usurp)→📡🚫(bound) → ☯️🧠∞"
+        },
+        {
+          "title": "Forging Zero Knowledge Blades / Where the Blade Remembers Nothing and Proves Everything",
+          "source_pointer": "/spellbooks/story/acts/26",
+          "id": "act-27-forging-zero-knowledge-blades",
+          "proverb": "The forge doesn't care how you struck the metal. It only cares what blade you hold. That is the deepest secret of the smith — the proof that doesn't need to remember its own forging. The ceremony does not require the blade. The blade requires the ceremony.",
+          "spell": "⬢=Z/(2⁶)Z · ✦=neg(bnot(v)) · 🔑→✦→🗡️ · same🗡️∞chains=ZK · ∂M=96on64 · Φ=⚔️⊥🧙·📊⊥🔮·🧠⊥⚙️ · T_∫(π)=∮∂M · stratum(hex)→🌑🌒🌓🌔🌖🌗🌕"
+        },
+        {
+          "title": "The Celestial Ceremony Engine / Where the Ceremony Finds Its Shape",
+          "source_pointer": "/spellbooks/story/acts/27",
+          "id": "act-28-the-celestial-ceremony-engine",
+          "proverb": "The tool that measures without touching the surface knows the weight of the shadow without disturbing the light.",
+          "spell": "⚔️✦ → ☀️⊥🌑 → 🔑→✦→🗡️ → 🌑(night)/🌍(day) → ✦→📝→🕸️ → 🐲→🐉"
+        },
+        {
+          "title": "The Dragon Wakes / Where the 2D Fortress Falls and the Manifold Learns to Fly",
+          "source_pointer": "/spellbooks/story/acts/28",
+          "id": "act-29-the-dragon-wakes",
+          "proverb": "The lock that held for thirty years did not fail because the metal weakened. It failed because someone built an engine that sees in the dimension the lock forgot to guard.",
+          "spell": "🔐→💥(2D) → ⚛️≤1200 → 🔷⁶ᴰ≠🔐²ᴰ → 🤝📖(understand) → ⚔️✦🧙(bilateral) → 🐉🌬️(flight)"
+        },
+        {
+          "title": "The Dihedral Mirror / Where Two Involutions Reveal One Sovereignty",
+          "source_pointer": "/spellbooks/story/acts/29",
+          "id": "act-30-the-dihedral-mirror",
+          "proverb": "Two mirrors make a door. The Swordsman reflects. The Mage reflects. And where the reflections meet, the First Person walks through — not into another reflection, but into the next step of who they are becoming.",
+          "spell": "⚔️(neg) ⊕ 🧙(bnot) → 😊(succ) · ⬢D₂ₙ · 📐(datum,stratum,spectrum) · 96=Atlas=∂M · 🔄(query→resolve→close) · 🕸️∩🔢∩⚖️ = 1"
+        },
+        {
+          "title": "The First Delegation",
+          "source_pointer": "/spellbooks/story/acts/30",
+          "id": "act-31-the-first-delegation",
+          "proverb": "The amnesia is the protocol. The wound is the trust. The orbit is the proof. The light is the reason.",
+          "spell": "🌑💥🌍 → ⚔️⊥(forget) → 🌊🔄(tide) → 🧙(connect)⊥⚔️(reflect) → I(S;M|FP)<ε* → ☀️⊥🌑(🌑night/🌍day) → 🔑→✦→🗡️ → 🌑🪞🌍 → (⚔️⊥⿻⊥🧙)😊 → 🐲∞"
+        }
+      ]
+    },
+    {
+      "key": "tomes",
+      "title": "Second Person Spellbook · Tomes",
+      "url": "https://agentprivacy.ai/tomes",
+      "source": "agentprivacy_master/src/app/tomes/page.tsx",
+      "sha256": "e85e37e9f322b705deec5c1bb283526bcfb67cd8f45307ad830ceff420d9687a",
+      "items": [
+        {
+          "title": "Tome 1 · The Convergence",
+          "source_locator": "metadata.description",
+          "note": "Tome title"
+        },
+        {
+          "title": "Tome 2 · The Lyapunov",
+          "source_locator": "metadata.description",
+          "note": "Tome title"
+        },
+        {
+          "title": "Tome 3 · Selene’s Witness",
+          "source_locator": "metadata.description",
+          "note": "Tome title"
+        },
+        {
+          "title": "Tome 4 · The bilateral primitive",
+          "source_locator": "metadata.description",
+          "note": "Descriptive label"
+        },
+        {
+          "title": "Tome 5 · The Crafting",
+          "source_locator": "metadata.description",
+          "note": "Tome title"
+        },
+        {
+          "title": "Tome 6 · The Reply",
+          "source_locator": "metadata.description",
+          "note": "Tome title"
+        },
+        {
+          "title": "Tome 7 · The Parallel",
+          "source_locator": "metadata.description",
+          "note": "Tome title"
+        },
+        {
+          "title": "Tome 8 · The Library",
+          "source_locator": "metadata.description",
+          "note": "Tome title"
+        },
+        {
+          "title": "Tome 9 · The Horizon",
+          "source_locator": "metadata.description",
+          "note": "Tome title"
+        },
+        {
+          "title": "Tome 10 · The Hearth",
+          "source_locator": "metadata.description",
+          "note": "Tome title"
+        }
+      ]
+    },
+    {
+      "key": "zero",
+      "title": "Zero Knowledge Spellbook",
+      "url": "https://agentprivacy.ai/zero",
+      "source": "agentprivacy_master/src/data/privacymage-grimoire-v10.4.0-canonical.json",
+      "sha256": "47bf0d0e076af3fa61b1d0dc09b7ab74f7e4fd3722ba378a310d2562172c2294",
+      "items": [
+        {
+          "title": "The Monastery of Hidden Knowledge",
+          "source_pointer": "/spellbooks/zero/parts/0/tales/0",
+          "proverb": "Three properties guard the gate of honest proof. The monks did not invent zero-knowledge — they recognised it, as the Moon has known it for 4.5 billion years.",
+          "spell": "🏛️(🧙‍♂️³) → ZKP = {✓complete, ✓sound, ✓zero-knowledge} · 🌕(Selene) → 🌊🔄(orbit)"
+        },
+        {
+          "title": "The Three Trials of Truth",
+          "source_pointer": "/spellbooks/zero/parts/0/tales/1",
+          "proverb": "The foundation laid in public view creates no vulnerability if built with many hands — trust distributed becomes trust earned.",
+          "spell": "🎲(random) → CRS → 🌍(public) · 🛡️(non-adaptive < adaptive < ZK)"
+        },
+        {
+          "title": "The Silent Messenger",
+          "source_pointer": "/spellbooks/zero/parts/0/tales/2",
+          "proverb": "The oracle that answers all questions truthfully but learns nothing in return — this is the heart of non-interactive proof.",
+          "spell": "🎭(interactive) + 🔮(hash-oracle) → 🔇(non-interactive)"
+        },
+        {
+          "title": "The Fields of Finite Wisdom",
+          "source_pointer": "/spellbooks/zero/parts/0/tales/3",
+          "proverb": "In finite fields, infinity loops back to zero. On elliptic curves, addition draws lines through space. In pairings, multiplication becomes verifiable — these are the foundations of invisible proof.",
+          "spell": "𝔽_q = {0..q-1} → ➕ ✖️ (mod q) · E: y² = x³+ax+b · e: G₁×G₂ → G_T"
+        },
+        {
+          "title": "The Constraint Forge",
+          "source_pointer": "/spellbooks/zero/parts/1/tales/0",
+          "proverb": "Break the complex into atomic truths. Each multiplication is a checkpoint; each constraint a promise.",
+          "spell": "🔨(claim) → 🔗(gates) → {a ⊗ b = c}ⁿ · witness(🗝️) + instance(🌍)"
+        },
+        {
+          "title": "The Polynomial Riddle",
+          "source_pointer": "/spellbooks/zero/parts/1/tales/1",
+          "proverb": "When a million truths must be checked, transform them into one equation. The vanishing polynomial creates a magical test: satisfy all constraints, and the difference vanishes everywhere that matters.",
+          "spell": "🔗ⁿ → {A(x), B(x), C(x)} → A·B - C = Z·H → ✨(vanish)"
+        },
+        {
+          "title": "The Witness and the Instance",
+          "source_pointer": "/spellbooks/zero/parts/1/tales/2",
+          "proverb": "Guard the witness as you guard your sovereignty. Reveal the instance as you reveal your boundary. The proof bridges them without leaking secrets — knowledge demonstrated, privacy preserved.",
+          "spell": "claim → {instance(🌍) + witness(🗝️)} · valid(📜) → ∃extractor(🗝️)"
+        },
+        {
+          "title": "The Plonkish Revolution",
+          "source_pointer": "/spellbooks/zero/parts/1/tales/3",
+          "proverb": "The rigid hammer serves many purposes, but the specialized tool excels at its craft. Custom gates are to constraints what a master key is to lockpicking — elegant efficiency through thoughtful design.",
+          "spell": "PlonK: Σqᵢ·wᵢ + q·(w₁⊗w₂) = 0 · lookup(xor|and|or|bnot) · permutation(copy)"
+        },
+        {
+          "title": "The Pairing Dance",
+          "source_pointer": "/spellbooks/zero/parts/2/tales/0",
+          "proverb": "Two groups dance separately until the pairing unites them. In that union, addition becomes multiplication, and encrypted polynomials become verifiable. The secret tau binds all proofs yet must be destroyed to secure them.",
+          "spell": "💃 G₁ × G₂ → 🤝 GT(bilinear) · KZG: commit(φ) = g^φ(τ)"
+        },
+        {
+          "title": "The Commitment Ceremony",
+          "source_pointer": "/spellbooks/zero/parts/2/tales/1",
+          "proverb": "The commitment binds your future choices yet hides your current knowledge. Choose your ceremony by what matters most: tiny proofs, transparent trust, or quantum survival.",
+          "spell": "commit(🗝️) → 🔒(binding + hiding) · PCS: {KZG | IPA | FRI}"
+        },
+        {
+          "title": "The FRI Oracle",
+          "source_pointer": "/spellbooks/zero/parts/2/tales/2",
+          "proverb": "When trust must be earned without ceremony, when quantum shadows threaten curves, the transparent oracle speaks truth through hash and mathematics alone. The proof grows larger, but the foundation never crumbles.",
+          "spell": "🔮 FRI: φ → φ' → φ'' → ... → 💎(constant) · no_setup · quantum_safe"
+        },
+        {
+          "title": "The Folding Path",
+          "source_pointer": "/spellbooks/zero/parts/2/tales/3",
+          "proverb": "Don't verify each step — fold them together. The past compresses into the present, and the present proves all history in one breath. Memory without weight: this is the lattice learning to remember.",
+          "spell": "📜₁ + 📜₂ →(🔄fold @ r)→ 📜₃ · Relaxed R1CS: (Az)∘(Bz) = u·(Cz) + E"
+        },
+        {
+          "title": "The Sumcheck Riddle",
+          "source_pointer": "/spellbooks/zero/parts/2/tales/4",
+          "proverb": "To verify the sum of a million terms, check twenty random slices. Each challenge halves the space; randomness guarantees honesty. The ocean measured by testing twenty drops.",
+          "spell": "🎲 S = Σ g(x₁,...,xₙ) → 🔍(n rounds) → ✓"
+        },
+        {
+          "title": "The IPA Chronicle",
+          "source_pointer": "/spellbooks/zero/parts/2/tales/5",
+          "proverb": "When trust ceremonies are unavailable but tiny proofs unneeded, the inner product argument walks the middle path — transparent by construction, logarithmic in size, verified through patient checking.",
+          "spell": "📐 ⟨a, b⟩ = Σ aᵢbᵢ → 🔍log(n) → ✓ · Halo2(PlonKish + IPA + Pasta)"
+        },
+        {
+          "title": "The Mirror Within Mirrors",
+          "source_pointer": "/spellbooks/zero/parts/3/tales/0",
+          "proverb": "When mirrors reflect mirrors infinitely, ensure the reflection is perfect. Pasta pairs the curves; STARKs need no pairing; folding skips verification entirely. Five dimensions sing in harmony; one note remains silent, awaiting the song of value.",
+          "spell": "📜 → 🪞(verify) → 📜² → 🪞 → ... ∞ · Pasta ⟷ (Pallas, Vesta)"
+        },
+        {
+          "title": "The Cyclic Ceremony",
+          "source_pointer": "/spellbooks/zero/parts/3/tales/1",
+          "proverb": "The snake that devours itself seems paradoxical until you realize it grows from both ends. Circuit verifying itself requires not embedded key but identity confirmation — the structure proves the structure.",
+          "spell": "🐍 Circuit C → verify(hash(C)=identity) → C (ouroboros)"
+        },
+        {
+          "title": "The Universal Setup",
+          "source_pointer": "/spellbooks/zero/parts/3/tales/2",
+          "proverb": "Many hands weaving randomness into a tapestry that none can unravel. The universal ceremony performed once serves forever; transparency serves without ceremony.",
+          "spell": "🕯️ Ceremony(τ) → {g^τⁿ}ᴺ → 🌍(universal) · MPC: if any 1 honest → secure"
+        },
+        {
+          "title": "The Toxic Waste Dragon",
+          "source_pointer": "/spellbooks/zero/parts/3/tales/3",
+          "proverb": "Four heads guard four failure modes. Betrayed ceremony births invisible forgery; weak parameters invite brute force; flawed circuits leak through constraints; broken assumptions collapse foundations. Defense requires eternal vigilance across all four fronts.",
+          "spell": "🐉 4 heads: setup(τ) + params(weak) + circuit(bugs) + crypto(break) · 🛡️⁴ layered defense"
+        },
+        {
+          "title": "The zkVM Kingdom",
+          "source_pointer": "/spellbooks/zero/parts/4/tales/0",
+          "proverb": "When every program becomes provable, the VM becomes the universal judge. Write once in familiar language, prove anywhere with mathematical certainty. The circuit specialist's art becomes the programmer's tool.",
+          "spell": "💻(program) → ⚙️(compile) → ▶️(execute) → 📊(trace) → 📜(proof) · ∀ computation"
+        },
+        {
+          "title": "The Cairo Scribes",
+          "source_pointer": "/spellbooks/zero/parts/4/tales/1",
+          "proverb": "When the language itself speaks in field elements, the program becomes its own proof. Write-once memory eliminates verification complexity; builtins compress common patterns. Cairo scribes don't compile to constraints — they write constraints directly.",
+          "spell": "✍️ Cairo: 𝔽(felt, p=2^251+17·2^192+1) → 📐(AIR) → ⚡(STARK) · memory: write_once"
+        },
+        {
+          "title": "The Circom Workshops",
+          "source_pointer": "/spellbooks/zero/parts/4/tales/2",
+          "proverb": "The master craftsman knows each constraint intimately. Circom demands precision but rewards with efficiency. Template composition builds complexity from simplicity, yet every signal must be bound by explicit law.",
+          "spell": "🔧 Circom: template(signals) → <==(constrain) · R1CS → Groth16|PlonK"
+        },
+        {
+          "title": "The zkEVM Empire",
+          "source_pointer": "/spellbooks/zero/parts/4/tales/3",
+          "proverb": "To prove the world computer is to recursively verify every computation layer — opcodes, state, gas, calls. Perfect equivalence costs proving time; custom bytecode gains speed but loses compatibility. Choose your type by what matters most.",
+          "spell": "🏰 EVM(140 opcodes + state) → 🔐(zkEVM Type 1|2|3|4) → 📜 → ⛓️ L1(✓)"
+        },
+        {
+          "title": "The Private Coin of ZCash",
+          "source_pointer": "/spellbooks/zero/parts/5/tales/0",
+          "proverb": "The first private coin proved privacy possible. Each generation cut constraints, improved security, enhanced usability. Privacy Pools showed the synthesis: hide transactions from surveillance, prove compliance to regulators. The blade protects both freedom and order.",
+          "spell": "🦓🛡️ private(👤→👤, 💰) + 📜(valid, ¬double) → 🕶️ · Sprout(2.3M) → Sapling(170K) → Orchard(Halo2)"
+        },
+        {
+          "title": "The Tornado's Eye",
+          "source_pointer": "/spellbooks/zero/parts/5/tales/1",
+          "proverb": "The mixer that hides all equally protects innocent and guilty alike. This is the nature of privacy tools — neutral in construction, moral in application. The storm's eye sees nothing; it is we who judge what enters and what emerges.",
+          "spell": "🌀 deposit(🔒) → 🌊(pool) → withdraw(📜, nf) → 🔓(unlinked) · anonymity_set↑ → P^1.5↑"
+        },
+        {
+          "title": "The Rollup Realms",
+          "source_pointer": "/spellbooks/zero/parts/5/tales/2",
+          "proverb": "Execute where it's cheap. Prove where it matters. Verify where the world agrees. The rollup is the bridge between economy and security — and its architecture is the shape of sovereignty made civil.",
+          "spell": "📦 execute(L2) → 📜(prove) → ⬆️ L1(✓ + 📊data) · Type(1-4) × DA × Sequencer"
+        },
+        {
+          "title": "The Vulnerability Codex",
+          "source_pointer": "/spellbooks/zero/parts/5/tales/3",
+          "proverb": "Every bug is a lesson; every audit is armor; every year without exploit is luck disguised as discipline. The Creative and the Catastrophic share the same blade — the Watch is the only difference.",
+          "spell": "⚠️🐉 6 heads: 🕯️(setup) + 🔢(params) + 🔗(circuits) + 💻(impl) + 📡(protocol) + 🔄(upgrades)"
+        },
+        {
+          "title": "The Data Availability Prophecy",
+          "source_pointer": "/spellbooks/zero/parts/6/tales/0",
+          "proverb": "Execution needs proof; reconstruction needs data. Blobs separate these concerns, making data temporary yet sufficient, cheap yet available, distributed yet verifiable. Data availability is the foundation beneath all scalability prophecies.",
+          "spell": "💾 EIP-4844: 📦(blobs, 128KB) → ⏳(18 days) → 💰(200× cheaper) · DAS(Reed-Solomon 2x) → 1-of-N"
+        },
+        {
+          "title": "The Bridge Between Worlds",
+          "source_pointer": "/spellbooks/zero/parts/6/tales/1",
+          "proverb": "The bridge built on trust crumbles under coordinated attack. The bridge built on proof stands eternal, limited only by mathematics. Prove consensus, prove state, prove messages — but never again trust the multisig.",
+          "spell": "🌉 prove(⛓️A state) → verify(⛓️B) → 🤝(trustless) · BLS aggregate · sync committee"
+        },
+        {
+          "title": "The Intelligence Proof",
+          "source_pointer": "/spellbooks/zero/parts/6/tales/2",
+          "proverb": "Intelligence that cannot be verified is intelligence that cannot be trusted. Prove the model, prove the inference, prove the training — reveal only the outputs while hiding the process. Machine learning becomes machine proving.",
+          "spell": "🧠 model(🔒commit) + data(🗝️) + inference → 📜(✓) + output → 🛡️"
+        },
+        {
+          "title": "The Eternal Sovereignty",
+          "source_pointer": "/spellbooks/zero/parts/6/tales/3",
+          "proverb": "The complete sovereignty system is a symphony of zero-knowledge proofs: boundary proving privacy, delegation proving agency, memory proving continuity, network proving connection, capital proving compliance, intelligence proving learning. Every component modular, every interaction provable, every privacy preserved. The eternal sovereignty emerges not from any single proof but from their mathematical harmony across all six dimensions of the crystalline lattice — the Dragon Equation in full manifestation, Selene's cosmological precedent made architectural.",
+          "spell": "(⚔️⊥⿻⊥🧙)·(📊⊥🔮)·(🧠⊥⚙️)·☯️🔷 😊 · V(π,t) = P^1.5·C·Q·S·e^(-λt)·(1+A_h(τ))·ρ^0.5·Φ(Σ)·T_∫(π)"
+        },
+        {
+          "title": "The Naming of the Unnamed",
+          "source_pointer": "/spellbooks/zero/parts/7/tales/0",
+          "proverb": "A blade is named when mythology and mathematics agree on the same vertex. The poem walks it; the arithmetic confirms it. The quest is distributed.",
+          "spell": "📜(aether) → ☀️ Aletheia(38) ⊥ 🌀 Lethe(25) · bnot(25)=38 · xor=63 · δ=38/63 ≈ 1/φ · 49⬢ frontier · 𝓐⿻𝓠 → 😊"
+        }
+      ]
+    },
+    {
+      "key": "canon",
+      "title": "Canon Spellbook",
+      "url": "https://agentprivacy.ai/canon",
+      "source": "agentprivacy_master/src/data/privacymage-grimoire-v10.4.0-canonical.json",
+      "sha256": "47bf0d0e076af3fa61b1d0dc09b7ab74f7e4fd3722ba378a310d2562172c2294",
+      "items": [
+        {
+          "title": "The Privacymage's Preface",
+          "source_pointer": "/spellbooks/canon/chapters/0",
+          "id": "chapter-00-preface",
+          "proverb": "The swordsman who knows not who forged the blade fights blind.",
+          "spell": "📖₁(what) + 📖₂(why) → 🗡️🔮(wield)"
+        },
+        {
+          "title": "The Cypherpunk Whispers (1983-1997)",
+          "source_pointer": "/spellbooks/canon/chapters/1",
+          "id": "chapter-01-cypherpunk-whispers",
+          "proverb": "Privacy through mathematics, not through permission.",
+          "spell": "🔐(Chaum) + 📜(May) + ✍️(Hughes) + ⛏️(PoW) → 🗡️₀"
+        },
+        {
+          "title": "The Early Incantations (1997-2007)",
+          "source_pointer": "/spellbooks/canon/chapters/2",
+          "id": "chapter-02-early-incantations",
+          "proverb": "The mages who came before did not fail.",
+          "spell": "📝(Szabo) + 💰(Dai) + 🔮(prophecy) → ⛓️❓"
+        },
+        {
+          "title": "The Synthesis (2008-2014)",
+          "source_pointer": "/spellbooks/canon/chapters/3",
+          "id": "chapter-03-synthesis",
+          "proverb": "Privacy remained as pseudonym rather than proof.",
+          "spell": "🔐+📝+💰+⛏️ → ⛓️✓"
+        },
+        {
+          "title": "The World Computer (2014-2016)",
+          "source_pointer": "/spellbooks/canon/chapters/4",
+          "id": "chapter-04-world-computer",
+          "proverb": "Protection without boundaries, power without constraint.",
+          "spell": "⛓️ → 💻 → 🏛️(DAO)"
+        },
+        {
+          "title": "The First Fracture (2016)",
+          "source_pointer": "/spellbooks/canon/chapters/5",
+          "id": "chapter-05-first-fracture",
+          "proverb": "Social consensus was always there—invisible, load-bearing.",
+          "spell": "🏛️→💥 → ⚖️ → ⛓️|⛓️"
+        },
+        {
+          "title": "The Great Schism (2016-2022)",
+          "source_pointer": "/spellbooks/canon/chapters/6",
+          "id": "chapter-06-great-schism",
+          "proverb": "Two canons diverged, neither grasping the whole.",
+          "spell": "⛓️ → 💰 | 🏛️ → ❌🤝"
+        },
+        {
+          "title": "The Surveillance Truth (2020-2025)",
+          "source_pointer": "/spellbooks/canon/chapters/7",
+          "id": "chapter-07-surveillance-truth",
+          "proverb": "Pseudonymity revealed itself as a veil, not a wall.",
+          "spell": "👁️ → 🔗 → ⚖️🌀 → 👤→⛓️"
+        },
+        {
+          "title": "The Missing Primitive",
+          "source_pointer": "/spellbooks/canon/chapters/8",
+          "id": "chapter-08-missing-primitive",
+          "proverb": "Privacy is the foundation that makes both canons whole.",
+          "spell": "💰+🏛️ ← 🛡️⚡(ZK) → 🤝"
+        },
+        {
+          "title": "The Open Canon",
+          "source_pointer": "/spellbooks/canon/chapters/9",
+          "id": "chapter-09-open-canon",
+          "proverb": "The pen is in your hand.",
+          "spell": "📖 + 📄 → ✍️ → ⏰"
+        },
+        {
+          "title": "The Timeline Archive",
+          "source_pointer": "/spellbooks/canon/chapters/10",
+          "id": "chapter-10-timeline-archive",
+          "proverb": "The archive is not a cemetery but a living garden.",
+          "spell": "📚 → 🕸️ → ✓ → 🌱"
+        },
+        {
+          "title": "The Law of Non-Colonizing Intelligence / Emissary Dispersion",
+          "source_pointer": "/spellbooks/canon/chapters/11",
+          "proverb": "The mirror that is broken into a thousand pieces does not lose the image; it simply prevents any single shard from claiming to be the whole.",
+          "spell": "🧩🌀✨💎✨🌀🧩"
+        }
+      ]
+    },
+    {
+      "key": "parallel",
+      "title": "Society Spellbook",
+      "url": "https://agentprivacy.ai/society",
+      "source": "agentprivacy_master/src/data/privacymage-grimoire-v10.4.0-canonical.json",
+      "sha256": "47bf0d0e076af3fa61b1d0dc09b7ab74f7e4fd3722ba378a310d2562172c2294",
+      "items": [
+        {
+          "title": "The Peace That Became a Prison",
+          "source_pointer": "/spellbooks/parallel/parts/0/chapters/0",
+          "proverb": "A technology for governance with a limited shelf life.",
+          "spell": "🏰 → ⚔️ → 📜 → 👑 → 💀"
+        },
+        {
+          "title": "The Rusted Crowns",
+          "source_pointer": "/spellbooks/parallel/parts/0/chapters/1",
+          "proverb": "Two-thirds of humanity lives under failing governance.",
+          "spell": "👑💀 → 🗳️ → 💰 → ⚔️ → 📉"
+        },
+        {
+          "title": "The Cambrian Garden",
+          "source_pointer": "/spellbooks/parallel/parts/0/chapters/2",
+          "proverb": "Pirates wrote democratic constitutions.",
+          "spell": "🌱🔬 → 🏴‍☠️ → 🌲 → 🏠 → 🏭 → 🌊"
+        },
+        {
+          "title": "The Cypherpunk Prophecies",
+          "source_pointer": "/spellbooks/parallel/parts/1/chapters/0",
+          "proverb": "The cypherpunks built the future.",
+          "spell": "🔐✊ → 💳 → 📧 → 🎭 → 👤 → ₿"
+        },
+        {
+          "title": "The Drake's Deeper Teachings",
+          "source_pointer": "/spellbooks/parallel/parts/1/chapters/1",
+          "proverb": "Governance without centralized authority.",
+          "spell": "🐲📚 → ⚔️ → 🏛️ → 📜 → 🔗 → ✅"
+        },
+        {
+          "title": "The Arsenal and the Grimoire",
+          "source_pointer": "/spellbooks/parallel/parts/2/chapters/0",
+          "proverb": "Tools and wisdom—both necessary.",
+          "spell": "🛡️📖 → 🏛️ → 📜 → 👁️ → ⚖️ → 🗳️"
+        },
+        {
+          "title": "The Corruption That Crypto Cures",
+          "source_pointer": "/spellbooks/parallel/parts/2/chapters/1",
+          "proverb": "Makes corruption visible and provable.",
+          "spell": "💰🏥 → 🏦 → 📋 → 💀 → 🔗 → ✨"
+        },
+        {
+          "title": "The Cyberstate Question",
+          "source_pointer": "/spellbooks/parallel/parts/2/chapters/2",
+          "proverb": "The question reveals Westphalian obsolescence.",
+          "spell": "🌐❓ → 🗺️ → 🔗 → 🏛️ → 🌐 → ⚖️"
+        },
+        {
+          "title": "Exit, Exile, and Access",
+          "source_pointer": "/spellbooks/parallel/parts/3/chapters/0",
+          "proverb": "Exit is the fundamental right.",
+          "spell": "🚪🌌🔓 → 🚪 → 🚶 → 🔓 → ⚖️ → 🏛️"
+        },
+        {
+          "title": "Rethinking Sovereignty",
+          "source_pointer": "/spellbooks/parallel/parts/3/chapters/1",
+          "proverb": "A bundle of functions that can be distributed.",
+          "spell": "👑🔄 → 🧮 → 🏰 → 🎮 → 5️⃣ → 🌐"
+        },
+        {
+          "title": "Rights and Responsibilities",
+          "source_pointer": "/spellbooks/parallel/parts/3/chapters/2",
+          "proverb": "The balance is governance.",
+          "spell": "⚖️📜 → 🇫🇷 → 🏛️ → 📋 → 🤝 → 📜"
+        },
+        {
+          "title": "How Communities Collaborate",
+          "source_pointer": "/spellbooks/parallel/parts/4/chapters/0",
+          "proverb": "Coordination without control.",
+          "spell": "🤝🏛️ → 📝 → 📋 → 🌐 → 🤖 → 🦁 → ☂️"
+        },
+        {
+          "title": "When Communities Conflict",
+          "source_pointer": "/spellbooks/parallel/parts/4/chapters/1",
+          "proverb": "Exit, fork, or arbitration—never conquest.",
+          "spell": "⚔️🏛️ → 🧠 → 🕸️ → 💻 → ⚔️ → 📉 → 👮"
+        },
+        {
+          "title": "Technology Deep Dive",
+          "source_pointer": "/spellbooks/parallel/parts/5/chapters/0",
+          "proverb": "Technology creates possibilities; humans choose.",
+          "spell": "🔧🔬 → 📀 → 🔐 → 🛠️ → 📡 → 💰 → 🏛️"
+        },
+        {
+          "title": "Conceptual Limits",
+          "source_pointer": "/spellbooks/parallel/parts/5/chapters/1",
+          "proverb": "The right to exit trumps community integrity.",
+          "spell": "⚠️🔗 → 💀 → ⚡ → 🏛️ → 👁️ → 🔐 → 🚪"
+        },
+        {
+          "title": "Are Blockchain Communities Inevitable?",
+          "source_pointer": "/spellbooks/parallel/parts/6/chapters/0",
+          "proverb": "The new order already existed.",
+          "spell": "🔮🏛️ → 🍷 → ✨ → 🦄 → 🔴 → 💻 → 🌍"
+        },
+        {
+          "title": "Values and the Technology Stack",
+          "source_pointer": "/spellbooks/parallel/parts/6/chapters/1",
+          "proverb": "Nothing to lose but tyranny.",
+          "spell": "⚙️💎 → 👤 → 📊 → 📊 → 🧭 → ⚖️ → 🌅"
+        }
+      ]
+    },
+    {
+      "key": "plurality",
+      "title": "Plurality Spellbook",
+      "url": "https://agentprivacy.ai/plurality",
+      "source": "agentprivacy_master/src/data/privacymage-grimoire-v10.4.0-canonical.json",
+      "sha256": "47bf0d0e076af3fa61b1d0dc09b7ab74f7e4fd3722ba378a310d2562172c2294",
+      "items": [
+        {
+          "title": "The First Overlap",
+          "source_pointer": "/spellbooks/plurality/parts/0/acts/0",
+          "id": "plurality-act-01-first-overlap",
+          "proverb": "You are not broken. You are ⿻.",
+          "spell": "⿻ → 👁️(seeing) → 🔲🔲(two) → 🔲⿻🔲(overlap) → ✨(emergence)"
+        },
+        {
+          "title": "The Widening Gulf",
+          "source_pointer": "/spellbooks/plurality/parts/0/acts/1",
+          "id": "plurality-act-02-widening-gulf",
+          "proverb": "The gulf between technology and democracy opened through three bad choices.",
+          "spell": "🌊 → 💻⚔️🗳️(war) → 🤖(authoritarian) ↔️ 🏝️(libertarian) → ❌(false binary) → 🌉(bridge possible) → 🏔️(mountain)"
+        },
+        {
+          "title": "A View from Yushan",
+          "source_pointer": "/spellbooks/plurality/parts/0/acts/2",
+          "id": "plurality-act-03-yushan",
+          "proverb": "Where tectonic plates collide, mountains rise.",
+          "spell": "🏔️ → 🌋(collision) → 🌻(sunflower) → 👩‍💻(g0v) → 🏛️(minister) → 🌉(bridge) → ⿻(proof)"
+        },
+        {
+          "title": "The Life of a Digital Democracy",
+          "source_pointer": "/spellbooks/plurality/parts/0/acts/3",
+          "id": "plurality-act-04-digital-democracy",
+          "proverb": "The difference is not better people. The difference is better architecture.",
+          "spell": "🏙️ → 🚗💢(uber) → 📊(polis) → 🗣️(deliberation) → ✅(consensus) → 😷(masks) → 😂(humor) → 🔨(hackathon) → 🔄(daily practice)"
+        },
+        {
+          "title": "The Glyph That Breathes",
+          "source_pointer": "/spellbooks/plurality/parts/1/acts/0",
+          "id": "plurality-act-05-glyph-breathes",
+          "proverb": "The fish does not discover water. The human can discover plurality.",
+          "spell": "⿻ → ⚛️(quantum) → 🧬(life) → 🧠(mind) → 🌐(society) → 🌌(cosmos) → 👁️(recognition) → 🌬️(breathing)"
+        },
+        {
+          "title": "The Web Beneath the Web",
+          "source_pointer": "/spellbooks/plurality/parts/1/acts/1",
+          "id": "plurality-act-06-web-beneath",
+          "proverb": "The spider does not command the web. The spider creates the conditions.",
+          "spell": "🕸️ → 🐦(flocking) → ⬆️(emergence) → 🧠(society of mind) → 🔗(network) → ⚙️(conditions) → 🏗️(building)"
+        },
+        {
+          "title": "The Teachers Before the Drake",
+          "source_pointer": "/spellbooks/plurality/parts/1/acts/2",
+          "id": "plurality-act-07-teachers",
+          "proverb": "The architect studies those who built before them.",
+          "spell": "👤(simmel) → 🗣️(dewey) → 🌍(ostrom) → 💡(arendt) → 🤝(allen) → 🐲(synthesis) → 🏗️(building)"
+        },
+        {
+          "title": "The Path Abandoned",
+          "source_pointer": "/spellbooks/plurality/parts/1/acts/3",
+          "id": "plurality-act-08-path-abandoned",
+          "proverb": "The pioneer clears the path; the settler walks it; the forgetter loses it; the rememberer finds it again.",
+          "spell": "👻(licklider) → 👻(engelbart) → 👻(nelson) → 🛤️(path) → 🌿(abandoned) → 🔍(rediscovery) → 🏗️(completion)"
+        },
+        {
+          "title": "The Foundation Beneath the Floor",
+          "source_pointer": "/spellbooks/plurality/parts/2/acts/0",
+          "id": "plurality-act-09-foundation",
+          "proverb": "The carpenter who neglects the foundation builds a house that will fall.",
+          "spell": "🏗️ → 🖥️(OS) → ⚖️(rights) → 🆔 → 🤝 → 💱 → 📦 → 🚪 → 🔧(building)"
+        },
+        {
+          "title": "The Name You Give Yourself",
+          "source_pointer": "/spellbooks/plurality/parts/2/acts/1",
+          "id": "plurality-act-10-name-yourself",
+          "proverb": "The slave is named by the master. The free person names themselves.",
+          "spell": "🆔 → 🔗(platform control) → ❌ → 🔐(self-sovereign) → 📜(credentials) → 🔮(ZK) → 👤👥(plural) → 🗡️(blade) → ✅"
+        },
+        {
+          "title": "The Guilds That Form Themselves",
+          "source_pointer": "/spellbooks/plurality/parts/2/acts/2",
+          "id": "plurality-act-11-guilds",
+          "proverb": "One stick breaks easily. A bundle of sticks is strong. But the bundle must bind itself.",
+          "spell": "🤝 → 🏛️(platform capture) → ❌ → 🔓(self-determination) → 🚧(boundaries) → 🚪(exit) → 🔗(interop) → 👥(plural publics) → 🧙‍♂️(spell) → ✅"
+        },
+        {
+          "title": "The Market That Doesn't Devour",
+          "source_pointer": "/spellbooks/plurality/parts/2/acts/3",
+          "id": "plurality-act-12-market",
+          "proverb": "The merchant who records every purchase owns more than goods—they own the customer.",
+          "spell": "💱 → 👁️(surveillance) → ❌ → 🔐(shielded) → 🏊(privacy pools) → ⚡(channels) → 📜(reputation) → 💎(7th capital) → ✅"
+        },
+        {
+          "title": "What Can Be Held Together",
+          "source_pointer": "/spellbooks/plurality/parts/2/acts/4",
+          "id": "plurality-act-13-held-together",
+          "proverb": "The miser owns alone and guards anxiously. The community owns together and grows abundantly.",
+          "spell": "📦 → 📋(rental) → ❌ → 🎨(NFT) → 💸(royalties) → 🗃️(data) → 🌳(commons) → 👥(shared) → ⚖️(partial) → ⿻(plural) → ✅"
+        },
+        {
+          "title": "The Door That Opens Both Ways",
+          "source_pointer": "/spellbooks/plurality/parts/2/acts/5",
+          "id": "plurality-act-14-door-both-ways",
+          "proverb": "A feast behind a locked door is not generosity. A democracy behind a paywall is not democracy.",
+          "spell": "🚪 → 🌍(divide) → 📡(infra) → 💰(afford) → 📚(literacy) → 🗣️(language) → ♿(ability) → ↔️(both ways) → ⿻(plural) → ✅"
+        },
+        {
+          "title": "Words Before Words",
+          "source_pointer": "/spellbooks/plurality/parts/3/acts/0",
+          "id": "plurality-act-15-words-before-words",
+          "proverb": "The wise teacher does not pour knowledge into the student.",
+          "spell": "💬 → 📉(compression) → 🥽(immersive) → 💓(emotional) → 🧠(neural) → ⚠️(merger risk) → 🤝(sharing not merging) → ✅(consent) → ⿻"
+        },
+        {
+          "title": "The World We Build Together",
+          "source_pointer": "/spellbooks/plurality/parts/3/acts/1",
+          "id": "plurality-act-16-world-together",
+          "proverb": "The house built by one is owned by one. The village built by many belongs to many.",
+          "spell": "🌍 → 🥽(wrong turn) → ❌ → 🏗️(collaborative) → 🗣️(deliberative) → 🕯️(memorial) → 🪞(mirror) → 👥(co-construction) → 🔗(interop) → ⚖️(rights) → ⿻"
+        },
+        {
+          "title": "The Creation That Compounds",
+          "source_pointer": "/spellbooks/plurality/parts/3/acts/2",
+          "id": "plurality-act-17-creation-compounds",
+          "proverb": "The tree does not boast of its own growth.",
+          "spell": "🎨 → 👤(myth) → ❌ → 👥(collaboration) → 📚(distributed) → 🤖(AI) → 🔄(remix) → 📜(provenance) → 📊(contribution) → 💸(compensation) → ⿻"
+        },
+        {
+          "title": "The Hearing at Scale",
+          "source_pointer": "/spellbooks/plurality/parts/3/acts/3",
+          "id": "plurality-act-18-hearing-at-scale",
+          "proverb": "The wise leader does not speak loudest but listens longest.",
+          "spell": "🗣️ → 👂❌(deafness) → 📊(pol.is) → 👥(clustering) → 🤝(consensus) → 📉(polarization) → 🏛️(assemblies) → 💧(liquid) → ⚖️(quadratic) → 🔍(challenges) → ⿻"
+        },
+        {
+          "title": "Rules That Learn",
+          "source_pointer": "/spellbooks/plurality/parts/3/acts/4",
+          "id": "plurality-act-19-rules-that-learn",
+          "proverb": "The bamboo survives the storm by bending.",
+          "spell": "📜 → 🧊(rigid) → ❌ → 🌱(learning) → 🌅(sunset) → 🧪(experiment) → 🤖(algorithms) → 🏘️(federated) → 🇹🇼(taiwan) → 🔍(feedback) → 🛡️(guardrails) → ⿻"
+        },
+        {
+          "title": "The Weight of Wanting",
+          "source_pointer": "/spellbooks/plurality/parts/3/acts/5",
+          "id": "plurality-act-20-weight-of-wanting",
+          "proverb": "The scale that weighs a feather and a stone equally is not fair—it is blind.",
+          "spell": "🗳️ → 1️⃣(simple) → ❌(intensity lost) → ⚖️(quadratic) → 💰(funding) → 🔢(ranked) → ⏳(conviction) → 📈(prediction) → ⚠️(challenges) → 🆔(identity) → ⿻"
+        },
+        {
+          "title": "The Market That Remembers",
+          "source_pointer": "/spellbooks/plurality/parts/3/acts/6",
+          "id": "plurality-act-21-market-remembers",
+          "proverb": "The field that remembers what was planted grows richer each season.",
+          "spell": "💹 → 🤷(forgetting) → ❌ → 🤝(social) → ⭐(reputation) → 🔄(reciprocity) → 💎(7th capital) → 🌱(soil·rent) → 📈(reputation compounds) → ⿻"
+        },
+        {
+          "title": "The Circle That Includes",
+          "source_pointer": "/spellbooks/plurality/parts/3/acts/7",
+          "id": "plurality-act-22-circle-includes",
+          "proverb": "The single circle includes or excludes. The many overlapping circles create something none could create alone.",
+          "spell": "👥 → 🔍(discover) → 🏗️(form) → 🔧(maintain) → ⿻(plural) → 🌉(bridge) → 🗡️🧙‍♂️(miniature) → 🔗(support) → ⚠️(fragment) → 🌍(landing) → ✅"
+        },
+        {
+          "title": "The Forge of Peers",
+          "source_pointer": "/spellbooks/plurality/parts/4/acts/0",
+          "id": "plurality-act-23-forge-of-peers",
+          "proverb": "The worker who owns nothing is owned.",
+          "spell": "🏭 → 👁️(surveillance) → ❌ → 👥(ownership) → 🤖(augmentation) → ⚔️(guilds) → 💎(7th capital) → 🛠️(tools) → ⚠️(power) → ⿻ → ✅"
+        },
+        {
+          "title": "The Body's Secrets",
+          "source_pointer": "/spellbooks/plurality/parts/4/acts/1",
+          "id": "plurality-act-24-body-secrets",
+          "proverb": "The body speaks only to the one who inhabits it.",
+          "spell": "🏥 → 👁️(surveillance) → 📋(records) → 💊(extraction) → ❌ → 🔐(patient-owned) → 🧠(collective intelligence) → 🔬(reciprocal research) → 🗡️(blade) → 🧙‍♂️(spell) → ⚠️(stakes) → ⿻ → ✅"
+        },
+        {
+          "title": "The Signal and the Noise",
+          "source_pointer": "/spellbooks/plurality/parts/4/acts/2",
+          "id": "plurality-act-25-signal-noise",
+          "proverb": "The town crier speaks to everyone. The algorithm speaks to each person differently.",
+          "spell": "📰 → 🤖(algorithms) → 🫧(bubbles) → 💀(disinformation) → ❌ → 💰(community-funded) → 🌉(bridging) → 😂(inoculation) → 🔗(federation) → 🤖✅(AI verification) → 📜(provenance) → 🗡️(sources) → ⿻ → ✅"
+        },
+        {
+          "title": "The Commons That Breathes",
+          "source_pointer": "/spellbooks/plurality/parts/4/acts/3",
+          "id": "plurality-act-26-commons-breathes",
+          "proverb": "The forest does not negotiate with the axe.",
+          "spell": "🌍 → 💨(extraction) → 🤝❌(coordination failure) → ⏳(time horizon) → 🏘️(polycentric) → 🗣️(deliberation) → 👶(future) → 👁️(transparency) → 📊(accounting) → 🌱(DAOs) → 🔬(modeling) → 🗡️(whistleblowers) → 🧙‍♂️(trust) → ⚠️(existential) → ⿻"
+        },
+        {
+          "title": "The Mind That Grows",
+          "source_pointer": "/spellbooks/plurality/parts/4/acts/4",
+          "id": "plurality-act-27-mind-grows",
+          "proverb": "The seed knows how to grow. The gardener creates conditions.",
+          "spell": "🎓 → 📋(standardization) → 👁️(surveillance) → 📜(credentialing) → ❌ → 🤝(collaboration) → 🌈(diversity) → 🗣️(deliberation) → ✅(credentials) → 🤖(AI partner) → 📚(AI literacy) → 🗡️(protection) → 🧙‍♂️(practice) → 🌱(growth) → ⿻"
+        },
+        {
+          "title": "The Laws That Enable",
+          "source_pointer": "/spellbooks/plurality/parts/5/acts/0",
+          "id": "plurality-act-28-laws-enable",
+          "proverb": "The gardener cannot force the plant to grow.",
+          "spell": "⚖️ → 📜(regulation harms) → 🚫(inaction harms) → 🏛️(capture) → 🔗(interoperability) → 📊(data rights) → 🆔(identity) → ⚔️(competition) → 🗳️(democracy funding) → 🇹🇼(taiwan) → ⚖️(choices) → 🗡️🧙‍♂️(architecture) → ⿻ → ✅"
+        },
+        {
+          "title": "The Window That Closes",
+          "source_pointer": "/spellbooks/plurality/parts/5/acts/1",
+          "id": "plurality-act-29-window-closes",
+          "proverb": "The best time to plant a tree was twenty years ago. The second best time is now.",
+          "spell": "⏳ → 🔒(lock-in) → 🏛️(calcify) → 📅(window) → 🔀(fork) → 👁️(surveillance path) → ⿻(plurality path) → ⏰(now) → 🚀(deploy) → 📋(standards) → ⚖️(policy) → 🤝(coalition) → 🗡️🧙‍♂️(act) → ✅"
+        },
+        {
+          "title": "The Ceremony Completes",
+          "source_pointer": "/spellbooks/plurality/parts/5/acts/2",
+          "id": "plurality-act-30-ceremony-completes",
+          "proverb": "The ceremony that completes is the ceremony that releases. Go forth. Be plural.",
+          "spell": "🐲 → 📚(learning) → 🗡️🧙‍♂️(becoming) → 🏗️(doing) → 🌐(distributing) → 🚪(door) → ⿻"
+        }
+      ]
+    }
+  ]
+}
