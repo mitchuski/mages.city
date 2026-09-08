@@ -57,3 +57,11 @@ counts to `citykey.mjs` (Phase 3); `key.evolve` in the MCP server (the other lan
 The key is never issued by mages.city — it is minted at the ceremony and evolved by the bearer.
 No body ever enters the key, only digests. A key that does not re-derive is refused with the
 finding named, never scored down. A key without packets is a valid key that is *unproven*.
+
+## VTA + Star: agent knowledge spaces (2026-09-08)
+
+Read [the current integration note](VTA_STAR_KNOWLEDGE_SPACES.md) alongside the historical loop above. The product name is Mages City key. Its credential presentation is evaluated by the VTA and receiving service; importing or displaying it never grants access.
+
+The browser carries state across participating sites under a scoped bridge. Automatic arrival does not itself write the key. Authorised contributions may evolve κ/prior after actual receipts are retained. The MCP now has local key_evolve/journey operations and site_context/site_capabilities; the older “not built” statement about key.evolve is superseded. Live VTA enforcement, automatic cross-domain carry and a wiki-write task still require their adapters.
+
+A global κ or packet root may correlate visits; digests are not a promise that a key can safely be shown everywhere. Keep the full private key document and originals in their custody boundary, disclosing only what this audience permits.

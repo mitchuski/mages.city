@@ -1,0 +1,64 @@
+TAP version 13
+# Subtest: independent stores reject stale writers and preserve committed bytes
+ok 1 - independent stores reject stale writers and preserve committed bytes
+  ---
+  duration_ms: 9.6873
+  type: 'test'
+  ...
+# Subtest: retained locks and corrupt records fail closed without discarding evidence
+ok 2 - retained locks and corrupt records fail closed without discarding evidence
+  ---
+  duration_ms: 5.8303
+  type: 'test'
+  ...
+# Subtest: setup survives reopening storage and reconciles the original uncertain operation
+ok 3 - setup survives reopening storage and reconciles the original uncertain operation
+  ---
+  duration_ms: 7.8168
+  type: 'test'
+  ...
+# Subtest: fixture receipts resume without repeating effects; status never claims website authentication
+ok 4 - fixture receipts resume without repeating effects; status never claims website authentication
+  ---
+  duration_ms: 4.5363
+  type: 'test'
+  ...
+# Subtest: missing live adapters and exact-stage authorization stop progress
+ok 5 - missing live adapters and exact-stage authorization stop progress
+  ---
+  duration_ms: 1.1132
+  type: 'test'
+  ...
+# Subtest: unknown effects reconcile the same operation and never execute twice
+ok 6 - unknown effects reconcile the same operation and never execute twice
+  ---
+  duration_ms: 1.8556
+  type: 'test'
+  ...
+# Subtest: audience changes, expired receipts and changed dependencies cannot reuse a checkpoint
+ok 7 - audience changes, expired receipts and changed dependencies cannot reuse a checkpoint
+  ---
+  duration_ms: 3.0054
+  type: 'test'
+  ...
+# Subtest: storage failure prevents effects; invalid returned receipt stays unconfirmed
+ok 8 - storage failure prevents effects; invalid returned receipt stays unconfirmed
+  ---
+  duration_ms: 0.5987
+  type: 'test'
+  ...
+# Subtest: concurrent starts cannot both execute against the same durable checkpoint
+ok 9 - concurrent starts cannot both execute against the same durable checkpoint
+  ---
+  duration_ms: 0.9133
+  type: 'test'
+  ...
+1..9
+# tests 9
+# suites 0
+# pass 9
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 112.5918

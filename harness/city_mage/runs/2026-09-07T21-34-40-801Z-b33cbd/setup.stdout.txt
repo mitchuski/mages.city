@@ -1,0 +1,88 @@
+TAP version 13
+# Subtest: real CLI prepares and resumes original evidence without inventing service receipts
+ok 1 - real CLI prepares and resumes original evidence without inventing service receipts
+  ---
+  duration_ms: 170.9668
+  type: 'test'
+  ...
+# Subtest: changed context and retained evidence cannot resume
+ok 2 - changed context and retained evidence cannot resume
+  ---
+  duration_ms: 15.9167
+  type: 'test'
+  ...
+# Subtest: invalid commitment and incomplete packet originals fail before creating state
+ok 3 - invalid commitment and incomplete packet originals fail before creating state
+  ---
+  duration_ms: 3.5825
+  type: 'test'
+  ...
+# Subtest: partial preparation is retained and cannot be silently reset
+ok 4 - partial preparation is retained and cannot be silently reset
+  ---
+  duration_ms: 4.3407
+  type: 'test'
+  ...
+# Subtest: independent stores reject stale writers and preserve committed bytes
+ok 5 - independent stores reject stale writers and preserve committed bytes
+  ---
+  duration_ms: 8.8908
+  type: 'test'
+  ...
+# Subtest: retained locks and corrupt records fail closed without discarding evidence
+ok 6 - retained locks and corrupt records fail closed without discarding evidence
+  ---
+  duration_ms: 5.1481
+  type: 'test'
+  ...
+# Subtest: setup survives reopening storage and reconciles the original uncertain operation
+ok 7 - setup survives reopening storage and reconciles the original uncertain operation
+  ---
+  duration_ms: 8.1712
+  type: 'test'
+  ...
+# Subtest: fixture receipts resume without repeating effects; status never claims website authentication
+ok 8 - fixture receipts resume without repeating effects; status never claims website authentication
+  ---
+  duration_ms: 5.0423
+  type: 'test'
+  ...
+# Subtest: missing live adapters and exact-stage authorization stop progress
+ok 9 - missing live adapters and exact-stage authorization stop progress
+  ---
+  duration_ms: 0.5157
+  type: 'test'
+  ...
+# Subtest: unknown effects reconcile the same operation and never execute twice
+ok 10 - unknown effects reconcile the same operation and never execute twice
+  ---
+  duration_ms: 1.0705
+  type: 'test'
+  ...
+# Subtest: audience changes, expired receipts and changed dependencies cannot reuse a checkpoint
+ok 11 - audience changes, expired receipts and changed dependencies cannot reuse a checkpoint
+  ---
+  duration_ms: 1.9168
+  type: 'test'
+  ...
+# Subtest: storage failure prevents effects; invalid returned receipt stays unconfirmed
+ok 12 - storage failure prevents effects; invalid returned receipt stays unconfirmed
+  ---
+  duration_ms: 0.3951
+  type: 'test'
+  ...
+# Subtest: concurrent starts cannot both execute against the same durable checkpoint
+ok 13 - concurrent starts cannot both execute against the same durable checkpoint
+  ---
+  duration_ms: 0.9198
+  type: 'test'
+  ...
+1..13
+# tests 13
+# suites 0
+# pass 13
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 287.6781

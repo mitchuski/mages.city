@@ -1,0 +1,26 @@
+[Unit]
+Description=Mages City UOR kappa registry
+After=network.target
+
+[Service]
+Type=simple
+User=mages-kappa
+Group=mages-kappa
+StateDirectory=mages-kappa
+EnvironmentFile=/etc/mages/kappa.env
+Environment=KAPPA_LISTEN_ADDR=127.0.0.1:5099
+Environment=KAPPA_STORE_ROOT=/var/lib/mages-kappa
+Environment=KAPPA_AUTH_REQUIRED=true
+Environment=KAPPA_MAX_BLOB_SIZE=1048576
+Environment=KAPPA_MAX_API_BODY_BYTES=1048576
+Environment=KAPPA_CORS_ALLOWED_ORIGINS=https://mages.city
+ExecStart=/opt/mages-kappa/kappa-server
+Restart=on-failure
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/var/lib/mages-kappa
+
+[Install]
+WantedBy=multi-user.target

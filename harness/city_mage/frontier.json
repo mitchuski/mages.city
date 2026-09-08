@@ -1,0 +1,27 @@
+{
+  "authority": "Local integration measurement only; maintained by the runtime integration owner.",
+  "updated": "2026-09-07T21:34:40.801Z",
+  "baseline": {
+    "metric": 0,
+    "how": "node harness/city_mage/run.mjs; process-exit census",
+    "run": "2026-09-07T21-16-29-930Z-f38552"
+  },
+  "best": {
+    "metric": 0,
+    "how": "node harness/city_mage/run.mjs; process-exit census",
+    "run": "2026-09-07T21-16-29-930Z-f38552"
+  },
+  "latest": {
+    "metric": 0,
+    "how": "node harness/city_mage/run.mjs; process-exit census",
+    "run": "2026-09-07T21-34-40-801Z-b33cbd",
+    "checks": 6,
+    "sourceStable": true,
+    "brokenLinks": 0,
+    "status": "offline-baseline-pass",
+    "conformPassed": true
+  },
+  "liveSetup": "not-connected",
+  "pairedRun": false,
+  "validatedImprovements": 0
+}

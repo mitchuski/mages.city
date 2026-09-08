@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "name": "Practice City Key \u2014 synthetic",
+  "palette": {
+    "cool": "#55bbcc",
+    "warm": "#d0aa66",
+    "sword": "#aabbcc",
+    "mage": "#bbaaee"
+  },
+  "lit": [
+    0,
+    8,
+    16,
+    32,
+    63
+  ]
+}

@@ -1,0 +1,64 @@
+TAP version 13
+# Subtest: unconnected adapter and caller-supplied evidence never grant permission
+ok 1 - unconnected adapter and caller-supplied evidence never grant permission
+  ---
+  duration_ms: 1.7723
+  type: 'test'
+  ...
+# Subtest: active scoped wiki entitlement produces own-site plan only
+ok 2 - active scoped wiki entitlement produces own-site plan only
+  ---
+  duration_ms: 0.5561
+  type: 'test'
+  ...
+# Subtest: reserved/cross-site names, page traversal and wrong subject denied
+ok 3 - reserved/cross-site names, page traversal and wrong subject denied
+  ---
+  duration_ms: 1.1975
+  type: 'test'
+  ...
+# Subtest: expired, revoked, unavailable and stale authentication denied
+ok 4 - expired, revoked, unavailable and stale authentication denied
+  ---
+  duration_ms: 0.825
+  type: 'test'
+  ...
+# Subtest: rung and explicit DNS scope both apply; no command injection
+ok 5 - rung and explicit DNS scope both apply; no command injection
+  ---
+  duration_ms: 1.1752
+  type: 'test'
+  ...
+# Subtest: direct delegation needs explicit grant and scopes TSIG to own subtree
+ok 6 - direct delegation needs explicit grant and scopes TSIG to own subtree
+  ---
+  duration_ms: 0.4105
+  type: 'test'
+  ...
+# Subtest: authentication sees content and exact target; adapter cannot mutate operation
+ok 7 - authentication sees content and exact target; adapter cannot mutate operation
+  ---
+  duration_ms: 0.3969
+  type: 'test'
+  ...
+# Subtest: execution binds actual wiki content, rechecks revocation and filters secrets
+ok 8 - execution binds actual wiki content, rechecks revocation and filters secrets
+  ---
+  duration_ms: 0.708
+  type: 'test'
+  ...
+# Subtest: missing executor and ambiguous effects are never reported as applied
+ok 9 - missing executor and ambiguous effects are never reported as applied
+  ---
+  duration_ms: 0.7516
+  type: 'test'
+  ...
+1..9
+# tests 9
+# suites 0
+# pass 9
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 100.6035

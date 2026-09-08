@@ -1,0 +1,104 @@
+{
+  "kind": "agentprivacy.city-mage-run/1",
+  "id": "2026-09-07T21-17-39-776Z-7101eb",
+  "at": "2026-09-07T21:17:39.776Z",
+  "node": "v22.20.0",
+  "status": "offline-baseline-pass",
+  "results": [
+    {
+      "name": "setup",
+      "repo": "mages_city",
+      "args": [
+        "--test",
+        "harness/city_mage/setup.test.mjs"
+      ],
+      "exitCode": 0,
+      "error": null,
+      "passed": true
+    },
+    {
+      "name": "front",
+      "repo": "mages_city",
+      "args": [
+        "bin/verify-front.mjs"
+      ],
+      "exitCode": 0,
+      "error": null,
+      "passed": true
+    },
+    {
+      "name": "promises",
+      "repo": "mages_city",
+      "args": [
+        "--test",
+        "bin/promise-graph.test.mjs"
+      ],
+      "exitCode": 0,
+      "error": null,
+      "passed": true
+    },
+    {
+      "name": "permissions",
+      "repo": "mages_city",
+      "args": [
+        "--test",
+        "bin/permissions.test.mjs"
+      ],
+      "exitCode": 0,
+      "error": null,
+      "passed": true
+    },
+    {
+      "name": "journey",
+      "repo": "agentprivacy-mcp",
+      "args": [
+        "--test",
+        "test/journey.test.mjs",
+        "test/browser-journey.test.mjs"
+      ],
+      "exitCode": 0,
+      "error": null,
+      "passed": true
+    },
+    {
+      "name": "carrier",
+      "repo": "spellweb",
+      "args": [
+        "scripts/journey-roundtrip-check.mjs"
+      ],
+      "exitCode": 0,
+      "error": null,
+      "passed": true
+    }
+  ],
+  "conformBefore": {
+    "name": "conform-before",
+    "repo": "dual-agent-harness",
+    "args": [
+      "engine/conform.mjs",
+      "C:\\Users\\mitch\\mages_city\\harness\\city_mage"
+    ],
+    "exitCode": 0,
+    "error": null,
+    "passed": true
+  },
+  "conformAfter": {
+    "name": "conform-after",
+    "repo": "dual-agent-harness",
+    "args": [
+      "engine/conform.mjs",
+      "C:\\Users\\mitch\\mages_city\\harness\\city_mage"
+    ],
+    "exitCode": 0,
+    "error": null,
+    "passed": true
+  },
+  "sourceStable": true,
+  "sourceManifest": "sources.json",
+  "liveSetup": "not-connected",
+  "pairedRun": false,
+  "heldOutValidation": false,
+  "credentialIssued": false,
+  "accessGranted": false,
+  "externalEffects": []
+}

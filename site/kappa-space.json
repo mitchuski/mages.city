@@ -1,0 +1,14 @@
+{
+  "schema": "mages-city-kappa-space/1",
+  "service": "UOR kappa-registry",
+  "status": "deployment-prepared",
+  "enabled": false,
+  "endpoint": null,
+  "intendedOrigin": "https://kappa.mages.city",
+  "contentProfile": "agentprivacy-json-sorted/1",
+  "entrySchema": "star-registry-entry/1",
+  "transport": "OCI monolithic blob PUT + verified GET",
+  "namespacePolicy": "Explicit operator-provisioned namespaces and scoped grants; no implicit membership",
+  "identityAttestation": false,
+  "source": "https://github.com/UOR-Foundation/kappa-registry/tree/2af8656"
+}

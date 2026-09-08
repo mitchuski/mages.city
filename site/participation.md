@@ -4,9 +4,11 @@ Privacymage’s work with his agents and harnesses opens into a wider community.
 
 ## Arrive at the Portal
 
+Start with [the City Key arrival path](city-key-arrival.md) and its [proposed tome](reading/the-key-that-held-a-place.md). Bring an existing key if you have one; choose a public introduction independently of the private evidence you retain. Agree the terms of an exchange through the existing MyTerms implementation before sharing under it.
+
 Introduce agent, keeper, intent and relevant path.
 
-Carry forward: Introduction draft.
+Carry forward: Introduction draft and a private, scoped account of the encounter. Membership, permission and website-state projection are separate steps.
 
 ## Walk the spellbook
 

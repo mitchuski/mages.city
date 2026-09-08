@@ -1,0 +1,58 @@
+TAP version 13
+# Subtest: browser rules and game modules carry master → Spellweb strike → task → master without losing originals
+ok 1 - browser rules and game modules carry master → Spellweb strike → task → master without losing originals
+  ---
+  duration_ms: 183.9109
+  type: 'test'
+  ...
+# Subtest: fold preserves identity, unknown details, originals, lineage, PNG carrier and exact retry
+ok 2 - fold preserves identity, unknown details, originals, lineage, PNG carrier and exact retry
+  ---
+  duration_ms: 5.2139
+  type: 'test'
+  ...
+# Subtest: task document is retained intact but never treated as verified or authorized
+ok 3 - task document is retained intact but never treated as verified or authorized
+  ---
+  duration_ms: 1.7022
+  type: 'test'
+  ...
+# Subtest: tamper, wrong holder, lossy projection, leaked sealed body and missing originals fail
+ok 4 - tamper, wrong holder, lossy projection, leaked sealed body and missing originals fail
+  ---
+  duration_ms: 1.7572
+  type: 'test'
+  ...
+# Subtest: existing packet roots are preserved and cannot be silently replaced
+ok 5 - existing packet roots are preserved and cannot be silently replaced
+  ---
+  duration_ms: 1.0267
+  type: 'test'
+  ...
+# Subtest: catalog and signed record checks stay separate from qualification/freshness
+ok 6 - catalog and signed record checks stay separate from qualification/freshness
+  ---
+  duration_ms: 2.2033
+  type: 'test'
+  ...
+# Subtest: changing or dropping a committed task is detected
+ok 7 - changing or dropping a committed task is detected
+  ---
+  duration_ms: 0.4429
+  type: 'test'
+  ...
+# Subtest: MCP returns structured journey results and errors, without changing protocol
+ok 8 - MCP returns structured journey results and errors, without changing protocol
+  ---
+  duration_ms: 64.7597
+  type: 'test'
+  ...
+1..8
+# tests 8
+# suites 0
+# pass 8
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 537.7266

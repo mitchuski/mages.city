@@ -1,0 +1,46 @@
+TAP version 13
+# Subtest: fixture receipts resume without repeating effects; status never claims website authentication
+ok 1 - fixture receipts resume without repeating effects; status never claims website authentication
+  ---
+  duration_ms: 3.7459
+  type: 'test'
+  ...
+# Subtest: missing live adapters and exact-stage authorization stop progress
+ok 2 - missing live adapters and exact-stage authorization stop progress
+  ---
+  duration_ms: 0.6491
+  type: 'test'
+  ...
+# Subtest: unknown effects reconcile the same operation and never execute twice
+ok 3 - unknown effects reconcile the same operation and never execute twice
+  ---
+  duration_ms: 1.101
+  type: 'test'
+  ...
+# Subtest: audience changes, expired receipts and changed dependencies cannot reuse a checkpoint
+ok 4 - audience changes, expired receipts and changed dependencies cannot reuse a checkpoint
+  ---
+  duration_ms: 2.1443
+  type: 'test'
+  ...
+# Subtest: storage failure prevents effects; invalid returned receipt stays unconfirmed
+ok 5 - storage failure prevents effects; invalid returned receipt stays unconfirmed
+  ---
+  duration_ms: 0.3926
+  type: 'test'
+  ...
+# Subtest: concurrent starts cannot both execute against the same durable checkpoint
+ok 6 - concurrent starts cannot both execute against the same durable checkpoint
+  ---
+  duration_ms: 0.8919
+  type: 'test'
+  ...
+1..6
+# tests 6
+# suites 0
+# pass 6
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 83.1408

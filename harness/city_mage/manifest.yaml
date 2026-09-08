@@ -1,0 +1,14 @@
+pipeline: city_mage
+version: 1
+mode: offline-integration-baseline
+rules:
+  g4_owner: first-person
+  keystone_only_writes: [frontier.json, claims_register.md, manifest.yaml]
+  scratch_dir: runs/
+  chronicle_per_session: chronicles/
+gates:
+  G0: current-framework-conformance
+  G1: paired-held-out-run-not-connected
+  G2: no-fabricated-live-setup
+  G3: no-improvement-fold-claimed
+  G4: unexecuted

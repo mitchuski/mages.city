@@ -1,0 +1,1 @@
+City static front verified; farm integration is a separate check.

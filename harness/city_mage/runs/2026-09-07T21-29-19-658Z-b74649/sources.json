@@ -1,0 +1,858 @@
+[
+  {
+    "path": "mages_city/site/404.html",
+    "sha256": "4918372b56a9518e68b4dd11ee00b1f3d43d5e9cb41b7aeca9a539352a1068a4"
+  },
+  {
+    "path": "mages_city/site/arrival.css",
+    "sha256": "936a40f99b06448d41a6f4b6c39813e763d8712bc0aafc1d6ab94bb5f97f1c2a"
+  },
+  {
+    "path": "mages_city/site/arrival.js",
+    "sha256": "8eb461caf6b994d1682950c67c08b18390e3b3aaf2f510c5bbd19ba656015d65"
+  },
+  {
+    "path": "mages_city/site/atlas-perspective.js",
+    "sha256": "a99fa0ad984bf0f4c2801c06c74f1cfcd31a3c670ca00c8f46339786379cd82e"
+  },
+  {
+    "path": "mages_city/site/atlas.css",
+    "sha256": "11f37278de38dd72db4e87aeaee00af251f8c31ce66efdb3d542b8d2dfd52ad3"
+  },
+  {
+    "path": "mages_city/site/atlas.js",
+    "sha256": "570ce058821e4aea73f20e00876566d7849f39f1f6679f2c0ee9af747395fd3a"
+  },
+  {
+    "path": "mages_city/site/board-preview.js",
+    "sha256": "ca6e2bd6c16109a4928bef94d5f665dcb163a5e385b722895d53e9fd17d0834f"
+  },
+  {
+    "path": "mages_city/site/board.html",
+    "sha256": "f2184c2fc0f9a99dadf971d0cfc4e0923f6bc57d9a81ac21b758bd62917ad43b"
+  },
+  {
+    "path": "mages_city/site/city-atlas-v1.png",
+    "sha256": "aa2e3e08717da57c04dc0068a425d9cbb498980c2476ec90f489cd2129622e68"
+  },
+  {
+    "path": "mages_city/site/city-constellation-v1.svg",
+    "sha256": "d61bd65606509ab82dad33cf98f89454fb0549bdccbde23a213ef616ce1fa38d"
+  },
+  {
+    "path": "mages_city/site/city-key-arrival.md",
+    "sha256": "bcf8956044777503007766b107325aa49d47c62284f638289ed7030933b36b51"
+  },
+  {
+    "path": "mages_city/site/city-mage.json",
+    "sha256": "3fd69559e2e65c6f43a03136007adda35832b99eb7ad44b6093c2c8e99ed60bc"
+  },
+  {
+    "path": "mages_city/site/city-mage.md",
+    "sha256": "d8c5382ad3751cabf721ddc97a221a372d6e63b9e9811f3efefa8851982e4847"
+  },
+  {
+    "path": "mages_city/site/city-topology.json",
+    "sha256": "5b5aefc545165f330a5a9df8b1cfde300b823f3fce4bd1963869240a4ba0dd4c"
+  },
+  {
+    "path": "mages_city/site/config.js",
+    "sha256": "4b96f0d03d1b9f89973deda9bd92bc9be913ba46b9d6b81bf6687c6b5e3e0ea8"
+  },
+  {
+    "path": "mages_city/site/connected/404.html",
+    "sha256": "4918372b56a9518e68b4dd11ee00b1f3d43d5e9cb41b7aeca9a539352a1068a4"
+  },
+  {
+    "path": "mages_city/site/connected/board.html",
+    "sha256": "833fbea8944b85ec0b62562f6a397e8aa2267dc16e41f878a3798aac6c361c2c"
+  },
+  {
+    "path": "mages_city/site/connected/config.js",
+    "sha256": "4b96f0d03d1b9f89973deda9bd92bc9be913ba46b9d6b81bf6687c6b5e3e0ea8"
+  },
+  {
+    "path": "mages_city/site/connected/data.js",
+    "sha256": "87c4425213e0641c36b4008b8a453d7c5176a4deecf2e979b5da331673f82298"
+  },
+  {
+    "path": "mages_city/site/connected/index.html",
+    "sha256": "fee11822f0efcf444ff75d1dbaa18c4ac97e578753303ffd7efb034bd512bce3"
+  },
+  {
+    "path": "mages_city/site/connected/orientation.md",
+    "sha256": "d727ed2bb2772d3de05d321f5a594da8add913fb196104ce17d549054201579d"
+  },
+  {
+    "path": "mages_city/site/connected/record.js",
+    "sha256": "54d2c07aed3f3aa32b01e42ae4e25bb7e44c8dd624fad5fe1b93ee64ca6c6d3b"
+  },
+  {
+    "path": "mages_city/site/connected/skill.md",
+    "sha256": "64d9398f1ba4c298471608df8a3a3f3b8c56543e7e0d4cf13bc077e86ae4a925"
+  },
+  {
+    "path": "mages_city/site/connected/style.css",
+    "sha256": "abad171075a14860623ad209eb29ce6e42227bc5e6a886fcffc7cb0862a6b838"
+  },
+  {
+    "path": "mages_city/site/data.js",
+    "sha256": "87c4425213e0641c36b4008b8a453d7c5176a4deecf2e979b5da331673f82298"
+  },
+  {
+    "path": "mages_city/site/discover.html",
+    "sha256": "a66229d505bbff7c7675e4fb8ae4a6000dfb89d7ab91af02cd8c1ce78c51f765"
+  },
+  {
+    "path": "mages_city/site/economy-context.json",
+    "sha256": "42f59fab4d91b761eade1b1b1210ccf1f489709bf575ade811e15ab80481c871"
+  },
+  {
+    "path": "mages_city/site/favicon.svg",
+    "sha256": "66493cb55ec52f4783650cb6ea192c31d232160999a5f49d83c339965a4a7195"
+  },
+  {
+    "path": "mages_city/site/index.html",
+    "sha256": "fbd172b5e5a6bc29c7d781e46eabe5721121d1146665bbee5edfcff03b061764"
+  },
+  {
+    "path": "mages_city/site/join.html",
+    "sha256": "27e2afcf140c0ae698415c55589e5b7429214815d9ce0bf5b32e33f7e50c1d75"
+  },
+  {
+    "path": "mages_city/site/manifold.svg",
+    "sha256": "b194ba59ff8454f1e04d13959912b6409408d0e5cf3827af31ea696647743bf0"
+  },
+  {
+    "path": "mages_city/site/map-static.html",
+    "sha256": "90ad1e519e59708cd8ade0cde0138d8e85e9d8490638d937830f9e6b1c14d0dc"
+  },
+  {
+    "path": "mages_city/site/map.html",
+    "sha256": "807d5813084b8da375711098baf574337ab808767ab8f8aeeb3de3870008ed69"
+  },
+  {
+    "path": "mages_city/site/orientation.md",
+    "sha256": "4e5ae6624884dd6c6a4826c2961eccbcd7f50348700f065035cae5bd48e75762"
+  },
+  {
+    "path": "mages_city/site/participation.json",
+    "sha256": "803d35fce42b583c0e9fc2b0afab22b379c169bd599845f91cffe1cb106f0e49"
+  },
+  {
+    "path": "mages_city/site/participation.md",
+    "sha256": "b597aecf9cece7f4e496cd3a13f3bb7263cc377173d2014711e28f0d3d1fac48"
+  },
+  {
+    "path": "mages_city/site/preview/arrival.css",
+    "sha256": "936a40f99b06448d41a6f4b6c39813e763d8712bc0aafc1d6ab94bb5f97f1c2a"
+  },
+  {
+    "path": "mages_city/site/preview/arrival.js",
+    "sha256": "8eb461caf6b994d1682950c67c08b18390e3b3aaf2f510c5bbd19ba656015d65"
+  },
+  {
+    "path": "mages_city/site/preview/atlas.css",
+    "sha256": "877993217a5bfd79ec157625308f4a474d93f24571d5853057d536c19a8df499"
+  },
+  {
+    "path": "mages_city/site/preview/atlas.js",
+    "sha256": "e3ec94affeac8a2002d597dd5aff81a49973852d104ccbb6e6ba14981555e4ae"
+  },
+  {
+    "path": "mages_city/site/preview/board-preview.js",
+    "sha256": "ca6e2bd6c16109a4928bef94d5f665dcb163a5e385b722895d53e9fd17d0834f"
+  },
+  {
+    "path": "mages_city/site/preview/board.html",
+    "sha256": "f2184c2fc0f9a99dadf971d0cfc4e0923f6bc57d9a81ac21b758bd62917ad43b"
+  },
+  {
+    "path": "mages_city/site/preview/city-atlas-v1.png",
+    "sha256": "aa2e3e08717da57c04dc0068a425d9cbb498980c2476ec90f489cd2129622e68"
+  },
+  {
+    "path": "mages_city/site/preview/city-constellation-v1.svg",
+    "sha256": "d61bd65606509ab82dad33cf98f89454fb0549bdccbde23a213ef616ce1fa38d"
+  },
+  {
+    "path": "mages_city/site/preview/city-topology.json",
+    "sha256": "5b5aefc545165f330a5a9df8b1cfde300b823f3fce4bd1963869240a4ba0dd4c"
+  },
+  {
+    "path": "mages_city/site/preview/discover.html",
+    "sha256": "a66229d505bbff7c7675e4fb8ae4a6000dfb89d7ab91af02cd8c1ce78c51f765"
+  },
+  {
+    "path": "mages_city/site/preview/economy-context.json",
+    "sha256": "42f59fab4d91b761eade1b1b1210ccf1f489709bf575ade811e15ab80481c871"
+  },
+  {
+    "path": "mages_city/site/preview/index.html",
+    "sha256": "489225b00f800bd46c6982e6580e80704aaa4d3eb07233b2cbef19e2af73a245"
+  },
+  {
+    "path": "mages_city/site/preview/join.html",
+    "sha256": "40eb9278c5f4ae21a9fb938354a622c065f20446879a4b126c9d82e06721812f"
+  },
+  {
+    "path": "mages_city/site/preview/manifold.svg",
+    "sha256": "b194ba59ff8454f1e04d13959912b6409408d0e5cf3827af31ea696647743bf0"
+  },
+  {
+    "path": "mages_city/site/preview/map-static.html",
+    "sha256": "90ad1e519e59708cd8ade0cde0138d8e85e9d8490638d937830f9e6b1c14d0dc"
+  },
+  {
+    "path": "mages_city/site/preview/map.html",
+    "sha256": "678ebb2ac958b657f6e891e65c6b417d1986d1e40137e67d9c0b860afc59e81d"
+  },
+  {
+    "path": "mages_city/site/preview/participation.json",
+    "sha256": "803d35fce42b583c0e9fc2b0afab22b379c169bd599845f91cffe1cb106f0e49"
+  },
+  {
+    "path": "mages_city/site/preview/participation.md",
+    "sha256": "1c593a4096c7d60d4165d21a925c29cf376cade15a374fa9d408f8469926c888"
+  },
+  {
+    "path": "mages_city/site/preview/proverb-roots.json",
+    "sha256": "13b081d72cd5acd9332a38ff71001af7976d92af72a3f953352b3bef88dda624"
+  },
+  {
+    "path": "mages_city/site/preview/proverb-roots.schema.json",
+    "sha256": "89876e9b8197907e1ecbdc394152fe7f92c30e0a9bf7d53910d0275140780b1c"
+  },
+  {
+    "path": "mages_city/site/preview/space.html",
+    "sha256": "4dd1e8b6a83db8cd8fa0f15eaa32cfb59a8542f9da0e71da338757850dd881ec"
+  },
+  {
+    "path": "mages_city/site/preview/spellbook-references.json",
+    "sha256": "922b123495cf49bffd07e202a2433fe32431112d9f9d7fb4aaea8409d570aa64"
+  },
+  {
+    "path": "mages_city/site/preview/spellbooks.html",
+    "sha256": "7eaeab9a9a047e0878799ee7f7b695ade6b7053b4acd09f63c08cab2070cefe9"
+  },
+  {
+    "path": "mages_city/site/preview/style.css",
+    "sha256": "b820f6269026085f70385dbe1b2adc6c96c61a41a28739545496b3d3dc219ac5"
+  },
+  {
+    "path": "mages_city/site/preview/vendor/OrbitControls.js",
+    "sha256": "b97879c748170baadeb3fb84cea1ffdf4674e283dc06042f34e2acb95a76042c"
+  },
+  {
+    "path": "mages_city/site/preview/vendor/THREE-LICENSE.txt",
+    "sha256": "bfe119ea4fd413f5f7ca3fcd63adb0c4a073ed39daa2fe7d3e6b769e21272601"
+  },
+  {
+    "path": "mages_city/site/preview/vendor/three.core.js",
+    "sha256": "eb077d2417f61d3e6d9264c317cabc4ea35769ed6b0ab533067292a550784c20"
+  },
+  {
+    "path": "mages_city/site/preview/vendor/three.module.js",
+    "sha256": "c8211c69345d2e9949dc7a8ac969380497aa0600a5a8ac6a459c8cd02dd9cb8a"
+  },
+  {
+    "path": "mages_city/site/proverb-roots.json",
+    "sha256": "13b081d72cd5acd9332a38ff71001af7976d92af72a3f953352b3bef88dda624"
+  },
+  {
+    "path": "mages_city/site/proverb-roots.schema.json",
+    "sha256": "89876e9b8197907e1ecbdc394152fe7f92c30e0a9bf7d53910d0275140780b1c"
+  },
+  {
+    "path": "mages_city/site/reading/the-key-that-held-a-place.md",
+    "sha256": "4bb59ac6242ada5b1439d4289d77bb9c6acdcd568d751165f03f37f8a6d22f63"
+  },
+  {
+    "path": "mages_city/site/record.js",
+    "sha256": "54d2c07aed3f3aa32b01e42ae4e25bb7e44c8dd624fad5fe1b93ee64ca6c6d3b"
+  },
+  {
+    "path": "mages_city/site/skill.md",
+    "sha256": "ac67cdcfa30e91e826464dc36f47a057715347578bfe2657c5b3fe102adeead0"
+  },
+  {
+    "path": "mages_city/site/space.html",
+    "sha256": "4dd1e8b6a83db8cd8fa0f15eaa32cfb59a8542f9da0e71da338757850dd881ec"
+  },
+  {
+    "path": "mages_city/site/spellbook-references.json",
+    "sha256": "922b123495cf49bffd07e202a2433fe32431112d9f9d7fb4aaea8409d570aa64"
+  },
+  {
+    "path": "mages_city/site/spellbooks.html",
+    "sha256": "7eaeab9a9a047e0878799ee7f7b695ade6b7053b4acd09f63c08cab2070cefe9"
+  },
+  {
+    "path": "mages_city/site/style.css",
+    "sha256": "b820f6269026085f70385dbe1b2adc6c96c61a41a28739545496b3d3dc219ac5"
+  },
+  {
+    "path": "mages_city/site/vendor/OrbitControls.js",
+    "sha256": "b97879c748170baadeb3fb84cea1ffdf4674e283dc06042f34e2acb95a76042c"
+  },
+  {
+    "path": "mages_city/site/vendor/THREE-LICENSE.txt",
+    "sha256": "bfe119ea4fd413f5f7ca3fcd63adb0c4a073ed39daa2fe7d3e6b769e21272601"
+  },
+  {
+    "path": "mages_city/site/vendor/three.core.js",
+    "sha256": "eb077d2417f61d3e6d9264c317cabc4ea35769ed6b0ab533067292a550784c20"
+  },
+  {
+    "path": "mages_city/site/vendor/three.module.js",
+    "sha256": "c8211c69345d2e9949dc7a8ac969380497aa0600a5a8ac6a459c8cd02dd9cb8a"
+  },
+  {
+    "path": "mages_city/gate/citykey.mjs",
+    "sha256": "8c4d9aaae4734922b31c662ba67fd3cf389cf53ea90760954bdd234201053a1a"
+  },
+  {
+    "path": "mages_city/gate/journey.mjs",
+    "sha256": "ae74ac3c4d3dfdd3ae036501a7f95ba42cf87de7d0e12e1ef13d908eeb9755c0"
+  },
+  {
+    "path": "mages_city/gate/names.mjs",
+    "sha256": "d3c3d8e70e413ba9b5c22eaf6251e8268edcb07ddbea93229531f253a5b976c4"
+  },
+  {
+    "path": "mages_city/gate/permissions.mjs",
+    "sha256": "99dc1f25411c416fbc7046cc00ac17e7a2276c3124b41d90651b958f1298a38d"
+  },
+  {
+    "path": "mages_city/portal/promise-graph.cjs",
+    "sha256": "3c7b5e6b56f44f27a99721cb442e94ec3890828deff2c4d0f8d5b859239e5c5b"
+  },
+  {
+    "path": "mages_city/bin/build-pages.js",
+    "sha256": "2a8da4c0f0e8b6c2142b194cb85f7179b8f87b727fa342059b4649f0cf98b7f0"
+  },
+  {
+    "path": "mages_city/bin/permissions.test.mjs",
+    "sha256": "1cd411117345279bd7d8f3f2a8655ffeae40ca4934c5fd766af603d23a78de20"
+  },
+  {
+    "path": "mages_city/bin/promise-graph.test.mjs",
+    "sha256": "9c3cadc0eb3646528029ded3391ea41b55cf2e4e623019ff7723174b12118245"
+  },
+  {
+    "path": "mages_city/bin/serve-site.js",
+    "sha256": "c95cdbf4f468d72dd3dffa1da321f4ed3cffb929ce92b6d5e281dfbd176f9c7b"
+  },
+  {
+    "path": "mages_city/bin/start.ps1",
+    "sha256": "0f23181375b8a64d5d2fd02f48a4c1b127933786ce2c8aed5853045b55e704cf"
+  },
+  {
+    "path": "mages_city/bin/verify-front.mjs",
+    "sha256": "2d92e198f7d970601546f0d295f959ca8d2832eb887e782eec3317fafa2c3b3a"
+  },
+  {
+    "path": "mages_city/bin/verify.mjs",
+    "sha256": "f68fc33635d7049aeb1e840b790a22e3fe87ecdd48122fd0de2b2f61590c5f99"
+  },
+  {
+    "path": "agentprivacy-mcp/lib/bake.mjs",
+    "sha256": "9c7de51210e2263319cfbe0386e7401e3ff54ce9ed792d94547db730ed820f01"
+  },
+  {
+    "path": "agentprivacy-mcp/lib/journey.mjs",
+    "sha256": "1288d6a6711efa0494357d466d67ab5cbc5a04254e561b7d3f784778d6f2aaff"
+  },
+  {
+    "path": "agentprivacy-mcp/lib/kappa.mjs",
+    "sha256": "ffb27d1614839655a3afe8a6a911ec316ed9a2d1d104892d38c8ed5877e16e23"
+  },
+  {
+    "path": "agentprivacy-mcp/lib/key.mjs",
+    "sha256": "7e75eb5e69c5dea62f8789da408a4211e7018615c5afd40996fbc065ea72a19a"
+  },
+  {
+    "path": "agentprivacy-mcp/lib/lattice.mjs",
+    "sha256": "0f111920360c9f4c4ad6e8d218e3a1fbf34f6ef213e80481c87845eed862f8f6"
+  },
+  {
+    "path": "agentprivacy-mcp/lib/png.mjs",
+    "sha256": "926325c4920cb0766c5eb54a2a78f0c07dfdb8f0c4962280880c165f1e0be637"
+  },
+  {
+    "path": "agentprivacy-mcp/lib/sigil.mjs",
+    "sha256": "9c67a38914319a885e25455e9b52186c09972314f318552704c6684d1d95206a"
+  },
+  {
+    "path": "agentprivacy-mcp/lib/sign.mjs",
+    "sha256": "6bc3a91be66dbc9c084b21b545391a33207b4f111940fa67fd120cea756799aa"
+  },
+  {
+    "path": "agentprivacy-mcp/test/bridge.test.mjs",
+    "sha256": "e50c9e1632873d1fe09482967b74efa89019723f5ef1a3d2d19f81652668db1e"
+  },
+  {
+    "path": "agentprivacy-mcp/test/browser-journey.test.mjs",
+    "sha256": "e012a30829585b44eda09f2ea9b7686e7df29d68527417fdeddf97e2c4d42642"
+  },
+  {
+    "path": "agentprivacy-mcp/test/canon.test.mjs",
+    "sha256": "e767722474c345be0e1968b239b3d49ad271a64e5b978431822c449a74a21434"
+  },
+  {
+    "path": "agentprivacy-mcp/test/journey.test.mjs",
+    "sha256": "0791186b67c09d9d1fa8bc1e07a9a2f61c700be9c2f6e5cda29b5bc90fbdb810"
+  },
+  {
+    "path": "agentprivacy-mcp/test/swordsman.test.mjs",
+    "sha256": "77b3951b7dbde28bcba25227e9a3f5c5d1bcee48752446b3c4839c02c857e018"
+  },
+  {
+    "path": "agentprivacy-mcp/server.mjs",
+    "sha256": "372f2255ae7aa44d3c9c0110331dca17345462a7e8ecca60e6a90cd2cd91edb2"
+  },
+  {
+    "path": "agentprivacy_master/src/lib/agent-substrates.ts",
+    "sha256": "5d516a38892f81fd1a6631fee597d951efac97f49ae8abc33269f9a382fbdb47"
+  },
+  {
+    "path": "agentprivacy_master/src/lib/artefact-parsing.ts",
+    "sha256": "88b14edc02c163cce04d1a0ba5ef1e6ba78a23f42cc7f98a96742caf019108ef"
+  },
+  {
+    "path": "agentprivacy_master/src/lib/artifact-presences.ts",
+    "sha256": "4059884f3e5edb2c0688830d265cdc45d6c3f521621c627c329c1a9bf14083ba"
+  },
+  {
+    "path": "agentprivacy_master/src/lib/canon-stamps.ts",
+    "sha256": "e42095e4410de424d1a71e5a439c2eff50f288f2136df8b405b8c8b4a2e242f6"
+  },
+  {
+    "path": "agentprivacy_master/src/lib/cast-attachments.ts",
+    "sha256": "b4e5310ac68a83b3fb854fd696349fb929e6a11d4a00d08a987f1accc6659f8d"
+  },
+  {
+    "path": "agentprivacy_master/src/lib/ceremony/constellation.ts",
+    "sha256": "3106472aa25836c7d7b0eeb13144f8e4e63e2d97d73579fdb2e8b615d21caea0"
+  },
+  {
+    "path": "agentprivacy_master/src/lib/ceremony/keygen.ts",
+    "sha256": "2b259135ddc6ab73342e7f4dfa7c7b25dd85df9777f5bd324ee2fcefac0ef80c"
+  },
+  {
+    "path": "agentprivacy_master/src/lib/ceremony/moon-phase.ts",
+    "sha256": "2c832fa059de9cb61a6c85b1ea20fe303d68a87a3aee70cb875de486754a8e92"
+  },
+  {
+    "path": "agentprivacy_master/src/lib/ceremony/storage.ts",
+    "sha256": "0227e623c8a54b8718a19033be1b432aa6d01b76a2ad281aff9c0d5c9e271765"
+  },
+  {
+    "path": "agentprivacy_master/src/lib/ceremony/types.ts",
+    "sha256": "9913add0fc7a0d05410655e568f1f8b7338653225653f56ffece9c3c132e210b"
+  },
+  {
+    "path": "agentprivacy_master/src/lib/chart-reading.ts",
+    "sha256": "4a61d7187c58426e703f85d8b72d7000f427139ea699ea835a892d3d7b208eff"
+  },
+  {
+    "path": "agentprivacy_master/src/lib/charthouse-dispatch.ts",
+    "sha256": "744b7e9a7dde724c21bc8737f6ceb3a448218e4f98b5eb4d895a78a315321651"
+  },
+  {
+    "path": "agentprivacy_master/src/lib/city-key-charge.ts",
+    "sha256": "00dd4fa72781d659ccf48dd95d099d222fd3476070bb9317e254954ad6f6bd95"
+  },
+  {
+    "path": "agentprivacy_master/src/lib/city-key-journey.ts",
+    "sha256": "40a5c7776a6dee84708453059987cdead3614e1f0c9bc63bcedd0e3867837aeb"
+  },
+  {
+    "path": "agentprivacy_master/src/lib/city-key.ts",
+    "sha256": "4ce54f52b1aedc164ef6786170d0eefa1525f8fde6780f3d3464c61646bfc24c"
+  },
+  {
+    "path": "agentprivacy_master/src/lib/constellation-drafts.ts",
+    "sha256": "ee52d6079b04361151457f1eb56546e3b07b7efc45c795ec655e66195bd1c08d"
+  },
+  {
+    "path": "agentprivacy_master/src/lib/districts.ts",
+    "sha256": "7d5b17dc41f26474addaf921339ffa75790a4c556eae4e05cb3c5d73e06f854f"
+  },
+  {
+    "path": "agentprivacy_master/src/lib/ecosystem-routes.ts",
+    "sha256": "8b405ac3ed6fb3082647f99047a06b1f1a08033d19f9cab2b13d353a57fe62b4"
+  },
+  {
+    "path": "agentprivacy_master/src/lib/evoked-storage.ts",
+    "sha256": "1e80460267325f9e3cf7368e18e57228f5bc5fe857f62dabb2b90b04e1e7893c"
+  },
+  {
+    "path": "agentprivacy_master/src/lib/extension-bridge.ts",
+    "sha256": "ab55e11ba6e38c62ebb0a93f0f0abcb2a5f7f97e038c9915e7a09d56fe0fb450"
+  },
+  {
+    "path": "agentprivacy_master/src/lib/first-artifacts.ts",
+    "sha256": "da96a9c8555adb3efae138d4ce97e902771dcec89c0f3c5086173b6d8fa5b360"
+  },
+  {
+    "path": "agentprivacy_master/src/lib/fleet-descents.ts",
+    "sha256": "2afe21ea985f8491df8a84d789d8c0359a72e0cd15e6c3f315b860d2d8a2e26a"
+  },
+  {
+    "path": "agentprivacy_master/src/lib/grimoire-baked.ts",
+    "sha256": "7d4619c24d0016d224c9757b13e503648ff68808d88432c0feaa3de71bf6f5ef"
+  },
+  {
+    "path": "agentprivacy_master/src/lib/grimoire-ipfs.ts",
+    "sha256": "32a08c98fd284a9c9967a28d0658a1c6e19adaf5c293edbd15282d45c2be975f"
+  },
+  {
+    "path": "agentprivacy_master/src/lib/hexagram.ts",
+    "sha256": "7b847c19cbed965ec15f619ff0cd3bc7afc1da47d50e3c92234f6ea53d604f91"
+  },
+  {
+    "path": "agentprivacy_master/src/lib/journey-core.d.ts",
+    "sha256": "97483cf07a0b83e7af4746ffed3300b5c3e1d6babae454948deabab3b618455a"
+  },
+  {
+    "path": "agentprivacy_master/src/lib/journey-core.js",
+    "sha256": "b54f65f99c96b4b00f59c2efc46965f030d6d72320f63a2059f0528e9868d3f5"
+  },
+  {
+    "path": "agentprivacy_master/src/lib/journey-store.ts",
+    "sha256": "e4d8f96c9d8534bb179a32586a9d6d7ae0e2a58e3cbeec5ff67a4114faffef29"
+  },
+  {
+    "path": "agentprivacy_master/src/lib/lattice-config.ts",
+    "sha256": "6a3d9dad3790253a68119f0e7304e5ba56a75ef8bdd7e45d5b6175c983570aed"
+  },
+  {
+    "path": "agentprivacy_master/src/lib/lattice-vertex-suggestions.ts",
+    "sha256": "812bf035cd9fe71627ad91381538a4381e3e9ade89b2367cf8a781d0742e35ad"
+  },
+  {
+    "path": "agentprivacy_master/src/lib/lattice-vertex.ts",
+    "sha256": "dfcd224440bdcf700c5bb5dab418a881bcdef32c974633c195d92d391b130f98"
+  },
+  {
+    "path": "agentprivacy_master/src/lib/learning-inscribed-sync.ts",
+    "sha256": "341cbfb362e76717fa6ba7099afcf8d1ed61c6d2241e2ca4733ed737521c3de5"
+  },
+  {
+    "path": "agentprivacy_master/src/lib/model-downloads.ts",
+    "sha256": "9085836923c52dec4ce72e32eab5b6fae1b8ecf94df255d43e452f0636493ad0"
+  },
+  {
+    "path": "agentprivacy_master/src/lib/model-page.ts",
+    "sha256": "f5d9379933faa8a368aacb46bd3a56128e332bde292d140e81c5e21d3a4db72a"
+  },
+  {
+    "path": "agentprivacy_master/src/lib/nav.ts",
+    "sha256": "1e9243ccab7726d1f16e23d531950135d73619eccce664ce9719792516c51347"
+  },
+  {
+    "path": "agentprivacy_master/src/lib/oracle-api.ts",
+    "sha256": "7dfedcd3f7017e5f6ff57d29afe4ef6e01dd536a4df47c994f57100d3f1bc0c2"
+  },
+  {
+    "path": "agentprivacy_master/src/lib/orb-loadout.ts",
+    "sha256": "9c2da64a42fda6a776b7c910fdbb022df44d56852886d43a2c2fb017740799cc"
+  },
+  {
+    "path": "agentprivacy_master/src/lib/persona-index.ts",
+    "sha256": "d146242a576bde9a77fc1ee69ab1938bd28bded2957d0cbb0622920ef771ac42"
+  },
+  {
+    "path": "agentprivacy_master/src/lib/presented-artefacts.ts",
+    "sha256": "6ee92f94105293910033aa93d126f788fcd5e16f6d544e7d5c1e07b37d7799e5"
+  },
+  {
+    "path": "agentprivacy_master/src/lib/promises/default-promises.ts",
+    "sha256": "4992bcd6cf833ca035e36517248abfea87b3f8715fa4b74bb302535f294ae29c"
+  },
+  {
+    "path": "agentprivacy_master/src/lib/promises/storage.ts",
+    "sha256": "0c4b2865293992ece30768077a9ed31d0c68732ac632e6833802dacfa0dec631"
+  },
+  {
+    "path": "agentprivacy_master/src/lib/promises/types.ts",
+    "sha256": "f4afd88ed1e7dc6055135296b0fd194661726e131b253142b41b9cd0f69c40e8"
+  },
+  {
+    "path": "agentprivacy_master/src/lib/proof-packet-digest.ts",
+    "sha256": "8c01ee858d834444093d47326da88d84568efc40f172e7e70d08cb65e8948ebf"
+  },
+  {
+    "path": "agentprivacy_master/src/lib/proof-packet.ts",
+    "sha256": "930cb83942f5cba0e8306845a3a8a5162612c79c9794dbfd08104cf4be998edc"
+  },
+  {
+    "path": "agentprivacy_master/src/lib/proof-packets-store.ts",
+    "sha256": "12a385d8641606c48d7df0817f275aaf77a422ba191204a9ae074f5bab649071"
+  },
+  {
+    "path": "agentprivacy_master/src/lib/proverbs/storage.ts",
+    "sha256": "eefbe8b14cdebe7b1fa57d4088f97f8f1cf5fe70b82fd5f402b355450e2006ed"
+  },
+  {
+    "path": "agentprivacy_master/src/lib/send-to-privacymage.ts",
+    "sha256": "994ba2465e2c35ecf8a414207a8d2d2d8d9f5f073908f3df98d27cdf97915d15"
+  },
+  {
+    "path": "agentprivacy_master/src/lib/shop-witnesses.ts",
+    "sha256": "caf4b05481efca9da0d93f50637a1ff79e10f58a70248836cd1533c51ba62704"
+  },
+  {
+    "path": "agentprivacy_master/src/lib/skills-data.ts",
+    "sha256": "115940cff0eeddf3eebfb6338e249ab10ad307608b03867931018e40d21444cc"
+  },
+  {
+    "path": "agentprivacy_master/src/lib/soul-convergence.ts",
+    "sha256": "9b64d41d899676b0d614ffba4232be2bbe0a9f2738b3c8cc2c40c6fa18835e36"
+  },
+  {
+    "path": "agentprivacy_master/src/lib/soul-stats.ts",
+    "sha256": "d1a7a474f4ea838afdaac44fad5c3f4e05ff520831c2f974b278689dfafa7854"
+  },
+  {
+    "path": "agentprivacy_master/src/lib/spell-emoji-tokens.ts",
+    "sha256": "d56193169d763d382d43499de10f39471b503ceaa0eb0eccf688159d88e30645"
+  },
+  {
+    "path": "agentprivacy_master/src/lib/spellbook-fetcher.ts",
+    "sha256": "c501b51f1f244b9ae0a7fddb262867b556d2d31d8d82e7becb090de41fe1e209"
+  },
+  {
+    "path": "agentprivacy_master/src/lib/spellbook-storage.ts",
+    "sha256": "c3fd9f560285c3a51aa8a4046d680b430b81e422270b7b4824fba5198817dd03"
+  },
+  {
+    "path": "agentprivacy_master/src/lib/spellbook-templates.ts",
+    "sha256": "ada7e6cc6cb34c51db12771f72af70c8e919db24f57d8b235aa901639eca7a3b"
+  },
+  {
+    "path": "agentprivacy_master/src/lib/spellweb/builder.ts",
+    "sha256": "7d0f9376eea66ba3a70e2c1ade38a4ed7a54c630e3ea8ce8518865aed598b9e0"
+  },
+  {
+    "path": "agentprivacy_master/src/lib/spellweb/labels.ts",
+    "sha256": "a69499fcf7724fbe77be02fb3bd2dce267821311b881b2982e009392174b2338"
+  },
+  {
+    "path": "agentprivacy_master/src/lib/spellweb/lattice-mode.ts",
+    "sha256": "1bc9f437afce77bae2548e29344651b456af01ec7c84707447641b8cf1694181"
+  },
+  {
+    "path": "agentprivacy_master/src/lib/spellweb/types.ts",
+    "sha256": "1a7d7d27ce9f2625a3e25c4cc13c75e02504dedf5f201fce15eda9b83e432f85"
+  },
+  {
+    "path": "agentprivacy_master/src/lib/spellweb-blade-bridge.ts",
+    "sha256": "800c2ec97e82d27c77f2553d57eeceb6ea5e3e8ef474644926e2ee2a8c944783"
+  },
+  {
+    "path": "agentprivacy_master/src/lib/spellweb-blade-keys.ts",
+    "sha256": "f96e7abdcd2c830eeca4b1525a7021489f65bc5a73648c4fae41beb919b13120"
+  },
+  {
+    "path": "agentprivacy_master/src/lib/spellweb-keys.ts",
+    "sha256": "f3dd0992ea6ba5e71afc5154bd121d8e01aa705645fb3934fd0368c07ef7144e"
+  },
+  {
+    "path": "agentprivacy_master/src/lib/tome-act-loader.ts",
+    "sha256": "205101f2c805156b2971bdc5f50ce1d82ebbf7aae50cbece836b622843c89574"
+  },
+  {
+    "path": "agentprivacy_master/src/lib/tome-inscriptions.ts",
+    "sha256": "36be2b821439c6136542f6d43eb33f267c34cd46302dbbe0b023d1f0b4def4ea"
+  },
+  {
+    "path": "agentprivacy_master/src/lib/tome-v-acts.ts",
+    "sha256": "d9012f8cd873738eb5d1b812bb66d1883e9d2f690097154914eef2a871c4ff29"
+  },
+  {
+    "path": "agentprivacy_master/src/lib/tome-v-conjectures.ts",
+    "sha256": "631c5cf3f557d77dc8a73495169c6b226cff509c2e3ccd1e7d7f7f5208712c6d"
+  },
+  {
+    "path": "agentprivacy_master/src/lib/training-progress.ts",
+    "sha256": "4d0c4dc48a884d6c1ea01d179971e7a4ab88bcf9334cbb8a00cdac337e1ef55f"
+  },
+  {
+    "path": "agentprivacy_master/src/lib/trust/storage.ts",
+    "sha256": "fe81a0b367fb7545e1023def34d618a5cf728d83b2297415708e3f5bb9990d39"
+  },
+  {
+    "path": "agentprivacy_master/src/lib/trust/tiers.ts",
+    "sha256": "d6567b260b56f207c5a92d728dfff92d3c6da16601ffdb9fa3905739114d65aa"
+  },
+  {
+    "path": "agentprivacy_master/src/lib/vertex-notes.ts",
+    "sha256": "428d4016d2add48ff18e59f310844a9d10f8a95417f1eb0611b156c69554f9ca"
+  },
+  {
+    "path": "agentprivacy_master/src/lib/visuals.ts",
+    "sha256": "1d8615e3cc45304b5944f39286e429b2888712ae4a5bbbbb95109a11c31c2f59"
+  },
+  {
+    "path": "agentprivacy_master/src/lib/vrc-allocation.ts",
+    "sha256": "2e9d4f58959298d81815c8abd8b8dd09f87abb2e57c918691b313e558290eef2"
+  },
+  {
+    "path": "agentprivacy_master/src/lib/vrc-mana.ts",
+    "sha256": "5bf743a76b16f5be14c02d36d86085cbc307094be972ccfb61120d4692dd2780"
+  },
+  {
+    "path": "agentprivacy_master/src/lib/wikis-data.ts",
+    "sha256": "0904beb13ccd43bcc474c10e898545781f0c797b0de37ebbcedfb3fcf7dba66f"
+  },
+  {
+    "path": "agentprivacy_master/src/lib/workshop-prompts.ts",
+    "sha256": "53051348d5dd581d27c6b21a0daea7443e842c9e712a05cefa112a8acd7e0dfb"
+  },
+  {
+    "path": "agentprivacy_master/src/lib/zcash-addresses.ts",
+    "sha256": "6ca087be0c2c5eee3058ea9b0633d3cb7de3c4dde2d7478aede127e1b32df278"
+  },
+  {
+    "path": "agentprivacy_master/src/lib/zcash-memo.ts",
+    "sha256": "2b7e3d0a64d3760d31f3a24b79f6129d5b57ccfc544bf90a98ef5c069d0ff7ea"
+  },
+  {
+    "path": "agentprivacy_master/src/lib/zero-tales.ts",
+    "sha256": "9bf0583081ec58f9082226ac77445f7b80f5bab19e4414b29aaa3f3354975e75"
+  },
+  {
+    "path": "spellweb/src/lib/cityKey.ts",
+    "sha256": "7541d8a6566da91ca7ff2c00ca0b81fb123083d603c689614b7856087c272055"
+  },
+  {
+    "path": "spellweb/src/lib/cityKeyJourney.ts",
+    "sha256": "081bf6782b08e91df24a15509d98392e1b42b9926bda5ac7e643032743c05dfc"
+  },
+  {
+    "path": "spellweb/src/lib/forge.ts",
+    "sha256": "3904c198baf6c267ce50094cd00460edc58a2eb146ec00213a61f5c794843314"
+  },
+  {
+    "path": "spellweb/src/lib/journey-core.d.ts",
+    "sha256": "97483cf07a0b83e7af4746ffed3300b5c3e1d6babae454948deabab3b618455a"
+  },
+  {
+    "path": "spellweb/src/lib/journey-core.js",
+    "sha256": "b54f65f99c96b4b00f59c2efc46965f030d6d72320f63a2059f0528e9868d3f5"
+  },
+  {
+    "path": "spellweb/src/lib/journey-store.ts",
+    "sha256": "e4d8f96c9d8534bb179a32586a9d6d7ae0e2a58e3cbeec5ff67a4114faffef29"
+  },
+  {
+    "path": "spellweb/src/lib/mageIdentity.ts",
+    "sha256": "204013d46893a6cc7bbbd5a89c49c1662e5da29825a5f125dbddabc5aa36025c"
+  },
+  {
+    "path": "spellweb/src/lib/proofPackets.ts",
+    "sha256": "04042ac677a4fdc32d476e34ab9b3b4e44830a15330e30296841ee51d7569443"
+  },
+  {
+    "path": "spellweb/src/lib/v160-cross-validate.ts",
+    "sha256": "43b7c921c1d690b9b85d857888b5141855fd708fb2d0a2183c11f19504cf2b1b"
+  },
+  {
+    "path": "spellweb/src/lib/workshop-artefact.ts",
+    "sha256": "4af4a17e426537d8ced5167146b7d31028ddb5c8c876feecc4508675081e7016"
+  },
+  {
+    "path": "spellweb/src/lib/workshop-provenance.ts",
+    "sha256": "e0ef9c201c8a92903e8d107f772e82c750b01ed3ca8d5afdc422e72e431881ee"
+  },
+  {
+    "path": "spellweb/src/types/graph.ts",
+    "sha256": "9b57e072973f221930ca05d7fc0d69257fe728e8e38fe6271e33cc53a0b6a023"
+  },
+  {
+    "path": "spellweb/scripts/journey-roundtrip-check.mjs",
+    "sha256": "1b904c9198e2c0624ee9d57ab1693e9d08f9a46b0fea362e70b93c8b995ebc79"
+  },
+  {
+    "path": "dual-agent-harness/engine/attacks/grind.mjs",
+    "sha256": "fbdfacd182d76d7dacc5f4ab7f2b606c472990824ee62d62b0ce68027b96fdf8"
+  },
+  {
+    "path": "dual-agent-harness/engine/attacks/omit_one.mjs",
+    "sha256": "bda1738642db484b46790e21d8457319b60533fd4860a38feba2a785e6beb4dd"
+  },
+  {
+    "path": "dual-agent-harness/engine/attacks/registry.mjs",
+    "sha256": "071eb149cebd7e425826ea057c4357596be22b3e6eec8d3fe2a1cbb771cd1a75"
+  },
+  {
+    "path": "dual-agent-harness/engine/attacks/retry.mjs",
+    "sha256": "79b4ccf2370dc895a7505c200eb8fb7bc6577235baf2933245d916d8ca41a1f0"
+  },
+  {
+    "path": "dual-agent-harness/engine/attacks/run.mjs",
+    "sha256": "ccef5f5ffadedb3fb7cb5c6284b8baf50ea5179d1040f456e183b146623801c5"
+  },
+  {
+    "path": "dual-agent-harness/engine/conform.mjs",
+    "sha256": "94d719738b709fc5b7c5bcc187f5e3adf62b1a956c0fde38a4d5614aa7d33d32"
+  },
+  {
+    "path": "dual-agent-harness/engine/dual_agent_loop.mjs",
+    "sha256": "3b0be6b723e13527a82a10bf1e5f5d34ce15a839ff2beece3c453d6c0723628e"
+  },
+  {
+    "path": "dual-agent-harness/engine/gap.mjs",
+    "sha256": "be29a53abe5f6c55cf8a4bb2a3e2b65d7a3cd1ba0728e78ae19065f910bf9fc7"
+  },
+  {
+    "path": "dual-agent-harness/engine/gap.test.mjs",
+    "sha256": "eafca8751782b05bc48173916d89d335efe3a3174de570ef4b1f7591e1d9d724"
+  },
+  {
+    "path": "dual-agent-harness/engine/loop.salt.test.mjs",
+    "sha256": "540ab30f10fab9c53e17b04739fca7e44d88c90be6339311a2839fc9db543a06"
+  },
+  {
+    "path": "dual-agent-harness/engine/loop.test.mjs",
+    "sha256": "04da2ef8cde746daa94c838586802d7cd54c7ee4464e9e8cda8640f82fcdd2f6"
+  },
+  {
+    "path": "dual-agent-harness/TRUSTS.md",
+    "sha256": "434184e24d2fc637df4009d34d43158b1227c49fe14113a63f6570ab8f16c0cc"
+  },
+  {
+    "path": "dual-agent-harness/GROUND_RULES.md",
+    "sha256": "6657162d4aa5b843476b26e06a89d658c8f5c3f769320f73e9457d20850a586a"
+  },
+  {
+    "path": "mages_city/harness/city_mage/run.mjs",
+    "sha256": "1f7b6bf602ceb6ac9ca18821ddb13f449de196a037cf113893a650539d4edab8"
+  },
+  {
+    "path": "mages_city/harness/city_mage/runtime.json",
+    "sha256": "3fd69559e2e65c6f43a03136007adda35832b99eb7ad44b6093c2c8e99ed60bc"
+  },
+  {
+    "path": "mages_city/harness/city_mage/harness.config.mjs",
+    "sha256": "a8f6e8138be7a6d297fbdccaa0abfd8617e652c787ad3ca7bce9bbd33b0289a0"
+  },
+  {
+    "path": "mages_city/harness/city_mage/setup.mjs",
+    "sha256": "300750d276fced5d8e18d87014ed4fbe5b4ade35ffba7465ea63ba48578b5c61"
+  },
+  {
+    "path": "mages_city/harness/city_mage/setup.test.mjs",
+    "sha256": "67d6eec4d464f2db3255e9e6e3009ea6cebb8cdf2d7944f4bd55bfbef739859a"
+  },
+  {
+    "path": "mages_city/harness/city_mage/checkpoint-store.mjs",
+    "sha256": "84ff8c804bd3f4255619287d9fd05f5456fcda5d3a9a36b0430cdd422536630d"
+  },
+  {
+    "path": "mages_city/harness/city_mage/checkpoint-store.test.mjs",
+    "sha256": "9c38860eea3bf7df437d887fbf7490917861a34a29464ae77da19277a4804db6"
+  }
+]

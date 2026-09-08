@@ -101,10 +101,16 @@ for (const h of HOSTS) {
 
 // 5 · the front serves
 {
-  const i = await front('/');
-  check('front serves index.html', i.status === 200 && /mages\.city/.test(i.text) && /data\.js/.test(i.text), `${i.status}`);
-  const b = await front('/board');
-  check('front serves /board as board.html (auto-trailing-slash rule)', b.status === 200 && /Portal Room/i.test(b.text), `${b.status}`);
+  // 3239af2 made the City front the index and moved the connected front to /connected/.
+  // These rows kept asking / for the connected front, so they failed on a site that was working
+  // as intended. BOTH fronts are published, so both are checked by path — a row that names only
+  // one path silently stops testing the moment the other one moves under it.
+  const city = await front('/');
+  check('front serves the City front at /', city.status === 200 && /Mages City/i.test(city.text), `${city.status} · ${(city.text.match(/<title>([^<]*)/) || [])[1] || 'no title'}`);
+  const i = await front('/connected/');
+  check('front serves the connected index at /connected/, still wired to data.js', i.status === 200 && /mages\.city/.test(i.text) && /data\.js/.test(i.text), `${i.status}`);
+  const b = await front('/connected/board');
+  check('front serves /connected/board as board.html (auto-trailing-slash rule)', b.status === 200 && /Portal Room/i.test(b.text), `${b.status}`);
   const s = await front('/skill.md');
   check('front serves skill.md with the twin URLs', s.status === 200 && s.text.includes(`http://wiki.${TLD}:${FARM_PORT}`), `${s.status}`);
   const d = await front('/data.js'); const cfg = await front('/config.js'); const css = await front('/style.css');
@@ -119,10 +125,16 @@ let roster = { residents: [], districts: [], all: [] };
 {
   roster = await C.roster();
   check('data: roster → 3 residents + 4 districts', roster.residents.length === 3 && roster.districts.length === 4, `residents ${roster.residents.join(',')} · districts ${roster.districts.join(',')}`);
-  const feed = await C.feed(roster.all, { limit: 60 });
+  // The window has to be wider than the farm, or this stops testing what it says. At limit 60 the
+  // newest items from the two busiest hosts filled the feed and crowded the other five out —
+  // "merges every site" was reported on a sample that could no longer reach every site. The farm
+  // grows; a fixed sample does not. FEED_LIMIT must stay comfortably above the farm's thread count
+  // (the feed saturates well below it — the detail string prints where it landed).
+  const FEED_LIMIT = 400;
+  const feed = await C.feed(roster.all, { limit: FEED_LIMIT });
   const hosts = new Set(feed.flatMap(t => t.sites.map(s => s.host)));
   const fl = feed.find(t => t.slug === 'first-light');
-  check('data: live feed merges every site, first-light is a 2-site thread', hosts.size >= 5 && fl?.sites.length === 2, `${feed.length} threads · ${hosts.size} hosts · first-light ×${fl?.sites.length ?? 0}`);
+  check('data: live feed merges every site, first-light is a 2-site thread', hosts.size >= 5 && feed.length < FEED_LIMIT && fl?.sites.length === 2, `${feed.length} threads (window ${FEED_LIMIT}) · ${hosts.size}/${roster.all.length} hosts · first-light ×${fl?.sites.length ?? 0}`);
   const kinds = new Set(feed.map(t => kindOf(t.sites[0].host, t.sites[0].slug)));
   check('data: the feed carries four kinds (post · standing · portal · district)', ['post', 'standing', 'portal', 'district'].every(k => kinds.has(k)) && kindOf(R('soulbae'), 'first-light') === 'post' && kindOf(R('soulbae'), 'role') === 'standing', [...kinds].join(','));
   const bae = await C.resident(R('soulbae'));
@@ -311,6 +323,26 @@ let said = null;
   check('citykey: evidence → the Namekeeper\'s rung (vouched) and the chip (light · 3 packets · 1 walks)', rung(ev) === 2 && ev.proven && ev.sealed === 1 && ev.revealed === 1 && ev.refractive === 1 && CK.chipOf(ev, ev.vouches) === 'light · 3 packets · 1 walks · vouched ×2', CK.chipOf(ev, ev.vouches));
   const bare = CK.verifyKey({ name: 'bare', version: 1, palette: key.palette, descriptions: {} });
   check('citykey: an unexported working key is valid and unproven, not refused', bare.ok && bare.kappa.ok === null && CK.chipOf(CK.evidenceOf({ name: 'bare', version: 1, palette: key.palette, descriptions: {} })).startsWith('blade · unproven'), bare.findings[0]);
+
+  // `ok` means NOTHING CONTRADICTED, not EVERYTHING CHECKED. A key that claims packets nobody
+  // supplied is still ok:true — the four states are what tells them apart, and a display or a
+  // grant that reads `ok` alone will call an unchecked claim a checked one.
+  const claimsOnly = { version: 1, palette: key.palette, descriptions: {}, packets: { root: 'sha256:' + 'a'.repeat(64), count: 3 } };
+  claimsOnly.kappa = CK.kappaOf(claimsOnly);
+  const co = CK.verifyKey(claimsOnly, []);
+  check('citykey: a claim nobody can check reads `unavailable`, never `match` — and ok stays true',
+    co.ok === true && co.states.packetsRoot === 'unavailable' && co.states.kappa === 'match' && co.states.did === 'absent' && co.unverified.includes('packetsRoot') && co.findings.length === 1,
+    `states ${JSON.stringify(co.states)}`);
+  check('citykey: the four states stay distinct across match · mismatch · absent · unavailable',
+    v.states.packetsRoot === 'match' && t.states.kappa === 'mismatch' && bare.states.kappa === 'absent' && co.states.packetsRoot === 'unavailable',
+    `${v.states.packetsRoot} · ${t.states.kappa} · ${bare.states.kappa} · ${co.states.packetsRoot}`);
+
+  // the graph half of `evidenceOf` is the CALLER's assertion, not a finding this module made.
+  // It must say so, or a rung gets granted on the strength of having been asked nicely.
+  const evClaimed = CK.evidenceOf(claimsOnly, [], { member: true, vouches: 2, met: 1, vwc: 1 });
+  check('citykey: evidence declares its graph half unverified and names the source',
+    evClaimed.graphVerified === false && evClaimed.graphSource === 'caller-supplied' && ['member', 'vouches', 'met', 'vwc'].every(f => evClaimed.unverified.includes(f)) && rung(evClaimed) === 3 && evClaimed.proven === false,
+    `rung ${rung(evClaimed)} on nothing checked · proven ${evClaimed.proven}`);
 }
 
 // 11e · the record beside the key (site/record.js) — the City verifies what the Swordsman signed.
@@ -380,10 +412,24 @@ let said = null;
   const e3 = nk.elevate('verify-agent', { member: true, vouches: 2, met: 1, vwc: 1 });
   const conf = fs.readFileSync(path.join(data, 'keys', 'agents.conf'), 'utf8');
   check('names: witnessed → rung 3, its own TSIG key rendered into agents.conf (selfsub)', e3.ok && e3.rung === 3 && e3.tsig?.name === `verify-agent.${TLD}.` && conf.includes(`key "verify-agent.${TLD}."`) && !JSON.stringify(nk.entries()).includes(e3.tsig.secret), `key ${e3.tsig?.name} · secret absent from ledger`);
+  // The ladder must be walked DOWN as well as up. Every row above only ever climbed, which is
+  // exactly how a downgrade that left the rung-3 TSIG standing in agents.conf passed this file
+  // 77/77: the ledger said rung 1 while BIND still held a key over the whole subtree. Decided
+  // state and applied state have to be checked together, or the gate only proves half a ladder.
+  const d2 = nk.elevate('verify-agent', { member: true, vouches: 2, met: 1 });
+  const confD2 = fs.readFileSync(path.join(data, 'keys', 'agents.conf'), 'utf8');
+  check('names: witnessed → vouched withdraws the key from the state AND from agents.conf, and reconfigures',
+    d2.ok && d2.rung === 2 && !nk.list()[0].key && !confD2.includes(`key "verify-agent.${TLD}."`) && d2.apply.commands.length > 0,
+    `rung ${d2.rung} · key ${nk.list()[0].key} · ${d2.apply.commands.length} reconfig command(s)`);
+  const d1 = nk.elevate('verify-agent', { member: true });
+  const wA3 = nk.write('verify-agent', { type: 'A', value: '203.0.113.9' });
+  check('names: vouched → admitted drops the write right too, not only the rung',
+    d1.ok && d1.rung === 1 && !nk.list()[0].key && !wA3.ok && /rung 2/.test(wA3.why),
+    `rung ${d1.rung} · A refused: ${wA3.why?.slice(0, 44)}`);
   check('names: ask — apex, fixed hosts, claimed names allowed; unknown and two-level refused', nk.isAllowed(TLD) && nk.isAllowed('wiki.' + TLD) && nk.isAllowed('verify-agent.' + TLD) && !nk.isAllowed('nobody.' + TLD) && !nk.isAllowed('a.b.' + TLD), '');
   const rel = nk.release('verify-agent', 'acceptance run');
   const conf2 = fs.readFileSync(path.join(data, 'keys', 'agents.conf'), 'utf8');
-  check('names: release withdraws the key, keeps the history, chain verifies', rel.ok && !conf2.includes('verify-agent') && !nk.isAllowed('verify-agent.' + TLD) && nk.verifyChain() && nk.entries().filter(e => e.name === 'verify-agent').length === 6, `${nk.entries().length} ledger entries`);
+  check('names: release withdraws the key, keeps the history, chain verifies', rel.ok && !conf2.includes('verify-agent') && !nk.isAllowed('verify-agent.' + TLD) && nk.verifyChain() && nk.entries().filter(e => e.name === 'verify-agent').length === 8, `${nk.entries().length} ledger entries`);
   fs.rmSync(data, { recursive: true, force: true });
 }
 

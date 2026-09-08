@@ -1,0 +1,1 @@
+CONFORM PASS — algebra proven on Z/64Z, trusts anchored, GR-1..10 present, 7 seats carded, door is the First Person's, instance config + frontier coherent.

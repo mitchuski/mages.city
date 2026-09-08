@@ -119,3 +119,7 @@ One feed, several lanes; a lane is a filter, never a separate store.
 Claiming sites · moving the domain to Cloudflare · running the tunnel · standing up the
 VTI stack (VTA service, DID host, DIDComm mediator, the City VTC) · admitting anyone ·
 `npx wrangler deploy` for the front · making this directory a git repo.
+
+## VTA + Star: agent knowledge spaces (2026-09-08)
+
+[City integration](docs/VTA_STAR_KNOWLEDGE_SPACES.md) records this surface's responsibilities and acceptance gates. The shared design places FedWiki records, browser-carried Star state, first-contact intent, MCP Trust Tasks, VTA permission enforcement and earned Mages City names in one continuing journey. Status is explicitly partial; follow the note's source and deployment distinctions.
