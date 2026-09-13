@@ -127,7 +127,7 @@ are fully supported — no reason to make anything public for this.
 
 ### A2 · The always-on host — **DONE 2026-09-07** ✅
 
-Deployed to `city-pi` over the tailnet. A `mages` system user, `/srv/mages.city/{repo,farm}`, the
+Deployed to the City Pi over the tailnet. A `mages` system user, `/srv/mages.city/{repo,farm}`, the
 cookie secret generated on the Pi into `/etc/mages/farm.env` (0600 root, never printed), the three
 units installed and enabled, and the pages built for the production TLD.
 
@@ -148,13 +148,13 @@ card is unminted a chip reading `verified` on a key nobody holds. It is now guar
 
 ### A2b · The City on the mitch mesh — **DONE 2026-09-07** ✅
 
-The City opens to the mesh before it opens to the internet. Four pinned ports on `city-pi`,
+The City opens to the mesh before it opens to the internet. Four pinned ports on the City Pi,
 following the pattern the mitch farm already uses on 3131–3136, each rewriting `Host` to the
 production name because the farm serves a site only when a directory of that name exists:
 
 ```
-http://city-pi:3341   the Hall        http://city-pi:3343   the Portal  (+ desk paths → :4445)
-http://city-pi:3342   the Swarm       http://city-pi:3344   the Exchange (+ desk paths → :4448)
+http://the City Pi:3341   the Hall        http://the City Pi:3343   the Portal  (+ desk paths → :4445)
+http://the City Pi:3342   the Swarm       http://the City Pi:3344   the Exchange (+ desk paths → :4448)
 ```
 
 All four verified serving real content — the Hall's pages, the Portal's seeded topics, the
@@ -168,15 +168,17 @@ knowing:
 
 | name | resolves to | serving |
 |---|---|---|
-| `*.mitch.private.fish` | `<tailnet-address-redacted>` — **the keeper's workstation** | yes, the Windows farm |
-| `*.mages.private.fish` | `<tailnet-address-redacted>` — **pi5** | **nothing** |
-| `city-pi` (MagicDNS) | `<tailnet-address-redacted>` | the City, now |
+| `*.mitch.private.fish` | the keeper's workstation (tailnet address redacted) | yes, the workstation farm |
+| `*.mages.private.fish` | the larger Pi (tailnet address redacted) | **nothing** |
+| the City Pi (MagicDNS name redacted) | tailnet address redacted | the City, now |
+
+*Tailnet addresses and MagicDNS names are kept out of this public record; they live in the keeper's private notes.*
 
 So the August plan to repoint `mitch.private.fish` at the Pi was never carried out, and the `mages`
 name on the mesh is already pointed at pi5 with nothing behind it. **⚑ Both are the keeper's calls**
 — which host owns the `mages` mesh name, and whether pi5 was meant to hold it. pi5 is the larger
 machine (7.9 GB against 1.8 GB) but has no passwordless sudo from here and 13 GB of disk against
-city-pi's 107 GB, which is why the board went where it did.
+the City Pi's 107 GB, which is why the board went where it did.
 
 ### What the mesh is for, beyond convenience
 
@@ -206,7 +208,7 @@ on ARM (unlike the VTI's Rust stack, which wants x86), so the options are open:
 
 | option | cost | note |
 |---|---|---|
-| **`city-pi`** | £0 | **already runs this**: Caddy answering on :80, farm ports 8081–8085 listening, from the August mirror. The shortest path by a distance. |
+| **the City Pi** | £0 | **already runs this**: Caddy answering on :80, farm ports 8081–8085 listening, from the August mirror. The shortest path by a distance. |
 | `02-pi4` · `pi5` | £0 | both online on the tailnet; `pi5` if you want headroom for anything else |
 | a small VPS | ~£4–5/mo | if home uptime bothers you. Oracle's free ARM tier also fits |
 
