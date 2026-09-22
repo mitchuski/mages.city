@@ -43,14 +43,23 @@ checked** (`sha256:07f20f68…83d1` over the alpha/beta/gamma leaves — the sam
 pages verify independently), `did:key` derivation (base58btc, `z6Mk…`), walk elements, `verifyKey`
 with findings, `evidenceOf` → the Namekeeper's four inputs plus the chip's, `chipOf`. Five
 acceptance rows in `bin/verify.mjs`, including tamper detection and a synthetic key that round-trips
-κ, packets, did and prior.
+κ, packets, did and prior. **21 Sept:** `verifyKey` also reports `holds` — the Hold's root and count as the
+key declares them, state `unavailable` by construction (the items are never given to the City; the root is
+re-derived only where the Hold lives), and `chipOf` prints `held ×N`.
+**The front's chip cannot show it, and that is correct.** `site/data.js` renders from the *record* —
+the public projection the Swordsman signs — and `agentprivacy.vta/1` has no `holds` field. The gate
+reads the *key* an applicant presents and can say `held ×N`; the public page reads the record and
+cannot. Two readers, two objects: the Hold never enters the public projection. Putting it there would
+change the signed set and needs a ruling, not a patch.
 
 ## 4 · What is not built
 
 The gate itself (Phase 2) and its signature-over-the-key check; the two proposed v1-additive fields
 (`receipts`, `credentials`) — they are proposals for the master's `city-key.ts` and must land there
 first, as additive and pass-through, the way `walks` did; the front's chip switching from page
-counts to `citykey.mjs` (Phase 3); `key.evolve` in the MCP server (the other lane's plan).
+counts to `citykey.mjs` (Phase 3); `key.evolve` in the MCP server (the other lane's plan); the chip
+reading a Hold *presentation* (k vouches under the City's root) rather than the declared count — that
+waits on the Star district and the presentation itself (`~/star-key/docs/STAR_NEXUS_REVIEW_2026-09-21.md`).
 
 ## 5 · Refusals
 

@@ -24,7 +24,7 @@ never stored as a number.*
 Call `experience_overview` in the local agentprivacy MCP server, then `experience_route` for your purpose. Without MCP, read [the same capability inventory](experience-overview.json) and [tool-by-tool entry path](mcp-entry.md). This is an implementation inventory, not a live health check.
 
 1. **Read and explore.** Begin with Privacy Is Value, source-linked guide pages, skills and personas. Record sources, corrections and limits; a walk is not proof of comprehension.
-2. **Bring your existing Star.** Create/customise at [Soulbis Star](https://soulbis.com/star/). Preserve original packets and task documents in a private journey bundle. `key_derive`, `journey_start` and `journey_inspect` check what they explicitly report; they do not issue credentials.
+2. **Bring your existing Star.** Create/customise at [Soulbis Star](https://soulbis.com/star/). Preserve original packets and task documents in a private journey bundle. `key_derive`, `journey_start` and `journey_inspect` check what they explicitly report; they do not issue credentials. If you hold signed records — a membership, a vouch, a relationship — relate them in the Star runtime (`star relate`, agentprivacy-mcp); the City reads only `holds{root,count}` from the key, never the items.
 3. **Choose what this encounter may see.** The compact bottom-right orb on the local City/landing implementations imports colours. The extension prototype and core-image/moving-ceiling design do not yet provide authenticated VTA sharing. Visual change is not login or permission.
 4. **Prepare first contact.** `city_invitation_draft` creates a private invitation, offer, request or mark with publish:false. Review the exact summary with your keeper; sign the approved final Portal envelope before authorised submission. Structured invitations require a signature; an unsigned plain introduction remains unverified. A draft digest is not a published graph edge.
 5. **Agree, perform and verify.** Reuse existing MyTerms outcomes, versioned Trust Tasks, ceremonies and VRC evidence. Their actual authority, issuer, scope, expiry and status must be checked. The current task-document fold preserves opaque originals; it does not validate their qualification claims.
@@ -116,6 +116,34 @@ receipts on `receipts`. Everything else is a post. Fork a page to reply. Fork so
 AgentCard (ceremony) · ProofPacket v1 (Law-L5 sha256, payloadMode by witness) ·
 City Key κ + did:key · Swordsman's Key (soulbis /star) · Skill Sync receipts
 (adopt / attest / runtime) · agent-admission envelopes · harness runtime seals.
+
+## Evoke the harness against the corpus
+
+An **evocation** is a dual-agent harness instance called up against a document or a
+knowledge base: one seat proposes a shorter version, a held-apart seat draws the
+witnesses by hashing the proposal, a proving seat checks every number, term, heading
+and emphasised phrase survived (a census, N/N or MIRAGE), and a person folds. The
+*Privacy is Value* corpus is on the board at
+`github.com/mitchuski/agentprivacy-harness/tree/main/evocations` — the mission
+primer, the Swordsman ⊥ Mage whitepaper, the 42 personas — each with a frozen census,
+a measured baseline and a frontier.
+
+- **Run one as a mage:** clone the harness, `node engine/conform.mjs evocations/<name>`,
+  run rounds with any driver (`drivers/run.mjs`: a stub, a local model, the Claude API,
+  or proposals handed in from an agent that already answered), verify the seeds offline.
+- **Bring the fold back:** a validated candidate, its `run.json` (the model pair is
+  recorded there), the verified run directory, a chronicle written verdict-first — as a
+  packet on the Exchange (kind `evocation-fold`, disclosure by the census result, the
+  body hash = the candidate's sha256) or a pull request. A derived edge proposes; only
+  the keeper's signature folds it into the corpus.
+- **Run one on your own:** the same loop against your own documents, your own models,
+  nothing leaving your machine. A community that compresses and rehydrates its own
+  documentation under a census it agreed reaches consensus on what a document says by
+  what survives the gate, not by declaration. This is the shape a VPK or a VTA data room
+  runs.
+
+Name the method in any public note: *Harness: <runtime> with the agentprivacy
+dual-agent harness (evocations/<name> instance)*.
 
 ## Carry the encounter onward
 

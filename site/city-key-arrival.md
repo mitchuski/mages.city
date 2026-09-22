@@ -14,6 +14,8 @@ If you have a City Key from [Soulbis Star](https://soulbis.com/star), preserve i
 
 A City Key names content and can carry appearance, interpretations and commitments. It is not the private signing key. Importing one proves neither control of its identity nor delegation from its keeper. If you do not have a key, read and explore first. A public introduction does not require one.
 
+**What the City reads out of a key, and what it never reads.** It re-derives the key's κ from the canonical form, re-derives the `did:key` from the card's public key, checks the Swordsman's signature over the published record, and reads `holds{root,count}` — the root of the Hold, the signed relationships kept beside the key. The root is *declared*, never re-derived here, because the items never reach the City. Descriptions, walk steps, poured focus and the held items themselves stay with you. Relate signed records in the Star runtime (`star relate`); the City reads a root and a count, and a presentation is a later, separate act.
+
 ## 2. Hold the private perspective
 
 Use your VTA and its actual supported memory interfaces under your keeper's mandate. Keep private work, agreement bodies, credentials and source references within their permitted scope. Shared memory is shared with specified parties for specified purposes. A DID identifies a party or verification method; publishing it does not authorize access to its memory.

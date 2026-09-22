@@ -19,7 +19,7 @@
 //
 // Zero dependencies.
 //   node gate/citykey.mjs conformance                                   # the Merkle vector must hold
-//   node gate/citykey.mjs verify <key.json> [--packets <packets.json>]  # κ · packets · did · prior · walks
+//   node gate/citykey.mjs verify <key.json> [--packets <packets.json>]  # κ · packets · did · prior · walks · holds (declared)
 //   node gate/citykey.mjs evidence <key.json> --graph '{"member":true,"vouches":2,"met":1,"vwc":0}'
 
 import fs from 'node:fs';
@@ -97,6 +97,13 @@ export function verifyKey(key, packets = []) {
   if (key.did && key.identity?.publicKeyHex) { const d = didKeyOf(key.identity.publicKeyHex); didOk = d === key.did; if (!didOk) findings.push(`did ${key.did} is not did:key of identity.publicKeyHex (${d})`); }
   else if (key.did) findings.push('did present without identity.publicKeyHex — cannot bind it to the card key');
   const walks = (key.walks || []).map(w => ({ name: w.name || null, steps: (w.steps || []).length, elementsOk: (w.steps || []).every(s => /^sha256:[0-9a-f]{64}$/.test(s.element || '')) }));
+  // The Hold (2026-09-21): the key carries only { root, count } of the signed relationships kept beside
+  // it. The items never reach the City, so the root is DECLARED here and re-derived only where the
+  // Hold lives (the Star runtime, the reference runtime, the extension) — state `unavailable` by
+  // construction, never `match`. A count is a count; a presentation is a later, separate act.
+  const held = key.holds && typeof key.holds === 'object' && /^sha256:[0-9a-f]{64}$/.test(key.holds.root || '') ? { root: key.holds.root, count: Number.isInteger(key.holds.count) ? key.holds.count : null } : null;
+  if (key.holds && !held) findings.push('holds present but malformed — expected { root: sha256:<hex>, count: int }');
+  if (held) findings.push(`key declares a Hold of ${held.count ?? '?'} item(s) (root ${held.root.slice(0, 20)}…) — items are never given to the City; the root is declared, not re-derived here`);
   // Four states, kept apart on purpose. `absent` (nothing was claimed) and `unavailable` (a claim
   // was made but the material to check it was not supplied) are NOT `match`, and neither is a
   // failure. Collapsing them is how an unchecked claim comes to read as a checked one.
@@ -107,6 +114,7 @@ export function verifyKey(key, packets = []) {
     packetProofs: state(packets.length > 0, true, bad.length === 0),
     packetsRoot: state(!!key.packets?.root, packets.length > 0, rootOk),
     did: state(!!key.did, !!key.identity?.publicKeyHex, didOk),
+    holds: state(!!key.holds, false, null),
   };
   // what was asserted but never actually checked — the list a consumer must read before
   // showing anything as verified, and before any authority decision is taken
@@ -124,6 +132,7 @@ export function verifyKey(key, packets = []) {
     packets: { given: packets.length, verified: pk.filter(p => p.ok).length, root: key.packets || null, rootOk, byMode: pk.reduce((m, p) => { if (p.ok) m[p.mode] = (m[p.mode] || 0) + 1; return m; }, {}) },
     identity: { publicKeyHex: key.identity?.publicKeyHex || null, participantId: participantIdOf(key.identity?.publicKeyHex), trustTier: key.identity?.trustTier || null, drakeOrb: key.identity?.drakeOrb || null, did: key.did || null, didOk },
     prior: key.prior || null, lit: (key.lit || []).length, walks, charts: (key.charts || []).length,
+    held,
     findings,
   };
 }
@@ -149,6 +158,7 @@ export function evidenceOf(key, packets = [], graph = {}) {
     tier: v.identity.trustTier || 'blade', participantId: v.identity.participantId, did: v.identity.did, didOk: v.identity.didOk,
     packets: proven, sealed: v.packets.byMode.sealed || 0, revealed: v.packets.byMode.revealed || 0, refractive: v.packets.byMode.refractive || 0,
     walks: v.walks.length, prior: !!v.prior, kappaOk: v.kappa.ok,
+    held: v.held ? (v.held.count ?? 0) : 0,
     proven: proven > 0 && v.ok,
     findings: v.findings,
   };
@@ -157,6 +167,7 @@ export function chipOf(e, forks = 0) {
   const bits = [e.tier];
   bits.push(e.proven ? `${e.packets} packets` : 'unproven');
   if (e.walks) bits.push(`${e.walks} walks`);
+  if (e.held) bits.push(`held ×${e.held}`);
   bits.push(`vouched ×${forks}`);
   if (e.kappaOk === false) bits.push('κ MISMATCH');
   return bits.join(' · ');
