@@ -10,7 +10,7 @@ $ErrorActionPreference = 'Stop'
 $root = Split-Path -Parent $PSScriptRoot
 $farm = Join-Path $root 'farm'
 $site = Join-Path $root 'site'
-$frontOverlay = Join-Path $farm 'front'   # the twin's kit, laid over site/ (whose kit carries the production doors)
+$frontOverlay = (Join-Path $farm 'front') + [IO.Path]::PathSeparator + (Join-Path $root 'parked')   # the twin's kit over site/ (whose kit carries the production doors), then parked/ (the connected front, unpublished 2026-09-14)
 $run  = Join-Path $root '.run'
 New-Item -ItemType Directory -Force $run | Out-Null
 $farmPort = 3333

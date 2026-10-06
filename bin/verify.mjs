@@ -103,14 +103,17 @@ for (const h of HOSTS) {
 {
   // 3239af2 made the City front the index and moved the connected front to /connected/.
   // These rows kept asking / for the connected front, so they failed on a site that was working
-  // as intended. BOTH fronts are published, so both are checked by path — a row that names only
-  // one path silently stops testing the moment the other one moves under it.
+  // as intended. On 2026-09-14 the connected front was PARKED (git mv site/connected parked/connected):
+  // production no longer publishes it — its config targets wiki./portal.mages.city, which have no DNS
+  // yet — and the twin serves it from the parked/ overlay (bin/start.ps1). So / is checked as the
+  // deploy artefact and /connected/ as the twin's overlay; a row that names only one path silently
+  // stops testing the moment the other one moves under it. Re-entry: docs/PARKED_2026-09-14_connected-front.md
   const city = await front('/');
   check('front serves the City front at /', city.status === 200 && /Mages City/i.test(city.text), `${city.status} · ${(city.text.match(/<title>([^<]*)/) || [])[1] || 'no title'}`);
   const i = await front('/connected/');
-  check('front serves the connected index at /connected/, still wired to data.js', i.status === 200 && /mages\.city/.test(i.text) && /data\.js/.test(i.text), `${i.status}`);
+  check('twin overlays the parked connected index at /connected/, still wired to data.js', i.status === 200 && /mages\.city/.test(i.text) && /data\.js/.test(i.text), `${i.status}`);
   const b = await front('/connected/board');
-  check('front serves /connected/board as board.html (auto-trailing-slash rule)', b.status === 200 && /Portal Room/i.test(b.text), `${b.status}`);
+  check('twin overlays /connected/board as board.html (auto-trailing-slash rule)', b.status === 200 && /Portal Room/i.test(b.text), `${b.status}`);
   const s = await front('/skill.md');
   check('front serves skill.md with the twin URLs', s.status === 200 && s.text.includes(`http://wiki.${TLD}:${FARM_PORT}`), `${s.status}`);
   const d = await front('/data.js'); const cfg = await front('/config.js'); const css = await front('/style.css');
