@@ -123,3 +123,9 @@ VTI stack (VTA service, DID host, DIDComm mediator, the City VTC) · admitting a
 ## VTA + Star: agent knowledge spaces (2026-09-08)
 
 [City integration](docs/VTA_STAR_KNOWLEDGE_SPACES.md) records this surface's responsibilities and acceptance gates. The shared design places FedWiki records, browser-carried Star state, first-contact intent, MCP Trust Tasks, VTA permission enforcement and earned Mages City names in one continuing journey. Status is explicitly partial; follow the note's source and deployment distinctions.
+
+## DTG proof workshop: proposed pathway (2026-09-22)
+
+The [DTG agentic circuit pathway](docs/DTG_AGENTIC_CIRCUIT_PATHWAY.md) is the planning mirror of the City of Mages design. It connects the ZK Book and zk.golf practice course to a community workflow for purpose-specific credential and trust-graph presentations: reviewed predicate card, Clean/Lean relation and circuit, explicit witness program, reproducible proving export, independent evidence and an authorized VTA presentation.
+
+The first proposed slice is a scoped community-role proof from an authenticated membership snapshot. This note adds no live endpoint, registered Trust Task, admission policy or deployment. The board's deployment decision register and deploy/ remain deployment authority.

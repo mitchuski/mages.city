@@ -259,6 +259,12 @@ becomes true at A1. Gates before it publishes: the chronicle rite (**signed befo
 docs leak pass. Both repos flip public with the post (**D10**), or stay private a while longer —
 either way, hosting is unaffected.
 
+Review it in the reader: `node bin/launch-reader.mjs --serve` → http://127.0.0.1:8793/ is a shelf
+of the pending drafts (this post plus the `~/agentprivacy-docs/blog` drafts, screenshots inline).
+Each page sits beside a "before publishing" panel whose rows are measured at build time (live
+front by its own title, `skill.md`, the roster, capture URLs, image files, the series number);
+your notes and ruling autosave to `.run/reader/review.json` (gitignored).
+
 ---
 
 ## Track B — the VTC underneath it
