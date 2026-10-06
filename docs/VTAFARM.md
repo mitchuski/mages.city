@@ -187,3 +187,7 @@ grant?* — is sharpened by §5 rather than answered.
 - `github.com/ic3software/vtafarm` · `vtafarm-api` · `vtafarm-k8s` (Apache-2.0)
 - `vtafarm.firstperson.dev` — the running instance
 - `vti-setup/developer/01-personal-vta.md` (Path A) · `vti-setup/sysop/deploy/README.md` (the stub §2 fills)
+
+## Parked front (2026-09-14)
+
+The board · wiki-coordination · residents front that the farm would feed is parked at `parked/connected/` until the tunnel and the farm are public. Its inventory, the hosting prerequisites (tunnel wildcard, CORS, desk abuse posture, the provider's `lb.firstperson.dev`) and the exact re-entry recipe live in `docs/PARKED_2026-09-14_connected-front.md`.

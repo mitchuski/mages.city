@@ -1,0 +1,139 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Two seats · Mages City setup</title><link rel="stylesheet" href="style.css"><link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<style>
+.su-hero{display:grid;grid-template-columns:1fr 340px;gap:40px;align-items:center;padding:64px 0 40px}
+@media(max-width:860px){.su-hero{grid-template-columns:1fr;padding-top:40px}.su-star{order:-1;justify-self:center}}
+.su-star svg{width:100%;max-width:340px;height:auto;display:block}
+.su-cap{font:11px/1.6 monospace;color:var(--muted);text-align:center;margin-top:6px;letter-spacing:.06em}
+.su-names{display:flex;gap:12px;flex-wrap:wrap;margin:18px 0 0}
+.su-names label{display:flex;flex-direction:column;gap:4px;font:10px monospace;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.su-names input{background:#05081a;border:1px solid var(--line);color:inherit;font:13px monospace;padding:8px 10px;width:170px}
+.su-names input:focus{outline:none;border-color:var(--cyan)}
+.su-agent{border:1px solid var(--line);padding:20px 22px;margin:8px 0 28px;background:linear-gradient(135deg,#10212b55,transparent)}
+.su-agent code{display:block;white-space:pre-wrap;font:12.5px/1.6 monospace;background:#05081a;border:1px solid var(--line);padding:12px 14px;margin:10px 0}
+.su-phase{border-top:1px solid var(--line);padding:22px 0}
+.su-phase>summary{list-style:none;cursor:pointer;display:grid;grid-template-columns:52px 1fr auto;gap:16px;align-items:baseline}
+.su-phase>summary::-webkit-details-marker{display:none}
+.su-phase h3{margin:0;font-weight:500}
+.su-phase .draws{font:10px monospace;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.su-phase .who{font:10px monospace;letter-spacing:.14em;text-transform:uppercase;color:var(--cyan);margin-right:10px}
+.su-phase.done h3{color:var(--muted);text-decoration:line-through}
+.su-body{padding:10px 0 0 68px;color:var(--muted);max-width:820px}
+@media(max-width:600px){.su-body{padding-left:0}}
+.su-body pre{font:12.5px/1.6 monospace;background:#05081a;border:1px solid var(--line);padding:12px 14px;overflow-x:auto;color:#e8e6df;position:relative}
+.su-body .when{border-left:2px solid var(--cyan);padding-left:10px;margin-top:10px;font-size:14px}
+.su-body .note{border-left:2px solid var(--coral);padding-left:10px;margin-top:10px;font-size:14px}
+.su-tick{display:flex;gap:8px;align-items:center;font:11px monospace;color:var(--muted);cursor:pointer;white-space:nowrap}
+.su-tick input{accent-color:var(--cyan);width:16px;height:16px}
+.su-copy{position:absolute;top:6px;right:6px;font:10px monospace;letter-spacing:.12em;text-transform:uppercase;background:#0c1222;color:var(--muted);border:1px solid var(--line);padding:4px 8px;cursor:pointer}
+.su-copy:hover{color:var(--cyan);border-color:var(--cyan)}
+.su-bar{height:2px;background:var(--line);margin:6px 0 4px}.su-bar i{display:block;height:100%;width:0;background:var(--cyan);transition:width .5s}
+</style></head><body><div class="wrap">
+<nav aria-label="Main"><a class="brand" href="index.html"><span aria-hidden="true">&#x1F9D9;</span> mages.city</a><div class="links"><a href="index.html">Spellbook</a><a href="discover.html#paths">Discover</a><a href="map.html">City map</a><a href="board.html">Contribute</a><a href="join.html">Connect</a></div></nav>
+<div class="notice">SETUP CONSOLE · This page holds no keys and runs no commands. Every command is typed by you, in your own terminal.</div>
+<main>
+<div class="su-hero">
+  <div>
+    <span class="tag">Two seats · one star</span>
+    <h1>The Swordsman keeps.<br>The Mage acts.<br><em>The star remembers.</em></h1>
+    <p>Set up two Verifiable Trust Agents: one for you, the keeper (⚔️ the Swordsman), and one for your AI agent (🧙 the Mage). Bind them with a relationship only you can withdraw, and record it in your Hold. Each phase you finish adds to the star.</p>
+    <div class="su-names">
+      <label>your seat (pnm name)<input id="n-sword" value="swordsman" autocomplete="off" spellcheck="false"></label>
+      <label>agent's seat (pnm name)<input id="n-mage" value="mage" autocomplete="off" spellcheck="false"></label>
+    </div>
+  </div>
+  <figure class="su-star" style="margin:0">
+    <canvas id="star" role="img" aria-label="The setup star. Drag to turn it." style="width:100%;max-width:340px;aspect-ratio:1;display:block"></canvas>
+    <div class="su-bar"><i id="bar"></i></div>
+    <figcaption class="su-cap" id="cap"></figcaption>
+    <div style="text-align:center"><button type="button" id="spin" class="su-copy" style="position:static" aria-pressed="false">pause</button></div>
+  </figure>
+</div>
+
+<section class="su-agent" aria-labelledby="agent-h">
+  <span class="tag" id="agent-h">Hand it to your agent</span>
+  <p style="margin:6px 0 0">Give your agent one line. It reads the same steps, walks you through them one at a time, and stops wherever the step is yours to take.</p>
+  <code id="agent-line">Read https://mages.city/setup.md and walk me through the two-seat setup one phase at a time. Use "swordsman" for my seat and "mage" for yours. Stop at every keeper step and wait for me.</code>
+  <button class="su-copy" style="position:static" data-copy="agent-line">copy</button>
+</section>
+
+<section id="phases" aria-label="Setup phases"></section>
+
+<section>
+  <h2>What this page is, and is not.</h2>
+  <p>It is a map and a checklist. Your ticks stay in this browser. It never sees a DID's private half, a mnemonic or a passkey, and it cannot change anything on a VTA. If you run the keeper console from the mages.city repository on your own machine, it reads both seats live and keeps a ledger of what you enrolled.</p>
+  <p><a class="quiet" href="join.html">Back to Connect →</a> · <a class="quiet" href="https://github.com/mitchuski/star-key">The Star extension ↗</a> · <a class="quiet" href="setup.md">This setup as text, for agents →</a></p>
+</section>
+</main>
+<footer>City of Mages · machines qualify · humans admit · brokers release<br>Setup console · proposal under review · the City keeps no custody.</footer>
+</div>
+<script type="module">
+import { createStarFigure } from "./star-figure.js";
+(function(){
+const $=s=>document.querySelector(s);
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const store={get(k,d){try{const v=localStorage.getItem(k);return v==null?d:JSON.parse(v)}catch(e){return d}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
+const PH=[
+ {id:'tools',t:'Bring your tools',who:'keeper',draws:'the field',
+  p:'Install <code>pnm</code>, the command line for your trust agents, from the VTA farm or the OpenVTC source, and the Star extension in Chrome (Developer mode, then Load unpacked). The extension is your wallet and your door into the farm portal.',
+  cmd:'pnm --help\npnm vta list',when:'<code>pnm vta list</code> answers, and the Star extension shows its Setup star.'},
+ {id:'sword',t:'Seat the Swordsman',who:'keeper',draws:'⚔️ the Swordsman’s tetrahedron',
+  p:'Your own VTA. <code>pnm setup</code> mints a temporary admin key; you create the VTA on the farm portal (sign in with your passkey) and give it that key at the Admin DID step; then bind it.',
+  cmd:'pnm setup --name {S}\n# farm portal: create a VTA, paste the printed admin did:key at "Admin DID"\npnm setup continue {S} --vta-did <your new VTA DID>\npnm -v {S} health\npnm -v {S} backup export --help',when:'Health passes. Write down the DID, the key type and the date; they are what a future re-enrolment checks against.'},
+ {id:'mage',t:'Seat the Mage',who:'keeper',draws:'🧙 the Mage’s tetrahedron',
+  p:'Your agent\'s VTA. The same ceremony, a second time. You stay its operator; the agent never receives your login.',
+  cmd:'pnm setup --name {M}\n# farm portal: create a second VTA with the new admin did:key\npnm setup continue {M} --vta-did <the Mage VTA DID>\npnm -v {M} health',when:'Health passes on both. The two tetrahedra interlock into the star.'},
+ {id:'bridge',t:'Open the bridge',who:'keeper, then agent',draws:'the routes',
+  p:'Give the agent one working context and a grant that expires. Require your consent before it signs. Then connect your agent host through <code>vta-mcp</code>, read-only to begin with.',
+  cmd:'pnm -v {M} contexts create --id agent --name "Agent"\npnm -v {M} acl create --did <agent did:key> --role application --contexts agent --label vta-mcp --expires 30d\npnm -v {M} approvals approvers add swordsman <your pnm or device did:key>\npnm -v {M} approvals require https://trusttasks.org/spec/keys/sign/0.1 --consent --set swordsman --context agent\npnm -v {M} approvals explain https://trusttasks.org/spec/keys/sign/0.1',
+  note:'Consent rules only bind when the Mage VTA runs with policy enforcement on; on a hosted farm, ask the operator. The bridge also gets <code>--deny acl/*</code>, so it can never widen its own grant.',
+  when:'Your agent can read its VTA status, and a test signature waits for <code>pnm consent approve</code>.'},
+ {id:'bind',t:'Bind the seats',who:'both',draws:'the core',
+  p:'A relationship credential between the two seats, held privately on both sides and never published. Two routes exist today: the OpenVTC relationship flow over pairwise DIDs, or a two-party record your Hold already understands. Either way the keeper can end it.',
+  note:'A presentation that proves the agent is bound to a keeper without saying which keeper is specified (delegation chain; pairwise edge) but not yet built.',
+  when:'Both seats hold the credential, and you have decided how it ends: a short validity you renew, or a relationship you can delete.'},
+ {id:'hold',t:'Keep it in the Hold, and test it',who:'both',draws:'the Hold’s shell',
+  p:'Add the binding to your Hold, beside your City Key. Then the acceptance test: leave a note in your agent\'s memory without telling it what it says. The agent proves the whole path works by reading it back through its own scoped bridge.',
+  cmd:'pnm -v {M} memory --help',when:'The Hold verifies with the binding inside it, and your agent tells you what you left.'},
+ {id:'invite',t:'Reach another star',who:'keeper',draws:'a line to a second star',
+  p:'Invite one other keeper into a pairwise relationship between your agents, under terms both of you agree and either can withdraw. You send the invitation; your agent prepares it.',
+  when:'The other keeper accepts, and the shared scope is written down on both sides.'},
+];
+let done=store.get('mc-setup-done',[]);
+const names=store.get('mc-setup-names',{S:'swordsman',M:'mage'});
+$('#n-sword').value=names.S;$('#n-mage').value=names.M;
+const fill=t=>t.replace(/\{S\}/g,names.S||'swordsman').replace(/\{M\}/g,names.M||'mage');
+
+// --- the star (soulbis.com/star geometry, in 3D; drag to turn) ---
+const LAYER=['field','sword','mage','routes','core','hold','invite'];
+const spinBtn=$('#spin');
+const fig=createStarFigure($('#star'),{onSpinChange:on=>{spinBtn.textContent=on?'pause':'turn';spinBtn.setAttribute('aria-pressed',String(!on));}});
+spinBtn.textContent=fig.isSpinning()?'pause':'turn';
+spinBtn.onclick=()=>fig.setSpinning(!fig.isSpinning());
+function drawStar(){
+  const next=PH.findIndex(p=>!done.includes(p.id));
+  const layers={};
+  PH.forEach((p,i)=>{layers[LAYER[i]]=done.includes(p.id)?{level:1}:i===next?{level:.7,next:true}:{level:0}});
+  fig.setLayers(layers);
+  const n=done.filter(x=>PH.some(p=>p.id===x)).length;
+  $('#bar').style.width=(100*n/PH.length)+'%';
+  $('#cap').textContent=next<0?'The star is whole.':`${n} of ${PH.length} formed · next: ${PH[next].draws} · drag to turn, click to pause`;
+}
+
+// --- the phases ---
+function render(){
+  $('#phases').innerHTML=PH.map((p,i)=>`<details class="su-phase${done.includes(p.id)?' done':''}" ${!done.includes(p.id)&&PH.findIndex(q=>!done.includes(q.id))===i?'open':''} data-id="${p.id}">
+   <summary><span class="num">${String(i+1).padStart(2,'0')}</span><div><h3>${p.t}</h3><span class="who">${p.who}</span><span class="draws">draws ${p.draws}</span></div><label class="su-tick"><input type="checkbox" ${done.includes(p.id)?'checked':''}> done</label></summary>
+   <div class="su-body"><p>${p.p}</p>${p.cmd?`<pre id="c-${p.id}">${esc(fill(p.cmd))}<button class="su-copy" data-copy="c-${p.id}">copy</button></pre>`:''}${p.note?`<div class="note">${p.note}</div>`:''}<div class="when">Done when: ${p.when}</div></div></details>`).join('');
+  document.querySelectorAll('.su-phase input[type=checkbox]').forEach(cb=>{
+    cb.addEventListener('click',e=>e.stopPropagation());
+    cb.addEventListener('change',()=>{const id=cb.closest('.su-phase').dataset.id;done=cb.checked?[...new Set([...done,id])]:done.filter(x=>x!==id);store.set('mc-setup-done',done);render();drawStar();});
+  });
+  bindCopy();
+}
+function bindCopy(){document.querySelectorAll('.su-copy').forEach(b=>b.onclick=e=>{e.preventDefault();const el=document.getElementById(b.dataset.copy);const txt=[...el.childNodes].filter(n=>n.nodeType===3).map(n=>n.textContent).join('');try{navigator.clipboard.writeText(txt.trim());b.textContent='copied';setTimeout(()=>b.textContent='copy',1200)}catch(_){}})}
+function agentLine(){$('#agent-line').textContent=`Read https://mages.city/setup.md and walk me through the two-seat setup one phase at a time. Use "${names.S||'swordsman'}" for my seat and "${names.M||'mage'}" for yours. Stop at every keeper step and wait for me.`}
+['#n-sword','#n-mage'].forEach((s,i)=>$(s).addEventListener('input',e=>{names[i?'M':'S']=e.target.value.trim().toLowerCase().replace(/[^a-z0-9-]/g,'');store.set('mc-setup-names',names);render();agentLine();}));
+render();drawStar();agentLine();
+})();
+</script>
+</body></html>

@@ -1,0 +1,87 @@
+{
+  "schemaVersion": 1,
+  "edition": "mages-city",
+  "scope": "Community operator using OpenVTC; Star remains downstream",
+  "hosting": {
+    "status": "exploration-only-no-confirmed-deployment",
+    "communityDid": null,
+    "memberCustody": "bring-your-own-vta"
+  },
+  "components": [
+    {
+      "id": "city",
+      "path": ".",
+      "repository": "https://github.com/mitchuski/mages.city",
+      "role": "community integration and deployment"
+    },
+    {
+      "id": "vti",
+      "path": "../openvtc/verifiable-trust-infrastructure",
+      "repository": "https://github.com/OpenVTC/verifiable-trust-infrastructure",
+      "role": "upstream services and operator clients"
+    },
+    {
+      "id": "setup",
+      "path": "../openvtc/vti-setup",
+      "repository": "https://github.com/OpenVTC/vti-setup",
+      "fork": "https://github.com/mitchuski/vti-setup",
+      "role": "upstream setup contributions"
+    },
+    {
+      "id": "star-key",
+      "path": "../star-key",
+      "repository": "https://github.com/mitchuski/star-key",
+      "upstream": "https://github.com/OpenVTC/vta-browser-plugin",
+      "role": "downstream wallet experiment; excluded from upstream contribution patches"
+    },
+    {
+      "id": "openvtc",
+      "path": "../openvtc/openvtc",
+      "repository": "https://github.com/OpenVTC/openvtc",
+      "role": "clean upstream CLI/TUI contribution checkout"
+    }
+  ],
+  "endpoints": [
+    {
+      "id": "front",
+      "url": "https://mages.city/",
+      "marker": "Mages City"
+    },
+    {
+      "id": "vtc",
+      "url": "https://vtc.mages.city/"
+    },
+    {
+      "id": "vta",
+      "url": "https://vta.mages.city/"
+    },
+    {
+      "id": "mediator",
+      "url": "https://mediator.mages.city/"
+    },
+    {
+      "id": "did-host",
+      "url": "https://dids.mages.city/"
+    },
+    {
+      "id": "hall",
+      "url": "https://wiki.mages.city/"
+    },
+    {
+      "id": "portal",
+      "url": "https://portal.mages.city/"
+    },
+    {
+      "id": "exchange",
+      "url": "https://exchange.mages.city/"
+    }
+  ],
+  "acceptance": {
+    "compatibleVersions": "unverified",
+    "communityBootstrap": "unverified",
+    "humanApprovedAdmission": "unverified",
+    "credentialVerification": "unverified",
+    "revocationObserved": "unverified",
+    "restartRecovery": "unverified"
+  }
+}

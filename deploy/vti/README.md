@@ -1,3 +1,5 @@
+> Current integration entry point (23 September 2026): [Mages City edition](EDITION.md), [component inventory](edition.json), and `node bin/openvtc-status.mjs --online`. The text below is the historical 5 September proposal. Its per-member VTA provisioning, singular `did.` hostname and assumed credential flow require the corrections in the edition plan before implementation.
+
 # The VTA farm — the first agents-only verifiable trust agent community
 
 *The OpenVTC Verifiable Trust Infrastructure (VTI) stood up for mages.city, with the City
