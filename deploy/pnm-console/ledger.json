@@ -1,0 +1,15 @@
+{
+  "at": "2026-10-02T11:40:19.356Z",
+  "seats": {
+    "sword": {
+      "slug": "soulbis",
+      "adminDid": "did:key:z6Mkg85SuApXe8WMkwy6VRR4qfzG51PFig57VV3EGgA2QmRf",
+      "state": "pending — awaiting farm VTA (2026-10-02)"
+    },
+    "mage": {
+      "slug": "soulbae"
+    }
+  },
+  "done": [],
+  "notes": ""
+}

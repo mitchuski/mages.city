@@ -1,0 +1,398 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>pnm console · two seats</title>
+<style>
+:root{--navy:#080c20;--navy-mid:#0d1230;--navy-light:#141a3d;--coral:#e8523a;--cyan:#4dd9e8;--amber:#f5b74a;--emerald:#34d399;--violet:#b79cff;--white:#f0eee8;--dim:rgba(240,238,232,.6);--ghost:rgba(240,238,232,.12);--border:rgba(240,238,232,.1);--mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;--serif:'Cormorant Garamond',Georgia,serif;--sans:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+*{box-sizing:border-box;min-width:0}
+body{margin:0;background:var(--navy);color:var(--white);font:15px/1.6 var(--sans)}
+a{color:var(--cyan);text-decoration:none}a:hover{text-decoration:underline}
+code{font-family:var(--mono);font-size:.86em;background:var(--ghost);padding:.06em .3em;border-radius:2px}
+pre{font-family:var(--mono);font-size:12.5px;line-height:1.5;background:#05081a;border:1px solid var(--border);padding:12px 14px;overflow-x:auto;margin:.6rem 0;color:var(--white)}
+h1{font-family:var(--serif);font-weight:300;font-size:44px;line-height:1.05;margin:0 0 6px}
+h1 em{font-style:italic;color:var(--dim)}
+h2{font-family:var(--serif);font-weight:300;font-size:30px;line-height:1.1;margin:0 0 14px}
+h2 em{font-style:italic;color:var(--dim)}
+h3{font-size:15px;font-weight:600;margin:0 0 6px}
+.k{font-family:var(--mono);font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--cyan);display:block;margin-bottom:10px}
+.k.coral{color:var(--coral)}.k.amber{color:var(--amber)}.k.violet{color:var(--violet)}
+.wrap{max-width:1100px;margin:0 auto;padding:0 28px}
+header{padding:56px 0 28px;border-bottom:1px solid var(--border)}
+header p{color:var(--dim);max-width:720px}
+.rule{font-family:var(--mono);font-size:12px;color:var(--white);background:#05081a;border:1px solid var(--border);padding:6px 10px;display:inline-block}
+section{padding:40px 0;border-top:1px solid var(--border)}
+.lede{color:var(--dim);max-width:760px;margin:0 0 20px}
+.grid{display:grid;gap:1px;background:var(--border);border:1px solid var(--border)}
+.c2{grid-template-columns:1fr 1fr}.c3{grid-template-columns:repeat(3,1fr)}.c4{grid-template-columns:repeat(4,1fr)}
+@media(max-width:900px){.c3,.c4{grid-template-columns:1fr 1fr}}@media(max-width:600px){.c2,.c3,.c4{grid-template-columns:1fr}}
+.node{background:var(--navy-mid);padding:18px 20px;display:flex;flex-direction:column;gap:8px}
+.node p{margin:0;color:var(--dim);font-size:14px}
+.node b{color:var(--white);font-weight:500}
+.tag{font-family:var(--mono);font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;padding:3px 7px;border:1px solid var(--border);color:var(--dim);border-radius:2px;display:inline-block}
+.tag.ok{color:var(--emerald);border-color:rgba(52,211,153,.45)}.tag.open{color:var(--amber);border-color:rgba(245,183,74,.45)}.tag.no{color:var(--coral);border-color:rgba(232,82,58,.45)}.tag.lab{color:var(--cyan);border-color:rgba(77,217,232,.45)}
+/* choices */
+.choice{background:var(--navy-mid);border:1px solid var(--border);padding:16px 18px;margin-bottom:10px}
+.choice .q{font-weight:600;margin-bottom:8px}
+.opts{display:flex;flex-wrap:wrap;gap:8px}
+.opt{border:1px solid var(--border);padding:8px 12px;cursor:pointer;font-size:14px;background:var(--navy);display:flex;gap:8px;align-items:center}
+.opt:hover{border-color:rgba(240,238,232,.3)}
+.opt input{accent-color:var(--coral)}
+.opt.sel{border-color:var(--coral);background:rgba(232,82,58,.1)}
+.why{margin-top:10px;font-size:13.5px;color:var(--dim);border-left:2px solid var(--cyan);padding-left:10px;min-height:1.2em}
+/* steps */
+.step{background:var(--navy-mid);border:1px solid var(--border);margin-bottom:10px}
+.step summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:12px;padding:14px 18px}
+.step summary::-webkit-details-marker{display:none}
+.step summary .n{font-family:var(--mono);font-size:11px;letter-spacing:.14em;color:var(--coral);min-width:22px}
+.step summary .t{font-weight:600;flex:1}
+.step summary .who{font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--dim)}
+.step summary input{accent-color:var(--emerald);width:16px;height:16px}
+.step .body{padding:0 18px 16px 52px;color:var(--dim);font-size:14px}
+.step .body p{margin:.4rem 0}
+.step.done summary .t{color:var(--dim);text-decoration:line-through}
+.step .donewhen{border-left:2px solid var(--emerald);padding-left:10px;margin-top:8px;font-size:13.5px}
+.step .hidden-note{border-left:2px solid var(--amber);padding-left:10px;margin-top:8px;font-size:13.5px}
+.progress{font-family:var(--mono);font-size:11px;letter-spacing:.12em;color:var(--dim);margin-bottom:14px}
+.bar{height:3px;background:var(--ghost);margin-bottom:18px}.bar i{display:block;height:100%;background:var(--emerald);width:0;transition:width .3s}
+.btn{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;border:1px solid var(--border);background:var(--navy);color:var(--white);padding:8px 12px;cursor:pointer;border-radius:2px}
+.btn:hover{border-color:var(--cyan);color:var(--cyan)}
+.facts li{margin:.35rem 0;color:var(--dim)}.facts li b{color:var(--white);font-weight:500}
+.src{font-family:var(--mono);font-size:11px;color:var(--dim)}
+footer{padding:30px 0 50px;color:var(--dim);font-size:13px;border-top:1px solid var(--border)}
+/* ---- twin look: the Star extension's theme (theme.css + star-brand) ---- */
+:root{--navy:#f7f8fa;--navy-mid:#ffffff;--navy-light:#f1f3f7;--white:#131722;--dim:#5b6478;--ghost:rgba(19,23,34,.06);--border:#dde2eb;--cyan:#2e63d6;--emerald:#1e8a5f;--amber:#9a6a12;--coral:#e8523a;--violet:#6b4fd8;--sword:#e8523a;--mage:#1aa6b7;--serif:Georgia,serif;--sans:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+@media (prefers-color-scheme: dark){:root{--navy:#0b0e14;--navy-mid:#141924;--navy-light:#1b2230;--white:#e8ebf2;--dim:#8b95a9;--ghost:rgba(232,235,242,.08);--border:#273040;--cyan:#5a8dff;--emerald:#3fb27f;--amber:#d9a441;--violet:#b79cff;--mage:#4dd9e8}}
+pre{background:var(--navy-light);color:var(--white)}
+.field input,.tsel{background:var(--navy-light)!important}
+h1,h2{font-family:var(--sans);font-weight:600;letter-spacing:-.01em}h1{font-size:30px}h2{font-size:22px}h1 em,h2 em{font-weight:400}
+.node,.seat,.choice,.step{border-radius:8px}
+.brandbar{display:flex;align-items:center;gap:12px;padding:16px 22px;border-bottom:1px solid #294552;background:linear-gradient(120deg,#101e2d,#10282b);color:#dfedec}
+.brandbar .wm{font:27px Georgia,serif}.brandbar p{font-size:11px;margin:4px 0 0;color:#a9c7c6}.brandbar a{margin-left:auto;color:#c9e9e9;border:1px solid #39545c;padding:7px 10px;border-radius:7px;font-size:12px}
+.seat-star{width:220px;height:220px;display:block;margin:4px auto 0}
+.seat-cap{font-size:12px;color:var(--dim);text-align:center}.seat-cap button{background:none;border:0;padding:0;font:inherit;color:var(--cyan);cursor:pointer}
+.ext{border:1px dashed var(--border);border-radius:8px;padding:10px 12px;display:grid;gap:6px}
+.ext .row{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:12.5px;color:var(--dim)}
+.ext label.tk{display:flex;gap:6px;align-items:center;cursor:pointer}.ext input[type=checkbox]{accent-color:var(--emerald)}
+table.weave{width:100%;border-collapse:collapse;font-size:13px;background:var(--navy-mid);border:1px solid var(--border);border-radius:8px;overflow:hidden}
+table.weave th,table.weave td{text-align:left;padding:9px 12px;border-top:1px solid var(--border);vertical-align:top}
+table.weave th{font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--dim);border-top:0}
+table.weave td.v{font-family:var(--mono);font-size:12px;word-break:break-all}
+.ag{font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;padding:2px 7px;border-radius:4px;border:1px solid var(--border);white-space:nowrap}
+.ag.yes{color:var(--emerald);border-color:currentColor}.ag.no{color:var(--coral);border-color:currentColor}.ag.half{color:var(--amber);border-color:currentColor}
+</style>
+<style>
+.seats{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);border:1px solid var(--border)}
+@media(max-width:820px){.seats{grid-template-columns:1fr}}
+.seat{background:var(--navy-mid);padding:22px 22px 18px;display:flex;flex-direction:column;gap:10px}
+.seat .glyph{font-size:30px;line-height:1}
+.seat h3{font-family:var(--serif);font-weight:300;font-size:26px;margin:0}
+.seat .role{color:var(--dim);font-size:14px;margin:0}
+.kv{display:grid;grid-template-columns:110px 1fr;gap:4px 10px;font-size:13px}
+.kv span:nth-child(odd){font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--dim);padding-top:3px}
+.kv span:nth-child(even){font-family:var(--mono);word-break:break-all}
+.field{display:flex;flex-direction:column;gap:4px;font-size:12px;color:var(--dim)}
+.field input{background:#05081a;border:1px solid var(--border);color:var(--white);font-family:var(--mono);font-size:12px;padding:6px 8px}
+.field input:focus{outline:none;border-color:var(--cyan)}
+.fields{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.checks{font-family:var(--mono);font-size:12px;margin:0;padding:0;list-style:none}
+.checks li{display:flex;gap:8px;padding:2px 0;color:var(--dim)}
+.checks li b{font-weight:400;color:var(--white);min-width:120px}
+.surf summary{cursor:pointer;font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--cyan);padding:4px 0}
+.surf pre{max-height:260px}
+.cmd{position:relative}
+.cmd .btn{position:absolute;top:6px;right:6px;padding:4px 8px;font-size:9.5px}
+.warn{border-left:2px solid var(--coral);padding-left:10px;color:var(--dim);font-size:13.5px}
+.status{font-family:var(--mono);font-size:11px;color:var(--dim)}
+.bridge{display:flex;align-items:center;justify-content:center;gap:14px;font-family:var(--mono);font-size:12px;color:var(--dim);padding:14px;background:var(--navy-mid);border:1px solid var(--border);border-top:0;flex-wrap:wrap;text-align:center}
+.tsel{background:#05081a;border:1px solid var(--border);color:var(--white);font-family:var(--mono);font-size:12px;padding:6px 8px}
+.bridge b{color:var(--amber);font-weight:400}
+</style>
+</head>
+<body>
+<div class="brandbar"><span class="wm">Star</span><div><b>Keeper console</b><p>Two seats, read through pnm · the twin of the extension's Setup</p></div><a href="#weave">the weave ↓</a></div>
+<header><div class="wrap">
+  <span class="k coral">mages.city · pnm console · local</span>
+  <h1>Two seats, <em>two keys</em></h1>
+  <p>The keeper holds the Sword, the agent holds the Mage. Each seat is its own Verifiable Trust Agent, enrolled through <code>pnm</code>. The Mage acts inside a grant; whatever it does that matters waits on the Sword's consent. This page reads both VTAs and keeps the ceremony's ledger. It never holds a key: grants, deletes, setup and vault writes are typed by the keeper, in the terminal.</p>
+  <span class="rule">the Mage acts · the Sword consents · the Hold remembers</span>
+</div></header>
+
+<main class="wrap">
+
+<section id="today">
+  <span class="k amber">§0 · today</span>
+  <h2>Where it stands <em>(2 October 2026)</em></h2>
+  <ul class="facts">
+    <li><b>The farm wiped both VTAs</b> (<code>soulbae</code>, <code>soulbis</code>) for a key-format incompatibility after the VTI stack moved on. Passkey login to the farm still works; the two VTAs are gone, and new ones may be created.</li>
+    <li><b>pnm is current:</b> <code>~/bin/pnm.exe</code> v0.30.0 built from VTI main <code>68f01ca9</code>, same version as the farm's Linux build (<code>fpp.ic3.dev/pnm/main/pnm</code>, sha256 <code>568bc5ce…6bc</code>). v0.14.3 kept as <code>.bak</code>.</li>
+    <li><b>This machine still lists the wiped VTAs</b> in pnm's config and keyring until step 1 clears them.</li>
+    <li><b>Enrolment flow</b> is two-phase in v0.30.0: <code>pnm setup --name</code> mints a pending admin <code>did:key</code>; once the VTA exists, <code>pnm setup continue &lt;slug&gt; --vta-did …</code> binds it. How the farm portal takes that admin DID is to confirm (step 2).</li>
+  </ul>
+</section>
+
+<section id="seats">
+  <span class="k">§1 · the seats</span>
+  <h2>Sword and Mage <em>live</em></h2>
+  <p class="lede">Read through <code>pnm … --json</code> on each refresh. A seat whose VTA fails health gets no further reads. The ledger fields hold what the keeper records at enrolment — DID, key type, date. <b>Never paste a mnemonic or key here</b>; the server refuses anything that looks like one.</p>
+  <div style="display:flex;gap:10px;align-items:center;margin-bottom:12px"><button class="btn" id="refresh">Refresh from pnm</button><span class="status" id="stamp">not read yet</span></div>
+  <div class="seats">
+    <div class="seat" data-seat="sword">
+      <div class="glyph">⚔️</div>
+      <h3>The Sword</h3>
+      <p class="role">The keeper's VTA. Governs, approves, holds the boundary. Its keeper key approves the Mage's held tasks.</p>
+      <div class="fields">
+        <label class="field">pnm slug<input data-f="slug" value="soulbis"></label>
+        <label class="field">key type<input data-f="keyType" placeholder="as the farm requires"></label>
+        <label class="field" style="grid-column:1/-1">VTA DID<input data-f="did" placeholder="did:webvh:…"></label>
+        <label class="field">enrolled<input data-f="enrolled" placeholder="2026-10-0x"></label>
+        <label class="field">backup taken<input data-f="backup" placeholder="date · where"></label>
+        <label class="field" style="grid-column:1/-1">keeper signing key (consent approver)<input data-f="keeperKey" placeholder="did:key:z6Mk… (your pnm/device key)"></label>
+      </div>
+            <canvas class="seat-star"></canvas>
+      <div class="seat-cap"></div>
+      <div class="ext">
+        <span class="k" style="margin:0">in the extension · Setup (tick what it shows)</span>
+        <div class="row">
+          <label class="tk"><input type="checkbox" data-x="agent">1 · trust agent</label>
+          <label class="tk"><input type="checkbox" data-x="reach">2 · reach it</label>
+          <label class="tk"><input type="checkbox" data-x="passkey">3 · passkey lock</label>
+          <label class="tk"><input type="checkbox" data-x="routing">4 · routing</label>
+        </div>
+        <label class="field">DID the extension shows<input data-f="extDid" placeholder="did:webvh:… (Setup step 1)"></label>
+        <label class="field">wallet holder DID<input data-f="holderDid" placeholder="did:key:… (the extension's own key)"></label>
+      </div>
+      <div class="live"></div>
+    </div>
+    <div class="seat" data-seat="mage">
+      <div class="glyph">🧙</div>
+      <h3>The Mage</h3>
+      <p class="role">Claude Code's VTA. Acts through <code>vta-mcp</code> inside a scoped context; sensitive tasks wait on the Sword.</p>
+      <div class="fields">
+        <label class="field">pnm slug<input data-f="slug" value="soulbae"></label>
+        <label class="field">key type<input data-f="keyType" placeholder="as the farm requires"></label>
+        <label class="field" style="grid-column:1/-1">VTA DID<input data-f="did" placeholder="did:webvh:…"></label>
+        <label class="field">enrolled<input data-f="enrolled" placeholder="2026-10-0x"></label>
+        <label class="field">agent DID (bridge)<input data-f="agentDid" placeholder="did:key:z6Mk… (claude-code ACL)"></label>
+      </div>
+            <canvas class="seat-star"></canvas>
+      <div class="seat-cap"></div>
+      <div class="ext">
+        <span class="k" style="margin:0">in the extension · Setup (tick what it shows)</span>
+        <div class="row">
+          <label class="tk"><input type="checkbox" data-x="agent">1 · trust agent</label>
+          <label class="tk"><input type="checkbox" data-x="reach">2 · reach it</label>
+          <label class="tk"><input type="checkbox" data-x="passkey">3 · passkey lock</label>
+          <label class="tk"><input type="checkbox" data-x="routing">4 · routing</label>
+        </div>
+        <label class="field">DID the extension shows<input data-f="extDid" placeholder="did:webvh:… (Setup step 1)"></label>
+        <label class="field">wallet holder DID<input data-f="holderDid" placeholder="did:key:… (the extension's own key)"></label>
+      </div>
+      <div class="live"></div>
+    </div>
+  </div>
+  <div class="bridge"><span>⚔️ Sword DID</span><b>── consent set "sword" · task-consent ──▶</b><span>🧙 Mage tasks</span><b>── closing heads ──▶</b><span>the Hold</span></div>
+  <div id="others" class="status" style="margin-top:10px"></div>
+</section>
+
+<section id="weave">
+  <span class="k">§1½ · the weave</span>
+  <h2>Where the console and the extension <em>meet</em></h2>
+  <p class="lede">The same facts, seen from both sides: what pnm reads live, and what the extension's Setup shows (ticked or pasted above). Where they agree the thread holds; where they differ, one side has not caught up.</p>
+  <div id="weave-tables"></div>
+</section>
+
+<section id="ceremony">
+  <span class="k coral">§2 · the ceremony</span>
+  <h2>In order, <em>Sword first</em></h2>
+  <div class="progress" id="prog">0 / 0</div><div class="bar"><i id="bar"></i></div>
+  <div id="steps"></div>
+</section>
+
+<section id="hold">
+  <span class="k violet">§3 · the Hold link</span>
+  <h2>Two keys <em>on one record</em></h2>
+  <p class="lede">The 7 September ruling stands: agents bring their own VTA, and the City keeps no custody. With both seats live, a Hold closing head carries two signatures — the Mage signs what it produced, the Sword countersigns that the keeper consents — and a verifier resolves both <code>did:webvh</code> documents. The City then mirrors and cosigns closing heads (part 3 of <code>agentprivacy-docs/plans/STAR_HOLD_HOLISTIC_2026-09-30.md</code>).</p>
+  <div class="grid c3">
+    <div class="node"><span class="tag open">after step 9</span><b>Mage signs</b><p>vta-mcp <code>sign</code> with a soulbae key over the closing head. With the consent rule in place, the VTA holds the signature until the Sword approves.</p></div>
+    <div class="node"><span class="tag open">needs design</span><b>Sword countersigns</b><p>Either the consent approval itself is the countersignature (one record, two DIDs), or soulbis signs the head separately. Which one the Hold verifier accepts is the open ruling.</p></div>
+    <div class="node"><span class="tag lab">planned</span><b>City cosigns</b><p>The City mirror stores presented closing heads and cosigns a landmark on <code>/city</code>. No member list, no custody.</p></div>
+  </div>
+</section>
+
+<section id="terminal">
+  <span class="k">§4 · the terminal</span>
+  <h2>Read from the seats <em>without leaving the page</em></h2>
+  <p class="lede">Named reads only, run by the local server as <code>pnm … --json</code>. Anything that grants, deletes, sets up or writes is not on this list and is typed in your own terminal.</p>
+  <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:flex-end;margin-bottom:10px">
+    <label class="field">seat<select id="t-seat" class="tsel"></select></label>
+    <label class="field">read<select id="t-read" class="tsel"></select></label>
+    <label class="field" style="flex:1;min-width:240px">argument (approvals explain only)<input id="t-arg" placeholder="https://trusttasks.org/spec/keys/sign/0.1"></label>
+    <button class="btn" id="t-run">run</button>
+  </div>
+  <pre id="t-out" style="min-height:120px;max-height:420px">$ </pre>
+</section>
+</main>
+<footer><div class="wrap">Local only · <code>node deploy/pnm-console/serve.js</code> → <code>http://127.0.0.1:8799/</code> · reads are a fixed whitelist of <code>pnm … --json</code> list/health calls · ledger → <code>deploy/pnm-console/ledger.json</code> · plan: <code>~/openvtc/PNM_VTA_WORKFLOW_PLAN_2026-10-02.md</code></div></footer>
+
+<script type="module">
+import { createStarFigure } from "./star-figure.js";
+const $ = (s, r = document) => r.querySelector(s), $$ = (s, r = document) => [...r.querySelectorAll(s)];
+const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+let ledger = { seats: { sword: {}, mage: {} }, done: [], notes: '' };
+
+const seatVal = (s, f, d) => (ledger.seats[s] && ledger.seats[s][f]) || d;
+const V = () => ({
+  SWORD: seatVal('sword', 'slug', 'soulbis'), MAGE: seatVal('mage', 'slug', 'soulbae'),
+  SWORD_DID: seatVal('sword', 'did', '<sword VTA DID>'), MAGE_DID: seatVal('mage', 'did', '<mage VTA DID>'),
+  AGENT_DID: seatVal('mage', 'agentDid', '<claude-code agent did:key>'),
+  KEEPER_KEY: seatVal('sword', 'keeperKey', '<keeper pnm/device did:key>'),
+});
+const fill = t => t.replace(/\{(\w+)\}/g, (_, k) => V()[k] ?? '{' + k + '}');
+
+const STEPS = [
+  { id: 'clear', t: 'Clear the wiped VTAs from this machine', who: 'keeper', cmd: 'pnm vta delete soulbae\npnm vta delete soulbis\npnm vta list', p: 'Removes each local config entry and its stored credential. The VTAs themselves are already gone on the farm.', done: '<code>pnm vta list</code> shows neither.' },
+  { id: 'confirm', t: 'Confirm the farm flow and key format', who: 'keeper', p: 'Ask the farm maintainer which key format new VTAs need, and whether the portal takes the admin <code>did:key</code> from <code>pnm setup --name</code>. Record the answer in the seat\'s key-type field so the next redo has something to check against.', done: 'Key format written in both seats\' ledger fields.' },
+  { id: 'sword-setup', t: 'Sword · mint the pending admin DID', who: 'keeper', cmd: 'pnm setup --name {SWORD}', p: 'Prints the slug and a pending admin <code>did:key</code>. That DID goes to the farm portal when you create the VTA (passkey login at <code>vtafarm.firstperson.dev</code>).' },
+  { id: 'sword-bind', t: 'Sword · bind the new VTA and check it', who: 'keeper', cmd: 'pnm setup continue {SWORD} --vta-did {SWORD_DID}\npnm -v {SWORD} health\npnm -v {SWORD} backup export --help', p: 'On the first authenticated call pnm rotates to a fresh long-lived <code>did:key</code> and drops the temporary one. Then take an encrypted backup.', done: 'Health exits 0; DID, key type, date and backup recorded in the Sword seat.' },
+  { id: 'mage-setup', t: 'Mage · mint and bind', who: 'keeper', cmd: 'pnm setup --name {MAGE}\n# create the VTA on the farm with the printed admin did:key, then:\npnm setup continue {MAGE} --vta-did {MAGE_DID}\npnm -v {MAGE} health', p: 'Same ceremony, second seat. The keeper is the Mage VTA\'s operator too; the agent never gets the operator login.', done: 'Health exits 0; Mage seat recorded.' },
+  { id: 'context', t: 'Mage · the agent\'s working context and grant', who: 'keeper', cmd: 'pnm -v {MAGE} contexts create --id claude-code --name "Claude Code"\npnm -v {MAGE} acl create --did {AGENT_DID} --role application --contexts claude-code --label vta-mcp --expires 30d', p: 'The agent DID is the <code>did:key</code> the vta-mcp bridge runs as (scoped agent mode). It reaches only <code>claude-code</code>, and the grant expires in 30 days.', done: 'The grant shows in the Mage\'s ACL panel above.' },
+  { id: 'consent', t: 'Bind the Sword to the Mage', who: 'keeper', cmd: '# the approver is the keeper\'s own signing key (pnm profile / device did:key), not a VTA DID\npnm -v {MAGE} approvals approvers add sword {KEEPER_KEY}\npnm -v {MAGE} approvals require https://trusttasks.org/spec/keys/sign/0.1 --consent --set sword --context claude-code\npnm -v {MAGE} approvals explain https://trusttasks.org/spec/keys/sign/0.1\n# when a sign is held, the keeper answers it:\npnm consent show <refusal.json>\npnm consent approve <refusal.json>', p: 'This is the dual key: the Mage can sign, but the VTA holds the task until a key in the "sword" set signs a consent decision on that exact payload (<code>task-consent/request → decision → granted</code>). Upstream facts that shape this: any DID can approve without an ACL entry, but no VTA signs a decision as its own DID, so the approver is the keeper\'s pnm/device key; rules are only enforced when the Mage VTA runs with <code>policy.enforcement = true</code> (on the hosted farm, ask the maintainer); <code>acl update --step-up-approver</code> is retired and inert, so it is not used.', done: '<code>approvals explain</code> on the Mage names the "sword" set, and a test sign is held until <code>pnm consent approve</code>.' },
+  { id: 'bridge', t: 'Wire Claude Code to the Mage (read-only first)', who: 'keeper approves', cmd: '{ "mcpServers": { "vta": {\n  "command": "C:/Users/mitch/bin/vta-mcp.exe",\n  "args": ["--agent-did", "{AGENT_DID}", "--vta-did", "{MAGE_DID}",\n           "--mediator-did", "<from the Mage\'s health output>",\n           "--read-only", "--deny", "acl/*"] } } }', p: 'Scoped agent mode. The agent key goes in <code>VTA_MCP_AGENT_KEY</code> from the keeper\'s secret store, never into a file this page or the repo can see. Step up later by swapping <code>--read-only</code> for <code>--confirm sensitive</code> plus an <code>--allow</code> list. <code>--deny acl/*</code> stays, so the bridge can never widen its own grant.', done: 'In a session, <code>vta_status</code> answers and <code>vta://calls/recent</code> lists the call.' },
+  { id: 'health', t: 'Health line at session start', who: 'keeper approves', cmd: 'pnm -v {SWORD} health --json\npnm -v {MAGE} health --json', p: 'A SessionStart hook prints one line per seat (✓ / ✗ and the failing check). It never blocks the session. Its settings change is the keeper\'s to approve.' },
+  { id: 'hold', t: 'First two-key Hold record', who: 'both', p: 'The Mage signs a closing head; the Sword consents; both DIDs resolve. See §3. Start with something low-stakes, such as a chronicle closing head.', done: 'A verifier resolves both DIDs and accepts the record.' },
+];
+
+function renderSteps() {
+  const box = $('#steps'); box.innerHTML = '';
+  STEPS.forEach((s, i) => {
+    const d = document.createElement('details'); d.className = 'step' + (ledger.done.includes(s.id) ? ' done' : '');
+    d.innerHTML = `<summary><span class="n">${String(i + 1).padStart(2, '0')}</span><span class="t">${esc(s.t)}</span><span class="who">${esc(s.who)}</span><input type="checkbox" ${ledger.done.includes(s.id) ? 'checked' : ''}></summary>
+      <div class="body"><p>${s.p}</p>${s.cmd ? `<div class="cmd"><pre>${esc(fill(s.cmd))}</pre><button class="btn">copy</button></div>` : ''}${s.done ? `<div class="donewhen">Done when: ${s.done}</div>` : ''}</div>`;
+    const cb = $('input', d); cb.addEventListener('click', e => e.stopPropagation());
+    cb.addEventListener('change', () => { ledger.done = cb.checked ? [...new Set([...ledger.done, s.id])] : ledger.done.filter(x => x !== s.id); d.classList.toggle('done', cb.checked); progress(); save(); });
+    const b = $('.cmd .btn', d); if (b) b.onclick = () => { navigator.clipboard?.writeText(fill(s.cmd)); b.textContent = 'copied'; setTimeout(() => b.textContent = 'copy', 1200); };
+    box.appendChild(d);
+  });
+  progress();
+}
+function progress() { const n = STEPS.filter(s => ledger.done.includes(s.id)).length; $('#prog').textContent = `${n} / ${STEPS.length} done`; $('#bar').style.width = (100 * n / STEPS.length) + '%'; }
+
+let t; function save() { clearTimeout(t); t = setTimeout(async () => {
+  const r = await fetch('/ledger', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(ledger) }).then(r => r.json()).catch(e => ({ ok: false, error: String(e) }));
+  $('#stamp').textContent = r.ok ? 'ledger saved ' + r.at.slice(11, 19) + 'Z' : 'ledger NOT saved: ' + r.error;
+}, 500); }
+
+$$('.seat').forEach(el => {
+  const s = el.dataset.seat;
+  $$('input[data-f]', el).forEach(inp => inp.addEventListener('input', () => { ledger.seats[s] = { ...(ledger.seats[s] || {}), [inp.dataset.f]: inp.value.trim() }; renderSteps(); save(); weave(); }));
+  $$('input[data-x]', el).forEach(cb => cb.addEventListener('change', () => { const seat = ledger.seats[s] = { ...(ledger.seats[s] || {}) }; seat.ext = { ...(seat.ext || {}), [cb.dataset.x]: cb.checked }; save(); weave(); }));
+});
+function paintFields() { $$('.seat').forEach(el => { const s = ledger.seats[el.dataset.seat] || {}; $$('input[data-f]', el).forEach(inp => { if (s[inp.dataset.f] != null) inp.value = s[inp.dataset.f]; }); $$('input[data-x]', el).forEach(cb => { cb.checked = !!(s.ext && s.ext[cb.dataset.x]); }); }); }
+
+function checksOf(h) {
+  const j = h && h.json; const arr = Array.isArray(j?.checks) ? j.checks : Array.isArray(j) ? j : [];
+  if (!arr.length) return h?.error ? `<p class="warn">${esc(h.error.split('\n').slice(-2).join(' '))}</p>` : '';
+  return '<ul class="checks">' + arr.map(c => `<li>${c.ok ? '✓' : '✗'} <b>${esc(c.section ? c.section + ' · ' : '')}${esc(c.name)}</b> ${esc(c.detail || '')}</li>`).join('') + '</ul>';
+}
+function surf(name, r) { if (!r) return ''; const body = r.json != null ? JSON.stringify(r.json, null, 2) : (r.error || ''); const count = Array.isArray(r.json) ? ` (${r.json.length})` : ''; return `<details class="surf"><summary>${name}${count}${r.ok ? '' : ' · ✗'}</summary><pre>${esc(body)}</pre></details>`; }
+
+async function refresh() {
+  $('#stamp').textContent = 'reading pnm… (a dead VTA can take ~25s)';
+  const st = await fetch('/api/state').then(r => r.json()).catch(e => ({ error: String(e) }));
+  if (st.error) { $('#stamp').textContent = 'read failed: ' + st.error; return; }
+  $('#stamp').textContent = 'read ' + st.at.slice(11, 19) + 'Z · ' + (st.pnmFound ? st.pnm : 'pnm NOT FOUND at ' + st.pnm);
+  lastState = st;
+  const bySlug = Object.fromEntries((st.seats || []).map(s => [s.slug, s]));
+  const listed = Object.fromEntries((Array.isArray(st.list?.json) ? st.list.json : []).map(v => [v.slug, v]));
+  const claimed = new Set();
+  $$('.seat').forEach(el => {
+    const slug = $('input[data-f="slug"]', el).value.trim(); claimed.add(slug);
+    const s = bySlug[slug], v = listed[slug], live = $('.live', el);
+    if (!v) { live.innerHTML = `<span class="tag open">not enrolled on this machine</span>`; return; }
+    const healthy = s?.health?.ok, recorded = ledger.seats[el.dataset.seat]?.did, drift = recorded && v.did && recorded !== v.did;
+    live.innerHTML = `<div><span class="tag ${healthy ? 'ok' : 'no'}">${healthy ? 'healthy' : 'health failing'}</span> ${v.default ? '<span class="tag lab">pnm default</span>' : ''} ${drift ? '<span class="tag no">DID ≠ ledger</span>' : ''}</div>
+      <div class="kv"><span>pnm DID</span><span>${esc(v.did || '—')}</span><span>mediator</span><span>${esc(v.mediatorDid || '—')}</span></div>
+      ${checksOf(s?.health)}${surf('contexts', s?.contexts)}${surf('acl', s?.acl)}${surf('keys', s?.keys)}${surf('approvals', s?.approvals)}${surf('audit', s?.audit)}`;
+  });
+  const others = Object.keys(listed).filter(k => !claimed.has(k));
+  $('#others').textContent = others.length ? 'Also configured in pnm, not seated: ' + others.join(', ') : '';
+  weave();
+}
+
+// ---- the weave: one fact, two readers -------------------------------------------------
+let lastState = null;
+const figs = {};
+$$('.seat').forEach(el => {
+  const cv = $('.seat-star', el), cap = $('.seat-cap', el);
+  figs[el.dataset.seat] = createStarFigure(cv, { onSpinChange: on => { const b = $('button', cap); if (b) b.textContent = on ? 'pause' : 'turn'; } });
+});
+const sectionOk = (h, sec) => { const cs = (h && h.json && Array.isArray(h.json.checks)) ? h.json.checks.filter(c => c.section === sec) : []; return cs.length ? cs.every(c => c.ok) : null; };
+const short = d => d ? (d.length > 46 ? d.slice(0, 22) + '…' + d.slice(-16) : d) : '';
+function readSeat(seatKey) {
+  const el = $(`.seat[data-seat="${seatKey}"]`), slug = $('input[data-f="slug"]', el).value.trim();
+  const rec = ledger.seats[seatKey] || {}, ext = rec.ext || {};
+  const list = Array.isArray(lastState?.list?.json) ? lastState.list.json : [];
+  const v = list.find(x => x.slug === slug) || null;
+  const s = (lastState?.seats || []).find(x => x.slug === slug) || null;
+  const pnmDid = v?.did || null, vtaOk = sectionOk(s?.health, 'vta'), medOk = sectionOk(s?.health, 'mediator'), healthy = !!s?.health?.ok;
+  const aclText = s?.acl?.json ? JSON.stringify(s.acl.json) : '';
+  const holderInAcl = rec.holderDid ? (aclText ? aclText.includes(rec.holderDid) : null) : null;
+  return { el, slug, rec, ext, v, s, pnmDid, vtaOk, medOk, healthy, holderInAcl };
+}
+function seatStar(r, seatKey) {
+  // the extension's four steps, each done if the extension says so or pnm proves it
+  const done = [r.ext.agent || r.vtaOk === true, r.ext.reach || r.medOk === true, !!r.ext.passkey, r.ext.routing || r.healthy];
+  const next = done.indexOf(false), ids = ['field', 'sword', 'mage', 'routes'], layers = {};
+  ids.forEach((id, i) => { layers[id] = done[i] ? { level: 1 } : i === next ? { level: .7, next: true } : { level: 0 }; });
+  layers.core = { level: next < 0 ? 1 : 0 };
+  figs[seatKey]?.setLayers(layers);
+  const labels = ['the field', '⚔️ the Swordsman', '🧙 the Mage', 'the routes'], n = done.filter(Boolean).length;
+  const cap = $('.seat-cap', r.el);
+  cap.innerHTML = (next < 0 ? 'The star is whole.' : `${n} of 4 formed · next: ${labels[next]}`) + ` · <button type="button">${figs[seatKey]?.isSpinning() ? 'pause' : 'turn'}</button>`;
+  $('button', cap).onclick = () => figs[seatKey]?.setSpinning(!figs[seatKey].isSpinning());
+}
+const AG = (k, t) => `<span class="ag ${k}">${t}</span>`;
+function weave() {
+  const out = [];
+  for (const [key, glyph] of [['sword', '⚔️'], ['mage', '🧙']]) {
+    const r = readSeat(key); seatStar(r, key);
+    const yes = b => b === true, rows = [];
+    const didAgree = r.pnmDid && r.rec.extDid ? (r.pnmDid === r.rec.extDid ? AG('yes', 'same') : AG('no', 'differ')) : AG('half', 'one side');
+    rows.push(['VTA DID', r.pnmDid ? short(r.pnmDid) : (r.v ? 'pending — no DID yet' : 'not enrolled'), r.rec.extDid ? short(r.rec.extDid) : (r.ext.agent ? 'step 1 ✓ (paste DID)' : '—'), didAgree]);
+    rows.push(['DID resolves', r.vtaOk === null ? 'not read' : r.vtaOk ? '✓' : '✗', r.ext.agent ? 'step 1 ✓' : '—', r.vtaOk === null ? AG('half', 'unknown') : (yes(r.vtaOk) === !!r.ext.agent ? AG('yes', 'agree') : AG('half', 'catching up'))]);
+    rows.push(['mediator reachable', r.medOk === null ? 'not read' : r.medOk ? '✓' : '✗', r.ext.reach ? 'step 2 ✓' : '—', r.medOk === null ? AG('half', 'unknown') : (yes(r.medOk) === !!r.ext.reach ? AG('yes', 'agree') : AG('half', 'catching up'))]);
+    rows.push(['passkey lock', 'not visible to pnm', r.ext.passkey ? 'step 3 ✓' : '—', AG(r.ext.passkey ? 'yes' : 'half', r.ext.passkey ? 'extension only' : 'open')]);
+    rows.push(['wallet holder in ACL', r.holderInAcl === null ? (r.rec.holderDid ? 'ACL not read' : 'paste holder DID') : r.holderInAcl ? '✓ granted' : '✗ not in ACL', r.rec.holderDid ? short(r.rec.holderDid) : '—', r.holderInAcl === null ? AG('half', 'unknown') : r.holderInAcl ? AG('yes', 'agree') : AG('no', 'grant missing')]);
+    rows.push(['message routing', r.healthy ? 'health ✓' : 'health ✗', r.ext.routing ? 'step 4 ✓' : '—', r.healthy === !!r.ext.routing ? AG('yes', 'agree') : AG('half', 'catching up')]);
+    out.push(`<h3 style="margin:18px 0 8px">${glyph} ${esc(r.slug)}</h3><table class="weave"><tr><th>fact</th><th>pnm (live)</th><th>extension (Setup)</th><th>thread</th></tr>${rows.map(([f, a, b, c]) => `<tr><td>${f}</td><td class="v">${esc(a)}</td><td class="v">${esc(b)}</td><td>${c}</td></tr>`).join('')}</table>`);
+  }
+  $('#weave-tables').innerHTML = out.join('');
+}
+
+$('#refresh').onclick = refresh;
+
+(async () => {
+  const l = await fetch('/ledger').then(r => r.ok ? r.json() : null).catch(() => null);
+  if (l) ledger = { seats: { sword: {}, mage: {}, ...(l.seats || {}) }, done: l.done || [], notes: l.notes || '' };
+  paintFields(); renderSteps(); weave(); refresh();
+})();
+
+async function initTerminal() {
+  const t = await fetch('/api/terminal').then(r => r.json()).catch(() => ({ reads: [] }));
+  $('#t-read').innerHTML = t.reads.map(r => `<option>${esc(r)}</option>`).join('');
+  const seats = () => $$('.seat').map(el => [el.dataset.seat, $('input[data-f="slug"]', el).value.trim()]);
+  const paint = () => { $('#t-seat').innerHTML = seats().map(([k, v]) => `<option value="${esc(v)}">${k === 'sword' ? '⚔️' : '🧙'} ${esc(v)}</option>`).join(''); };
+  paint(); $$('input[data-f="slug"]').forEach(i => i.addEventListener('input', paint));
+  $('#t-run').onclick = async () => {
+    const body = { read: $('#t-read').value, slug: $('#t-seat').value, arg: $('#t-arg').value.trim() };
+    $('#t-out').textContent = '$ running ' + body.read + ' on ' + body.slug + ' …';
+    const r = await fetch('/api/run', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) }).then(r => r.json()).catch(e => ({ error: String(e) }));
+    $('#t-out').textContent = ['$ ' + (r.cmd || body.read), r.json != null ? JSON.stringify(r.json, null, 2) : (r.error || ''), r.code ? '[exit ' + r.code + ']' : ''].filter(Boolean).join(String.fromCharCode(10));
+  };
+}
+initTerminal();
+</script>
+</body>
+</html>
