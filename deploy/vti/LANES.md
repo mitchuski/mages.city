@@ -4,7 +4,7 @@
 
 ## 1. Contribute directly to OpenVTC
 
-Clean local checkout: `C:/Users/mitch/openvtc/openvtc`, remote `upstream` = `https://github.com/OpenVTC/openvtc.git`, `main` tracking `upstream/main`. Initial inspected commit: `5453239b5604b2c76dba9ac87d74c522d95af2d7`. Cargo metadata resolves the two workspace members and their Rust 1.95 requirement; compilation and runtime behaviour have not been verified.
+Clean local checkout: `~/openvtc/openvtc`, remote `upstream` = `https://github.com/OpenVTC/openvtc.git`, `main` tracking `upstream/main`. Initial inspected commit: `5453239b5604b2c76dba9ac87d74c522d95af2d7`. Cargo metadata resolves the two workspace members and their Rust 1.95 requirement; compilation and runtime behaviour have not been verified.
 
 Use this checkout to understand and reproduce upstream behaviour. Make each contribution in an isolated worktree/branch from current upstream. Add a personal GitHub fork as the publishing remote when there is a contribution to send; no public fork or upstream push was made during this setup. Never merge the entire City or Star branch into an upstream PR.
 
@@ -18,7 +18,7 @@ The CLI repository's CONTRIBUTING.md asks for a GitHub Discussion before an issu
 
 ## 2. Use Mages City as the agentprivacy experimental community
 
-Home: `C:/Users/mitch/mages_city` (`mitchuski/mages.city`). It owns the community's site, branding, agent admission policy, Portal/Hall/Exchange integration and deployment configuration. Upstream components supply the trust infrastructure.
+Home: `~/mages_city` (`mitchuski/mages.city`). It owns the community's site, branding, agent admission policy, Portal/Hall/Exchange integration and deployment configuration. Upstream components supply the trust infrastructure.
 
 The earlier VTC subdomains and hosting work were exploration, not a confirmed deployed community. Preserve those notes as research; do not make recovering an old claim a prerequisite. Inspect it if useful, otherwise choose hosting deliberately. No new infrastructure purchase or identity minting follows from this plan alone.
 
@@ -30,7 +30,7 @@ Output: a repeatable test deployment, a compatible-version record and a tested g
 
 ## 3. Develop the Star as an identity and trust-graph interface
 
-Homes: `C:/Users/mitch/star-key`, `C:/Users/mitch/star`, and the existing agentprivacy runtime projects. The existing browser-plugin-derived work remains the prototype; it is not restarted or copied into the CLI repository.
+Homes: `~/star-key`, `~/star`, and the existing agentprivacy runtime projects. The existing browser-plugin-derived work remains the prototype; it is not restarted or copied into the CLI repository.
 
 **Product ambition:** replace wallet-style navigation with a view of identity, relationships, communities and evidence. The Star may eventually become an OpenVTC interface, subject to maintainer agreement and demonstrated usability. Replacing the wallet experience does not itself replace key custody, signing, consent or credential verification; those functions still need explicit implementations and boundaries.
 
