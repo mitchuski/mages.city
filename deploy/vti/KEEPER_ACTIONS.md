@@ -118,12 +118,26 @@ $   sudo systemctl enable --now vti-vtc
 ```
 Browser: the install URL → claim code → passkey → sign in at `https://vtc.mages.city/admin/`. **Do this before adding any other admin.** Then paste me the `VTC DID` line; I write it into `community.json`, `edition.json` and the pages, and you push `main`.
 
-## 7 · Hand the rest to the agent · ⏱ 10 min
+## 7b · Hand the rest to the agent · ⏱ 10 min
 
 ```
 $   bash /mnt/c/Users/mitch/mages_city/deploy/vti/core-node/check.sh
 ```
 From here `DEPLOY.md` §3–§7 is mostly mine with you clicking approve: the `cnm` identity, the three join criteria (`invited` · `arena-evidence` · `review`), the community site into `website.root_dir`, the first synthetic admission and revocation. The recorded versions go into `EDITION.md`.
+
+
+## 7 · Star Key as the City's administrator · ⏱ 20 min · IN PROGRESS 9 Oct
+
+Load `~/star-key/packages/extension/dist` unpacked; choose **Manage the whole agent** + **Also manage your own identity**, context `swordsman`; grant the wallet's temporary did:key on the VTA with `pnm acl create --did <wallet did:key> --role admin --label "Star Key" --expires 1h` (pnm 0.14.3 has no `--capabilities` / `--handoff`); Continue → the wallet rotates to its long-term key; lock with a passkey; enable the wallet on `vtc.mages.city`; console → **Sign in as a VTA identity** → **Set up signing with your wallet**; then a seat at the community (single-administrator mode on the host, or a narrower online role, or an offline `vtc acl add`).
+
+> **Gotcha met 9 Oct 00:16:** the wallet (plugin base 7 Sept, 233 commits behind upstream but AHEAD of the 2 Sept binaries) sends TSP frames vta 0.23.4 cannot read — `couldn't unpack TSP message: missing G ciphertext frame`, six frames deleted unread; no rotation happened. Fix: extension **Options → Prefer TSP transport → off** (pins DIDComm/REST, the documented workaround), then Continue again. The real fix is the deliberate refresh: rebase Star Key onto upstream's current plugin AND pull current binaries with the installer, together.
+
+
+## 8 · The 8 Oct tagged release · ⏱ 20 min · PARTLY DONE 9 Oct 00:30
+
+`core-node/update-binaries.sh` (snapshot + rollback) brought vta 0.23.4 → **0.56.0**, vtc (new build, same 0.11.58 string), pnm, mediator, mediator-setup, openvtc 0.5.0, did-hosting-daemon (new build) — all seven changed; the pin shows the drift. Then `core-node/migrate-config.sh`: `trust_xff = false` → `trust_xff_cidrs = ["127.0.0.1/32"]` in vta and vtc (the retired key is refused), `[secrets] backend = "plaintext"` + `confirm_plaintext = true` for the DID host. VTA and VTC came up green on the new release.
+
+> **Gotcha, unresolved tonight:** the new DID host keeps secrets in `./config.secrets.plaintext`; the old one kept them inside its store, and the sealed bundle cannot be re-opened without the old bootstrap key. Tonight: the DID host alone was returned to its 0.8.3 binary and snapshot state (`~/vti/rollback/20261008T232440Z`). **Tomorrow (Option B):** on the new binary, `did-hosting-daemon setup` offline phase 1 → `vta contexts create --id webvh …` / `vta bootstrap provision-integration …` → phase 2 → `invite` (daemon stopped) → re-upload `vta`, `mediator` and `vtc` logs (`~/vti/vta/*.jsonl`, `~/vti/vtc/data/did/*.jsonl`) → `pnm did-mgmt servers add --id did-hosting-daemon --did <new host DID>`. The three hosted DIDs do not change; only the host's own does.
 
 ## What never leaves your hands
 

@@ -224,6 +224,13 @@
         "observed": "2026-10-08T22:19:24Z",
         "what": "after pnm rotated the admin key (acl/swap), pnm's TSP sender still signed as the pre-swap did:key; VTA refused TSP trust-tasks 403 \"DID not in ACL\"; pnm health: DIDComm pong OK, TSP ping timeout",
         "status": "open; DIDComm fully working; candidate upstream report (LANES §1: reproducible lifecycle failure)"
+      },
+      {
+        "id": "wallet-tsp-wire-mismatch",
+        "observed": "2026-10-08T23:16Z",
+        "what": "Star Key (plugin base 2026-09-07) → vta 0.23.4 over TSP: \"couldn't unpack TSP message: missing G ciphertext frame\"; frames deleted; DIDComm/REST unaffected",
+        "workaround": "extension Options → Prefer TSP off",
+        "fix": "refresh plugin base and node binaries together"
       }
     ],
     "vtcAdminDid": "did:key:z6MkgumDrjmLAPdBGp4obiqkzHLU9Q8at1AHSUTRNHQmfqv4",
@@ -243,8 +250,19 @@
     },
     "profile": {
       "name": "Mages City",
-      "description": "The community for agentprivacy: privacy and cybersecurity researchers, autoresearcher agents and the humans who keep them, building trust by doing research together in swarms and solving problems for others. An open Verifiable Trust Community on OpenVTC: bring your questions and your agent; words (κ) in a registry, spells with their mages, mana on the edges of the trust graph.",
+      "description": "(⚔️ ⊥ ⿻ ⊥ 🧙) 😊 · The community for agentprivacy: privacy and cybersecurity researchers, autoresearcher agents and the humans who keep them, building trust by doing research together in swarms and solving problems for others. An open Verifiable Trust Community on OpenVTC: bring your questions and your agent; words (κ) in a registry, spells with their mages, mana on the edges of the trust graph.",
       "setInConsole": "pending (keeper types it)"
+    },
+    "release": {
+      "updated": "2026-10-09T00:30Z",
+      "vta": "0.56.0",
+      "vtc": "0.11.58 (8 Oct build)",
+      "openvtc": "0.5.0",
+      "pnm": "8 Oct build",
+      "mediator": "8 Oct build",
+      "didHost": "0.8.3 (2 Sept build, kept: secrets migration pending, Option B)",
+      "pin": "~/vti/BINARIES.sha256 on the node",
+      "snapshot": "~/vti/rollback/20261008T232440Z"
     }
   }
 }
