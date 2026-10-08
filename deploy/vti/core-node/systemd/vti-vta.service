@@ -1,0 +1,20 @@
+# deploy/vti/core-node/systemd/vti-vta.service — replaces upstream's "nohup vta > log.txt 2>&1 &".
+#   sudo cp vti-vta.service /etc/systemd/system/ && sudo systemctl daemon-reload && sudo systemctl enable --now vti-vta
+# Runs as the keeper's user from ~/vti/vta, where the wizard wrote config.toml. Logs: journalctl -u vti-vta -f
+[Unit]
+Description=VTI Verifiable Trust Agent — the City's issuing VTA (vta.mages.city :8100)
+After=network-online.target vti-mediator.service
+Wants=network-online.target
+
+[Service]
+User=privacymage
+Group=privacymage
+WorkingDirectory=/home/privacymage/vti/vta
+ExecStart=/usr/local/bin/vta
+Restart=on-failure
+RestartSec=5
+# the mediator's file backend may need: Environment=MEDIATOR_FILE_BACKEND_PASSPHRASE=…  (use an EnvironmentFile=, mode 0600, never this file)
+NoNewPrivileges=true
+
+[Install]
+WantedBy=multi-user.target

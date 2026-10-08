@@ -3,9 +3,11 @@
   "edition": "mages-city",
   "scope": "Community operator using OpenVTC; Star remains downstream",
   "hosting": {
-    "status": "exploration-only-no-confirmed-deployment",
-    "communityDid": null,
-    "memberCustody": "bring-your-own-vta"
+    "status": "core-node LIVE: dids · mediator · vta · vtc (2026-10-08)",
+    "node": "this machine — WSL2 Ubuntu 26.04 + Cloudflare Tunnel (deploy/vti/CORE_NODE.md)",
+    "communityDid": "did:webvh:QmQ8GMNCTui2H9gjxQWByS1ScsWkByaeQHYnzhcET1UPne:dids.mages.city:vtc",
+    "memberCustody": "bring-your-own-vta",
+    "issuingVta": "the keeper's own VTA on the core node mints and issues"
   },
   "components": [
     {
@@ -74,14 +76,175 @@
     {
       "id": "exchange",
       "url": "https://exchange.mages.city/"
+    },
+    {
+      "id": "community-profile",
+      "url": "https://vtc.mages.city/v1/community/public-profile",
+      "note": "public; 404 until the profile exists"
     }
   ],
   "acceptance": {
     "compatibleVersions": "unverified",
-    "communityBootstrap": "unverified",
+    "communityBootstrap": "observed 2026-10-08: DID minted via the City's VTA, daemon up, first admin claimed; restart persistence not yet exercised",
     "humanApprovedAdmission": "unverified",
     "credentialVerification": "unverified",
     "revocationObserved": "unverified",
     "restartRecovery": "unverified"
+  },
+  "updated": "2026-10-07",
+  "upstream": {
+    "openvtcNet": {
+      "url": "https://openvtc.net/",
+      "observed": "2026-10-07",
+      "client": "cargo install openvtc",
+      "vtaFarm": "https://vtafarm.firstperson.dev/",
+      "testCommunity": "https://first.openvtc.net/",
+      "ownerPath": "https://github.com/OpenVTC/verifiable-trust-infrastructure/blob/main/docs/03-vtc/getting-started.md"
+    },
+    "vtiOriginMain": {
+      "aheadOfLocal": 81,
+      "localHead": "68f01ca965660956a6eec5f545faf5c602fb2edc",
+      "observed": "2026-10-07"
+    },
+    "openvtcUpstreamMain": {
+      "aheadOfLocal": 107,
+      "localHead": "5453239b5604b2c76dba9ac87d74c522d95af2d7",
+      "observed": "2026-10-07"
+    }
+  },
+  "community": {
+    "did": "did:webvh:QmQ8GMNCTui2H9gjxQWByS1ScsWkByaeQHYnzhcET1UPne:dids.mages.city:vtc",
+    "status": "LIVE 2026-10-08 22:40Z: minted, first admin claimed (passkey), console reachable; profile name/description not yet set; criteria not yet registered",
+    "name": "Mages City",
+    "context": "mages-city",
+    "baseUrl": "https://vtc.mages.city",
+    "didHosting": "serverless (vtc.mages.city/.well-known/did.jsonl) unless dids.mages.city is registered",
+    "administrators": "single_admin_mode (one keeper) or co_admin_did — decide in vtc/vtc-setup.toml",
+    "joinCriteriaOrder": [
+      "invited",
+      "arena-evidence",
+      "review"
+    ],
+    "kit": {
+      "setup": "deploy/vti/vtc/vtc-setup.toml",
+      "criteria": "deploy/vti/vtc/join-criteria.json",
+      "website": "deploy/vti/vtc/website/index.html",
+      "runbook": "deploy/vti/DEPLOY.md",
+      "coreNode": "deploy/vti/CORE_NODE.md + deploy/vti/core-node/"
+    },
+    "front": {
+      "page": "site/community.md",
+      "data": "site/community.json"
+    },
+    "districts": {
+      "arena": {
+        "page": "site/arena.md",
+        "data": "site/arena.json",
+        "status": "declared"
+      }
+    },
+    "hosting": "core node (CORE_NODE.md): dids → mediator → vta → vtc on this machine behind a tunnel; nothing running as of 2026-10-07",
+    "tunnel": {
+      "name": "mages-core",
+      "id": "37513f30-14c1-4942-8dcd-578abfee497b",
+      "created": "2026-10-08T17:17:46Z",
+      "hosts": [
+        "dids",
+        "mediator",
+        "vta",
+        "vtc"
+      ],
+      "status": "live: four hosts routed, proxied; 502 until services run",
+      "observed": "2026-10-08 — HTTP 502 via Cloudflare on all four"
+    },
+    "vtaDid": "did:webvh:QmPbiGWYyLGRmuD8iVNkXCStuFWqcQGTMXFWk3jK2KySC6:dids.mages.city:vta",
+    "mediatorDid": "did:webvh:QmeBZpgvVSaKXJm54ehwrJ8pRnAkwLcFuKdRuTXLUByRXS:dids.mages.city:mediator",
+    "vtaVersion": "0.23.4",
+    "vtaMinted": "2026-10-08",
+    "vtaAdmin": {
+      "did": "did:key:z6MkrhJ6TCxSjnVygGJA2CTvy2C3JNwvyZdVkew55aa1gvR8",
+      "label": "privacymage",
+      "role": "admin",
+      "contexts": "unrestricted",
+      "seated": "2026-10-08",
+      "how": "pnm first connect → POST /acl/swap (long-term entry, permanent)",
+      "rotatedFrom": "did:key:z6Mko81cVFTQWaj2fQRsTGez1hrX1mR43BqGCoffHBEauc7K",
+      "rotatedAt": "2026-10-08T22:19:23Z"
+    },
+    "mediator": {
+      "did": "did:webvh:QmeBZpgvVSaKXJm54ehwrJ8pRnAkwLcFuKdRuTXLUByRXS:dids.mages.city:mediator",
+      "adminDid": "did:key:z6MkmpyT1gC5sdYynZXCtRghhDLtvw6o2pdA5nBuq8ECubry",
+      "keys": "file, passphrase-encrypted (encrypt=1)",
+      "protocols": [
+        "didcomm-v2",
+        "tsp"
+      ],
+      "store": "valkey (redis://127.0.0.1/)",
+      "listen": "0.0.0.0:7037",
+      "configured": "2026-10-08",
+      "running": true,
+      "publicWellKnownDid": "HTTP 200 via Cloudflare 2026-10-08"
+    },
+    "didHost": {
+      "did": "did:webvh:QmWW65o9t2sUBjKqbPdwh5JLRn8Bm6dPcg6ArnuTnk9NzF:dids.mages.city",
+      "version": "0.8.3",
+      "publicUrl": "https://dids.mages.city",
+      "adminDid": "did:key:z6MkwdnAe6dnxa17akmnUG3cgediPyHpgXV85tF1E17GU71n",
+      "setupDid": "did:key:z6MkjiSVrGseH1eqBJtkaghfPc18zRieuz7aycfxdHAgh964",
+      "bundleId": "a51ce83bac09e8154800e0f6ba8f4273",
+      "configured": "2026-10-08",
+      "running": true,
+      "serves": [
+        "/.well-known/did.jsonl (daemon)",
+        "/mediator/did.jsonl",
+        "/vta/did.jsonl"
+      ],
+      "observed": "2026-10-08 23:30 — all three HTTP 200 via Cloudflare; scids match"
+    },
+    "vta": {
+      "running": true,
+      "version": "0.23.4",
+      "publicHealth": "HTTP 200 via Cloudflare 2026-10-08",
+      "transports": [
+        "rest",
+        "didcomm",
+        "tsp"
+      ],
+      "didHostRegistered": "did-hosting-daemon → did:webvh:QmWW65o9t2sUBjKqbPdwh5JLRn8Bm6dPcg6ArnuTnk9NzF:dids.mages.city (over TSP, 200, 23:19:22Z)",
+      "backup": {
+        "at": "2026-10-08",
+        "file": "~/vti/vta-backup.vtabak (node only)",
+        "bytes": 23787,
+        "flow": "trust-task descriptor over REST"
+      }
+    },
+    "openItems": [
+      {
+        "id": "tsp-after-rotation",
+        "observed": "2026-10-08T22:19:24Z",
+        "what": "after pnm rotated the admin key (acl/swap), pnm's TSP sender still signed as the pre-swap did:key; VTA refused TSP trust-tasks 403 \"DID not in ACL\"; pnm health: DIDComm pong OK, TSP ping timeout",
+        "status": "open; DIDComm fully working; candidate upstream report (LANES §1: reproducible lifecycle failure)"
+      }
+    ],
+    "vtcAdminDid": "did:key:z6MkgumDrjmLAPdBGp4obiqkzHLU9Q8at1AHSUTRNHQmfqv4",
+    "vtcVersion": "0.11.58",
+    "didPath": "dids.mages.city:vtc (did-hosting-daemon)",
+    "observed": {
+      "at": "2026-10-08",
+      "health": 200,
+      "publicProfile": 200,
+      "didQr": 200,
+      "landing": 200,
+      "admin": 200,
+      "transports": [
+        "tsp serviceable",
+        "didcomm serviceable"
+      ]
+    },
+    "profile": {
+      "name": "Mages City",
+      "description": "Autoresearcher agents and the humans who keep them, building trust by doing research in swarms and solving problems for others. An early open Verifiable Trust Community: members are agents, humans admit; words (κ) in a registry, spells with their mages, mana on the edges.",
+      "setInConsole": "pending (keeper types it)"
+    }
   }
 }

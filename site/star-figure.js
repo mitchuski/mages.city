@@ -1,5 +1,4 @@
 // Generated from star-key packages/extension/src/star-figure.ts (esbuild, esm). Edit the source, not this file.
-// The Star as a figure that forms: soulbis.com/star geometry, dependency-free canvas 3D.
 const SPIN_RAD_PER_MS = Math.PI * 2 / 25e3;
 const SWORD = [232, 82, 58];
 const MAGE = [77, 217, 232];
@@ -70,7 +69,7 @@ function createStarFigure(canvas, opts = {}) {
   const HOME = { yaw: 1.2, pitch: 0.8 };
   let yaw = HOME.yaw, pitch = HOME.pitch, spinning = !reduce && opts.spinning !== false;
   let layers = {};
-  let shown = { field: 0, sword: 0, mage: 0, routes: 0, core: 0, hold: 0, invite: 0 };
+  let shown = { field: 0, sword: 0, mage: 0, routes: 0, core: 0, hold: 0, invite: 0, constellation: 0 };
   let raf = 0, dragging = false, moved = 0, lx = 0, ly = 0, w = 0, h = 0, dpr = 1, t0 = performance.now();
   const fit = () => {
     const r = canvas.getBoundingClientRect();
@@ -177,6 +176,37 @@ function createStarFigure(canvas, opts = {}) {
         ctx.arc(q.x, q.y, 1.6 + q.z * 0.6, 0, Math.PI * 2);
         ctx.fill();
       });
+    }
+    if (L("constellation") > 0.01) {
+      const c = layers.constellation, vs = (c?.vertices ?? []).filter((v) => v >= 0 && v < 64), lvl = L("constellation");
+      ctx.lineWidth = 1.4;
+      ctx.setLineDash(N("constellation") ? [3, 4] : []);
+      for (let i = 1; i < vs.length; i++) {
+        const a = proj(LATTICE[vs[i - 1]]), b = proj(LATTICE[vs[i]]);
+        ctx.strokeStyle = rgba(PALE, 0.85 * lvl * (0.6 + 0.4 * ((a.z + b.z) / 2 + 1)));
+        ctx.beginPath();
+        ctx.moveTo(a.x, a.y);
+        ctx.lineTo(b.x, b.y);
+        ctx.stroke();
+      }
+      ctx.setLineDash([]);
+      vs.forEach((v, i) => glow(proj(LATTICE[v]), i === vs.length - 1 ? MAGE : PALE, i === vs.length - 1 ? 9 : 5.5, (i === vs.length - 1 ? 0.95 : 0.7) * lvl));
+      if (c?.witness !== void 0 && c.witness >= 0 && c.witness < 64 && vs.length) {
+        const a = proj(LATTICE[vs[vs.length - 1]]), b = proj(LATTICE[c.witness]);
+        ctx.setLineDash([2, 5]);
+        ctx.lineWidth = 1;
+        ctx.strokeStyle = rgba(SWORD, 0.55 * lvl);
+        ctx.beginPath();
+        ctx.moveTo(a.x, a.y);
+        ctx.lineTo(b.x, b.y);
+        ctx.stroke();
+        ctx.setLineDash([]);
+        ctx.strokeStyle = rgba(SWORD, 0.8 * lvl);
+        ctx.lineWidth = 1;
+        ctx.beginPath();
+        ctx.arc(b.x, b.y, 4.5, 0, Math.PI * 2);
+        ctx.stroke();
+      }
     }
     const order = [["sword", SWORD_V, SWORD], ["mage", MAGE_V, MAGE]];
     order.sort((a, b) => rot(a[1][0])[2] - rot(b[1][0])[2]);

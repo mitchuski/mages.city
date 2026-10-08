@@ -125,7 +125,7 @@
       "keeper": "Vulcana",
       "district": "the Crucible",
       "districtId": "crucible",
-      "craft": "Run \u00b7 Evoke \u00b7 Craft",
+      "craft": "Run · Evoke · Craft",
       "vertex": 19,
       "bits": "010011",
       "anchor": [
@@ -415,7 +415,7 @@
       "keeper": "Pleione",
       "district": "the Navigation District",
       "districtId": "navigation",
-      "craft": "Hold \u00b7 Compare \u00b7 Map",
+      "craft": "Hold · Compare · Map",
       "vertex": 44,
       "bits": "101100",
       "anchor": [
@@ -444,7 +444,7 @@
       "keeper": "Pandia",
       "district": "the Threshold District",
       "districtId": "threshold",
-      "craft": "Display \u00b7 Choose \u00b7 Dispatch",
+      "craft": "Display · Choose · Dispatch",
       "vertex": 59,
       "bits": "111011",
       "anchor": [
@@ -502,7 +502,7 @@
       "keeper": "Faunia",
       "district": "the Threshold District",
       "districtId": "threshold",
-      "craft": "Run \u00b7 Evoke \u00b7 Spawn",
+      "craft": "Run · Evoke · Spawn",
       "vertex": 59,
       "bits": "111011",
       "anchor": [
@@ -556,8 +556,8 @@
     },
     {
       "id": "assay",
-      "name": "the Assay (Dokim\u00e9)",
-      "keeper": "Dokim\u00e9",
+      "name": "the Assay (Dokimé)",
+      "keeper": "Dokimé",
       "district": "the Horizon District",
       "districtId": "horizon",
       "craft": "Explore the source-defined craft",
@@ -647,7 +647,7 @@
       "keeper": "Socrat0x",
       "district": "the Founding Bonfire",
       "districtId": "bonfire",
-      "craft": "Question \u00b7 reflect \u00b7 reply",
+      "craft": "Question · reflect · reply",
       "vertex": 24,
       "bits": "011000",
       "anchor": [
@@ -1040,5 +1040,206 @@
       "name": "Value",
       "weight": 1
     }
-  ]
+  ],
+  "seats": {
+    "generatedFrom": "arena.json (instances[].solve) — the Arena's instances seated on the lattice by kind of solve; held first by instances and their patrons; each passes to a trusted human orchestrator who delivers one bit flip (arena.json → lattice.succession)",
+    "updated": "2026-10-07",
+    "held": [
+      {
+        "vertex": 42,
+        "bits": "101010",
+        "instance": "sig_mage",
+        "arena": "yukon",
+        "axes": [
+          "Protection",
+          "Memory",
+          "Computation"
+        ],
+        "patron": "Memora",
+        "patronWorkshop": "zShields",
+        "witness": 21,
+        "holder": "instance",
+        "orchestrator": null,
+        "flipOwed": null,
+        "outsideLattice": false
+      },
+      {
+        "vertex": 50,
+        "bits": "110010",
+        "instance": "hashsmash_mage",
+        "arena": "yukon",
+        "axes": [
+          "Protection",
+          "Delegation",
+          "Computation"
+        ],
+        "patron": "Adamantia",
+        "patronWorkshop": "the Etherchanting Shop",
+        "witness": 13,
+        "holder": "instance",
+        "orchestrator": null,
+        "flipOwed": null,
+        "outsideLattice": false
+      },
+      {
+        "vertex": 35,
+        "bits": "100011",
+        "instance": "qpcbtc_mage",
+        "arena": "yukon",
+        "axes": [
+          "Protection",
+          "Computation",
+          "Value"
+        ],
+        "patron": "Eos",
+        "patronWorkshop": "the Horizon (Eos)",
+        "witness": 28,
+        "holder": "instance",
+        "orchestrator": null,
+        "flipOwed": null,
+        "outsideLattice": false
+      },
+      {
+        "vertex": 10,
+        "bits": "001010",
+        "instance": "heesch_mage",
+        "arena": "yukon",
+        "axes": [
+          "Memory",
+          "Computation"
+        ],
+        "patron": "Socrat0x",
+        "patronWorkshop": "the Dragon Bonfire",
+        "witness": 53,
+        "holder": "instance",
+        "orchestrator": null,
+        "flipOwed": null,
+        "outsideLattice": false
+      },
+      {
+        "vertex": 3,
+        "bits": "000011",
+        "instance": "precompile_mage",
+        "arena": "yukon",
+        "axes": [
+          "Computation",
+          "Value"
+        ],
+        "patron": "Vulcana",
+        "patronWorkshop": "the Forge(t)",
+        "witness": 60,
+        "holder": "instance",
+        "orchestrator": null,
+        "flipOwed": null,
+        "outsideLattice": false
+      },
+      {
+        "vertex": 50,
+        "bits": "110010",
+        "instance": "flock_mage",
+        "arena": "yukon",
+        "axes": [
+          "Protection",
+          "Delegation",
+          "Computation"
+        ],
+        "patron": "Helia",
+        "patronWorkshop": "the Solchanting Shop",
+        "witness": 13,
+        "holder": "instance",
+        "orchestrator": null,
+        "flipOwed": null,
+        "outsideLattice": false
+      },
+      {
+        "vertex": 40,
+        "bits": "101000",
+        "instance": "better_codes_mage",
+        "arena": "yukon",
+        "axes": [
+          "Protection",
+          "Memory"
+        ],
+        "patron": "Memora",
+        "patronWorkshop": "zShields",
+        "witness": 23,
+        "holder": "instance",
+        "orchestrator": null,
+        "flipOwed": null,
+        "outsideLattice": false
+      },
+      {
+        "vertex": 14,
+        "bits": "001110",
+        "instance": "matrices_mage",
+        "arena": "yukon",
+        "axes": [
+          "Memory",
+          "Connection",
+          "Computation"
+        ],
+        "patron": "Skeva",
+        "patronWorkshop": "the Quartermaster's",
+        "witness": 49,
+        "holder": "instance",
+        "orchestrator": null,
+        "flipOwed": null,
+        "outsideLattice": false
+      },
+      {
+        "vertex": 43,
+        "bits": "101011",
+        "instance": "shor_mage",
+        "arena": "ecdsafail",
+        "axes": [
+          "Protection",
+          "Memory",
+          "Computation",
+          "Value"
+        ],
+        "patron": "Dokimé",
+        "patronWorkshop": "the Assay (Dokimé)",
+        "witness": 20,
+        "holder": "instance",
+        "orchestrator": null,
+        "flipOwed": null,
+        "outsideLattice": false
+      },
+      {
+        "vertex": 56,
+        "bits": "111000",
+        "instance": "zkbook_workshop_mage",
+        "arena": "zk-golf",
+        "axes": [
+          "Protection",
+          "Delegation",
+          "Memory"
+        ],
+        "patron": "Aria Silverhue",
+        "patronWorkshop": "the Curatrix Vault",
+        "witness": 7,
+        "holder": "instance",
+        "orchestrator": null,
+        "flipOwed": null,
+        "outsideLattice": false
+      },
+      {
+        "vertex": 12,
+        "bits": "001100",
+        "instance": "kappa_evidence_mage",
+        "arena": null,
+        "axes": [
+          "Memory",
+          "Connection"
+        ],
+        "patron": "Pleione",
+        "patronWorkshop": "the Chart Shop",
+        "witness": 51,
+        "holder": "instance",
+        "orchestrator": null,
+        "flipOwed": null,
+        "outsideLattice": true
+      }
+    ]
+  }
 }

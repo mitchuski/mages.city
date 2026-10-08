@@ -9,3 +9,18 @@
 
 /* Balanced first-contact framing; the lattice stays centred in its view. */
 .arrival{grid-template-columns:1fr 1fr;column-gap:24px}.arrival-visual{width:100%;max-width:560px;justify-self:center;transform:none;display:flex;align-items:center;justify-content:center}.arrival-grid{animation:grid-glow 12s ease-in-out infinite}@keyframes grid-glow{0%,100%{opacity:.65}50%{opacity:1}}@keyframes city-float{0%,100%{transform:translate3d(0,8px,0) rotateX(3deg) rotateY(-6deg) rotateZ(-2deg)}50%{transform:translate3d(0,-8px,0) rotateX(-3deg) rotateY(6deg) rotateZ(2deg)}}@media(max-width:700px){.arrival{grid-template-columns:1fr}.arrival-visual{max-width:420px}}@media(prefers-reduced-motion:reduce){.arrival *{animation:none!important}}
+
+/* what the City is · 2026-10-07 */
+.city-is{padding:40px 0 8px}
+.city-is h2{font-weight:500;margin:6px 0 18px}
+.city-is .quiet-note{font-size:13px;color:var(--muted);margin:14px 0 0}
+
+/* Cast a spell · 2026-10-08 */
+.spell-card{border:1px solid var(--line);padding:14px 16px;margin:14px 0 28px;background:linear-gradient(135deg,#10212b55,transparent)}
+.spell-doors{display:flex;flex-wrap:wrap;gap:10px 18px;font:12px monospace;color:var(--muted);margin-bottom:10px}
+.spell-door b{font-weight:500;color:var(--cyan);margin-right:4px}
+.spell-actions{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.spell-cast{font:12px monospace;letter-spacing:.08em;text-transform:uppercase;background:none;border:1px solid var(--cyan);color:var(--cyan);padding:7px 14px;cursor:pointer}
+.spell-see{font:12px monospace;background:none;border:1px solid var(--line);color:var(--muted);padding:7px 12px;cursor:pointer}
+.spell-note{font:12px monospace;color:var(--muted)}
+.spell-text{background:#05081a;border:1px solid var(--line);padding:12px 14px;font:12.5px/1.6 monospace;white-space:pre-wrap;margin:12px 0 0}

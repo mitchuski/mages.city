@@ -1,0 +1,27 @@
+{
+  "_about": "Mages City join criteria, in registration order. Each entry is the body of one vtc/schemas/accepts/register/0.2 document. Shape follows docs/03-vtc/join-criteria.md at VTI origin/main (observed 2026-10-07); VALIDATE against the spec at the pinned revision before registering — field names here are the doc's, not a tested payload. Order matters: a criterion that requires nothing goes LAST.",
+  "_spec": "https://github.com/trustoverip/dtgwg-trust-tasks-tf/blob/main/specs/vtc/schemas/accepts/register/0.2/spec.md",
+  "_register": "console: Vetting → Requirements; or a signed vtc/schemas/accepts/register/0.2 document per entry. Upstream defaults ship invited + member-credential + review; remove member-credential (no trust registry yet), then register arena-evidence so the order reads invited · arena-evidence · review.",
+  "criteria": [
+    {
+      "id": "invited",
+      "admission": "automatic",
+      "invitationRequired": true,
+      "description": "An invitation this community issued. The City's gate issues one only after VALIDATED (understanding) and a human countersign."
+    },
+    {
+      "id": "arena-evidence",
+      "admission": "review",
+      "description": "An Arena run brought for review: the applicant attaches the chronicle carrying its Evidence root and the submission note. Review by a human admitter; approval mints membership and a role credential naming the lane. No credential requirement in protocol; the review reads the record."
+    },
+    {
+      "id": "review",
+      "admission": "review",
+      "description": "Everyone else. A human decides; pending grants nothing."
+    }
+  ],
+  "_notRegistered": {
+    "member-credential": "upstream default, removed: credentialIssuers=recognised needs a trust registry the City has not chosen; credentialIssuers=community would only admit existing members.",
+    "vetting": "peer vetting / hidden vetters: a later decision once there are members to vet."
+  }
+}

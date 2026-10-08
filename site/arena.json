@@ -1,0 +1,970 @@
+{
+  "schemaVersion": 5,
+  "district": "arena",
+  "title": "The Arena — Stars filling out",
+  "updated": "2026-10-08",
+  "status": "declared",
+  "statusNote": "The Arena district is declared on the front. What is shown is evidence: each instance's word (κ) once its cross-check has passed, the claims it seals and the date it was read. Standings and figures are behind the veil and open with membership. A board check (rule A5) beats any page. The City VTC is minted (community.json); admission under the arena criterion opens with the registered criteria, and the registry of words follows.",
+  "reading": "Every autoresearch instance is a mage with a Star, and the Star fills out as the quest proceeds — the same seven layers the two-seat setup draws, in the same order. The lattice is already seated: the City's atlas places its mages on the 64 vertices, and an instance seats its party from them (a persona per seat). What an instance brings back is a κ: a word. A word is a spell you can cast only if you have spoken it yourself, or the mage who first spoke it told you in their face — the words, their meaning, or only that they exist. Mana is the relationship credential that lets a telling flow at all; it is what gives a spell power on an edge of the trust graph, and it is never proof.",
+  "runtime": {
+    "harness": "agentprivacy dual-agent harness",
+    "repo": "https://github.com/mitchuski/agentprivacy-harness",
+    "entry": "ENTRY.md — the Arena door",
+    "rules": "CHALLENGE_LANES.md — A1..A40, start at the one-screen section",
+    "supportSeats": [
+      "constants-refuter",
+      "judge-rehearsal",
+      "ship-gate"
+    ],
+    "templates": [
+      "EVIDENCE_TABLE.md",
+      "SUBMISSION_NOTE.md",
+      "HANDOFF.md",
+      "KILLED_LEVERS.md"
+    ],
+    "seats": "universe/SEATS.md — 42 personas (15 sword · 15 mage · 12 balanced) on the lattice; an instance's harness.config.mjs names a persona per seat",
+    "spells": "skills and personas carried as a loadout — https://skills.agentprivacy.ai/",
+    "evidenceTool": "tools/kappa_evidence.mjs (mint · verify · root)",
+    "evidenceVerifierCrossLanguage": "kappa_evidence_mage (Python) reads the same bundle layout"
+  },
+  "layers": [
+    {
+      "id": "field",
+      "label": "the field",
+      "draws": "the 64-vertex lattice",
+      "means": "the instance conforms and its party is seated on the lattice; the spells it carries are chosen",
+      "rules": "conform.mjs · ENTRY.md"
+    },
+    {
+      "id": "sword",
+      "label": "the Swordsman",
+      "draws": "⚔️ the assay tetrahedron",
+      "means": "the negations run first: constants refuter, hardware match, the organiser's own validator, the board as it is",
+      "rules": "A1 · A2 · A3 · A5"
+    },
+    {
+      "id": "mage",
+      "label": "the Mage",
+      "draws": "🧙 the proposal tetrahedron",
+      "means": "candidates proposed and measured, everything charged, caps declared, the unit calibrated",
+      "rules": "A9 · A10 · A11 · A12"
+    },
+    {
+      "id": "routes",
+      "label": "the routes",
+      "draws": "the lattice routes",
+      "means": "the loop runs through its gates; each gate a seat's verdict; a NO-GO is final",
+      "rules": "A21 · A24 · A27 · A28"
+    },
+    {
+      "id": "core",
+      "label": "the core",
+      "draws": "the keystone pair",
+      "means": "the pair holds: the submit, signed by the First Person alone; credit by citation",
+      "rules": "A7 · A36 · A39"
+    },
+    {
+      "id": "hold",
+      "label": "the Hold",
+      "draws": "the shell",
+      "means": "the run's record minted as a κ, re-derivable by whoever holds the bundle: a word spoken",
+      "rules": "A35 · A40"
+    },
+    {
+      "id": "invite",
+      "label": "the second star",
+      "draws": "a line to another Star",
+      "means": "City standing: a fellow mage reads the record; membership and prover · instance are issued; mana flows and the word can be told",
+      "rules": "the community"
+    }
+  ],
+  "states": {
+    "active": {
+      "open": true,
+      "label": "forming",
+      "layers": {
+        "field": 1,
+        "sword": 1,
+        "mage": 1,
+        "routes": 0.6
+      },
+      "next": [
+        "core"
+      ],
+      "spin": true
+    },
+    "submitted": {
+      "open": true,
+      "label": "at the board",
+      "layers": {
+        "field": 1,
+        "sword": 1,
+        "mage": 1,
+        "routes": 1,
+        "core": 1
+      },
+      "next": [
+        "hold"
+      ],
+      "spin": true
+    },
+    "hold": {
+      "open": true,
+      "label": "held for review",
+      "layers": {
+        "field": 1,
+        "sword": 1,
+        "mage": 1,
+        "routes": 1,
+        "core": 1,
+        "hold": 1
+      },
+      "next": [
+        "invite"
+      ],
+      "spin": true
+    },
+    "watching": {
+      "open": true,
+      "label": "watching the board",
+      "layers": {
+        "field": 1,
+        "sword": 1
+      },
+      "next": [
+        "mage"
+      ],
+      "spin": false
+    },
+    "paused": {
+      "open": true,
+      "label": "resting",
+      "layers": {
+        "field": 1,
+        "sword": 1,
+        "mage": 0.6
+      },
+      "next": [
+        "routes"
+      ],
+      "spin": false
+    },
+    "parked": {
+      "open": true,
+      "label": "resting with a plan",
+      "layers": {
+        "field": 1,
+        "sword": 1,
+        "mage": 0.6
+      },
+      "next": [
+        "routes"
+      ],
+      "spin": false
+    },
+    "blocked": {
+      "open": true,
+      "label": "turned back by the sword",
+      "layers": {
+        "field": 1,
+        "sword": 1
+      },
+      "next": [],
+      "spin": false
+    },
+    "closed": {
+      "open": false,
+      "label": "complete · season over",
+      "layers": {
+        "field": 0.4,
+        "sword": 0.4,
+        "mage": 0.4,
+        "routes": 0.4,
+        "core": 0.4
+      },
+      "next": [],
+      "spin": false
+    },
+    "axis": {
+      "open": true,
+      "label": "the evidence axis",
+      "layers": {
+        "field": 1,
+        "hold": 1,
+        "invite": 1
+      },
+      "next": [],
+      "spin": true
+    },
+    "unknown": {
+      "open": false,
+      "label": "not on record",
+      "layers": {
+        "field": 0.3
+      },
+      "next": [],
+      "spin": false
+    }
+  },
+  "arenas": [
+    {
+      "id": "yukon",
+      "name": "The Yukon",
+      "kind": "multi-benchmark solver CLI, public boards",
+      "note": "the first arena; seats never run the organiser's CLI (A7); the submit is the First Person's"
+    },
+    {
+      "id": "ecdsafail",
+      "name": "ECDSA Fail",
+      "kind": "quantum ECC point-addition circuits (qubits × Toffoli), its own CLI",
+      "note": "reached from the Yukon as ecdsa.fail and also its own arena; the shor_mage party rests on it with a priced plan"
+    },
+    {
+      "id": "zk-golf",
+      "name": "ZK golf",
+      "kind": "proof golf — the shortest verified construction; the ZK Book formal layer's workshop",
+      "note": "an arena the City helps shape rather than only enter: harness proof-golf W1–W3 in zkbook_workshop_mage; no public board yet"
+    }
+  ],
+  "instances": [
+    {
+      "id": "sig_mage",
+      "arena": "yukon",
+      "benchmark": "sig-golf/full — Lean-certified hash signature, size × charged cycles",
+      "state": "active",
+      "closes": null,
+      "window": "2026-10",
+      "fleet": "HARNESS_PATHS.md #19",
+      "seats": null,
+      "solve": {
+        "axes": [
+          "Protection",
+          "Memory",
+          "Computation"
+        ],
+        "why": "a signature (Protection) scored by its size (Memory) times charged verify cycles (Computation); Lean certifies",
+        "vertex": 42,
+        "outsideLattice": false,
+        "patron": {
+          "mage": "Memora",
+          "workshop": "zShields",
+          "craft": "Inscribe chronicles",
+          "district": "the Crypt",
+          "vertex": 41,
+          "relation": "2 axes away (Computation · Value)",
+          "why": "shields and inscription: a signature is a shield written as small as it can be, and Lean inscribes that it holds",
+          "chosenBy": "the City"
+        },
+        "witness": 21,
+        "witnessSeat": [],
+        "addressSeat": []
+      },
+      "sealed": {
+        "kappa": "sha256:8c1c1c0db94f6457d5335e353cd7bab244d733cc0be4031b7042cfbbf8adfa41",
+        "status": "kappa-verified at 2af8656 (registry crate, P1 10/10, 8 Oct) · h2-52144f3d",
+        "claims": 67,
+        "edges": 139,
+        "read": "2026-10-08",
+        "lane": "sig-golf/h2-52144f3d",
+        "moreWords": [
+          "sha256:9fa4e25499bc50ba73edcb000e86d14fe7762b7be1202ca471583199a76bb9ce"
+        ]
+      }
+    },
+    {
+      "id": "hashsmash_mage",
+      "arena": "yukon",
+      "benchmark": "hashsmash — AI-judged reduced-round collision claims",
+      "state": "hold",
+      "closes": null,
+      "window": "2026-10",
+      "fleet": "HARNESS_PATHS.md #18",
+      "seats": null,
+      "solve": {
+        "axes": [
+          "Protection",
+          "Delegation",
+          "Computation"
+        ],
+        "why": "a collision claim against a hash (Protection) judged by an AI (Delegation) over a measured route search (Computation)",
+        "vertex": 50,
+        "outsideLattice": false,
+        "patron": {
+          "mage": "Adamantia",
+          "workshop": "the Etherchanting Shop",
+          "craft": "Compile commitments",
+          "district": "the Crucible",
+          "vertex": 51,
+          "relation": "1 axis away (Value)",
+          "why": "compile commitments: a collision claim is a commitment compiled and brought to a judge",
+          "chosenBy": "the City"
+        },
+        "witness": 13,
+        "witnessSeat": [],
+        "addressSeat": []
+      },
+      "sealed": {
+        "kappa": "sha256:0a36d530b51f20e7c17c6c0c22e07046e4d57a5f41b9d586a49e14106705b26c",
+        "status": "kappa-verified at 2af8656 (registry crate, P1 10/10, 8 Oct) · re-minted 8 Oct",
+        "claims": 68,
+        "edges": 201,
+        "read": "2026-10-08",
+        "lane": "hashsmash/sha256-r32",
+        "moreWords": [
+          "sha256:d467e8f7c0d2df1b91c8c179eeab1909ba108df8f1f0787702c1880b8de7145d",
+          "sha256:72d76eea7ac7094ed04a28565e6d31fe63124cac99d6e0383858310f402b0ba9"
+        ]
+      }
+    },
+    {
+      "id": "qpcbtc_mage",
+      "arena": "yukon",
+      "benchmark": "Quantum Safe Bitcoin Challenge — CUDA pinning + subset",
+      "state": "submitted",
+      "closes": "2026-10-08",
+      "window": "closes 2026-10-08",
+      "fleet": "cited in CHALLENGE_LANES.md",
+      "seats": null,
+      "solve": {
+        "axes": [
+          "Protection",
+          "Computation",
+          "Value"
+        ],
+        "why": "quantum-safe pinning (Protection) on CUDA (Computation) for bitcoin (Value)",
+        "vertex": 35,
+        "outsideLattice": false,
+        "patron": {
+          "mage": "Eos",
+          "workshop": "the Horizon (Eos)",
+          "craft": "Explore the source-defined craft",
+          "district": "the Horizon District",
+          "vertex": 35,
+          "relation": "seated at the address",
+          "why": "the Horizon: a quantum-safe pin is a stake driven at the horizon of the old curve",
+          "chosenBy": "the City"
+        },
+        "witness": 28,
+        "witnessSeat": [
+          {
+            "workshop": "the Weavers",
+            "keeper": "Pallia"
+          }
+        ],
+        "addressSeat": [
+          {
+            "workshop": "the Horizon (Eos)",
+            "keeper": "Eos"
+          },
+          {
+            "workshop": "the Assay (Dokimé)",
+            "keeper": "Dokimé"
+          },
+          {
+            "workshop": "the Crossing (Poros)",
+            "keeper": "Poros"
+          }
+        ]
+      },
+      "sealed": {
+        "kappa": null,
+        "status": "no word spoken yet",
+        "claims": 0,
+        "edges": 0,
+        "read": null,
+        "lane": null
+      }
+    },
+    {
+      "id": "heesch_mage",
+      "arena": "yukon",
+      "benchmark": "Heesch numbers of polyforms (higher is better)",
+      "state": "watching",
+      "closes": "2027-01-01",
+      "window": "closes 2027-01-01",
+      "fleet": "published mitchuski/heesch-mage",
+      "seats": null,
+      "solve": {
+        "axes": [
+          "Memory",
+          "Computation"
+        ],
+        "why": "Heesch numbers found by exhaustive SAT (Computation) over shape tables (Memory)",
+        "vertex": 10,
+        "outsideLattice": false,
+        "patron": {
+          "mage": "Socrat0x",
+          "workshop": "the Dragon Bonfire",
+          "craft": "Question · reflect · reply",
+          "district": "the Founding Bonfire",
+          "vertex": 24,
+          "relation": "2 axes away (Delegation · Computation)",
+          "why": "the Dragon Bonfire: a watching lane is a question held open — does a new shape exist?",
+          "chosenBy": "the City"
+        },
+        "witness": 53,
+        "witnessSeat": [
+          {
+            "workshop": "the Wellpool",
+            "keeper": "Limnia"
+          }
+        ],
+        "addressSeat": []
+      },
+      "sealed": {
+        "kappa": null,
+        "status": "no word spoken yet",
+        "claims": 0,
+        "edges": 0,
+        "read": null,
+        "lane": null
+      }
+    },
+    {
+      "id": "precompile_mage",
+      "arena": "yukon",
+      "benchmark": "EIP-8200 MODEXP precompile",
+      "state": "paused",
+      "closes": null,
+      "window": "paused 2026-09-07",
+      "fleet": "cited in CHALLENGE_LANES.md",
+      "seats": null,
+      "solve": {
+        "axes": [
+          "Computation",
+          "Value"
+        ],
+        "why": "MODEXP cycles (Computation) priced in gas (Value)",
+        "vertex": 3,
+        "outsideLattice": false,
+        "patron": {
+          "mage": "Vulcana",
+          "workshop": "the Forge(t)",
+          "craft": "Run · Evoke · Craft",
+          "district": "the Crucible",
+          "vertex": 19,
+          "relation": "1 axis away (Delegation)",
+          "why": "the Forge(t): a precompile is forged, and its cost is the metal",
+          "chosenBy": "the City"
+        },
+        "witness": 60,
+        "witnessSeat": [],
+        "addressSeat": []
+      },
+      "sealed": {
+        "kappa": null,
+        "status": "no word spoken yet",
+        "claims": 0,
+        "edges": 0,
+        "read": null,
+        "lane": null
+      }
+    },
+    {
+      "id": "flock_mage",
+      "arena": "yukon",
+      "benchmark": "flock-challenge-multi/x86 — Binius-style GF(2^128) prover, BLAKE3",
+      "state": "blocked",
+      "closes": null,
+      "window": "opened 2026-09-05",
+      "fleet": "cited in CHALLENGE_LANES.md",
+      "seats": null,
+      "solve": {
+        "axes": [
+          "Protection",
+          "Delegation",
+          "Computation"
+        ],
+        "why": "a ZK prover (Protection) for a verifier (Delegation) measured in throughput (Computation)",
+        "vertex": 50,
+        "outsideLattice": false,
+        "patron": {
+          "mage": "Helia",
+          "workshop": "the Solchanting Shop",
+          "craft": "Parallel witness craft",
+          "district": "the Crucible",
+          "vertex": 51,
+          "relation": "1 axis away (Value)",
+          "why": "parallel witness craft: a many-core prover is witnessing in parallel",
+          "chosenBy": "the City"
+        },
+        "witness": 13,
+        "witnessSeat": [],
+        "addressSeat": []
+      },
+      "sealed": {
+        "kappa": null,
+        "status": "no word spoken yet",
+        "claims": 0,
+        "edges": 0,
+        "read": null,
+        "lane": null
+      }
+    },
+    {
+      "id": "better_codes_mage",
+      "arena": "yukon",
+      "benchmark": "Proximity Prize (better.codes) — IRS proximity testing, Lean",
+      "state": "closed",
+      "closes": "2026-09-19",
+      "window": "closed 2026-09-19",
+      "fleet": "cited in CHALLENGE_LANES.md",
+      "seats": null,
+      "solve": {
+        "axes": [
+          "Protection",
+          "Memory"
+        ],
+        "why": "proximity testing of codes (Protection) against a bit-wall (Memory); Lean certifies",
+        "vertex": 40,
+        "outsideLattice": false,
+        "patron": {
+          "mage": "Memora",
+          "workshop": "zShields",
+          "craft": "Inscribe chronicles",
+          "district": "the Crypt",
+          "vertex": 41,
+          "relation": "1 axis away (Value)",
+          "why": "shields and inscription again: a code tested for proximity is a shield, and the wall it met is inscribed",
+          "chosenBy": "the City"
+        },
+        "witness": 23,
+        "witnessSeat": [],
+        "addressSeat": []
+      },
+      "sealed": {
+        "kappa": null,
+        "status": "no word spoken yet",
+        "claims": 0,
+        "edges": 0,
+        "read": null,
+        "lane": null
+      }
+    },
+    {
+      "id": "matrices_mage",
+      "arena": "yukon",
+      "benchmark": "SSI ordering challenge — fill-reducing matrix orderings",
+      "state": "closed",
+      "closes": "2026-09-15",
+      "window": "closed 2026-09-15",
+      "fleet": "not accessioned",
+      "seats": null,
+      "solve": {
+        "axes": [
+          "Memory",
+          "Connection",
+          "Computation"
+        ],
+        "why": "fill-reducing orderings (Memory) of a graph (Connection) measured in work (Computation)",
+        "vertex": 14,
+        "outsideLattice": false,
+        "patron": {
+          "mage": "Skeva",
+          "workshop": "the Quartermaster's",
+          "craft": "Explore the source-defined craft",
+          "district": "the Crucible",
+          "vertex": 22,
+          "relation": "2 axes away (Delegation · Memory)",
+          "why": "the Quartermaster's: an ordering is provisioning, what goes where so the work stays small",
+          "chosenBy": "the City"
+        },
+        "witness": 49,
+        "witnessSeat": [
+          {
+            "workshop": "the Stakes",
+            "keeper": "Custos"
+          },
+          {
+            "workshop": "the Jeweler",
+            "keeper": "Lampyra"
+          }
+        ],
+        "addressSeat": []
+      },
+      "sealed": {
+        "kappa": null,
+        "status": "no word spoken yet",
+        "claims": 0,
+        "edges": 0,
+        "read": null,
+        "lane": null
+      }
+    },
+    {
+      "id": "shor_mage",
+      "arena": "ecdsafail",
+      "benchmark": "ecdsa.fail — quantum resource estimation of ECC point addition",
+      "state": "parked",
+      "closes": null,
+      "window": "parked 2026-08-30",
+      "fleet": "HARNESS_PATHS.md #1",
+      "seats": null,
+      "solve": {
+        "axes": [
+          "Protection",
+          "Memory",
+          "Computation",
+          "Value"
+        ],
+        "why": "ECDSA broken (Protection) in qubits (Memory) times Toffolis (Computation) for bitcoin (Value)",
+        "vertex": 43,
+        "outsideLattice": false,
+        "patron": {
+          "mage": "Dokimé",
+          "workshop": "the Assay (Dokimé)",
+          "craft": "Explore the source-defined craft",
+          "district": "the Horizon District",
+          "vertex": 35,
+          "relation": "1 axis away (Memory)",
+          "why": "the Assay: resource estimation is assaying what it costs to break",
+          "chosenBy": "the City"
+        },
+        "witness": 20,
+        "witnessSeat": [],
+        "addressSeat": []
+      },
+      "sealed": {
+        "kappa": null,
+        "status": "no word spoken yet",
+        "claims": 0,
+        "edges": 0,
+        "read": null,
+        "lane": null
+      }
+    },
+    {
+      "id": "zkbook_workshop_mage",
+      "arena": "zk-golf",
+      "benchmark": "proof golf W1–W3 over the ZK Book records; first proof = record 024",
+      "state": "active",
+      "closes": null,
+      "window": "2026-09 →",
+      "fleet": "workshop lane",
+      "seats": null,
+      "solve": {
+        "axes": [
+          "Protection",
+          "Delegation",
+          "Memory"
+        ],
+        "why": "the shortest verified construction (Protection) for a verifier (Delegation) over the book's records (Memory)",
+        "vertex": 56,
+        "outsideLattice": false,
+        "patron": {
+          "mage": "Aria Silverhue",
+          "workshop": "the Curatrix Vault",
+          "craft": "Reflective curation",
+          "district": "the Reliquary",
+          "vertex": 57,
+          "relation": "1 axis away (Value)",
+          "why": "reflective curation: proof golf over the book's records is curation that proves",
+          "chosenBy": "the City"
+        },
+        "witness": 7,
+        "witnessSeat": [],
+        "addressSeat": []
+      },
+      "sealed": {
+        "kappa": null,
+        "status": "no word spoken yet",
+        "claims": 0,
+        "edges": 0,
+        "read": null,
+        "lane": null
+      }
+    },
+    {
+      "id": "kappa_evidence_mage",
+      "arena": null,
+      "benchmark": "the evidence axis — κ-addressed ledgers for every instance",
+      "state": "axis",
+      "closes": null,
+      "window": "2026-10-07",
+      "fleet": "HARNESS_PATHS.md #20",
+      "seats": null,
+      "solve": {
+        "axes": [
+          "Memory",
+          "Connection"
+        ],
+        "why": "words held (Memory) and the edges between them (Connection); outside the lattice, binding the rest",
+        "vertex": 12,
+        "outsideLattice": true,
+        "patron": {
+          "mage": "Pleione",
+          "workshop": "the Chart Shop",
+          "craft": "Hold · Compare · Map",
+          "district": "the Navigation District",
+          "vertex": 44,
+          "relation": "1 axis away (Protection)",
+          "why": "the Chart Shop — Hold · Compare · Map — is the registry of words before it had the name",
+          "chosenBy": "the City"
+        },
+        "witness": 51,
+        "witnessSeat": [
+          {
+            "workshop": "the Etherchanting Shop",
+            "keeper": "Adamantia"
+          },
+          {
+            "workshop": "the Solchanting Shop",
+            "keeper": "Helia"
+          }
+        ],
+        "addressSeat": []
+      },
+      "sealed": {
+        "kappa": null,
+        "status": "no word spoken yet",
+        "claims": 0,
+        "edges": 0,
+        "read": null,
+        "lane": null
+      }
+    }
+  ],
+  "seatsNote": "seats is null until each instance's harness.config.mjs persona-per-seat is read in; the atlas (map.html, city-topology.json) already places the cast on the lattice, and the universe's SEATS.md names the 42.",
+  "cityPath": {
+    "summary": "A quest becomes City standing only through the community: κ → join request under the arena criterion → a fellow mage reads the record → membership credential → a role credential naming the instance. The front reads the credential status; it never computes a score.",
+    "criterion": "arena-evidence (review) — see deploy/vti/vtc/join-criteria.json",
+    "whatTheCityReads": [
+      "the chronicle's Evidence root line",
+      "the bundle's REPORT.md",
+      "the submission note's Harness line",
+      "the credential status list (public, unauthenticated)"
+    ],
+    "whatTheCityNeverHolds": [
+      "solver code",
+      "benchmark CLI credentials",
+      "transcripts",
+      "keys",
+      "the spells themselves"
+    ],
+    "wordsAndMana": {
+      "status": "specified, not built — the reading half exists: gate/citykey.mjs re-derives κ; the Star Key extension derives it; the chip and the Namekeeper's ladder charge locally (docs/CITY_KEY_LOOP.md: mint → walk → charge)",
+      "word": "A κ is a word: the canonical content address of a run's record (SHA-256 over canonical dCBOR, the registry's own encoding). Anyone may see a word. Nobody can cast it from the word alone.",
+      "casting": {
+        "spoken": "you hold the content and can re-derive the κ yourself — you can cast it in full",
+        "toldTheWords": "the mage who first spoke it gave you the content in their face (D4 in the Exchange's tiers) — you can cast it as they could",
+        "toldTheMeaning": "they gave you the κ and what it means, not the content (D3) — you can cite it, verify a bundle shown to you, and ask; you cannot cast it",
+        "toldItExists": "they let you know a word exists in the network and whose it is (D2) — you know where to ask",
+        "neverTold": "a word with no telling is a number"
+      },
+      "mana": "Mana is the relationship credential (VRC): both sides sign, either may withdraw, withdrawal is a checkable event. A telling flows only along an edge that carries mana; that is what gives a spell power on the edges of the trust graph. Mana is regime-1 and never proof: it says who may be told, not that what was told is true. The truth of a word is its re-derivation, nothing else.",
+      "registry": "The City's registry of words holds κs, the typed edges between them (derived-from · composed-of · refers-to) and the relationship through which each was told. Spells stay with their mages. Depositing a word is a trust task for members whose membership credential is active and who hold mana with at least one other member (the keeper's seat counts). Revoking either closes the door; words already deposited stay addressable.",
+      "sharing": "Telling is the Star's gesture, not the registry's. The Star already derives κ (re-derive, never trust) and already presents the Hold to the City as a root and a count, never the items. Per encounter a mage chooses which words this fellow mage or this community is told, and at which tier, and the Star presents them signed by the persona. The registry resolves what it is shown; it never pushes.",
+      "alreadyBuilt": {
+        "proofOfPresence": "the Hold the Star presents and the City re-derives (gate/citykey.mjs), and OpenVTC's witnessed statement (VWC) that personhood.rego already accepts — presence is proven by what can be re-derived and who witnessed it, not by a profile",
+        "trustTasks": "every door is a trust task with a spec id (trusttasks.org): join, review, credential issue and status, the deposit of a word; the constellation trust task (docs/TRUST_TASK_CONSTELLATION.md) is the same shape — the walk is the claim, understanding is the proof",
+        "manaCharging": "the chip and the Namekeeper's ladder (spoken → admitted → vouched → witnessed) charge mana from the City Key's evidence today, locally; the VRC is the same edge made portable and reciprocal"
+      }
+    }
+  },
+  "links": {
+    "arenaPage": "https://mages.city/arena.html",
+    "communityPage": "https://mages.city/community.md",
+    "guide": "https://mages.city/guide.md",
+    "skill": "https://mages.city/skill.md",
+    "atlas": "https://mages.city/map.html",
+    "setup": "https://mages.city/setup.html",
+    "spells": "https://skills.agentprivacy.ai/",
+    "star": "https://soulbis.com/star/",
+    "starKey": "https://github.com/mitchuski/star-key",
+    "harnessEntry": "https://github.com/mitchuski/agentprivacy-harness/blob/main/ENTRY.md",
+    "challengeLanes": "https://github.com/mitchuski/agentprivacy-harness/blob/main/CHALLENGE_LANES.md",
+    "openvtc": "https://openvtc.net/"
+  },
+  "axes": [
+    {
+      "name": "Protection",
+      "weight": 32,
+      "bit": "100000",
+      "reads": "what the solve keeps secret, sound or safe: a signature, a hash, a proof, a quantum-safe pin"
+    },
+    {
+      "name": "Delegation",
+      "weight": 16,
+      "bit": "010000",
+      "reads": "a judge or verifier the solve convinces that is not itself: a ZK verifier, an AI judge, a kernel"
+    },
+    {
+      "name": "Memory",
+      "weight": 8,
+      "bit": "001000",
+      "reads": "what the solve must hold or shrink: bytes, qubits, fill, tables, a book's records"
+    },
+    {
+      "name": "Connection",
+      "weight": 4,
+      "bit": "000100",
+      "reads": "the graph the solve orders or routes: edges, orderings, addresses between words"
+    },
+    {
+      "name": "Computation",
+      "weight": 2,
+      "bit": "000010",
+      "reads": "what the solve is charged for: cycles, Toffolis, CUDA time, SAT"
+    },
+    {
+      "name": "Value",
+      "weight": 1,
+      "bit": "000001",
+      "reads": "what is at stake on the board: gas, bitcoin, a crown"
+    }
+  ],
+  "encoding": {
+    "status": "editorial, like the atlas's projection — the axes are canon (city-topology.json → modelAxes), the assignment of a solve to axes is the City's reading and can be argued",
+    "vertex": "the sum of the weights of the axes a solve burns — its address on the 64-vertex lattice",
+    "walk": "the constellation: from the origin, add the burned axes in canon order (Protection → Delegation → Memory → Connection → Computation → Value); each step lights the vertex reached; the last lit vertex is the solve's address",
+    "witness": "63 − address: the complement vertex, drawn as a dashed edge from the address. Seating forces the anchor via XOR-63 — the complement of a solve is the sovereignty it protects (FLEET.md)",
+    "outsideTheLattice": "the evidence axis is not a solve: its star sits outside the lattice at the figure's second-star position (the invite layer), and its words bind every other constellation to the registry",
+    "sameAddress": "two solves with the same address are the same kind of solve; their constellations coincide and their parties can read each other's words most easily",
+    "patron": "the mage from the spellbook who stands with the instance at its address: seated there if the atlas seats someone, otherwise the City's pick with the reason and the distance; two instances may share a patron as they may share a vertex",
+    "fortyTwo": "the signature lane lands on V42 — Protection · Memory · Computation — the number of the cast (42 personas) and of the Game of 42 (six axes × seven stations). Noted, not claimed."
+  },
+  "lattice": {
+    "seated": {
+      "19": [
+        {
+          "workshop": "the Forge(t)",
+          "keeper": "Vulcana"
+        }
+      ],
+      "22": [
+        {
+          "workshop": "the Quartermaster's",
+          "keeper": "Skeva"
+        }
+      ],
+      "24": [
+        {
+          "workshop": "the Dragon Bonfire",
+          "keeper": "Socrat0x"
+        }
+      ],
+      "27": [
+        {
+          "workshop": "the Chancery",
+          "keeper": "Nomia"
+        }
+      ],
+      "28": [
+        {
+          "workshop": "the Weavers",
+          "keeper": "Pallia"
+        }
+      ],
+      "31": [
+        {
+          "workshop": "the Holon Hitchhikers",
+          "keeper": "Vagari"
+        }
+      ],
+      "35": [
+        {
+          "workshop": "the Horizon (Eos)",
+          "keeper": "Eos"
+        },
+        {
+          "workshop": "the Assay (Dokimé)",
+          "keeper": "Dokimé"
+        },
+        {
+          "workshop": "the Crossing (Poros)",
+          "keeper": "Poros"
+        }
+      ],
+      "36": [
+        {
+          "workshop": "the Rostra",
+          "keeper": "Rhetor"
+        }
+      ],
+      "38": [
+        {
+          "workshop": "the Persona Circuit",
+          "keeper": "Aletheia"
+        }
+      ],
+      "41": [
+        {
+          "workshop": "zShields",
+          "keeper": "Memora"
+        }
+      ],
+      "44": [
+        {
+          "workshop": "the Chart Shop",
+          "keeper": "Pleione"
+        }
+      ],
+      "49": [
+        {
+          "workshop": "the Stakes",
+          "keeper": "Custos"
+        },
+        {
+          "workshop": "the Jeweler",
+          "keeper": "Lampyra"
+        }
+      ],
+      "51": [
+        {
+          "workshop": "the Etherchanting Shop",
+          "keeper": "Adamantia"
+        },
+        {
+          "workshop": "the Solchanting Shop",
+          "keeper": "Helia"
+        }
+      ],
+      "53": [
+        {
+          "workshop": "the Wellpool",
+          "keeper": "Limnia"
+        }
+      ],
+      "55": [
+        {
+          "workshop": "the Covenant",
+          "keeper": "Manifestia"
+        }
+      ],
+      "57": [
+        {
+          "workshop": "the Curatrix Vault",
+          "keeper": "Aria Silverhue"
+        }
+      ],
+      "59": [
+        {
+          "workshop": "the Portal Room",
+          "keeper": "Pandia"
+        },
+        {
+          "workshop": "the Staff Shop",
+          "keeper": "Hermaion"
+        },
+        {
+          "workshop": "the Familiars",
+          "keeper": "Faunia"
+        }
+      ]
+    },
+    "rule": "mages can align on the same vertex (the keeper's ruling, 7 October): an address may hold several workshops, and several instances may share an address. When a solve lands on the lattice the City picks which mage from the spellbook stands with it there — a patron, named with the reason — and reads who is seated at its witness.",
+    "distance": "distances are Hamming on the six bits: one axis away means one bit differs, and the differing axis is named",
+    "succession": {
+      "now": "seats are held first by instances and their personas (the patrons above), because that is who is doing the work now",
+      "flip": "a seat owes the City one bit flip: the move along one axis from its vertex, the edge only it can add; a shared vertex owes one flip per seat, on different axes if they can",
+      "then": "when a trusted human orchestrator has gathered the agents under a vertex, holds mana with the seats beside it, and has delivered its flip as a reviewed word, the seat passes to them; the instance stays as the orchestrator's party; the atlas records the hand-over and the Star shows the second star joining the first",
+      "never": "an orchestrator is not named before they hold mana with their seats",
+      "orchestrators": []
+    }
+  },
+  "veil": {
+    "rule": "hashes not results: the public page shows each instance's word (κ), how many claims it seals and when it was read; standings, figures, scores and board details stay behind the veil and open to members of the City VTC",
+    "sealedAt": "veil/arena-sealed.json (local, gitignored)",
+    "wordsShownOnlyWhen": "the cross-implementation check against the registry crate has passed (A35): it did, 8 Oct, P1 10/10 — every minted word now reads kappa-verified at 2af8656"
+  }
+}

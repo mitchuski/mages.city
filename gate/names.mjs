@@ -80,6 +80,7 @@ export function createNamekeeper(opts = {}) {
   const ZONE_KEY = opts.zoneKey || process.env.NAMES_ZONE_KEY || 'mages-zone';
   const APPLY = opts.apply ?? (process.env.NAMES_APPLY === '1');
   const DNS_SERVER = opts.dnsServer || process.env.NAMES_DNS_SERVER || '127.0.0.1';
+  const EXECUTOR = opts.executor || null;   // gate/dns-cloudflare.mjs when the zone lives at Cloudflare; nsupdate/BIND otherwise
   const reserved = new Set([...FIXED_HOSTS, ...(opts.cast || castNames())]);
   const LEDGER = path.join(DATA, 'names.jsonl');
   const KEYS = path.join(DATA, 'keys');
@@ -219,6 +220,11 @@ export function createNamekeeper(opts = {}) {
     const val = t === 'TXT' ? `"${String(value).replace(/"/g, '')}"` : String(value);
     const records = [`update delete ${label} ${t}`, `update add ${label} ${Number(ttl) || 300} ${t} ${val}`];
     const seal = append({ type: 'write', name: n, rung: c.rung, record: { label, type: t, value: String(value), ttl: Number(ttl) || 300 }, by });
+    if (EXECUTOR) {
+      const operationId = `names-${seal.slice(0, 24)}`;
+      return EXECUTOR.execute({ name: n, rung: c.rung, type: t, value: String(value), sub: String(sub || '').toLowerCase(), ttl: Number(ttl) || 300, operationId })
+        .then(applied => ({ ok: true, name: n, rung: c.rung, record: { label, type: t, value: String(value), ttl: Number(ttl) || 300 }, records, seal, apply: applied }));
+    }
     const script = path.join(UPDATES, `${n}.${Date.now()}.nsupdate`);
     fs.writeFileSync(script, scriptFor(n, records));
     return { ok: true, name: n, rung: c.rung, record: { label, type: t, value: String(value), ttl: Number(ttl) || 300 }, records, seal, apply: apply(script, false) };

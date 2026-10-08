@@ -1,0 +1,7 @@
+# %UserProfile%\.wslconfig — keep the WSL2 VM (and the core node's services) running when no
+# terminal is open. Windows 11 22H2+. Apply with: wsl --shutdown, then start Ubuntu again.
+[wsl2]
+vmIdleTimeout=-1
+# the node is tiny; these caps are for the Arena builds (Lean, solvers) that share this VM with it
+memory=16GB
+processors=10

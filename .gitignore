@@ -7,3 +7,4 @@ bridges/out/
 node_modules/
 *.log
 .wrangler/
+veil/

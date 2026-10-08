@@ -9,3 +9,12 @@
 .vertex-stage{display:grid;grid-template-columns:minmax(0,1fr) 310px;gap:16px;align-items:start}.vertex-stage #scene{position:sticky;top:20px;height:650px}.vertex-workbench{margin:0;max-height:650px;overflow:auto;padding:16px}.vertex-workbench h2{font-size:24px}.runtime-controls{border:1px solid #344b60;margin:18px 0;padding:10px}.runtime-controls legend{font:11px monospace;color:#9bdce1}.runtime-ops,#bit-flips{display:flex;flex-wrap:wrap;gap:6px;margin:9px 0}#bit-flips button{font-size:11px}#runtime-status{display:block;font:12px/1.6 monospace;color:#efc798;margin:12px 0}#runtime-trace{max-height:90px;overflow:auto;font:11px/1.7 monospace;padding-left:25px}.vertex-workbench input,.vertex-workbench textarea{box-sizing:border-box;min-width:0}#vertex-picker{grid-template-columns:repeat(8,1fr)}#vertex-picker button{padding:5px 1px;font-size:10px}@media(max-width:1150px){.atlas-layout{grid-template-columns:1fr}}@media(max-width:720px){.vertex-stage{grid-template-columns:1fr}.vertex-stage #scene{position:relative;top:0;height:52vh;min-height:340px}.vertex-workbench{max-height:none}#vertex-name{width:100%}}
 
 .atlas-layout{grid-template-columns:1fr}.place-list{max-height:300px;display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr))}.vertex-badge{position:absolute;left:18px;top:40px;max-width:calc(100% - 36px);color:#efc798;font:12px/1.5 monospace;pointer-events:none;overflow-wrap:anywhere}.vertex-stage{grid-template-columns:minmax(0,1fr) 330px}@media(max-width:720px){.vertex-stage{grid-template-columns:1fr}}
+
+/* Arena seats on the lattice · 2026-10-07 */
+#seats-list h3,#vertex-seats h3{font-weight:500;margin:14px 0 6px;font-size:14px}
+.seats-note{font-size:12px;color:var(--muted);margin:0 0 8px}
+#seats-buttons{display:flex;flex-wrap:wrap;gap:6px}
+#seats-buttons .seat{font:11px monospace;background:none;border:1px solid var(--line);color:var(--coral);padding:4px 8px;cursor:pointer}
+#seats-buttons .seat small{color:var(--muted);margin-left:4px}
+.seat-card{border:1px solid var(--line);padding:8px 10px;margin:6px 0;font-size:13px}
+.seat-card b{color:var(--coral);font-weight:500}.seat-card span{color:var(--cyan);font:11px monospace;margin-left:6px}.seat-card small{color:var(--muted)}.seat-flip{color:#6f7a8f}

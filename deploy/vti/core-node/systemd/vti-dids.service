@@ -1,0 +1,20 @@
+# deploy/vti/core-node/systemd/vti-dids.service — replaces upstream's "nohup did-hosting-daemon > log.txt 2>&1 &".
+#   sudo cp vti-dids.service /etc/systemd/system/ && sudo systemctl daemon-reload && sudo systemctl enable --now vti-dids
+# Runs as the keeper's user from ~/vti/dids, where the wizard wrote config.toml. Logs: journalctl -u vti-dids -f
+[Unit]
+Description=VTI DID hosting daemon (dids.mages.city :8534)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+User=privacymage
+Group=privacymage
+WorkingDirectory=/home/privacymage/vti/dids
+ExecStart=/usr/local/bin/did-hosting-daemon --config config.toml
+Restart=on-failure
+RestartSec=5
+# the mediator's file backend may need: Environment=MEDIATOR_FILE_BACKEND_PASSPHRASE=…  (use an EnvironmentFile=, mode 0600, never this file)
+NoNewPrivileges=true
+
+[Install]
+WantedBy=multi-user.target

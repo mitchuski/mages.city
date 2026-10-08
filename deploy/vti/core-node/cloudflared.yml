@@ -1,0 +1,30 @@
+# deploy/vti/core-node/cloudflared.yml — the core node's tunnel ingress (WSL: /etc/cloudflared/config.yml).
+# Replaces deploy/cloudflared.example.yml's ruling of 2026-09-07 that the VTI hosts are not in the tunnel:
+# from 2026-10-07 the City runs them itself on this machine. TLS terminates at Cloudflare; the services
+# listen on localhost, plain HTTP, as upstream's "No SSL (use TLS-terminating proxy)" expects.
+# Rules are evaluated top to bottom; the first match wins. The apex stays a Workers custom domain.
+tunnel: <TUNNEL-ID>
+credentials-file: /etc/cloudflared/<TUNNEL-ID>.json
+
+ingress:
+  # the VTI stack — upstream default ports
+  - hostname: dids.mages.city
+    service: http://127.0.0.1:8534
+  - hostname: mediator.mages.city
+    service: http://127.0.0.1:7037
+  - hostname: vta.mages.city
+    service: http://127.0.0.1:8100
+  - hostname: vtc.mages.city
+    service: http://127.0.0.1:8200
+
+  # the City's own desks and farm, unchanged from deploy/cloudflared.example.yml (only when they run here)
+  - hostname: portal.mages.city
+    path: ^/(say|open|topics|thread/.*|recent|ledger|head|hide|pin)$
+    service: http://127.0.0.1:4445
+  - hostname: exchange.mages.city
+    path: ^/(offer|request|grant|adopt|attest|catalog|standing|graph|recent)$
+    service: http://127.0.0.1:4448
+  - hostname: "*.mages.city"
+    service: http://127.0.0.1:3333
+
+  - service: http_status:404

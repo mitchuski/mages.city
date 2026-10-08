@@ -23,6 +23,10 @@ The gate checks every field above and separately requires an active, scoped VTA 
 
 The host adapter owns issuer policy, signature verification and authoritative revocation lookup. A public DID alone identifies a subject; the login still needs proof of control. Do not implement the resolver by trusting a supplied credential's `verified` flag or echoing request fields. The executor must enforce freshness/revocation at commit where necessary.
 
+## 8 October 2026 — the resolvers, written against the community
+
+`gate/vtc-evidence.mjs` supplies both adapters the gate takes: `entitlementResolver()` (an active membership credential, not revoked on the status list, is the entitlement to the subject's own space; scopes follow the Namekeeper rung) and `bindingResolver()` (a role credential whose action is `role:name:<name>` binds a reserved name; a revoked one binds nothing). `evidenceFor(did)` is the Namekeeper's evidence — member · vouches · met · vwc — read from `/v1/members/{did}/credentials`, `/v1/members/{did}/relationships` and the public revocation list, through an injected fetch and a token getter; no keys here. Tests: `bin/vtc-evidence.test.mjs` (synthetic DIDs, a fake daemon answering the documented routes). Two trust-task ids are the family's pattern rather than a read of the pinned source and are flagged `observed: false` in `TASKS`; set them from the revision you pin. Items 1 and 2 below are therefore met at the adapter level; items 3 and 4 still need the live daemon.
+
 ## Remaining integration
 
 1. Supply the real public Soulbis/Soulbae DIDs or resolvable profile URLs and identify the extension/VTA service.

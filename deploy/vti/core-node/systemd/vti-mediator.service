@@ -1,0 +1,22 @@
+# deploy/vti/core-node/systemd/vti-mediator.service — replaces upstream's "nohup mediator > log.txt 2>&1 &".
+#   sudo cp vti-mediator.service /etc/systemd/system/ && sudo systemctl daemon-reload && sudo systemctl enable --now vti-mediator
+# Runs as the keeper's user from ~/vti/mediator, where the wizard wrote config.toml. Logs: journalctl -u vti-mediator -f
+[Unit]
+Description=VTI DIDComm/TSP mediator (mediator.mages.city :7037)
+After=network-online.target valkey-server.service vti-dids.service
+Wants=network-online.target
+
+[Service]
+User=privacymage
+Group=privacymage
+WorkingDirectory=/home/privacymage/vti/mediator
+ExecStart=/usr/local/bin/mediator
+Restart=on-failure
+RestartSec=5
+# the mediator's key file is passphrase-encrypted (chosen 8 Oct): the passphrase lives in /etc/mages/mediator.env
+#   sudo install -d -m 700 /etc/mages && printf 'MEDIATOR_FILE_BACKEND_PASSPHRASE=<passphrase>\n' | sudo tee /etc/mages/mediator.env >/dev/null && sudo chmod 600 /etc/mages/mediator.env
+EnvironmentFile=-/etc/mages/mediator.env
+NoNewPrivileges=true
+
+[Install]
+WantedBy=multi-user.target

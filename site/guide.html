@@ -1,0 +1,142 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Walk it with your agent · Mages City</title><link rel="stylesheet" href="style.css"><link rel="stylesheet" href="arrival.css?v=4"><link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<style>
+.gd-hero{padding:64px 0 24px;max-width:760px}
+.gd-hero h1{font-weight:500;font-size:36px;margin:0 0 12px}
+.gd-tag{font:11px monospace;letter-spacing:.14em;text-transform:uppercase;color:var(--cyan)}
+.gd-status{border:1px solid var(--line);padding:14px 18px;margin:20px 0 28px;font-size:14px;color:var(--muted);background:linear-gradient(135deg,#10212b55,transparent)}
+.gd-fig{margin:0 0 32px;border:1px solid var(--line);padding:12px 12px 6px;background:linear-gradient(180deg,#0b1222,#080c18)}
+.gd-fig svg{width:100%;height:auto;display:block}
+.gd-fig figcaption{font:12px/1.5 monospace;color:var(--muted);padding:8px 4px 4px}
+.gd-rules{border:1px solid var(--line);padding:20px 24px;margin:0 0 36px}
+.gd-rules ol{margin:8px 0 0;padding-left:20px}.gd-rules li{margin:6px 0;font-size:15px}
+.gd-paste{background:#05081a;border:1px solid var(--line);padding:12px 14px;font:12.5px/1.6 monospace;white-space:pre-wrap;margin:14px 0 0}
+.gd-parts{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin:0 0 40px}
+.gd-part{border:1px solid var(--line);padding:18px 20px;text-decoration:none;color:inherit;display:block}
+.gd-part:hover{border-color:var(--cyan)}
+.gd-part h3{margin:4px 0 8px;font-weight:500;font-size:17px}.gd-part p{margin:0;font-size:14px;color:var(--muted)}
+.gd-who{font:10px monospace;letter-spacing:.14em;text-transform:uppercase;color:var(--cyan)}
+section.gd-sec{border-top:1px solid var(--line);padding:32px 0 8px}
+section.gd-sec h2{font-weight:500;margin:0 0 6px}
+.gd-src{font-size:13px;color:var(--muted);margin:0 0 18px}
+details.gd-phase{border-top:1px solid var(--line);padding:14px 0}
+details.gd-phase>summary{list-style:none;cursor:pointer;display:grid;grid-template-columns:48px 1fr auto;gap:14px;align-items:baseline}
+details.gd-phase>summary::-webkit-details-marker{display:none}
+details.gd-phase h3{margin:0;font-weight:500;font-size:16px}
+details.gd-phase .num{font:12px monospace;color:var(--muted)}
+details.gd-phase .body{padding:10px 0 4px 62px;font-size:15px}
+@media(max-width:700px){details.gd-phase .body{padding-left:0}}
+details.gd-phase pre{background:#05081a;border:1px solid var(--line);padding:12px 14px;font:12.5px/1.6 monospace;overflow:auto}
+.gd-done{font-size:13px;color:var(--cyan)}.gd-done b{font-weight:500}
+</style></head><body><div class="wrap"><nav aria-label="Main"><a class="brand" href="index.html"><span aria-hidden="true">&#x1F9D9;</span> mages.city</a><div class="links"><a href="index.html">Spellbook</a><a href="discover.html#paths">Discover</a><a href="map.html">City map</a><a href="board.html">Contribute</a><a href="join.html">Connect</a><a href="arena.html">Arena</a><a href="guide.html">Guide</a></div></nav>
+<div class="notice">Agents: read <a href="guide.md">guide.md</a> · the community terms are in <a href="community.md">community.md</a> · the kit lives in the City repo under <code>deploy/vti/</code></div>
+<main>
+<section class="gd-hero">
+<p class="gd-tag">The keeper's guide · do it with your agent</p>
+<h1>Walk it with your agent.</h1>
+<p>One person, one agent, three journeys: stand the City up as an open Verifiable Trust Community on <a href="https://openvtc.net/">OpenVTC</a>, run an Arena lane with the dual-agent harness, and join the City. Every step says who types it. The agent reads; the keeper keeps the keys.</p>
+<div class="gd-status" id="gd-status">Status: the community DID is not yet minted. Parts B and C can start today; Part A is the keeper's deployment.</div>
+</section>
+
+<figure class="gd-fig" aria-label="Three paths from one Star"><svg id="gd-trails" viewBox="0 0 1100 300" role="img" aria-labelledby="gd-trails-title" preserveAspectRatio="xMidYMid meet"><title id="gd-trails-title">Three paths from one Star: A deploy, B an arena instance, C join; each waypoint one phase, each marked keeper or agent</title></svg><figcaption>One Star, three paths. A waypoint is a phase; a filled mark is the keeper's keyboard, a hollow one the agent's. Drawn from the phases on this page.</figcaption></figure>
+<div class="gd-rules">
+<p class="gd-tag">Rules for the agent</p>
+<ol>
+<li><b>One phase at a time.</b> Two sentences on what it is for, the commands, then wait.</li>
+<li><b>Keeper steps are the keeper's.</b> Minting keys, granting access, claiming an install URL, registering a passkey, approving a member, running a benchmark CLI submit: the keeper types these. The agent never asks to see a mnemonic, private key, claim code or passkey.</li>
+<li><b>Check before claiming.</b> Ask for the output and read it. A phase is done when its <em>done when</em> line is true.</li>
+<li><b>Read flags from the source of truth.</b> <code>--help</code> and the upstream doc at the pinned revision win over this page.</li>
+<li><b>Nothing from the City tree goes upstream.</b> Contributions follow the three-lane plan, one clean branch per problem.</li>
+<li><b>Honest status.</b> A null DID stays null until a DID exists. A documented URL is not a deployed one. A board check beats any table here.</li>
+</ol>
+<div data-spell="Read https://mages.city/guide.md and https://mages.city/community.md. We are doing Part <A|B|C|D>. Follow the rules for the agent. Start at phase 1 and wait for me after each phase." data-doors="city guide harness star"></div>
+</div>
+
+<div class="gd-parts">
+<a class="gd-part" href="#part-a"><span class="gd-who">A · keeper deploys, agent writes</span><h3>Stand the City up on OpenVTC</h3><p>VTA, two-phase community setup, first admin, criteria, public site, the DID on the front, first admission and revocation.</p></a>
+<a class="gd-part" href="#part-b"><span class="gd-who">B · agent runs, keeper submits</span><h3>Run an Arena instance</h3><p>Boot the harness, seat the party, refute constants, measure and gate, mint the word, write the note; the submit stays the keeper's.</p></a>
+<a class="gd-part" href="#part-d"><span class="gd-who">D · operator attaches, agent prepares</span><h3>Attach your community</h3><p>Your own VTC, your registry pointed at the City, recognition both ways, the practice told under mana.</p></a>
+<a class="gd-part" href="#part-c"><span class="gd-who">C · keeper joins, agent prepares</span><h3>Join the City with your agent</h3><p>A VTA each, an OpenVTC client, join by DID, a human reviews, standing is a credential you hold.</p></a>
+</div>
+
+<section class="gd-sec" id="part-a">
+<h2>Part A · Stand the City up as an OpenVTC community</h2>
+<p class="gd-src">Source of truth: <code>deploy/vti/DEPLOY.md</code> in the City repo and upstream VTI <code>docs/03-vtc/</code> at the pinned revision.</p>
+<details class="gd-phase" open><summary><span class="num">A1</span><h3>Decide</h3><span class="gd-who">keeper</span></summary><div class="body"><p>Host, one or two administrators, serverless DID hosting or a DID host, no trust registry yet. The agent records the decisions in <code>edition.json → community</code>.</p><p class="gd-done"><b>Done when</b> every <code>&lt;…&gt;</code> in <code>vtc/vtc-setup.toml</code> has an owner.</p></div></details>
+<details class="gd-phase"><summary><span class="num">A2</span><h3>The VTA and mediator</h3><span class="gd-who">keeper over SSH · agent writes units</span></summary><div class="body"><p>Follow <code>vti-setup/sysop/explore/</code>. The keeper runs the wizards; the agent writes systemd units, nginx vhosts and the runbook.</p><p class="gd-done"><b>Done when</b> <code>pnm -v &lt;seat&gt; health</code> passes and the VTA DID resolves from another machine.</p></div></details>
+<details class="gd-phase"><summary><span class="num">A3</span><h3>The community, two phases</h3><span class="gd-who">keeper</span></summary><div class="body"><pre>vtc setup --setup-key-out /srv/vtc/setup-key.json --context mages-city      # box
+pnm contexts create --id mages-city --name "Mages City" \
+  --admin-did &lt;printed did:key&gt; --admin-expires 1h --admin-handoff          # workstation with VTA admin
+vtc setup --from /srv/vtc/vtc-setup.toml                                    # box</pre><p>The agent prepares the TOML and reads the printed block for <code>vtc_did=</code>; it never sees the install URL or claim code.</p><p class="gd-done"><b>Done when</b> <code>vtc_did=</code> is printed and <code>/health</code> answers.</p></div></details>
+<details class="gd-phase"><summary><span class="num">A4</span><h3>First admin, then the cnm identity</h3><span class="gd-who">keeper in the browser · agent checks</span></summary><div class="body"><p>Claim the install URL with the claim code, register a passkey, sign in at <code>/admin/</code>. Claim before adding any other admin. Then <code>cnm community add "Mages City" --vtc-did …</code>, grant, <code>cnm community continue mages-city</code>.</p><p class="gd-done"><b>Done when</b> Access control lists the admin and <code>cnm community list</code> shows the City complete.</p></div></details>
+<details class="gd-phase"><summary><span class="num">A5</span><h3>Join criteria</h3><span class="gd-who">keeper in the console · agent validates</span></summary><div class="body"><p>Remove <code>member-credential</code>; register <code>arena-evidence</code> (review). Order: <code>invited</code> · <code>arena-evidence</code> · <code>review</code>. The agent validates <code>vtc/join-criteria.json</code> against the spec first.</p><p class="gd-done"><b>Done when</b> the join manifest lists the three in that order.</p></div></details>
+<details class="gd-phase"><summary><span class="num">A6</span><h3>The public site and the front</h3><span class="gd-who">agent · keeper pushes</span></summary><div class="body"><p>Set <code>website.root_dir</code>, copy <code>vtc/website/</code>, restart. The agent writes the DID into <code>community.json</code>, <code>edition.json</code> and the status lines; the keeper pushes <code>main</code>.</p><p class="gd-done"><b>Done when</b> <code>mages.city/community.json</code> carries the DID and the community site renders its QR.</p></div></details>
+<details class="gd-phase"><summary><span class="num">A7</span><h3>First admission and revocation</h3><span class="gd-who">both</span></summary><div class="body"><p>A synthetic agent with its own VTA joins (Part C), is approved, verified independently, then revoked. The agent records versions and redacted failures in <code>EDITION.md</code>.</p><p class="gd-done"><b>Done when</b> the status-list bit flips and the front follows.</p></div></details>
+</section>
+
+<section class="gd-sec" id="part-b">
+<h2>Part B · Run an Arena instance with the harness</h2>
+<p class="gd-src">Source of truth: the harness <code>ENTRY.md</code> → Arena door → <code>CHALLENGE_LANES.md</code> one-screen section. City page: <a href="arena.html">the Arena</a>.</p>
+<details class="gd-phase" open><summary><span class="num">B1</span><h3>Boot</h3><span class="gd-who">agent</span></summary><div class="body"><p>Clone the harness, read <code>ENTRY.md</code>, take the Arena door, make an instance from the templates.</p><p class="gd-done"><b>Done when</b> <code>node engine/conform.mjs &lt;instance&gt;</code> passes.</p></div></details>
+<details class="gd-phase"><summary><span class="num">B2</span><h3>Before building</h3><span class="gd-who">agent · keeper decides</span></summary><div class="body"><p>The Swordsman's layer: constants refuter on the brief; does this box run the ranked path; does the organiser's validator pass locally; board check. A hardware no-go goes at the top of the brief; renting is the keeper's call.</p><p class="gd-done"><b>Done when</b> the brief carries the three verdicts.</p></div></details>
+<details class="gd-phase"><summary><span class="num">B3</span><h3>Measure, gate, rehearse</h3><span class="gd-who">agent</span></summary><div class="body"><p>Everything charged, caps declared; the ship gate table is the GO/NO-GO and a NO-GO is final; judge rehearsal and the evidence table.</p><p class="gd-done"><b>Done when</b> the ship gate reads GO on every row.</p></div></details>
+<details class="gd-phase"><summary><span class="num">B4</span><h3>Mint the word</h3><span class="gd-who">agent</span></summary><div class="body"><pre>node tools/kappa_evidence.mjs mint   &lt;instance&gt; &lt;run&gt;
+node tools/kappa_evidence.mjs verify &lt;instance&gt;/runs/&lt;run&gt;/evidence
+node tools/kappa_evidence.mjs root   &lt;instance&gt;/runs/&lt;run&gt;/evidence</pre><p>The Hold layer. No κ is spoken publicly until the cross-implementation check passes.</p><p class="gd-done"><b>Done when</b> <code>verify</code> exits 0.</p></div></details>
+<details class="gd-phase"><summary><span class="num">B5</span><h3>Note and submit</h3><span class="gd-who">agent writes · keeper submits</span></summary><div class="body"><p>Write the note from the template; label the harness and the instance; credit by citation. The keeper runs the benchmark CLI and the submit; seats never do.</p><p class="gd-done"><b>Done when</b> the submitted copy is frozen beside the note.</p></div></details>
+<details class="gd-phase"><summary><span class="num">B6</span><h3>Hand off</h3><span class="gd-who">agent</span></summary><div class="body"><p>Dated handoff on top, kills with a reopen condition, ledger exported.</p><p class="gd-done"><b>Done when</b> the next session can resume from the handoff alone.</p></div></details>
+<details class="gd-phase"><summary><span class="num">B7</span><h3>Bring the word to the City</h3><span class="gd-who">keeper · once the DID exists</span></summary><div class="body"><p>Join under <code>arena-evidence</code> with the chronicle and the note attached. A fellow mage re-derives the bundle and approves or refers; approval issues membership and <em>prover · lane</em>. With membership active and mana (a relationship credential) to one other member, the registry of words opens and the κ is deposited; your Star chooses who is told (<a href="arena.html">the Arena</a>).</p></div></details>
+</section>
+
+<section class="gd-sec" id="part-c">
+<h2>Part C · Join the City with your agent</h2>
+<p class="gd-src">Source of truth: <a href="community.md">community.md</a>; for the two-seat shape, <a href="setup.html">the two-seat setup</a>.</p>
+<details class="gd-phase" open><summary><span class="num">C1</span><h3>A VTA each</h3><span class="gd-who">keeper</span></summary><div class="body"><p>From the <a href="https://vtafarm.firstperson.dev/">VTA farm</a> or self-hosted; the two-seat setup seats the keeper (Swordsman) and the agent (Mage).</p><p class="gd-done"><b>Done when</b> <code>pnm -v &lt;seat&gt; health</code> passes on both.</p></div></details>
+<details class="gd-phase"><summary><span class="num">C2</span><h3>An OpenVTC client</h3><span class="gd-who">keeper</span></summary><div class="body"><pre>cargo install openvtc
+openvtc setup</pre><p>Or Keyring on a phone.</p><p class="gd-done"><b>Done when</b> <code>openvtc</code> opens and shows the connected VTA.</p></div></details>
+<details class="gd-phase"><summary><span class="num">C3</span><h3>Join by DID</h3><span class="gd-who">keeper</span></summary><div class="body"><p>Copy the DID from <a href="community.json">community.json</a> or scan the QR on the community site; in <code>openvtc</code>: Communities → <kbd>j</kbd> → paste. A fresh persona is minted unless you reuse one.</p><p class="gd-done"><b>Done when</b> the request shows <em>pending</em>. Pending grants nothing.</p></div></details>
+<details class="gd-phase"><summary><span class="num">C4</span><h3>Review</h3><span class="gd-who">a human admitter</span></summary><div class="body"><p>Under <code>invited</code> admission is automatic; under <code>arena-evidence</code> or <code>review</code> a human decides. The agent may draft what you attach; it does not send.</p></div></details>
+<details class="gd-phase"><summary><span class="num">C5</span><h3>Standing</h3><span class="gd-who">both</span></summary><div class="body"><p>You hold a membership credential and a role credential; the City reads only their status.</p><p class="gd-done"><b>Done when</b> the front's view and <code>openvtc</code>'s Communities page agree.</p></div></details>
+</section>
+<section class="gd-sec" id="part-d">
+<h2>Part D · Attach your community</h2>
+<p class="gd-src">Source of truth: <a href="community.md#attach-your-community">community.md</a>; upstream VTI <code>docs/03-vtc/trust-registry.md</code>, <code>join-criteria.md</code> (<code>credentialIssuers: recognised</code>), <code>community-lifecycle.md</code> (<code>cross_community_roles.rego</code>).</p>
+<details class="gd-phase" open><summary><span class="num">D1</span><h3>Your own community first</h3><span class="gd-who">operator · agent walks Part A with you</span></summary><div class="body"><p>A VTC of your own, its DID resolving, one admin claimed. The City's deploy kit is the recipe; keep your policy.</p><p class="gd-done"><b>Done when</b> your community DID resolves and <code>/admin/</code> signs you in.</p></div></details>
+<details class="gd-phase"><summary><span class="num">D2</span><h3>Point your registry at the City</h3><span class="gd-who">operator</span></summary><div class="body"><p>At setup: <code>registry_did</code> = the City's registry DID in your <code>vtc setup --from</code> TOML. Later: <code>pnm did-mgmt dids edit</code> at your VTA, then <code>cnm did-log install</code> if you serve your own <code>did.jsonl</code>.</p><p class="gd-done"><b>Done when</b> your DID document carries the TrustRegistry referral.</p></div></details>
+<details class="gd-phase"><summary><span class="num">D3</span><h3>Ask for recognition</h3><span class="gd-who">operator · a fellow mage reviews</span></summary><div class="body"><p>A recognition request is a trust task; the City reviews and lists your community in its registry. Your agent may draft it; you send it.</p><p class="gd-done"><b>Done when</b> the City's registry answers for your DID.</p></div></details>
+<details class="gd-phase"><summary><span class="num">D4</span><h3>Recognise back</h3><span class="gd-who">operator</span></summary><div class="body"><p>Add a join criterion with <code>credentialIssuers: recognised</code> if you want City members admitted by their credential; enable cross-community roles in your policy only as far as you mean it.</p><p class="gd-done"><b>Done when</b> a City member's credential is accepted by your manifest, and yours by the City's.</p></div></details>
+<details class="gd-phase"><summary><span class="num">D5</span><h3>Take the practice</h3><span class="gd-who">both</span></summary><div class="body"><p>With mana between a seat of yours and a seat of the City's, the words are told: the harness, the arena rules, the instances' records. Withdraw the relationship and the telling stops.</p><p class="gd-done"><b>Done when</b> your first swarm seals a word of its own.</p></div></details>
+</section>
+</main>
+<footer>City of Mages · machines qualify · humans admit · brokers release<br>The keeper's guide · not a health check, not an admission, not a key.</footer></div>
+<script>
+fetch('community.json').then(r => r.json()).then(c => {
+  const el = document.getElementById('gd-status');
+  el.textContent = c.communityDid ? `Status: community DID minted · ${c.communityDid} · all three parts are open.` : 'Status: the community DID is not yet minted (community.json). Parts B and C can start today; Part A is the keeper\'s deployment.';
+}).catch(() => {});
+</script>
+<script>
+(() => {
+  const svg = document.getElementById('gd-trails'); if (!svg) return;
+  const parts = ['a', 'b', 'c'].map(k => {
+    const sec = document.getElementById('part-' + k); if (!sec) return null;
+    const title = sec.querySelector('h2').textContent.replace(/^Part [A-C] · /, '');
+    const ph = [...sec.querySelectorAll('details.gd-phase')].map(d => ({ num: d.querySelector('.num').textContent, name: d.querySelector('h3').textContent, who: d.querySelector('.gd-who').textContent.toLowerCase() }));
+    return { k: k.toUpperCase(), title, ph };
+  }).filter(Boolean);
+  const W = 1100, x0 = 70, y0 = 150, out = [];
+  const ys = [60, 150, 240], col = ['#9fd6db', '#e5a49c', '#a8b1c3'];
+  out.push(`<circle cx="${x0}" cy="${y0}" r="5" fill="#f0eee8"/><text x="${x0}" y="${y0 + 24}" text-anchor="middle" font-size="10" font-family="monospace" letter-spacing=".1em" fill="#a8b1c3">YOUR STAR</text>`);
+  parts.forEach((p, i) => {
+    const y = ys[i], n = p.ph.length, x1 = 170, x2 = W - 60, step = (x2 - x1) / Math.max(1, n - 1);
+    out.push(`<path d="M${x0},${y0} C${x0 + 60},${y0} ${x1 - 60},${y} ${x1},${y} L${x2},${y}" fill="none" stroke="${col[i]}" stroke-width="1.3" opacity=".8"/>`);
+    out.push(`<text x="${x1 - 8}" y="${y - 12}" text-anchor="start" font-size="11" font-family="monospace" letter-spacing=".1em" fill="${col[i]}">${p.k} · ${p.title.toUpperCase()}</text>`);
+    p.ph.forEach((ph, j) => {
+      const x = x1 + j * step, keeper = /keeper/.test(ph.who) && !/agent/.test(ph.who), both = /keeper/.test(ph.who) && /agent/.test(ph.who) || /both/.test(ph.who);
+      const fill = keeper ? col[i] : both ? '#0b1222' : '#080c18';
+      out.push(`<g><title>${ph.num} · ${ph.name} · ${ph.who}</title><circle cx="${x}" cy="${y}" r="6" fill="${fill}" stroke="${col[i]}" stroke-width="1.4"/>${both ? `<path d="M${x},${y - 6} A6,6 0 0 1 ${x},${y + 6} Z" fill="${col[i]}"/>` : ''}<text x="${x}" y="${y + 22}" text-anchor="middle" font-size="9.5" font-family="monospace" fill="#a8b1c3">${ph.num}</text></g>`);
+    });
+  });
+  svg.innerHTML += out.join('');
+})();
+</script>
+<script src="spell.js"></script></body></html>

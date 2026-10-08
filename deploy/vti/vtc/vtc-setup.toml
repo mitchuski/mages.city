@@ -1,0 +1,65 @@
+# vtc-setup.toml — Mages City community, for `vtc setup --from <this file>` (phase 2).
+#
+# Mirrors docs/03-vtc/examples/vtc-setup.example.toml at VTI origin/main
+# (observed 2026-10-07). Every <…> is filled by the keeper at deploy time;
+# nothing here is a secret. See ../DEPLOY.md for the two-phase order:
+#
+#   phase 1   vtc setup --setup-key-out /srv/vtc/setup-key.json --context mages-city
+#   phase 1½  pnm contexts create --id mages-city --name "Mages City" \
+#               --admin-did <setup did:key> --admin-expires 1h --admin-handoff
+#   phase 2   vtc setup --from /srv/vtc/vtc-setup.toml
+#
+# Phase 2 prints vtc_did= admin_did= install_url= claim_code= and never the
+# admin private key. Record vtc_did in site/community.json and edition.json.
+
+# ── Required ────────────────────────────────────────────────────────────
+config_path    = "/srv/vtc/config.toml"
+base_url       = "https://vtc.mages.city"            # no trailing slash, no /v1
+vta_did        = "did:webvh:QmPbiGWYyLGRmuD8iVNkXCStuFWqcQGTMXFWk3jK2KySC6:dids.mages.city:vta"
+setup_key_file = "/srv/vtc/setup-key.json"           # phase-1 output, ACL-granted in phase 1½
+
+# ── Context ─────────────────────────────────────────────────────────────
+context = "mages-city"                               # must match the phase-1 --context
+
+# ── Trust registry ──────────────────────────────────────────────────────
+# None chosen (join-criteria.json leaves member-credential unregistered).
+# registry_did = "<did:webvh:…>"
+
+# ── Second administrator (recommended) ──────────────────────────────────
+# The cnm community identity, minted first with `cnm community add "Mages City"
+# --vtc-did <pending>` is NOT possible before the DID exists; instead name the
+# keeper's second device DID (or the Swordsman seat's did:key) so the community
+# starts with two administrators and authority-conferring changes can be approved.
+# Omit and use single_admin_mode below if the keeper is the only administrator.
+# co_admin_did = "<did:key:z6Mk…>"
+
+# ── Single-administrator mode ───────────────────────────────────────────
+# One keeper, possibly several devices. Step-up (passkey / approver device)
+# replaces a second administrator's approval; audited at Critical. Host-only
+# setting afterwards (config.toml + restart). Pick ONE of co_admin_did / this.
+single_admin_mode = true
+
+# ── DID hosting ─────────────────────────────────────────────────────────
+# Serverless default: the daemon serves its own log at
+# https://vtc.mages.city/.well-known/did.jsonl and the DID is
+# did:webvh:<scid>:vtc.mages.city. Use [webvh] only if dids.mages.city runs
+# the did-hosting daemon from the self-host proposal AND is registered on the VTA.
+# [webvh]
+# server_id = "<registered did-hosting server id>"
+# domain    = "dids.mages.city"
+# path      = "vtc"
+
+# ── Messaging ───────────────────────────────────────────────────────────
+# Required for join requests over DIDComm/TSP (openvtc, Keyring). Confirm the
+# mediator advertises BOTH transports before listing both (the file cannot check).
+[messaging]
+mediator_did = "did:webvh:QmeBZpgvVSaKXJm54ehwrJ8pRnAkwLcFuKdRuTXLUByRXS:dids.mages.city:mediator"
+transports   = ["tsp", "didcomm"]
+mediator_url = "https://mediator.mages.city"
+
+# ── Secret-store backend ────────────────────────────────────────────────
+# Explore-stream first deployment (self-host proposal D2–D4): OS keyring on
+# the box. Move to vault/k8s on the hardened deploy stream.
+[secrets]
+backend         = "keyring"
+keyring_service = "vtc-mages-city"
