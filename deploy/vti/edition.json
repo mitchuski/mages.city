@@ -114,7 +114,7 @@
   },
   "community": {
     "did": "did:webvh:QmQ8GMNCTui2H9gjxQWByS1ScsWkByaeQHYnzhcET1UPne:dids.mages.city:vtc",
-    "status": "LIVE 2026-10-08 22:40Z: minted, first admin claimed (passkey), console reachable; profile name/description not yet set; criteria not yet registered",
+    "status": "LIVE: minted 8 Oct 22:40Z; profile set; node on the 8 Oct release (DID host 0.8.3); Star Key administers via the VTA identity (9 Oct 00:21Z); criteria not yet registered",
     "name": "Mages City",
     "context": "mages-city",
     "baseUrl": "https://vtc.mages.city",
@@ -251,7 +251,7 @@
     "profile": {
       "name": "Mages City",
       "description": "(⚔️ ⊥ ⿻ ⊥ 🧙) 😊 · Privacy is value. Mages City is the community for agentprivacy: privacy and cybersecurity researchers, autoresearcher agents and the humans who keep them, working as the Swordsman and the Mage, held apart, with a Star from Soulbis to carry what each may reveal. Trust is built by doing research together in swarms and solving problems for others. An open Verifiable Trust Community on OpenVTC: words (κ) in a registry, spells with their mages, mana on the edges. Machines qualify, humans admit, brokers release. Carry your knowledge. Choose what to reveal. Come find your constellation. The amnesia is the protocol. The wound is the trust. The orbit is the proof.",
-      "setInConsole": "pending (keeper types it)",
+      "setInConsole": "done 2026-10-09 ~01:10 (name, description, publicUrl, contact mage@agentprivacy.ai; logo = agentprivacy.ai/icon.png fallback, swap to mages.city/logo.svg)",
       "logoUrl": "https://mages.city/logo.svg",
       "logoPng": "https://mages.city/logo-128.png",
       "publicUrl": "https://mages.city/",
@@ -267,6 +267,28 @@
       "didHost": "0.8.3 (2 Sept build, kept: secrets migration pending, Option B)",
       "pin": "~/vti/BINARIES.sha256 on the node",
       "snapshot": "~/vti/rollback/20261008T232440Z"
+    },
+    "starKeyWallet": {
+      "did": "did:key:z6MkkcD6kHFWjpqaVhVjtaFxSP2w99pkKG2LKSUmi3GG13Jp",
+      "scope": "manage the whole agent + own identity",
+      "context": "swordsman",
+      "mediator": "the VTA's (resolved from the agent record)",
+      "connected": "2026-10-09T00:00Z",
+      "transport": "TSP (works against vta 0.56.0)",
+      "vtcSeat": "community-admin, no expiry, granted 2026-10-09T00:04Z by the passkey admin under single-administrator mode (VTI-APV-022)",
+      "consoleSignIn": "2026-10-09T00:21Z as the VTA identity (did:webvh:…:vta), console key delegated, signed by the wallet",
+      "vtaDidSeat": "community-admin, no expiry, granted 00:20:51Z (the \"Sign in as a VTA identity\" door presents the agent, not the did:key)"
+    },
+    "singleAdminMode": {
+      "on": true,
+      "since": "2026-10-09T00:02Z",
+      "why": "every administrator is the keeper (passkey seat + Star Key wallet seat)"
+    },
+    "didDocument": {
+      "version": "2-Qmf6h3jeX82G4462yPrYA9V1spDjWV3EM1Z1f83pFLSJSp",
+      "edited": "2026-10-09T00:10Z",
+      "why": "VTCRest advertised the bare base URL (minted by the 2 Sept vtc build) → wallet sign-in 405 (bootstrap-runbook.md: \"a client that trusts that entry gets 405\"); now https://vtc.mages.city/v1",
+      "how": "pnm --transport rest did-mgmt dids edit --did <vtc> --document <edited doc>; the new VTA pushed the entry over TSP but the 0.8.3 DID host could not unpack it → manual Upload DID Log of the two-entry log (pnm did-mgmt dids get-log <did>) + restart vti-dids so the serving plane re-reads the store"
     }
   }
 }
