@@ -69,7 +69,9 @@ function createStarFigure(canvas, opts = {}) {
   const HOME = { yaw: 1.2, pitch: 0.8 };
   let yaw = HOME.yaw, pitch = HOME.pitch, spinning = !reduce && opts.spinning !== false;
   let layers = {};
-  let shown = { field: 0, sword: 0, mage: 0, routes: 0, core: 0, hold: 0, invite: 0, constellation: 0 };
+  let shown = { field: 0, sword: 0, mage: 0, routes: 0, core: 0, hold: 0, invite: 0, constellation: 0, places: 0 };
+  let hits = [];
+  let hovered = null;
   let raf = 0, dragging = false, moved = 0, lx = 0, ly = 0, w = 0, h = 0, dpr = 1, t0 = performance.now();
   const fit = () => {
     const r = canvas.getBoundingClientRect();
@@ -216,6 +218,22 @@ function createStarFigure(canvas, opts = {}) {
       glow(c, MAGE, 34 * pulse, 0.5 * L("core"));
       glow(c, SWORD, 18 * pulse, 0.7 * L("core"));
     }
+    if (L("places") > 0.01) {
+      const lvl = L("places"), ps = (layers.places?.places ?? []).filter((p) => p.vertex >= 0 && p.vertex < 64);
+      hits = [];
+      ps.map((p) => ({ p, q: proj(LATTICE[p.vertex]) })).sort((a, b) => a.q.z - b.q.z).forEach(({ p, q }) => {
+        const depth = 0.55 + 0.45 * ((q.z + 1) / 2), isHov = hovered === p;
+        const r = (isHov ? 22 : 16) * depth;
+        glow(q, isHov ? MAGE : PALE, r * 1.6, (isHov ? 0.9 : 0.5) * lvl * depth);
+        ctx.font = `${Math.round(r * 1.15)}px "Segoe UI Emoji","Apple Color Emoji","Noto Color Emoji",sans-serif`;
+        ctx.textAlign = "center";
+        ctx.textBaseline = "middle";
+        ctx.globalAlpha = Math.min(1, lvl * (0.6 + 0.4 * depth));
+        ctx.fillText(p.glyph, q.x, q.y);
+        ctx.globalAlpha = 1;
+        hits.push({ x: q.x, y: q.y, r: r + 6, place: p });
+      });
+    }
     if (L("invite") > 0.01) {
       const a = proj([0, 0, 0]), b = proj(INVITE_AT);
       ctx.setLineDash([3, 5]);
@@ -238,8 +256,28 @@ function createStarFigure(canvas, opts = {}) {
     ly = e.clientY;
     canvas.setPointerCapture(e.pointerId);
   };
+  const placeAt = (x, y) => {
+    let best = null, bd = Infinity;
+    for (const h2 of hits) {
+      const d = Math.hypot(h2.x - x, h2.y - y);
+      if (d <= h2.r && d < bd) {
+        bd = d;
+        best = h2.place;
+      }
+    }
+    return best;
+  };
   const onMove = (e) => {
-    if (!dragging) return;
+    if (!dragging) {
+      if (!hits.length) return;
+      const r = canvas.getBoundingClientRect(), p = placeAt(e.clientX - r.left, e.clientY - r.top);
+      if (p !== hovered) {
+        hovered = p;
+        canvas.style.cursor = p ? "pointer" : "grab";
+        opts.onPlaceHover?.(p);
+      }
+      return;
+    }
     moved += Math.abs(e.clientX - lx) + Math.abs(e.clientY - ly);
     yaw += (e.clientX - lx) * 8e-3;
     pitch = Math.max(-1.2, Math.min(1.2, pitch + (e.clientY - ly) * 8e-3));
@@ -251,8 +289,18 @@ function createStarFigure(canvas, opts = {}) {
     opts.onSpinChange?.(on);
   };
   const onUp = () => {
-    if (dragging && moved < 4) setSpinning(!spinning);
+    if (dragging && moved < 4) {
+      if (hovered) opts.onPlaceClick?.(hovered);
+      else setSpinning(!spinning);
+    }
     dragging = false;
+  };
+  const onLeave = () => {
+    if (hovered) {
+      hovered = null;
+      canvas.style.cursor = "grab";
+      opts.onPlaceHover?.(null);
+    }
   };
   const onDbl = () => {
     yaw = HOME.yaw;
@@ -266,6 +314,7 @@ function createStarFigure(canvas, opts = {}) {
     canvas.addEventListener("pointerup", onUp);
     canvas.addEventListener("pointercancel", onUp);
     canvas.addEventListener("dblclick", onDbl);
+    canvas.addEventListener("pointerleave", onLeave);
   }
   raf = requestAnimationFrame(frame);
   return {
@@ -282,6 +331,7 @@ function createStarFigure(canvas, opts = {}) {
       canvas.removeEventListener("pointerup", onUp);
       canvas.removeEventListener("pointercancel", onUp);
       canvas.removeEventListener("dblclick", onDbl);
+      canvas.removeEventListener("pointerleave", onLeave);
     }
   };
 }

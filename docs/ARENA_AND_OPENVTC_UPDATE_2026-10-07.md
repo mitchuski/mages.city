@@ -225,3 +225,19 @@ The keeper walked `KEEPER_ACTIONS.md` 1–6 on this machine with the agent (phas
 | `bin/verify.mjs` | the community row expects the DID; the veil row expects both words verified; a "moment" row for the chronicle and the apex |
 
 verify 89/92 (three exchange rows pre-existing); npm test 30/30. Pushed to `main` on the keeper's word.
+
+## Thirteenth pass, 9 October — the ring (revamp slice 1)
+
+Mitch: "way too much text on this first page now … more like a mages city teleporting places … a little revamp of the whole site." Plan: `docs/REVAMP_PLAN_2026-10-09.md`; the ring's shape chosen: the Star itself.
+
+| file | change |
+|---|---|
+| `~/star-key/packages/extension/src/star-figure.ts` (source, uncommitted) | a `places` layer: glyphs seated at vertices, hover and click reported through `onPlaceHover` / `onPlaceClick`; a click on a place teleports instead of toggling spin; tsc clean; regenerated into `site/star-figure.js` and `deploy/pnm-console/star-figure.js` |
+| `site/places.json` | the nine places: glyph · name · one line · vertex · door · reading · state · spell (the Community V63, Star Key V38, the Arena V42, Swarms V31, Hosting V44, the Atlas V24, the Guide V59, the Spellbook V41, the Setup V0) |
+| `site/ring.js` · `site/index.html` | the apex rebuilt as one screen: the band, one line, the ring (the Star with the places on its lattice; drag, hover card, click to teleport with a fade), a strip of nine chips for keyboards and phones, one cast, the chronicle link. 33 words on the apex. Nav: Places · Spellbook · Join |
+| `site/spellbooks.html` | the Spellspace, the lore seeds and the invite carried here from the apex, verbatim |
+| `site/status.js` | renders the band from `community.json` (minted · DID · administered from a Star · get in · terms) |
+| `site/llms.txt` · `skill.md` | the places list |
+| `bin/verify.mjs` | the ring row (nine places, module, layer, word budget, the shelf) + one door row per place |
+
+verify 100/103 (three exchange rows pre-existing). Slices 2 and 3 of the plan remain.
