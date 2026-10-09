@@ -6,6 +6,17 @@ This plan keeps everything the site now says and changes how much of it a visito
 
 `machines qualify · humans admit · brokers release`
 
+
+## 0 · First on return · the nav bounces (keeper, 9 Oct: "the top nav is kinda broken, it bounces around on all the pages")
+
+Diagnosed, not yet fixed (work paused at the keeper's word):
+
+1. **Three different navs.** Apex: Places · Spellbook · Join (3); arena/guide/swarms/hosting/join/map/setup/board/discover: the old 7; space: 4; spellbooks: its own. The nav changes width and content page to page.
+2. **The band rewrites after paint.** `status.js` swaps the apex band's innerHTML once `community.json` loads, with a longer line → layout shift. Some pages carry the band, some do not → the content's top edge moves.
+3. **No shared header.** Every page hand-copies its nav; they drifted.
+
+**Fix (slice 0, before slices 2–3):** one shared `site/header.js` (or a build step in `bin/build-pages.js`) renders the same nav (Places · Spellbook · Join + the brand) and the same band on every page from `places.json` + `community.json`; the band reserves its height in CSS (`min-height`, fixed one-line, ellipsis) so the late fill never shifts; the static first paint already shows the DID from a value baked at build time, the fetch only confirms it. Model it on the labs' **lattice navigator** (`agentprivacy_labs/site/assets/lattice-nav.js` + `.css`): one component, mounted by a data attribute, the six dimensions as filters, vertices as the index; the City's ring is the same idea with places instead of κ items, so share the lattice code rather than fork it. Acceptance: a verify row that every page's nav HTML is byte-identical after render and that the band's box height is fixed.
+
 ## 1 · Principles
 
 1. **Teleport, don't scroll.** The apex shows the City as places. One screen: the status band, the ring, the Star. Nothing below the fold that a visitor must read to leave the page.
