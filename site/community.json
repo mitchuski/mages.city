@@ -3,7 +3,7 @@
   "community": "Mages City",
   "stack": "OpenVTC / Verifiable Trust Infrastructure",
   "status": "minted",
-  "updated": "2026-10-08",
+  "updated": "2026-10-09",
   "communityDid": "did:webvh:QmQ8GMNCTui2H9gjxQWByS1ScsWkByaeQHYnzhcET1UPne:dids.mages.city:vtc",
   "communitySite": "https://vtc.mages.city/",
   "didQr": "https://vtc.mages.city/v1/community/did-qr.svg",
@@ -17,7 +17,8 @@
       "admission": "automatic",
       "requires": [
         "invitation"
-      ]
+      ],
+      "note": "the first door: an invitation credential the keeper issues to your DID"
     },
     {
       "id": "arena-evidence",
@@ -43,5 +44,12 @@
   },
   "deploy": "deploy/vti/DEPLOY.md",
   "note": "Minted 8 October 2026 on the City's core node. The join manifest the community publishes is authoritative; admission opens once the first administrator has claimed the console and the criteria are registered.",
-  "minted": "2026-10-08"
+  "minted": "2026-10-08",
+  "administration": "the keeper, from a Star Key wallet signed in as the City's agent (9 Oct 00:21Z)",
+  "node": "the keeper's own machine: VTA · mediator · DID host · community, behind a tunnel",
+  "release": "OpenVTC tagged release of 8 Oct 2026 (vta 0.56.0)",
+  "invitations": "issued by the keeper from the console to the DID you give; the invited door admits automatically",
+  "firstInvitation": "say who you are and what you bring, with your persona DID: the Portal (swarms-forming · how-do-i-get-in) or mage@agentprivacy.ai",
+  "starKey": "https://mages.city/starkey.md",
+  "chronicle": "https://mages.city/reading/the-city-mints-its-community.md"
 }

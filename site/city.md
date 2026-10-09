@@ -32,7 +32,7 @@ On 8 October 2026 at 22:40Z the City minted its community on the keeper's own ma
 |---|---|
 | live | the front, the statement, the Arena's record and its Stars, the Swarms and Hosting pages, the two-seat setup, the keeper's guide (Parts A–D), the City Key reader (re-derive, never trust) |
 | local, not public | the Hall, the Portal, the Swarm district, the Exchange, the Namekeeper |
-| live, since 8 October 22:40Z | the community itself: `did:webvh:QmQ8GMNCTui2H9gjxQWByS1ScsWkByaeQHYnzhcET1UPne:dids.mages.city:vtc`, minted by the City's own VTA on the keeper's core node; its public profile, DID QR and console answer |
+| live, since 8 October 22:40Z | the community itself, administered from the keeper's Star Key as the City's own agent since 9 October: `did:webvh:QmQ8GMNCTui2H9gjxQWByS1ScsWkByaeQHYnzhcET1UPne:dids.mages.city:vtc`, minted by the City's own VTA on the keeper's core node; its public profile, DID QR and console answer |
 | specified, opens with the criteria | admission and roles (the three criteria are not yet registered), the registry of words, attach, succession |
 | never | invented residents, live trust scores, an orchestrator named before they hold mana, a community listed as attached before recognition ran both ways |
 

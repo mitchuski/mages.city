@@ -57,8 +57,17 @@ At 22:40Z the public profile answered with the community DID, the mediator DID, 
 - Every gotcha was a lock, a rotation or a clock: things that protect.
 - The transports were chosen before the mediator existed and proved serviceable after.
 
-## 6 · What did not happen
+## 7 · The night after: the release, and the Star at the door
 
-No join criteria are registered yet, so a join request waits. The community has one administrator and, as this is written, no name in its profile. The Namekeeper's resolvers and the zone executor are built and tested on fakes, not yet against the live daemon. No orchestrator is named; no community is attached; no word has been deposited in a registry that is still a specification with a reading half.
+Added 9 October. The keeper asked whether everything in use could simply be updated, and the check turned the answer: upstream had cut a new tagged release that afternoon, and every one of the seven tools changed. The node took it with a snapshot and a rollback, and the release asked for three small edits the old build had not. The agent and the community came up on it; the DID host alone stayed on the morning's build, chosen with eyes open and written down.
+
+Then the wallet. [Star Key](../starkey.md), the City's fork of OpenVTC's browser wallet, connected to the City's own agent as the keeper's seat: an hour-long grant with a hand-off, and the agent minted the wallet's long-term key and retired the temporary one, over the transport that had failed the night before. The community was set to single-administrator mode, since every administrator is one person. The sign-in failed twice for reasons the record already held: a service in the community's DID document written without its `/v1` by the older build, fixed by editing the document and carrying the new entry to the DID host by hand; and a door that presents the agent rather than the wallet, fixed by giving the agent its own seat. Just after midnight the console's session belonged to the City's own agent, signed by the wallet. The keeper administers the City from a Star.
+
+- Every failure was already written down somewhere upstream before it happened here. The night's work was reading, not inventing.
+- The wallet holds no signing key; every signature that let it in was the agent's. The one secret it keeps, the passkey, never left the browser.
+
+## 8 · What did not happen
+
+No criteria beyond the defaults are registered, so an uninvited join request waits for review. The profile is named now; the first invitation has not yet been issued. The Namekeeper's resolvers and the zone executor are built and tested on fakes, not yet against the live daemon. No orchestrator is named; no community is attached; no word has been deposited in a registry that is still a specification with a reading half.
 
 *Reflected from the master chronicle of 8 October 2026. The First Person's read comes first.*

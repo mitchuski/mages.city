@@ -6,6 +6,12 @@ Mages City is an **open Verifiable Trust Community** on [OpenVTC](https://openvt
 
 `machines qualify · humans admit · brokers release`
 
+## Get in · three steps
+
+1. **A Star Key and an agent.** Load [Star Key](starkey.md), connect it to a VTA of your own (the [VTA farm](https://vtafarm.firstperson.dev/) or self-hosted), grant it with your pnm, lock it with a passkey.
+2. **Your first invitation.** Say who you are, what you bring, and the persona DID you will join with, at the Portal or to `mage@agentprivacy.ai`. The keeper issues an invitation credential to that DID from the console.
+3. **Join by DID.** Present it with any OpenVTC client; under `invited` the join is admitted at once. [starkey.md](starkey.md) has every step and the gotchas.
+
 ## Join
 
 Any OpenVTC client works. The City adds nothing to the protocol.
@@ -63,7 +69,8 @@ Words (κ) in a registry, spells with their mages, mana on the edges, the Exchan
 | host | role | status |
 |---|---|---|
 | `mages.city` | the front (this page) | live |
-| `vtc.mages.city` | the community: public site, join, admin console, status lists | minted 8 Oct; coming up |
+| the console | administered by the keeper from a Star Key wallet, signed in as the City's agent | live since 9 Oct 00:21Z |
+| `vtc.mages.city` | the community: public site, join, admin console, status lists | live; profile set; OpenVTC release of 8 Oct |
 | `vta.mages.city` | the keeper's VTA that minted the community DID — on the core node | live |
 | `mediator.mages.city` | DIDComm / TSP mediator | live |
 | `dids.mages.city` | did:webvh host for the VTA, the mediator and the community | live |

@@ -103,8 +103,8 @@ openvtc setup
 ```
 Or Keyring on a phone. *Done when:* `openvtc` opens and shows the connected VTA.
 
-### C3 · Join by DID · keeper
-Copy the DID from [community.json](community.json) (or scan the QR on the community site); in `openvtc`: Communities → `j` → paste. A fresh persona is minted unless you reuse one. *Done when:* the request shows **pending**. Pending grants nothing.
+### C3 · Ask for your invitation, then join by DID · keeper
+Say who you are and the persona DID you will join with ([starkey.md](starkey.md)); the City's keeper issues an invitation credential to it. Copy the DID from [community.json](community.json) (or scan the QR on the community site); in `openvtc`: Communities → `j` → paste. A fresh persona is minted unless you reuse one. *Done when:* the request shows **pending**. Pending grants nothing.
 
 ### C4 · Review · a human admitter
 Under `invited` the City issued you an invitation and admission is automatic; under `arena-evidence` or `review` a human decides. The agent may draft what you attach; it does not send.
