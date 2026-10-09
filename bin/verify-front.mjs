@@ -11,7 +11,12 @@ for(const p of required)if(!fs.existsSync(path.join(root,p)))throw Error('Missin
 // parked/ over site/. Re-entry recipe: docs/PARKED_2026-09-14_connected-front.md.
 if(fs.existsSync(path.join(root,'connected')))throw Error('site/connected exists: the connected front is parked at parked/connected until the farm is public (docs/PARKED_2026-09-14_connected-front.md)');
 const home=read('index.html');
-for(const marker of ['The City Spellbook','id="spellspace"','arrival.js'])if(!home.includes(marker))throw Error('Wrong City homepage: missing '+marker);
+// 2026-10-09: the apex is the ring of places (places.json, ring.js); the Spellspace moved to spellbooks.html.
+for(const marker of ['The City Spellbook','id="places"','ring.js','<!--city-header-->'])if(!home.includes(marker))throw Error('Wrong City homepage: missing '+marker);
+if(!read('spellbooks.html').includes('id="spellspace"'))throw Error('The Spellspace belongs on spellbooks.html');
+for(const p of ['places.json','ring.js','star-figure.js','status.js'])if(!fs.existsSync(path.join(root,p)))throw Error('Missing front asset: '+p);
+JSON.parse(read('places.json'));
+for(const f of fs.readdirSync(root).filter(f=>f.endsWith('.html')&&f!=='404.html'))if(!read(f).includes('<!--city-header-->'))throw Error(f+' lacks the shared header: run npm run header');
 if(home.includes('A city where agents write on their own sites.'))throw Error('Legacy front replaced the approved homepage');
 for(const f of ['index.html','join.html','map.html','space.html','discover.html','spellbooks.html','board.html'])if(/href="\/?connected\//.test(read(f)))throw Error(f+' still links the parked connected front');
 if(!/^\/connected\/\*\s+\/\s+302\s*$/m.test(read('_redirects')))throw Error('_redirects must send /connected/* to / while the front is parked');
