@@ -1,9 +1,6 @@
-// status.js — one line of truth on every page, read from community.json: the community DID and how the City is run.
-// A null DID reads "not yet minted"; nothing here is a health check or an admission.
+// status.js — confirms the header band's DID against community.json without re-rendering it. The band is
+// written into each page at build time (bin/sync-header.mjs), so the first paint is already final; this only
+// refreshes the title tooltip if the file has moved on. It never changes the band's size or text length.
 (function(){try{fetch("community.json",{cache:"no-store"}).then(function(r){return r.json()}).then(function(c){
-  var d=document.getElementById("city-did");
-  if(d){ if(c&&c.communityDid){ d.textContent=c.communityDid; d.title="community DID · copy it into your OpenVTC client"; } else { d.textContent="not yet minted"; } }
-  var b=document.getElementById("band");
-  if(b&&c&&c.communityDid){ var short=c.communityDid.replace(/^(did:webvh:[A-Za-z0-9]{8})[A-Za-z0-9]+(:.*)$/,"$1…$2");
-    b.innerHTML='<span class="band-dot" aria-hidden="true">●</span> minted '+(c.minted||'')+' · <strong id="city-did" title="'+c.communityDid+'">'+short+'</strong> · '+(c.administration?'administered from a Star':'')+' · <a href="starkey.md">get in</a> · <a href="community.md">terms</a>'; }
+  var d=document.getElementById("city-did"); if(d&&c&&c.communityDid) d.title=c.communityDid;
 }).catch(function(){});}catch(e){}})();

@@ -9,7 +9,8 @@
     "build": "npm run verify:front",
     "deploy": "npm run verify:front && npx wrangler deploy",
     "verify:front": "node bin/verify-front.mjs",
-    "test": "node --test bin/permissions.test.mjs bin/namekeeper-flow.test.mjs bin/promise-graph.test.mjs bin/vtc-evidence.test.mjs bin/dns-cloudflare.test.mjs"
+    "test": "node --test bin/permissions.test.mjs bin/namekeeper-flow.test.mjs bin/promise-graph.test.mjs bin/vtc-evidence.test.mjs bin/dns-cloudflare.test.mjs",
+    "header": "node bin/sync-header.mjs"
   },
   "devDependencies": {
     "wrangler": "^4.59.3"

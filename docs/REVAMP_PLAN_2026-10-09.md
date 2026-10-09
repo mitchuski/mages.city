@@ -9,7 +9,9 @@ This plan keeps everything the site now says and changes how much of it a visito
 
 ## 0 · First on return · the nav bounces (keeper, 9 Oct: "the top nav is kinda broken, it bounces around on all the pages")
 
-Diagnosed, not yet fixed (work paused at the keeper's word):
+**Fixed 9 Oct** (`bin/sync-header.mjs`, `npm run header`): one nav (brand · Places · Spellbook · Join, `aria-current` on the page) and one band (minted · DID · administered from a Star · get in · terms), baked from `community.json` into all 13 pages at build time; fixed boxes in `style.css` (`nav.city-nav` 84 px / 64 px on phones, `.city-band` 40 px, single line, ellipsis); `status.js` no longer re-renders, it only refreshes the DID tooltip. verify: "one header" row, 13 pages identical. Re-run `npm run header` after editing `community.json` or a page's top. The lattice-navigator reuse remains for slice 2.
+
+What was wrong:
 
 1. **Three different navs.** Apex: Places · Spellbook · Join (3); arena/guide/swarms/hosting/join/map/setup/board/discover: the old 7; space: 4; spellbooks: its own. The nav changes width and content page to page.
 2. **The band rewrites after paint.** `status.js` swaps the apex band's innerHTML once `community.json` loads, with a longer line → layout shift. Some pages carry the band, some do not → the content's top edge moves.
