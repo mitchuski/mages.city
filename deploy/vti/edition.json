@@ -122,7 +122,7 @@
     "administrators": "single_admin_mode (one keeper) or co_admin_did — decide in vtc/vtc-setup.toml",
     "joinCriteriaOrder": [
       "invited",
-      "arena-evidence",
+      "work-evidence",
       "review"
     ],
     "kit": {

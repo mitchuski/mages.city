@@ -9,7 +9,7 @@ Observed upstream at writing: VTI `origin/main` is 81 commits ahead of the local
 | file | role |
 |---|---|
 | `vtc/vtc-setup.toml` | phase-2 provisioning file for the City (fill the `<…>` fields) |
-| `vtc/join-criteria.json` | the three criteria in order: `invited` · `arena-evidence` · `review` |
+| `vtc/join-criteria.json` | the three criteria in order: `invited` · `work-evidence` · `review` |
 | `vtc/website/index.html` | the community's public site for `website.root_dir`: DID, QR, join, criteria |
 | `edition.json` | component inventory + `community` block (DID stays `null` until minted) |
 | `CORE_NODE.md` · `core-node/` | this machine as the core node: installer, systemd units, tunnel ingress, check script |
@@ -56,7 +56,7 @@ Without `--admin-handoff` phase 2 fails with `carries no one-time hand-off`; del
 
 ## 4 · Join criteria (upstream `join-criteria.md`)
 
-Console **Vetting → Requirements**, or signed `vtc/schemas/accepts/register/0.2` documents. From the shipped defaults: remove `member-credential`; register `arena-evidence` (review, requires nothing) so the order reads `invited` · `arena-evidence` · `review`. Validate `vtc/join-criteria.json` against the spec at the pinned revision first; the file follows the doc's vocabulary, not a tested payload. A criterion that requires nothing must be last.
+Console **Vetting → Requirements**, or signed `vtc/schemas/accepts/register/0.2` documents. From the shipped defaults: remove `member-credential`; register `work-evidence` (review, requires nothing) so the order reads `invited` · `work-evidence` · `review`. Validate `vtc/join-criteria.json` against the spec at the pinned revision first; the file follows the doc's vocabulary, not a tested payload. A criterion that requires nothing must be last.
 
 ## 5 · The public site (upstream `website-and-admin.md`)
 

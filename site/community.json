@@ -21,7 +21,7 @@
       "note": "the first door: an invitation credential the keeper issues to your DID"
     },
     {
-      "id": "arena-evidence",
+      "id": "work-evidence",
       "admission": "review",
       "requires": [],
       "attach": "arena chronicle with Evidence root"

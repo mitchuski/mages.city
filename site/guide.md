@@ -47,7 +47,7 @@ The agent prepares the TOML and checks the printed block for `vtc_did=`; it neve
 Claim the install URL with the claim code, register a passkey, sign in at `/admin/`. **Claim before adding any other admin.** Then `cnm community add "Mages City" --vtc-did <vtc_did>` → grant → `cnm community continue mages-city`. *Done when:* **Access control** lists the admin and `cnm community list` shows the City as complete.
 
 ### A5 · Join criteria · keeper in the console, agent validates the documents
-From the shipped defaults remove `member-credential`; register `arena-evidence` (review) so the order reads `invited` · `arena-evidence` · `review`. The agent validates `deploy/vti/vtc/join-criteria.json` against the spec first. *Done when:* the join manifest lists the three in that order.
+From the shipped defaults remove `member-credential`; register `work-evidence` (review) so the order reads `invited` · `work-evidence` · `review`. The agent validates `deploy/vti/vtc/join-criteria.json` against the spec first. *Done when:* the join manifest lists the three in that order.
 
 ### A6 · The public site and the front · agent, keeper pushes
 Set `website.root_dir`, copy `deploy/vti/vtc/website/`, restart; the page shows the DID and its QR. The agent writes the DID into `site/community.json`, `edition.json` and the status lines of `community.md` and `arena.md`; the keeper pushes `main`. *Done when:* `https://mages.city/community.json` carries the DID and `https://vtc.mages.city/v1/community/did-qr.svg` renders it.
@@ -85,7 +85,7 @@ Write the note from `templates/SUBMISSION_NOTE.md`; label the harness and the in
 Dated handoff on top, kills with a reopen condition, ledger exported (A40). *Done when:* the next session can resume from the handoff alone.
 
 ### B7 · Bring the word to the City · keeper, once the DID exists
-Join under `arena-evidence` (Part C) with the chronicle and the note attached. A fellow mage re-derives the bundle and approves or refers; approval issues membership and `prover · <lane>`. With membership active and mana (a relationship credential) to one other member, the registry of words opens and the κ is deposited; your Star chooses who is told ([arena.md](arena.md)).
+Join under `work-evidence` (Part C) with the chronicle and the note attached. A fellow mage re-derives the bundle and approves or refers; approval issues membership and `prover · <lane>`. With membership active and mana (a relationship credential) to one other member, the registry of words opens and the κ is deposited; your Star chooses who is told ([arena.md](arena.md)).
 
 ---
 
@@ -107,7 +107,7 @@ Or Keyring on a phone. *Done when:* `openvtc` opens and shows the connected VTA.
 Say who you are and the persona DID you will join with ([starkey.md](starkey.md)); the City's keeper issues an invitation credential to it. Copy the DID from [community.json](community.json) (or scan the QR on the community site); in `openvtc`: Communities → `j` → paste. A fresh persona is minted unless you reuse one. *Done when:* the request shows **pending**. Pending grants nothing.
 
 ### C4 · Review · a human admitter
-Under `invited` the City issued you an invitation and admission is automatic; under `arena-evidence` or `review` a human decides. The agent may draft what you attach; it does not send.
+Under `invited` the City issued you an invitation and admission is automatic; under `work-evidence` or `review` a human decides. The agent may draft what you attach; it does not send.
 
 ### C5 · Standing · both
 You hold a membership credential (renew it yourself) and a role credential; the City reads only their status. The front shows what the status list says. *Done when:* the front's view and `openvtc`'s Communities page agree.

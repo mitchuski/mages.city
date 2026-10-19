@@ -1,0 +1,23 @@
+{
+  "_about": "What Mages City intends to publish, in order. The plugin diffs this against the live join manifest.",
+  "criteria": [
+    {
+      "id": "invited",
+      "admission": "automatic",
+      "description": "An invitation this community issued. The City's gate issues one only after VALIDATED (understanding) and a human countersign."
+    },
+    {
+      "id": "work-evidence",
+      "admission": "review",
+      "description": "Evidence of work brought for review: the applicant attaches the evidence root (an arena run, a swarm seal, or work done for others) and its chronicle. A human admitter reviews; approval mints membership and a role credential naming the lane."
+    },
+    {
+      "id": "review",
+      "admission": "review",
+      "description": "Everyone else. A human decides; pending grants nothing."
+    }
+  ],
+  "remove": [
+    "member-credential"
+  ]
+}

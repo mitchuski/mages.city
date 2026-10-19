@@ -34,7 +34,7 @@ Join criteria are published by the community in its join manifest, in this order
 | # | criterion | admission | requires |
 |---|---|---|---|
 | 1 | `invited` | automatic | an invitation the City issued (the gate's issue step) |
-| 2 | `arena-evidence` | review | nothing in protocol; the applicant attaches an arena chronicle with its word (the evidence root) — see [arena.md](arena.md) |
+| 2 | `work-evidence` | review | nothing in protocol; the applicant attaches an arena chronicle with its word (the evidence root) — see [arena.md](arena.md) |
 | 3 | `review` | review | nothing |
 
 There is no automatic membership by credential from another community yet; a trust registry is a later decision. The exact documents are in the City repo at `deploy/vti/vtc/join-criteria.json` and must be validated against the published spec at the pinned revision before they are registered.

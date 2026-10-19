@@ -1,0 +1,1 @@
+csp = "default-src 'self'; script-src 'self'; object-src 'none'; base-uri 'self'; connect-src 'self' https://vtc.mages.city; img-src 'self' https://vtc.mages.city"

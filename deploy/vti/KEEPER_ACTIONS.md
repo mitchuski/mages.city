@@ -123,7 +123,7 @@ Browser: the install URL → claim code → passkey → sign in at `https://vtc.
 ```
 $   bash /mnt/c/Users/mitch/mages_city/deploy/vti/core-node/check.sh
 ```
-From here `DEPLOY.md` §3–§7 is mostly mine with you clicking approve: the `cnm` identity, the three join criteria (`invited` · `arena-evidence` · `review`), the community site into `website.root_dir`, the first synthetic admission and revocation. The recorded versions go into `EDITION.md`.
+From here `DEPLOY.md` §3–§7 is mostly mine with you clicking approve: the `cnm` identity, the three join criteria (`invited` · `work-evidence` · `review`), the community site into `website.root_dir`, the first synthetic admission and revocation. The recorded versions go into `EDITION.md`.
 
 
 ## 7 · Star Key as the City's administrator · ⏱ 20 min · ✅ seat granted 9 Oct 00:04Z (wallet did:key:z6MkkcD6kHFWjpqaVhVjtaFxSP2w99pkKG2LKSUmi3GG13Jp · whole agent · context swordsman · hand-off VTI-ACL-056 exercised over TSP on vta 0.56.0 · VTC in single-administrator mode · community-admin, no expiry) · ✅ SIGNED IN 00:21Z as the VTA identity: "Sign in as a VTA identity" presents the agent's did:webvh, so the VTA DID needs its own community-admin entry too (granted 00:20Z); console key delegated, signed by the wallet

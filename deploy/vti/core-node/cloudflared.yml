@@ -16,6 +16,10 @@ ingress:
     service: http://127.0.0.1:8100
   - hostname: vtc.mages.city
     service: http://127.0.0.1:8200
+  # the community's own website on a dedicated host (19 Oct 2026): a filesystem website may not share the
+  # API/console origin. Same daemon, same port; the VTC routes by Host (routing.website.host).
+  - hostname: join.mages.city
+    service: http://127.0.0.1:8200
 
   # the City's own desks and farm, unchanged from deploy/cloudflared.example.yml (only when they run here)
   - hostname: portal.mages.city

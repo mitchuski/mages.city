@@ -1,0 +1,58 @@
+/* community-site template · palette comes from community.config.json (site.js writes it onto :root) */
+:root{--bg:#080c18;--panel:#0b1124;--ink:#e8e4da;--muted:#8d97a8;--line:#1c2638;--accent:#8fd3e0;--accent2:#dbb4a6;--ok:#7fd49b;--warn:#e6c07a;--bad:#e58a8a;
+  --serif:Georgia,"Iowan Old Style","Palatino Linotype",serif;--mono:ui-monospace,"SFMono-Regular",Menlo,Consolas,monospace}
+@media (prefers-color-scheme: light){:root:not([data-theme="dark"]){--bg:#f6f3ec;--panel:#fffdf8;--ink:#1d2333;--muted:#5e6676;--line:#ddd6c8;--accent:#1f6f80;--accent2:#9a5b46}}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.6 var(--serif)}
+a{color:var(--accent)}
+.wrap{max-width:900px;margin:0 auto;padding:0 16px}
+nav.top{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;padding:18px 0;border-bottom:1px solid var(--line);font:13px var(--mono)}
+nav.top a{color:var(--ink);text-decoration:none}
+.brand{display:flex;align-items:center;gap:10px}
+nav.top .links{display:flex;flex-wrap:wrap;gap:6px 18px}
+nav.top .links a{color:var(--muted)}
+nav.top .links a:hover{color:var(--ink)}
+.hero{padding:44px 0 8px}
+h1{font-weight:500;font-size:clamp(30px,6vw,44px);line-height:1.15;margin:6px 0 10px}
+h2{font-weight:500;font-size:24px;margin:44px 0 10px}
+.tag{font:11px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin:0}
+.lede{font-size:20px;max-width:46em;margin:0 0 14px}
+.muted{color:var(--muted)}
+.small{font-size:14px}
+.status{display:flex;align-items:center;gap:8px;font:12px var(--mono);color:var(--muted);margin:0}
+.status .dot{width:9px;height:9px;border-radius:50%;background:var(--muted);flex:none}
+.status.ok .dot{background:var(--ok)}
+.status.degraded .dot{background:var(--warn)}
+.status.down .dot{background:var(--bad)}
+.did{display:grid;grid-template-columns:1fr 196px;gap:24px;align-items:center;border:1px solid var(--line);background:var(--panel);padding:20px;margin:28px 0 0}
+@media (max-width:680px){.did{grid-template-columns:1fr}.did img{justify-self:start}}
+.did code{display:block;word-break:break-all;font:13px/1.5 var(--mono);border:1px solid var(--line);background:var(--bg);padding:12px;margin:8px 0 0}
+.did img{width:180px;height:180px;background:#fff;padding:8px;display:block}
+.did img.gone{display:none}
+button,.cta{font:12px var(--mono);background:none;border:1px solid var(--line);color:var(--ink);padding:7px 14px;cursor:pointer;margin-top:10px;text-decoration:none;display:inline-block}
+button:hover,.cta:hover{border-color:var(--accent)}
+.cta{border-color:var(--accent);color:var(--accent);font-size:13px}
+.doors{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;margin-top:14px}
+.door{border:1px solid var(--line);background:var(--panel);padding:18px;display:flex;flex-direction:column}
+.door h3{font-weight:500;font-size:20px;margin:4px 0 4px}
+.door .who{font-size:14px;color:var(--muted);margin:0 0 10px}
+.door ol{margin:0 0 10px;padding-left:20px;font-size:15px}
+.door li{margin:3px 0}
+.door .crit{margin-top:auto;font:11px var(--mono);color:var(--muted)}
+.door .crit b{color:var(--accent2);font-weight:500}
+.door .crit.missing b{color:var(--warn)}
+pre,.door code{font:13px/1.5 var(--mono)}
+pre{background:var(--bg);border:1px solid var(--line);padding:10px 12px;overflow-x:auto;margin:6px 0 10px;white-space:pre-wrap;word-break:break-word}
+.table{overflow-x:auto}
+table{width:100%;border-collapse:collapse;font-size:15px;margin:8px 0}
+th,td{text-align:left;padding:8px 6px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font:11px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+td.adm-automatic{color:var(--ok)}
+td.adm-review{color:var(--accent2)}
+.found{border:1px solid var(--accent);background:var(--panel);padding:22px;margin-top:44px}
+.found h2{margin-top:6px}
+.found ol{padding-left:20px}
+.links-row a{margin-right:16px}
+footer{border-top:1px solid var(--line);margin:52px 0 32px;padding-top:16px;font:12px/1.7 var(--mono);color:var(--muted)}
+footer a{color:var(--muted)}

@@ -16,8 +16,15 @@ ldconfig -p | grep -q libpcsclite.so.1 || sudo apt-get install -y -qq libpcsclit
 sudo systemctl enable --now valkey-server >/dev/null 2>&1 || true
 echo "== binaries"
 : > "$HOME/vti/BINARIES.sha256.new"
+# HOLD = binaries kept as installed. The DID host stays on its 2 Sept 0.8.3 build until Option B
+# (KEEPER_ACTIONS §5 gotcha): newer builds refuse its in-store secrets. 19 Oct 2026 re-confirmed.
+HOLD="${HOLD:-did-hosting-daemon}"
 for b in "${!SRC[@]}"; do
   url="$BASE/${SRC[$b]}"
+  if [[ " $HOLD " == *" $b "* ]] && [ -x "/usr/local/bin/$b" ]; then
+    printf '%s  %s  %s  %s\n' "$(sha256sum "/usr/local/bin/$b" | cut -d' ' -f1)" "$(stat -c %s "/usr/local/bin/$b")" "$b" "held" >> "$HOME/vti/BINARIES.sha256.new"
+    echo "  held: $b"; continue
+  fi
   curl --proto '=https' --tlsv1.2 -fsSL -o "$b.new" "$url"
   chmod +x "$b.new"
   size=$(stat -c %s "$b.new"); sum=$(sha256sum "$b.new" | cut -d' ' -f1)

@@ -1,0 +1,25 @@
+/* Mages City desk · inherits the console's tokens where they pierce the shadow root (custom properties do) */
+:host{display:block;color:var(--color-text,inherit);font:inherit}
+.desk{max-width:1100px;padding:8px 0 32px}
+header h2{font-size:26px;font-weight:600;margin:4px 0 6px}
+.tag{font:11px ui-monospace,Menlo,Consolas,monospace;letter-spacing:.12em;text-transform:uppercase;color:#4aa3b5;margin:0}
+.muted{opacity:.72}
+.small{font-size:13px}
+.bad{color:#d0605e}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:16px;margin-top:18px}
+.card{border:1px solid rgba(127,127,127,.28);border-radius:10px;padding:16px 18px}
+.card h3{font-size:16px;font-weight:600;margin:0 0 8px}
+.acts{list-style:none;padding:0;margin:8px 0 0}
+.acts li{padding:8px 0;border-top:1px solid rgba(127,127,127,.18)}
+.act{white-space:nowrap;color:#4aa3b5;text-decoration:none;font-weight:500}
+.act:hover{text-decoration:underline}
+table{width:100%;border-collapse:collapse;font-size:14px}
+th,td{text-align:left;padding:6px 4px;border-bottom:1px solid rgba(127,127,127,.18)}
+th{font-size:11px;letter-spacing:.08em;text-transform:uppercase;opacity:.7}
+code{font:12px ui-monospace,Menlo,Consolas,monospace}
+.pill{display:inline-block;font:11px ui-monospace,Menlo,Consolas,monospace;padding:1px 7px;border-radius:999px;border:1px solid currentColor}
+.pill.ok{color:#2f9e5b}.pill.bad{color:#d0605e}.pill.warn{color:#c08a1e}.pill.unk{color:#888}
+ul.cols{columns:2;padding-left:0;list-style:none;margin:8px 0}
+ul.cols li{margin:3px 0}
+details{margin-top:8px}
+details ul{list-style:none;padding-left:0}

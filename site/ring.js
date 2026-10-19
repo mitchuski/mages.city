@@ -28,7 +28,7 @@ const reduce = typeof matchMedia === "function" && matchMedia("(prefers-reduced-
 
   const fig = createStarFigure(canvas, {
     spinning: !reduce,
-    onPlaceHover: p => { show(p); if (strip) strip.querySelectorAll("[data-place]").forEach(a => a.classList.toggle("is-hover", !!p && a.dataset.place === p.id)); },
+    onPlaceHover: p => { if (strip) strip.querySelectorAll("[data-place]").forEach(a => a.classList.toggle("is-hover", !!p && a.dataset.place === p.id)); },
     onPlaceClick: teleport,
   });
   const layers = {};
@@ -37,12 +37,16 @@ const reduce = typeof matchMedia === "function" && matchMedia("(prefers-reduced-
   fig.setLayers(layers);
 
   if (strip) {
-    strip.innerHTML = places.map(p => `<a class="ring-chip" data-place="${esc(p.id)}" href="${esc(p.door)}" title="${esc(p.line)}"><span>${esc(p.glyph)}</span>${esc(p.name)}</a>`).join("");
+    // the places as a permanent list, grouped (places.json groups): name and line always visible, no hover needed
+    const groups = data.groups || [{ id: undefined, name: "" }];
+    const row = p => `<a class="ring-row" data-place="${esc(p.id)}" href="${esc(p.door)}"><span class="g${[...p.glyph].length > 2 ? " wide" : ""}" aria-hidden="true">${esc(p.glyph)}</span><span><b>${esc(p.name.replace(/^the /, "The "))}</b><small>${esc(p.line)}</small></span></a>`;
+    strip.innerHTML = groups.map(g => {
+      const ps = places.filter(p => g.id === undefined || p.group === g.id);
+      return ps.length ? (g.name ? `<p class="ring-group">${esc(g.name)}</p>` : "") + ps.map(row).join("") : "";
+    }).join("");
     strip.querySelectorAll("[data-place]").forEach(a => {
       const p = places.find(x => x.id === a.dataset.place);
-      a.addEventListener("mouseenter", () => show(p)); a.addEventListener("focus", () => show(p));
-      a.addEventListener("mouseleave", () => show(null)); a.addEventListener("blur", () => show(null));
-      a.addEventListener("click", e => { if (!reduce) { e.preventDefault(); teleport(p); } });
+      a.addEventListener("click", e => { if (!reduce && !/^https?:/.test(p.door)) { e.preventDefault(); teleport(p); } });
     });
   }
   const btn = document.getElementById("ring-spin");

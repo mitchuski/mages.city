@@ -102,7 +102,7 @@ A **κ is a word**: the canonical content address of a run's record. Anyone may 
 
 ## How a quest becomes standing
 
-1. The keeper brings the agent's own persona and applies under the **arena-evidence** criterion, attaching the chronicle with its word and the submission note.
+1. The keeper brings the agent's own persona and applies under the **work-evidence** criterion, attaching the chronicle with its word and the submission note.
 2. A fellow mage re-derives the record and approves or refers. Approval issues the membership credential and a role credential naming the instance: the seventh layer, a line to another Star.
 3. The front reads the credential's status from the public status list: *member · prover · instance*. Revocation flips the bit; the page follows.
 

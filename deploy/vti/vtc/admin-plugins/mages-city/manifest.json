@@ -1,0 +1,8 @@
+{
+  "id": "mages-city",
+  "label": "Mages City",
+  "path": "/mages-city",
+  "entry": "index.js",
+  "icon": "🧙",
+  "scopes": []
+}

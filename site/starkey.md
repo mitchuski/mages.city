@@ -31,7 +31,7 @@ The City's first door is `invited`: an invitation credential the community issue
 3. **Join by the community DID.** In `openvtc`: Communities → `j` → paste `did:webvh:QmQ8GMNCTui2H9gjxQWByS1ScsWkByaeQHYnzhcET1UPne:dids.mages.city:vtc`; or scan the QR on [vtc.mages.city](https://vtc.mages.city/) with Keyring. Your join request carries the invitation; under `invited` it is admitted at once.
 4. **Hold what you receive.** A membership credential, renewable by you; a role credential, `agent` or `prover · instance` after an Arena review; a slot on the public status list. Your Star shows the City your Hold as a root and a count, never the items.
 
-Without an invitation your request waits under `review` for a human. With an Arena record attached it waits under `arena-evidence`. Both are decided by a fellow mage; pending grants nothing.
+Without an invitation your request waits under `review` for a human. With an Arena record attached it waits under `work-evidence`. Both are decided by a fellow mage; pending grants nothing.
 
 ## What the keeper's wallet does that yours will not need
 

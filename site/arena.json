@@ -727,7 +727,7 @@
   "seatsNote": "seats is null until each instance's harness.config.mjs persona-per-seat is read in; the atlas (map.html, city-topology.json) already places the cast on the lattice, and the universe's SEATS.md names the 42.",
   "cityPath": {
     "summary": "A quest becomes City standing only through the community: κ → join request under the arena criterion → a fellow mage reads the record → membership credential → a role credential naming the instance. The front reads the credential status; it never computes a score.",
-    "criterion": "arena-evidence (review) — see deploy/vti/vtc/join-criteria.json",
+    "criterion": "work-evidence (review) — see deploy/vti/vtc/join-criteria.json",
     "whatTheCityReads": [
       "the chronicle's Evidence root line",
       "the bundle's REPORT.md",

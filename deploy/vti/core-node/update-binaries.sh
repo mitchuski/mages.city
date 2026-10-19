@@ -15,7 +15,7 @@ RB="$HOME/vti/rollback"; mkdir -p -m 700 "$RB"
 
 health() {
   for u in "${UNITS_UP[@]}"; do printf '  %-14s %s\n' "$u" "$(systemctl is-active "$u" 2>&1)"; done
-  for p in 8534/ 7037/mediator/v1/.well-known/did 8100/health 8200/health; do printf '  :%-42s HTTP %s\n' "$p" "$(curl -s -o /dev/null -w '%{http_code}' --max-time 8 "http://127.0.0.1:$p")"; done
+  for p in 8534/ 7037/mediator/v1/.well-known/did 8100/health 8200/health; do printf '  :%-42s HTTP %s\n' "$p" "$(curl -s -o /dev/null -w '%{http_code}' --max-time 8 -H 'Host: vtc.mages.city' "http://127.0.0.1:$p")"; done
 }
 
 if [ "${1:-}" = "--rollback" ]; then
