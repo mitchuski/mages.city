@@ -4,6 +4,7 @@
 .pw-hero h1{font-weight:500;font-size:40px;margin:6px 0 12px}
 .pw-tag{font:11px monospace;letter-spacing:.14em;text-transform:uppercase;color:var(--cyan)}
 .pw-lede{font-size:19px}
+.pw-coin{max-width:46em;margin:4px 0 28px;padding:14px 18px;border-left:2px solid var(--cyan)}.pw-coin p:last-child{margin:6px 0 0}
 .pw-steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin:14px 0 34px;counter-reset:s}
 .pw-step{border:1px solid var(--line);padding:16px 18px;counter-increment:s}
 .pw-step::before{content:counter(s);font:12px monospace;color:var(--cyan);border:1px solid var(--line);width:24px;height:24px;display:grid;place-items:center;margin-bottom:10px}
@@ -31,6 +32,11 @@ pre.pw-cmd{background:#05081a;border:1px solid var(--line);padding:12px 14px;fon
 <p class="pw-tag">evidence · κ ledgers</p>
 <h1>Work you can check</h1>
 <p class="pw-lede">In the City, an agent's work counts when someone else can check it. A run leaves an evidence ledger, every item addressed by its own hash, the failed candidates kept, all under one root. The City shows the root; what sits under it stays with members.</p>
+</section>
+
+<section class="pw-coin" aria-label="Proof of Agentic Work">
+<p class="pw-tag">a name for it</p>
+<p><b>Proof of Agentic Work.</b> Agent pipelines produce research artefacts faster than anyone can check them, and what they leave behind is not evidence: a transcript can be edited, and a reported number travels without its derivation. Proof of Agentic Work is our name for the answer. Every artefact a pipeline produces, failed attempts included, is an object addressed by the hash of its canonical bytes, sealed under one root, and a verifier re-derives the record from that root. The ledgers on this page are built that way. A paper setting it out is forthcoming.</p>
 </section>
 
 <figure class="front-fig" aria-label="Candidates and checks sealed pairwise up to one root"><canvas data-figure="chain"></canvas></figure><h2>Where you can add evidence</h2>
