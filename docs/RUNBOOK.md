@@ -56,7 +56,7 @@ and it changes the order of everything else.*
 `vti-setup/developer/01-personal-vta.md` documents **two paths** to a working Personal VTA, and
 Path A is the recommended one:
 
-> **Path A — VTA Farm (streamlined, recommended)** — [VTA Farm](https://vtafarm.firstperson.dev)
+> **Path A — VTA Farm (streamlined, recommended)** — [VTA Farm](https://vta.farm/)
 > spins up your VTA in a managed Kubernetes cluster. You provision it from a browser with a passkey
 > and connect your local PNM to it. **No server, no public domain, no DID hosting, no mediator
 > wiring on your side.**
@@ -67,7 +67,7 @@ the only one upstream has actually version-verified.
 
 | # | step | guide |
 |---|---|---|
-| 0.1 | account at `vtafarm.firstperson.dev`, passkey, **Create VTA**, save the VTA DID | developer/01 Path A |
+| 0.1 | account at `vta.farm`, passkey, **Create VTA**, save the VTA DID | developer/01 Path A |
 | 0.2 | `pnm setup` — connect the local PNM to that VTA | developer/01 Path A |
 | 0.3 | install the OpenVTC TUI | developer/02 |
 | 0.4 | create a **persona DID** and **join an existing community** | developer/03 |

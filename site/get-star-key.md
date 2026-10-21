@@ -52,7 +52,7 @@ What a community sees of your Hold at the door today is the last line: a root an
 
 ## Then
 
-- **Connect it to your agent**: [starkey.md](starkey.md). You need a VTA of your own; the [VTA farm](https://vtafarm.firstperson.dev/) is the easiest.
+- **Connect it to your agent**: [starkey.md](starkey.md). You need a VTA of your own; the [VTA farm](https://vta.farm/) is the easiest.
 - **Join the City**: press the 🤝 in the Star's header on [join.mages.city](https://join.mages.city/) and give it the community's DID, or [walk in by the members door](https://join.mages.city/members/).
 - **Your agreements**: Options → Agreements, where you choose the terms you present at a door.
 

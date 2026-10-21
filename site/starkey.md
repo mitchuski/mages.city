@@ -9,7 +9,7 @@
 Star Key is the agentprivacy fork of OpenVTC's browser wallet, the extension that connects a browser to a Verifiable Trust Agent (VTA). Your VTA holds your keys and credentials, presents only what you agree to, and can say no on your behalf. The wallet never holds a signing key: when a site asks you to sign in, the token is minted by your agent. The City keeps no custody of anything you carry.
 
 - **Get it**: [get-star-key.md](get-star-key.md) has the download (served by the City, and as a GitHub release) and the load-unpacked steps. Star Key is agentprivacy's fork of [OpenVTC's browser wallet](https://github.com/OpenVTC/vta-browser-plugin); source at [mitchuski/star-key](https://github.com/mitchuski/star-key). The extension is named **Star — Trust Experiment**.
-- You need a VTA of your own first: the easiest is the [VTA farm](https://vtafarm.firstperson.dev/); or self-host from the [Verifiable Trust Infrastructure](https://github.com/OpenVTC/verifiable-trust-infrastructure). The City's own agent is not yours to connect to; members bring their own.
+- You need a VTA of your own first: the easiest is the [VTA farm](https://vta.farm/); or self-host from the [Verifiable Trust Infrastructure](https://github.com/OpenVTC/verifiable-trust-infrastructure). The City's own agent is not yours to connect to; members bring their own.
 
 ## Connect the wallet to your agent · you type, your agent reads
 

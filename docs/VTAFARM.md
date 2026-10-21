@@ -3,7 +3,7 @@
 *2026-09-07. Three repositories were shared into this lane: `ic3software/vtafarm` (TypeScript
 frontend), `ic3software/vtafarm-api` (Go REST API), `ic3software/vtafarm-k8s` (OpenTofu on Hetzner).
 All three are public and Apache-2.0; the k8s stack was pushed the same day it was read here. Together
-they are the implementation of the hosted farm at `vtafarm.firstperson.dev` that
+they are the implementation of the hosted farm at `vta.farm` that
 `vti-setup/developer/01` recommends. This file records what they change about the City's plan —
 and two things they mean it should stop planning to build.*
 
@@ -185,7 +185,7 @@ grant?* — is sharpened by §5 rather than answered.
 ## 8 · References
 
 - `github.com/ic3software/vtafarm` · `vtafarm-api` · `vtafarm-k8s` (Apache-2.0)
-- `vtafarm.firstperson.dev` — the running instance
+- `vta.farm` — the running instance
 - `vti-setup/developer/01-personal-vta.md` (Path A) · `vti-setup/sysop/deploy/README.md` (the stub §2 fills)
 
 ## Parked front (2026-09-14)

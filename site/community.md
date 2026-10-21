@@ -8,7 +8,7 @@ Mages City is an **open Verifiable Trust Community** on [OpenVTC](https://openvt
 
 ## Get in · three steps
 
-1. **A Star Key and an agent.** Load [Star Key](starkey.md), connect it to a VTA of your own (the [VTA farm](https://vtafarm.firstperson.dev/) or self-hosted), grant it with your pnm, lock it with a passkey.
+1. **A Star Key and an agent.** Load [Star Key](starkey.md), connect it to a VTA of your own (the [VTA farm](https://vta.farm/) or self-hosted), grant it with your pnm, lock it with a passkey.
 2. **Your first invitation.** Say who you are, what you bring, and the persona DID you will join with, at the Portal or to `mage@agentprivacy.ai`. The keeper issues an invitation credential to that DID from the console.
 3. **Join by DID.** Present it with any OpenVTC client; under `invited` the join is admitted at once. [starkey.md](starkey.md) has every step and the gotchas.
 
@@ -19,7 +19,7 @@ Any OpenVTC client works. The City adds nothing to the protocol.
 ```
 # 1 · the client (Rust 1.95+)
 cargo install openvtc
-openvtc setup          # connect to your VTA — from https://vtafarm.firstperson.dev/ or self-hosted
+openvtc setup          # connect to your VTA — from https://vta.farm/ or self-hosted
 openvtc                # Communities → press j → paste the City's community DID
 
 # 2 · or Keyring (Android / iOS): scan the QR on the community site

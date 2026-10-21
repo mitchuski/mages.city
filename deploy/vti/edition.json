@@ -97,7 +97,7 @@
       "url": "https://openvtc.net/",
       "observed": "2026-10-07",
       "client": "cargo install openvtc",
-      "vtaFarm": "https://vtafarm.firstperson.dev/",
+      "vtaFarm": "https://vta.farm/",
       "testCommunity": "https://first.openvtc.net/",
       "ownerPath": "https://github.com/OpenVTC/verifiable-trust-infrastructure/blob/main/docs/03-vtc/getting-started.md"
     },
