@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Mages City · Your place</title>
+<meta name="description" content="A member's page at Mages City: how you are known here, the terms you joined under, the rooms you share with this page.">
+<link rel="icon" href="/logo.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/site.css">
+<script src="/members/members.js" defer></script>
+</head>
+<body data-page="home">
+<!-- community-site template (deploy/vti/vtc/website/members/home). Behind the member door. Everything on it is a
+     view the wallet built from its own record (membership.status, rooms.list) for this origin only; nothing here
+     is a credential, a key or a server session. A visitor the wallet does not know as a member is sent back to
+     /members/. The portal of vtc 0.12 (credential status live, relationships, rotation) replaces this when it ships. -->
+<div class="wrap">
+<nav class="top">
+  <a class="brand" href="/"><img src="/logo.svg" alt="" width="22" height="22"><span>Mages City</span></a>
+  <div class="links"><a href="/">Community</a><a href="/myterms/">Your terms</a><a href="/members/">Members</a></div>
+</nav>
+
+<main>
+  <header class="hero">
+    <p class="tag">Verifiable Trust Community · OpenVTC</p>
+    <h1>Your place in the City</h1>
+    <p class="lede">What your wallet knows about you here. The community decides membership; your wallet keeps the record.</p>
+    <p class="small muted">Community DID: <code id="did">reading…</code></p>
+  </header>
+
+  <section id="state-nowallet" hidden><p>Going back to the door…</p><p class="small muted" id="wallet-note"></p></section>
+  <section id="state-join" hidden><p>Going back to the door…</p></section>
+
+  <section id="state-member" hidden aria-labelledby="you-h">
+    <h2 id="you-h">How you are known here</h2>
+    <p class="muted small">The identities your wallet signs in with at this community. The community admitted them; your wallet holds their keys at your agent.</p>
+    <ul id="identities"></ul>
+
+    <h2>The terms you joined under</h2>
+    <p><span id="agreement">reading…</span> <a class="small" href="/myterms/">what the City accepts</a></p>
+    <p class="muted small">The agreement rode inside your signed join request; the City's signed answer is the other half. Both are kept by digest in your wallet (console → Agreements) and by the City.</p>
+
+    <h2>Rooms you share with this page</h2>
+    <ul id="rooms"><li class="muted">reading…</li></ul>
+    <p class="small muted" id="rooms-note">Share or withdraw rooms from your wallet's console (Data rooms → Communities).</p>
+
+    <h2>Not here yet</h2>
+    <p class="muted">Your credential's live status, your relationships, rotating your DID and your name in the City arrive with the member portal of the next Verifiable Trust Infrastructure release, at this address.</p>
+  </section>
+</main>
+
+<footer>
+  <p class="small">Powered by the open-source <a href="https://github.com/OpenVTC/verifiable-trust-infrastructure">Verifiable Trust Infrastructure</a>. This page holds no keys. <a href="/">Community</a> · <a href="/members/">Members</a></p>
+</footer>
+</div>
+</body>
+</html>

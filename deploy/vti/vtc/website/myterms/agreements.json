@@ -1,0 +1,19 @@
+{
+  "community": "did:webvh:QmQ8GMNCTui2H9gjxQWByS1ScsWkByaeQHYnzhcET1UPne:dids.mages.city:vtc",
+  "accepts": [
+    {
+      "code": "SD-BASE-DP",
+      "title": "Service delivery, with data portability",
+      "meaning": "Use my data only to deliver the service, and give it back to me when I ask.",
+      "url": "https://customercommons.org/agreements/SD-BASE-DP"
+    },
+    {
+      "code": "SD-BASE",
+      "title": "Service delivery only",
+      "meaning": "Use my data only to deliver the service. No analytics, tracking, profiling or sharing.",
+      "url": "https://customercommons.org/agreements/SD-BASE"
+    }
+  ],
+  "counterOffer": "SD-BASE-DP",
+  "configuration": "https://join.mages.city/.well-known/myterms-configuration"
+}

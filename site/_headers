@@ -1,0 +1,7 @@
+# Cloudflare Workers static assets: response headers by path.
+# The MyTerms configuration is a public statement read by wallets from their
+# own origin, so it must be readable cross-origin.
+/.well-known/myterms-configuration
+  Access-Control-Allow-Origin: *
+  Content-Type: application/json; charset=utf-8
+  Cache-Control: public, max-age=300

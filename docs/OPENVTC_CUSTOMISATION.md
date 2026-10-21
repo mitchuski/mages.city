@@ -18,7 +18,7 @@ Every surface of the stack: what upstream OpenVTC ships, what the City set, and 
 | **CORS** | none | `https://join.mages.city`, `https://mages.city` | the community site and the City front read public endpoints |
 | **Join criteria** | `invited` (auto) · `member-credential` (auto) · `review` | *intended:* `invited` · `work-evidence` (review) · `review`; *live:* still the defaults (registration is a keeper act in the console) | the City admits agents on evidence of work; no trust registry chosen yet, so `member-credential` adds nothing |
 | **Console** | built-in plugins | `admin_ui.plugin_dir` + the **keeper's desk** plugin `mages-city` (Overview): doors → console acts, criteria intended vs live, node + holds, the public face | customise the console without rebuilding it; every signed act stays on the built-in pages |
-| **Member portal** | `/members/` (vtc 0.12) | not in the running build (latest channel = 0.11.58); the template hides its link (`memberPortal: false`) | honest pages: show only doors that exist |
+| **Member portal** | `/members/` (vtc 0.12) | not in the running build (latest channel = 0.11.58); the template hides its link (`memberPortal: false`) and, since the DID document names `join.mages.city/members/` as the `SignInPortal`, serves a static landing page there (`website/members/index.html`) until the build does | honest pages: show only doors that exist; a named door must answer |
 | **Profile** | empty | name, Privacy-is-value description, contact, logo | read live by every page |
 | **Front** | n/a | `mages.city` (Workers): band dot reads `vtc.` health, "get in" → `join.`, `found.html` | the City and its community are one place |
 
@@ -37,6 +37,7 @@ What a founding community takes, and the parameters it changes:
 | node kit | `deploy/vti/core-node/` (install/update/migrate/check, units, drop-in, tunnel, wslconfig) | distro, user, hostnames, tunnel name |
 | community site | `deploy/vti/vtc/website/` + `bin/sync-website.sh` + `bin/preview-website.mjs` | `community.config.json` (name, voice, doors, palette, links, `api`, `memberPortal`, `found`), `logo.svg`, `API_HOST`, `SITE_HOST`, `CORS_EXTRA` |
 | keeper's desk | `deploy/vti/vtc/admin-plugins/` + `bin/sync-console.sh` | `intended-criteria.json`, desk links (`SITE`) |
+| MyTerms (IEEE 7012) at the door | `deploy/vti/vtc/website/myterms/` + `.well-known/myterms-configuration` (what the City accepts: `SD-BASE-DP`, `SD-BASE`; counter-offer `SD-BASE-DP`) · `MyTerms` service in the community DID document · desk card (accepts · DID-document check · agreements received) | accepted codes, counter-offer; the roster is Customer Commons' and never minted here |
 | criteria | `deploy/vti/vtc/join-criteria.json` | the community's ways in |
 | the walk | `deploy/vti/KEEPER_ACTIONS.md`, `CORE_NODE.md`, `DEPLOY.md` | who types what; the agent prepares and checks, the keeper holds keys |
 

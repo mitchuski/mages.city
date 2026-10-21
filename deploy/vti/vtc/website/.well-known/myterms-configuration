@@ -1,0 +1,18 @@
+{
+  "version": "1",
+  "profile": "mcnp-draft-01/vtc-join/1",
+  "community": "did:webvh:QmQ8GMNCTui2H9gjxQWByS1ScsWkByaeQHYnzhcET1UPne:dids.mages.city:vtc",
+  "methods": ["on-demand"],
+  "agreements": [
+    { "code": "SD-BASE-DP", "type": "service-delivery", "url": "https://customercommons.org/agreements/SD-BASE-DP" },
+    { "code": "SD-BASE", "type": "service-delivery", "url": "https://customercommons.org/agreements/SD-BASE" }
+  ],
+  "counterOffer": "SD-BASE-DP",
+  "agreementsUrl": "https://join.mages.city/myterms/",
+  "carrier": {
+    "how": "The applicant's agreement rides inside the signed vtc/join-requests/submit document, as extensions[\"org.agentprivacy.myterms\"]; the community's signed verdict threads to that request. Both halves are kept by digest on both sides.",
+    "signature": "Data Integrity proof over the join request (eddsa-jcs-2022), not a JWS."
+  },
+  "roster": "https://customercommons.org/agreements/",
+  "notes": "Mages City accepts the two most protective service-delivery agreements of the IEEE 7012 roster. No analytics, tracking, profiling or sharing of members' data; data portability on request. This is the City's statement of what it accepts, not a claim of IEEE 7012 conformance."
+}

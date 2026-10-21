@@ -2,7 +2,7 @@
   "schemaVersion": 5,
   "district": "arena",
   "title": "The Arena — Stars filling out",
-  "updated": "2026-10-08",
+  "updated": "2026-10-21",
   "status": "declared",
   "statusNote": "The Arena district is declared on the front. What is shown is evidence: each instance's word (κ) once its cross-check has passed, the claims it seals and the date it was read. Standings and figures are behind the veil and open with membership. A board check (rule A5) beats any page. The City VTC is minted (community.json); admission under the arena criterion opens with the registered criteria, and the registry of words follows.",
   "reading": "Every autoresearch instance is a mage with a Star, and the Star fills out as the quest proceeds — the same seven layers the two-seat setup draws, in the same order. The lattice is already seated: the City's atlas places its mages on the 64 vertices, and an instance seats its party from them (a persona per seat). What an instance brings back is a κ: a word. A word is a spell you can cast only if you have spoken it yourself, or the mage who first spoke it told you in their face — the words, their meaning, or only that they exist. Mana is the relationship credential that lets a telling flow at all; it is what gives a spell power on an edge of the trust graph, and it is never proof.",
@@ -260,13 +260,14 @@
         "addressSeat": []
       },
       "sealed": {
-        "kappa": "sha256:8c1c1c0db94f6457d5335e353cd7bab244d733cc0be4031b7042cfbbf8adfa41",
-        "status": "kappa-verified at 2af8656 (registry crate, P1 10/10, 8 Oct) · h2-52144f3d",
-        "claims": 67,
-        "edges": 139,
-        "read": "2026-10-08",
-        "lane": "sig-golf/h2-52144f3d",
+        "kappa": "sha256:d1220d9a360bc608ea4ad03ed00a8a8b90c071cdf5e4064bc4590141c79fdd65",
+        "status": "kappa-verified at 2af8656 · letter-levers, 20 Oct",
+        "claims": 25,
+        "edges": 131,
+        "read": "2026-10-20",
+        "lane": "sig-golf/letter-levers",
         "moreWords": [
+          "sha256:8c1c1c0db94f6457d5335e353cd7bab244d733cc0be4031b7042cfbbf8adfa41",
           "sha256:9fa4e25499bc50ba73edcb000e86d14fe7762b7be1202ca471583199a76bb9ce"
         ]
       }
@@ -275,7 +276,7 @@
       "id": "hashsmash_mage",
       "arena": "yukon",
       "benchmark": "hashsmash — AI-judged reduced-round collision claims",
-      "state": "hold",
+      "state": "active",
       "closes": null,
       "window": "2026-10",
       "fleet": "HARNESS_PATHS.md #18",
@@ -304,13 +305,14 @@
         "addressSeat": []
       },
       "sealed": {
-        "kappa": "sha256:0a36d530b51f20e7c17c6c0c22e07046e4d57a5f41b9d586a49e14106705b26c",
-        "status": "kappa-verified at 2af8656 (registry crate, P1 10/10, 8 Oct) · re-minted 8 Oct",
-        "claims": 68,
-        "edges": 201,
-        "read": "2026-10-08",
-        "lane": "hashsmash/sha256-r32",
+        "kappa": "sha256:3e1f3631cd6513d22853cde02ece7608316082fb07a7139cf822b4eee74b8673",
+        "status": "kappa-verified by two implementations (Python, JS) · the hashsmash-pareto wave, step 7, 21 Oct · 72 bundles by root, 65 verdicts",
+        "claims": 144,
+        "edges": 632,
+        "read": "2026-10-21",
+        "lane": "hashsmash-pareto/wave-w1",
         "moreWords": [
+          "sha256:0a36d530b51f20e7c17c6c0c22e07046e4d57a5f41b9d586a49e14106705b26c",
           "sha256:d467e8f7c0d2df1b91c8c179eeab1909ba108df8f1f0787702c1880b8de7145d",
           "sha256:72d76eea7ac7094ed04a28565e6d31fe63124cac99d6e0383858310f402b0ba9"
         ]

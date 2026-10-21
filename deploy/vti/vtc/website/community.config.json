@@ -1,7 +1,7 @@
 {
   "_about": "The one file a community edits to make the community-site template its own. Live data (name, description, DID, criteria, health) always comes from the daemon; this file adds voice, doors, palette and links. Mages City is instance #1.",
   "api": "https://vtc.mages.city",
-  "memberPortal": false,
+  "memberPortal": true,
   "name": "Mages City",
   "brand": "Mages City · community",
   "kicker": "Verifiable Trust Community · OpenVTC",

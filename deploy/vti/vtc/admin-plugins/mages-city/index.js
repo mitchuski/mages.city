@@ -88,7 +88,61 @@ class MagesCityDesk extends HTMLElement {
       h('p', {}, consoleLink('/profile', 'Community profile →'), ' (name, description, logo: the page reads them live)'),
       h('p', { class: 'muted small' }, 'Create your own mage: this desk, the doors, the site and the node kit are the template a founding mage takes away. See docs/OPENVTC_CUSTOMISATION.md.'));
 
-    this.main.replaceChildren(head, h('div', { class: 'grid' }, doors, crit, nodeCard, face));
+    // 5 · MyTerms (IEEE 7012) at the door: what the City accepts, whether the DID document says so, and the
+    // agreements that arrived inside join requests. Listing requests is a signed admin document the console
+    // signs on its own pages; a plugin gets no signing helper, so the REST listing is tried with the session
+    // cookie and, where this build serves none (0.11.58 answers 404), the desk links to the console page.
+    const TT_JR_LIST = "https://trusttasks.org/spec/vtc/join-requests/list/0.1";
+    const TT_JR_SHOW = "https://trusttasks.org/spec/vtc/join-requests/show/0.1";
+    const MYTERMS_EXT = "org.agentprivacy.myterms";
+    const termsCfg = await json(BASE + "myterms-configuration.json").catch(() => null);
+    let didTerms = null, didSignIn = null;
+    if (profile && profile.communityDid) {
+      try {
+        const parts = profile.communityDid.split(":"); // did:webvh:<scid>:<host>:<path…>
+        const host = parts[3], path = parts.slice(4).join("/");
+        const url = "https://" + host + "/" + (path ? path + "/" : ".well-known/") + "did.jsonl";
+        const text = await (await fetch(url, { cache: "no-store" })).text();
+        const last = JSON.parse(text.trim().split(String.fromCharCode(10)).pop());
+        const services = ((last.state || last).service) || [];
+        const has = (type) => services.some((x) => x.type === type || (Array.isArray(x.type) && x.type.includes(type)));
+        didTerms = has("MyTerms") ? (services.find((x) => x.type === "MyTerms").serviceEndpoint) : false;
+        didSignIn = has("TrustTaskHTTPS") && has("SignInPortal");
+      } catch (e) { didTerms = null; }
+    }
+    let received = null, receivedErr = "";
+    try {
+      const r = await fetch("/v1/join-requests", { credentials: "include", cache: "no-store", headers: { "Trust-Task": TT_JR_LIST } });
+      if (!r.ok) throw new Error("HTTP " + r.status);
+      const list = await r.json();
+      const rowsIn = Array.isArray(list) ? list : (list.requests || list.items || []);
+      received = [];
+      for (const row of rowsIn) {
+        let ext = row.extensions;
+        if (ext === undefined && row.id) {
+          const one = await fetch("/v1/join-requests/" + encodeURIComponent(row.id), { credentials: "include", cache: "no-store", headers: { "Trust-Task": TT_JR_SHOW } }).catch(() => null);
+          if (one && one.ok) { const j = await one.json(); ext = (j.request || j).extensions; }
+        }
+        const a = ext && ext[MYTERMS_EXT] && ext[MYTERMS_EXT].agreement;
+        if (a) received.push({ id: row.id, applicant: row.applicantDid, status: row.status, code: (a.references && a.references[0] && a.references[0].code) || "?", agreementId: a.agreementId, created: a.created });
+      }
+    } catch (e) { receivedErr = e.message; }
+    const accepts = termsCfg && Array.isArray(termsCfg.agreements) ? termsCfg.agreements.map((a) => (typeof a === "string" ? a : a.code)) : [];
+    const termsCard = h("div", { class: "card" }, h("h3", {}, "Your terms (MyTerms · IEEE 7012)"),
+      h("p", { class: "muted small" }, "The person proffers an agreement from the Customer Commons roster; the City accepts, counter-offers once, or declines; both keep the record. The agreement rides inside the signed join request."),
+      h("p", {}, h("b", {}, "The City accepts: "), accepts.length ? accepts.map((c) => h("code", {}, c + " ")) : h("span", { class: "muted" }, "no configuration synced (myterms-configuration.json)"), termsCfg && termsCfg.counterOffer ? h("span", { class: "muted" }, " · counter-offer " , h("code", {}, termsCfg.counterOffer)) : null),
+      h("p", {}, didTerms === null ? pill("unk", "DID document unread") : didTerms ? pill("ok", "MyTerms service published") : pill("bad", "MyTerms service not in the DID document"),
+        " ", didSignIn === null ? null : didSignIn ? pill("ok", "wallet sign-in services published") : pill("bad", "TrustTaskHTTPS / SignInPortal missing"),
+        didTerms === false || didSignIn === false ? h("span", { class: "muted small" }, " · publish the staged document (KEEPER_ACTS_2026-10-20.md §4)") : null),
+      received === null
+        ? h("p", { class: "muted small" }, "Agreements received: this build serves no REST listing to a plugin (" + receivedErr + "). Open each request on the console page and look for extensions.org.agentprivacy.myterms. ", consoleLink("/join-requests", "Join requests →"))
+        : received.length === 0
+          ? h("p", { class: "muted small" }, "No join request has carried an agreement yet.")
+          : h("table", {}, h("thead", {}, h("tr", {}, h("th", {}, "applicant"), h("th", {}, "agreement"), h("th", {}, "status"), h("th", {}, "id"))),
+              h("tbody", {}, received.map((x) => h("tr", {}, h("td", {}, h("code", {}, (x.applicant || "").slice(0, 40) + "…")), h("td", {}, h("code", {}, x.code)), h("td", {}, x.status || ""), h("td", {}, h("code", { class: "muted" }, (x.agreementId || "").slice(0, 8))))))),
+      h("p", { class: "muted small" }, "Configuration served at ", h("a", { href: SITE + "myterms/configuration.json", target: "_blank", rel: "noopener" }, "join.mages.city/myterms/configuration.json ↗"), " · human page ", h("a", { href: SITE + "myterms/", target: "_blank", rel: "noopener" }, "/myterms/ ↗")));
+
+    this.main.replaceChildren(head, h("div", { class: "grid" }, doors, crit, nodeCard, face, termsCard));
   }
 }
 

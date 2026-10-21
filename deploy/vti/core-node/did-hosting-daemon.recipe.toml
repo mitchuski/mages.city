@@ -1,0 +1,54 @@
+# did-hosting-daemon setup recipe — dids.mages.city — as run on the node 2026-10-20 23:21 BST.
+#
+# The 2026-10 build of did-hosting-daemon (prints 0.8.3, but carries TSP
+# relationship commands and reads the current VTA's frames) no longer asks
+# "plaintext secrets?" in its wizard: it refuses to write private keys to a
+# clear-text file unless a recipe says so. The node has no keyring, so the
+# recipe is the only way. Used as:
+#
+#   did-hosting-daemon setup --setup-key-out ~/vti/dids/setup-key.json --context webvh2
+#   pnm acl create --did <printed did:key> --role admin --contexts webvh2 --expires 1h --handoff
+#   cd ~/vti/dids && did-hosting-daemon setup --from recipe.toml --setup-key-file ~/vti/dids/setup-key.json
+#
+# Field names were learned from the binary's own schema errors (no example
+# ships); the `[admin]` section is ignored in online mode, where the VTA mints
+# the long-term admin and the setup key hands off to it (VTI-ACL-056).
+# A copy lives at ~/vti/dids/recipe.toml on the node. Nothing here is secret.
+
+[deployment]
+service = "daemon"
+vta_mode = "online"
+
+[output]
+config_path = "config.toml"
+
+[vta]
+did = "did:webvh:QmPbiGWYyLGRmuD8iVNkXCStuFWqcQGTMXFWk3jK2KySC6:dids.mages.city:vta"
+context_id = "webvh2"
+
+[identity]
+public_url = "https://dids.mages.city"
+did_hosting_url = "https://dids.mages.city"
+did_path = ".well-known"
+mediator_did = "did:webvh:QmeBZpgvVSaKXJm54ehwrJ8pRnAkwLcFuKdRuTXLUByRXS:dids.mages.city:mediator"
+transport = "both"
+
+[server]
+host = "0.0.0.0"
+port = 8534
+log_level = "info"
+log_format = "text"
+data_dir = "data/daemon"
+
+[daemon]
+enable_control = true
+enable_server = true
+enable_witness = true
+enable_watcher = false
+
+[admin]
+mode = "skip"
+
+[secrets]
+backend = "plaintext"
+confirm_plaintext = true

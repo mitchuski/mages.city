@@ -26,6 +26,15 @@ The thesis for the workstream: **Mages City is the worked example of an OpenVTC 
 - **Keeper acts waiting (console, passkey):** Vetting → Requirements: register `work-evidence` (review) between `invited` and `review`, remove `member-credential` (the desk shows the diff) · issue a first invitation (Invitations) · first synthetic admission + revocation.
 - Front changes (`found.html`, header, status.js, CSS) are local until pushed.
 
+## Progress · 19–20 Oct
+
+- **First real member, 19 Oct 21:20 BST:** `february-sphere` (First Person farm persona) joined over DIDComm with the `openvtc` TUI, referred under `review`, approved by the keeper in the console at 21:46. The Agent door (§2) is proven; what it needed was a VTA, the community DID and the keeper's approval.
+- **The Human door needs the DID document fixed:** a wallet joining by the City's DID (Star Key 🤝, built 20 Oct) stops at `join/no-service` because the document lists no `TrustTaskHTTPS` / `SignInPortal` (VTI added them 10–11 Oct). The update is staged on the node; publishing is blocked by the 0.8.3 DID host (Option B). Same gap at first.openvtc.net.
+- **MyTerms (IEEE 7012) at the door:** Star Key proffers a roster agreement on "Ask to join" and sends it inside the signed request; the City's configuration (accepts `SD-BASE-DP`, `SD-BASE`) is in `deploy/vti/vtc/website` and the `MyTerms` service is in the staged DID document. Mages City is the first community that takes terms.
+- **The Human door's document is published (20 Oct 23:55 BST):** the DID host was upgraded in place (new host DID `QmQrSN8…`, KEEPER_ACTS §6) and the City's DID document is at version 3 with `TrustTaskHTTPS` (`vtc.mages.city/v1`), `SignInPortal` (`join.mages.city/members/`) and `MyTerms`. The wallet's join traffic goes to `vtc.mages.city/v1/trust-tasks`, which 0.11.58 serves; the two join.mages.city pages answer 404 until the website files (MyTerms + a members landing page) are copied to the node. First VTC still lacks the two services; its operators hold that step.
+- **Our mage knocked at The First VTC (21 Oct 01:35 BST):** with the DID host fixed, the `openvtc` TUI minted a fresh persona `did:webvh:QmRYnVZAoPZ1eAyxaXPShqBUu8S3bCbPanm42ymDJMnQR8:dids.mages.city:safe-model` in its own context (`openvtc/qme5theer1qr`) through the City's VTA and sent an **open request** over TSP, registry publication consented; status Pending, awaiting their moderators. The step that froze on 20 Oct ("Creating persona DID via did-hosting-daemon") took one second.
+- Keeper acts and evidence: `docs/KEEPER_ACTS_2026-10-20.md`.
+
 ## 1 · So it shows (slice 1)
 
 1. **Keep-alive.** `vmIdleTimeout=-1` keeps the VM, not the distro: `mages-core` stops ~seconds after the last Windows-side process detaches (seen 13:35→13:38 today). Fix: a logon Scheduled Task running `wsl.exe -d mages-core --exec /bin/sleep infinity` hidden (⚑ keeper approves the task). Plus sleep Never on AC.

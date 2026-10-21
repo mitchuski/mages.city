@@ -1,0 +1,15 @@
+{
+  "version": "1",
+  "profile": "mcnp-draft-01/site/1",
+  "site": "https://mages.city",
+  "community": "did:webvh:QmQ8GMNCTui2H9gjxQWByS1ScsWkByaeQHYnzhcET1UPne:dids.mages.city:vtc",
+  "methods": ["on-demand"],
+  "agreements": [
+    { "code": "SD-BASE-DP", "type": "service-delivery", "url": "https://customercommons.org/agreements/SD-BASE-DP" },
+    { "code": "SD-BASE", "type": "service-delivery", "url": "https://customercommons.org/agreements/SD-BASE" }
+  ],
+  "counterOffer": "SD-BASE-DP",
+  "agreementsUrl": "https://join.mages.city/myterms/",
+  "roster": "https://customercommons.org/agreements/",
+  "notes": "mages.city takes MyTerms (IEEE Std 7012-2025). No third-party tracking: no analytics, tracking, profiling or sharing of visitors' or members' data with anyone but the community itself; data portability on request. The site's community takes the same agreements at its join door (see the community's DID document, MyTerms service). Mages City is a member of the MyTerms alliance. This is the site's statement of what it accepts, not a claim of IEEE 7012 conformance."
+}
