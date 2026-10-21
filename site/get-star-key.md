@@ -6,7 +6,7 @@
 
 ## What you are installing
 
-Star Key is **agentprivacy's fork of [OpenVTC's browser wallet](https://github.com/OpenVTC/vta-browser-plugin)**, the extension that connects a browser to a Verifiable Trust Agent (VTA). Upstream is the wallet; the fork adds the Star (what your Hold reveals, as a figure), the 🤝 join by a community's DID, and the Agreements catalogue of the privacy terms you hold with sites, MyTerms first. The fork tracks upstream and carries its licence. Source: [mitchuski/star-key](https://github.com/mitchuski/star-key).
+Star Key is **agentprivacy's fork of [OpenVTC's browser wallet](https://github.com/OpenVTC/vta-browser-plugin)**, the extension that connects a browser to a Verifiable Trust Agent (VTA). Upstream is the wallet; the fork adds the Star (the figure the wallet shows for your City Key, the same solid as its icon), the 📤 reading of a City Key and the 🪬 Hold verified locally, the 🤝 join by a community's DID, and the Agreements catalogue of the privacy terms you hold with sites, MyTerms first. The fork tracks upstream and carries its licence. Source: [mitchuski/star-key](https://github.com/mitchuski/star-key).
 
 The wallet never holds a signing key. It holds your DIDs and the connection to your own agent; every token a site receives is minted by your VTA. The City keeps no custody of anything you carry.
 
@@ -29,6 +29,26 @@ Or build it yourself: clone the fork, `npm install`, `npm run build`, and load `
 4. Setup opens on its own. It asks for your VTA's DID first: continue on the [Star Key page](starkey.md), which walks the connection, the grant at your agent, and the passkey.
 
 Chrome asks for no permission at install. The wallet asks per site, in the click, the first time you use it there.
+
+## What the Star holds · the three marks in the header
+
+The wallet's header carries the Star and three marks. Each is a door the upstream wallet does not have.
+
+- **📤 Read your City Key.** Inspect a local City Key before anything travels: the reading carries the name, the palette and, only if you tick it, the lit vertices. Everything else the key holds is listed as counts, never values. The reading can be given a content address (κ, canonical JSON, SHA-256) for a UOR registry; the address is not an identity.
+- **🪬 What the Star holds.** Choose a Hold file and every item in it is re-verified in the browser with WebCrypto: the signatures, the refs, the Merkle root, the bearer's signature, and whether the key's `holds{root,count}` agrees. Nothing is sent anywhere. A projection of counts and states can be downloaded; it is linkable, not permission.
+- **🤝 Join a community.** By its DID: paste, QR or camera. The window reads the community's DID document, shows the terms it takes against the ones you present, and the agreements already standing with it.
+
+The byte ladder is the point. Measured on the reference Hold of seven signed items, the same fixture three verifiers agree on:
+
+| What | Bytes |
+|---|---|
+| Hold file on disk | 18,992 |
+| Signed envelopes retained inside it | 6,478 of a 24,576 budget |
+| Projection, counts and states only | 2,192 |
+| Whole City Key, canonical | 504 |
+| What the key carries of the Hold, `holds{root,count}` | 92 |
+
+What a community sees of your Hold at the door today is the last line: a root and a count, one seventieth of the signed bytes, with every item still verifiable later against that root. Presenting chosen items under the root (k vouches, a Merkle path each) is the next rung and is not built yet; the pane says exactly that.
 
 ## Then
 

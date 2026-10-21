@@ -117,3 +117,14 @@ There was no link anywhere in the City that handed a visitor the extension: the 
 - Linked from `starkey.md` (first bullet now names the fork and the install page), `join.html` step 01 ("Get Star Key →"), and the members door's no-wallet state on the node (copied, 644, live).
 - Mitch: create the GitHub release on `mitchuski/star-key` (tag `v0.2.0`), attach `packages/extension/release/vta-wallet-0.2.0.zip` renamed `star-key-0.2.0.zip` so the two addresses carry one file; push the front so the City copy and the page go live. No Web Store listing for the fork: that is the upstream publisher's act (Affinidi for OpenVTC's wallet); the fork is loaded unpacked.
 - `bin/verify.mjs` needs the local front on :3334 and was not running; the check is environmental, not a page failure.
+
+### 15:30 — the Star and the Hold, checked against the pages
+
+Review question: is the City using and directing people to the fork's Star and Hold, and the byte reductions they make? Findings:
+
+- The wallet does route to them: the header's 📤 (star.html, read a City Key: name · palette · optional lit vertices; counts of what stays behind; κ address), 🪬 (hold.html, verify a Hold locally: signatures, refs, Merkle root, bearer sig, key `holds{root,count}` agreement, byte budget, projection of counts and states) and 🤝 (join). Upstream has none of the three.
+- The City did not name them: `starkey.md` step 4 said "root and a count, never the items" with no mark or page; `get-star-key.md` called the Star "what your Hold reveals, as a figure" (wrong: the figure is the key's reading, the Hold is the sidecar); `join.html` "Try Star Key →" reaches only the web build of the reading page; nothing anywhere mentioned the Hold pane.
+- Fixed in copy: `get-star-key.md` gained "What the Star holds · the three marks in the header" with the byte ladder measured on the reference fixture (7 items; hold file 18,992 B; envelopes 6,478 of 24,576; projection 2,192; whole key 504; `holds{root,count}` 92 B). `starkey.md` step 4 now points at 🪬 / 📤 and the section.
+- Not built, said plainly on the pane and the page: presenting k vouches under the root (Merkle path each); "Create ZK proof" on the reading page is a disabled button. The members home does not yet show the member's `holds{root,count}`; that is the natural next integration (the door reads it from the key the wallet carries).
+
+Pushed: star-key eb35a1f + tag v0.2.0 + release (star-key-0.2.0.zip attached, latest/download 200); mages.city 3c4c9e7 then this commit. Live front needs `npx wrangler deploy` (Mitch; `npm run deploy` also runs verify:front, which needs the local front on :3334).
