@@ -1,0 +1,393 @@
+{
+ "generated": "2026-10-26",
+ "chains": [
+  {
+   "id": "sha256",
+   "name": "SHA-256",
+   "brand": "SHA-256 · Mages City",
+   "domain": "sha256.mages.city",
+   "url": "https://sha256.mages.city/",
+   "local": "../sha256/",
+   "lane": "hashsmash-pareto/sha256",
+   "hash": "sha256",
+   "sound": true,
+   "axis": "round",
+   "entries": 38,
+   "lever_leaves": 73,
+   "no_go": 305,
+   "work_root": "sha256:deefbe8b10e9ed2849c36d3d37ae9073ac2fa05f6ff2a86bbffb5c7696b3a344",
+   "seal": "ᙢᖻᑈϻπጄᓆⶺቍᎎᗉᑥɐᢹҁᔑᗆᘸⶽᓍᑈᗳᔱሩᣉᣬ",
+   "poaw_root": "sha256:69d14c21c6e3061a57c2c59d5c8d16504b4858f45649f186b0c10f8c9d14c917",
+   "step": 11,
+   "minted": "2026-10-26",
+   "verdicts": [
+    [
+     "refuted",
+     3
+    ],
+    [
+     "not submitted",
+     1
+    ],
+    [
+     "not_evaluable",
+     3
+    ],
+    [
+     "rejected",
+     5
+    ],
+    [
+     "valid",
+     26
+    ],
+    [
+     "not minted",
+     1
+    ]
+   ]
+  },
+  {
+   "id": "sha3",
+   "name": "SHA-3",
+   "brand": "SHA-3 · Mages City",
+   "domain": "sha3.mages.city",
+   "url": "https://sha3.mages.city/",
+   "local": "../sha3/",
+   "lane": "hashsmash-pareto/sha3-256",
+   "hash": "sha3",
+   "sound": true,
+   "axis": "round",
+   "entries": 19,
+   "lever_leaves": 32,
+   "no_go": 66,
+   "work_root": "sha256:e219aad8b85a96634676a48aeb513694da73a4901949b05850d2b898ce70e4e0",
+   "seal": "ᙵᐥጉፘѫያҷኚᖨᕳⶄᑆᗫᕍjҷɒᓕᘜፇᘺɠɞᑨᖨᑉ",
+   "poaw_root": "sha256:69d14c21c6e3061a57c2c59d5c8d16504b4858f45649f186b0c10f8c9d14c917",
+   "step": 11,
+   "minted": "2026-10-26",
+   "verdicts": [
+    [
+     "not submitted",
+     1
+    ],
+    [
+     "valid",
+     18
+    ]
+   ]
+  },
+  {
+   "id": "blake3",
+   "name": "BLAKE3",
+   "brand": "BLAKE3 · Mages City",
+   "domain": "blake3.mages.city",
+   "url": "https://blake3.mages.city/",
+   "local": "../blake3/",
+   "lane": "hashsmash-pareto/blake3",
+   "hash": "blake3",
+   "sound": true,
+   "axis": "round",
+   "entries": 11,
+   "lever_leaves": 27,
+   "no_go": 64,
+   "work_root": "sha256:af9037b2f34063eca8383a50504ab67d38d8b15686a3f2aeff78b26fa91a350c",
+   "seal": "ᕙᐾᒋᢴᙕᕱሁᘛᐃbᔫጔፃǃሤᑔᘔҗᙜᑫዑዅⷉᒵጧⶠ",
+   "poaw_root": "sha256:69d14c21c6e3061a57c2c59d5c8d16504b4858f45649f186b0c10f8c9d14c917",
+   "step": 11,
+   "minted": "2026-10-26",
+   "verdicts": [
+    [
+     "not submitted",
+     5
+    ],
+    [
+     "valid",
+     5
+    ],
+    [
+     "refuted",
+     1
+    ]
+   ]
+  },
+  {
+   "id": "poseidon",
+   "name": "Poseidon",
+   "brand": "Poseidon · Orchard · Mages City",
+   "domain": "poseidon.mages.city",
+   "url": "https://poseidon.mages.city/",
+   "local": "../poseidon/",
+   "lane": "hashsmash-pareto/poseidon",
+   "hash": "poseidon",
+   "sound": true,
+   "axis": "round",
+   "entries": 11,
+   "lever_leaves": 85,
+   "no_go": 362,
+   "work_root": "sha256:12f70a221f32690398aeab8a3b2694110e70d7b4dac216f6ed8915309519a1b6",
+   "seal": "ɤԣᕆᘜጅȹᖡᖡʓᙯᑾሰᖳƚᗴᘯђቕᑅራᑪⷄᔲϟᖧሡ",
+   "poaw_root": "sha256:69d14c21c6e3061a57c2c59d5c8d16504b4858f45649f186b0c10f8c9d14c917",
+   "step": 11,
+   "minted": "2026-10-26",
+   "verdicts": [
+    [
+     "rejected",
+     1
+    ],
+    [
+     "valid",
+     8
+    ],
+    [
+     "not submitted",
+     1
+    ],
+    [
+     "refuted",
+     1
+    ],
+    [
+     "not minted",
+     1
+    ]
+   ]
+  },
+  {
+   "id": "curve_secp256k1",
+   "name": "Curve · secp256k1",
+   "brand": "Curve · secp256k1 · Mages City",
+   "domain": "curve.mages.city",
+   "url": "https://curve.mages.city/",
+   "local": "../curve_secp256k1/",
+   "lane": "curvesmash/secp256k1",
+   "hash": "curve_secp256k1",
+   "sound": false,
+   "axis": "entry",
+   "entries": 15,
+   "lever_leaves": 1509,
+   "no_go": 62,
+   "work_root": "sha256:ad656bf523fff4bb3123f9e2735b34015220c1d32697018dc412f65759ded153",
+   "seal": "ᕍƛɜᐑᘔጘᖻᓅrፙⷄᔰረᣱȿᖇᔉᙟᑳዽሯᐿኪᔩᣆሼ",
+   "poaw_root": null,
+   "step": null,
+   "minted": "2026-10-25",
+   "verdicts": [
+    [
+     "not submitted",
+     15
+    ]
+   ]
+  },
+  {
+   "id": "ec_rank",
+   "name": "EC rank",
+   "brand": "EC rank · Mages City",
+   "domain": "ecrank.mages.city",
+   "url": "https://ecrank.mages.city/",
+   "local": "../ec_rank/",
+   "lane": "ec-rank/elliptic-rank",
+   "hash": "ec_rank",
+   "sound": false,
+   "axis": "entry",
+   "entries": 1,
+   "lever_leaves": 7,
+   "no_go": 1,
+   "work_root": "sha256:43df44b404ac2fda71535be8e39776aab8ed72db9d744255a9fe00066ee40a88",
+   "seal": "ቫᒭቲሎጔዿᘛᓄᙥᓺይቆᕨᙋƫᒦᐲᒆዞᘖaᙈለɨᑉዻ",
+   "poaw_root": null,
+   "step": null,
+   "minted": "2026-10-20",
+   "verdicts": [
+    [
+     "not submitted",
+     1
+    ]
+   ]
+  },
+  {
+   "id": "falcon",
+   "name": "Falcon",
+   "brand": "Falcon · Mages City",
+   "domain": "falcon.mages.city",
+   "url": "https://falcon.mages.city/",
+   "local": "../falcon/",
+   "lane": "falcon/falcon-512",
+   "hash": "falcon",
+   "sound": false,
+   "axis": "step",
+   "entries": 13,
+   "lever_leaves": 94,
+   "no_go": 371,
+   "work_root": "sha256:053bba58491df443249d4e8a71a676a65b855f44a5a163f537eacd389585471f",
+   "seal": "tᔢᒼᒍᒩᐙᔜቱʬѫᣓ6ᙿfፉᑼцᒢᔪሿᘋϼᖣᣱᙾዃ",
+   "poaw_root": null,
+   "step": null,
+   "minted": "2026-10-24",
+   "verdicts": [
+    [
+     "rejected",
+     1
+    ],
+    [
+     "verified",
+     12
+    ]
+   ]
+  },
+  {
+   "id": "hashsmash_blake3",
+   "name": "HashSmash · BLAKE3",
+   "brand": "HashSmash · BLAKE3 · Mages City",
+   "domain": "hashsmash.mages.city/blake3",
+   "url": "https://hashsmash.mages.city/blake3/",
+   "local": "../hashsmash_blake3/",
+   "lane": "hashsmash/blake3-r2",
+   "hash": "hashsmash_blake3",
+   "sound": false,
+   "axis": "entry",
+   "entries": 8,
+   "lever_leaves": 6,
+   "no_go": 4,
+   "work_root": "sha256:118945a742fb92fe1f97218343ca04397fbfeeb3a0a54d9ea024779ff2ee7051",
+   "seal": "ɚᔜɜሜᣲጎᗶdᔵጿᖢᒌᔐᙂኒɭᔲᓣᖞሃᘗᓠᓪᗩᣃᓡ",
+   "poaw_root": null,
+   "step": null,
+   "minted": "2026-10-13",
+   "verdicts": [
+    [
+     "not submitted",
+     4
+    ],
+    [
+     "rejected",
+     1
+    ],
+    [
+     "valid",
+     2
+    ],
+    [
+     "validating",
+     1
+    ]
+   ]
+  },
+  {
+   "id": "hashsmash_poseidon",
+   "name": "HashSmash · Poseidon, first bundles",
+   "brand": "HashSmash · Poseidon · Mages City",
+   "domain": "hashsmash.mages.city/poseidon",
+   "url": "https://hashsmash.mages.city/poseidon/",
+   "local": "../hashsmash_poseidon/",
+   "lane": "hashsmash-pareto/poseidon/first",
+   "hash": "hashsmash_poseidon",
+   "sound": false,
+   "axis": "entry",
+   "entries": 3,
+   "lever_leaves": 32,
+   "no_go": 21,
+   "work_root": "sha256:71dfd442b6e3c588b275a68e339b1d6c6fb47d89f18bd4b7ba49c937b84377f5",
+   "seal": "ᐃᓐᢶᓌщᣛጕቩⶾኾᑸҗᕊሴζᕺbɷᒻᒁᓮᗑᙢᐤጨᕡ",
+   "poaw_root": null,
+   "step": null,
+   "minted": "2026-10-12",
+   "verdicts": [
+    [
+     "not submitted",
+     1
+    ],
+    [
+     "valid",
+     2
+    ]
+   ]
+  },
+  {
+   "id": "hashsmash_sha256",
+   "name": "HashSmash · SHA-256",
+   "brand": "HashSmash · SHA-256 · Mages City",
+   "domain": "hashsmash.mages.city/sha256",
+   "url": "https://hashsmash.mages.city/sha256/",
+   "local": "../hashsmash_sha256/",
+   "lane": "hashsmash/sha256",
+   "hash": "hashsmash_sha256",
+   "sound": false,
+   "axis": "entry",
+   "entries": 6,
+   "lever_leaves": 28,
+   "no_go": 11,
+   "work_root": "sha256:02a9f9c2b6d03068b210635cbcfb34ec6a30a8dfdb6a0551932ca2866252e00c",
+   "seal": "eɢᐔᕄѫᖤᒱዊⶉƶʞቓμኢሖʊዝҭᙻᣊᒠሐጊመፃቐ",
+   "poaw_root": null,
+   "step": null,
+   "minted": "2026-10-25",
+   "verdicts": [
+    [
+     "valid",
+     4
+    ],
+    [
+     "validating",
+     2
+    ]
+   ]
+  },
+  {
+   "id": "lattice",
+   "name": "Lattice · ML-DSA",
+   "brand": "Lattice · ML-DSA · Mages City",
+   "domain": "mldsa.mages.city",
+   "url": "https://mldsa.mages.city/",
+   "local": "../lattice/",
+   "lane": "lattice/ml-dsa",
+   "hash": "lattice",
+   "sound": false,
+   "axis": "step",
+   "entries": 31,
+   "lever_leaves": 0,
+   "no_go": 0,
+   "work_root": "sha256:8013d3e961861e4ea63eeedcc195352cb25be453536f577f5c10818ae2dcdd48",
+   "seal": "ᑕᓿᕩᕦፍϻᓪኘᖉጬᖹщᑘⷑኊᢾŧѭҝᒡᘖᓐᢾሕƙᘊ",
+   "poaw_root": null,
+   "step": null,
+   "minted": "2026-10-24",
+   "verdicts": [
+    [
+     "verified",
+     31
+    ]
+   ]
+  },
+  {
+   "id": "sig_golf",
+   "name": "Sig golf",
+   "brand": "Sig golf · Mages City",
+   "domain": "sig.mages.city",
+   "url": "https://sig.mages.city/",
+   "local": "../sig_golf/",
+   "lane": "sig-golf/full",
+   "hash": "sig_golf",
+   "sound": false,
+   "axis": "entry",
+   "entries": 4,
+   "lever_leaves": 0,
+   "no_go": 0,
+   "work_root": "sha256:b660d29bbad22a5fb674e4aca0cc7d9660625cdcce1f47b001c197d360b43d66",
+   "seal": "ᕿᑂᕪkᕇᒦᑃᒦᘉኁᔸᣙᐛɿᕞᙋያᕨᖡቮዌѽᔚᙥᗫⶠ",
+   "poaw_root": null,
+   "step": null,
+   "minted": "2026-10-20",
+   "verdicts": [
+    [
+     "valid",
+     3
+    ],
+    [
+     "not submitted",
+     1
+    ]
+   ]
+  }
+ ]
+}

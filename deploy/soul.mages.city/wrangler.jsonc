@@ -1,0 +1,8 @@
+// soul.mages.city: the soul mage's scroll, nothing but hashes. Static assets only, no code.
+// Built by mages_city bin/soul-scroll.mjs from ~/soul_mage/kappa (read only). Deploy (Mitch): npx wrangler deploy
+{
+  "name": "mages-city-soul",
+  "compatibility_date": "2026-08-01",
+  "assets": { "directory": "./public", "html_handling": "auto-trailing-slash" },
+  "routes": [ { "pattern": "soul.mages.city", "custom_domain": true } ]
+}

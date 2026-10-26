@@ -1,0 +1,8 @@
+// guide.mages.city: the guide's scroll, every page of the agentprivacy guide as the hash of its content. Static assets only.
+// Built by mages_city bin/guide-scroll.mjs from agentprivacy.guide site/kappa/registry.json. Deploy (Mitch): npx wrangler deploy
+{
+  "name": "mages-city-guide",
+  "compatibility_date": "2026-08-01",
+  "assets": { "directory": "./public", "html_handling": "auto-trailing-slash" },
+  "routes": [ { "pattern": "guide.mages.city", "custom_domain": true } ]
+}

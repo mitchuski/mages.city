@@ -1,0 +1,10 @@
+// sigil.mages.city: the City's seal check. Static assets only, no code.
+// Built by bin/sigil-site.mjs from site/seal.html + site/sigil/ + site/seals.json (links rewritten to https://mages.city/).
+// The same checker (site/sigil/sealcheck.js) runs on soulbis.com/sigil, where it fills from City Keys instead.
+// Deploy (Mitch): node bin/sigil-site.mjs; cd deploy/sigil.mages.city; npx wrangler deploy  (the custom_domain route creates DNS + certificate)
+{
+  "name": "mages-city-sigil",
+  "compatibility_date": "2026-08-01",
+  "assets": { "directory": "./public", "html_handling": "auto-trailing-slash" },
+  "routes": [ { "pattern": "sigil.mages.city", "custom_domain": true } ]
+}

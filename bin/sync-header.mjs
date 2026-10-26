@@ -35,12 +35,19 @@ const WORKSHOP = [
   ['🔗', 'Connect', 'join.html', 'The OpenVTC join, step by step.'],
   ['🪪', 'Your space', 'space.html', 'What you hold, once you are in.'],
 ];
-// the hash challenges: one public site per hash, the work played as music, its evidence chain shown as roots
+// the quests: one subdomain per problem a mage takes on, its promise (the PoAW chain) checkable by anyone, its
+// knowledge readable by members; the four hash challenges also play their work as music
 const HASHES = [
   ['SHA-256', 'https://sha256.mages.city/'],
   ['SHA-3', 'https://sha3.mages.city/'],
   ['BLAKE3', 'https://blake3.mages.city/'],
   ['Poseidon', 'https://poseidon.mages.city/'],
+  ['Curve', 'https://curve.mages.city/'],
+  ['HashSmash', 'https://hashsmash.mages.city/'],
+  ['Sig golf', 'https://sig.mages.city/'],
+  ['EC rank', 'https://ecrank.mages.city/'],
+  ['Falcon', 'https://falcon.mages.city/'],
+  ['ML-DSA', 'https://mldsa.mages.city/'],
 ];
 const JOIN = 'https://join.mages.city/';
 const here = (file, href) => href.split('#')[0] === file;
@@ -56,7 +63,8 @@ export function headerFor(file) {
     return (g.name ? `<p class="menu-sub">${esc(g.name)}</p>` : '') + ps.map(p => item(p.glyph, p.name.replace(/^the /, 'The '), p.door, p.line)).join('');
   }).join('');
   const workshopItems = WORKSHOP.map(w => item(...w)).join('');
-  const hashItems = `<p class="menu-sub">Hash challenges</p><div class="menu-hashes">${HASHES.map(([n, u]) => `<a href="${u}">${esc(n)} ↗</a>`).join('')}</div><a class="menu-more" href="arena.html#arenas">every arena and its evidence chain →</a>`;
+  const hashItems = `<p class="menu-sub">The quests</p><div class="menu-hashes">${HASHES.map(([n, u]) => `<a href="${u}">${esc(n)} ↗</a>`).join('')}</div><a class="menu-more" href="arena.html#arenas">every quest and its chain →</a><a class="menu-more" href="star.html">✦ the star of the chains: compose a face →</a><a class="menu-more" href="seal.html">✍ Sigil: check two seals →</a><a class="menu-more" href="soul/">❦ the soul mage\'s scroll →</a><a class="menu-more" href="guide-scroll/">❦ the guide\'s scroll →</a>`;
+// seal.html is the same page as https://sigil.mages.city (bin/sigil-site.mjs builds the subdomain from it)
   const inCity = PLACES.some(p => here(file, p.door)) || WORKSHOP.some(w => here(file, w[2]));
   const panel = `<div class="menu-panel"><div class="menu-col menu-journey"><p class="menu-h">Start here</p>${item('🧙', 'Become a mage', 'become.html', 'Who the City is for, what you do, what you hold.')}${item('🌱', 'Give your city a mage', 'found.html', 'Found your trust community, with a mage at its side.')}</div><div class="menu-col"><p class="menu-h">The places</p>${placeItems}</div><div class="menu-col"><p class="menu-h">Workshop</p>${workshopItems}${hashItems}<a class="menu-join" href="${JOIN}">Join the community →</a></div></div>`;
   const nav = `<nav aria-label="Main" class="city-nav"><a class="brand" href="index.html"${cur('index.html')}><span aria-hidden="true">&#x1F9D9;</span> mages.city</a><div class="links"><span class="journey">${journey}</span><details class="city-menu"><summary${inCity ? ' aria-current="page"' : ''}><span class="menu-wide">Discover</span><span class="menu-narrow">Menu</span></summary>${panel}</details><a class="join-cta" href="${JOIN}">Join →</a></div></nav><script src="nav.js" defer></script>`;

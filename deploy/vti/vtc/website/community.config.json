@@ -17,8 +17,24 @@
       "href": "https://mages.city/"
     },
     {
-      "label": "arena",
+      "label": "become a mage",
+      "href": "https://mages.city/become.html"
+    },
+    {
+      "label": "evidence",
       "href": "https://mages.city/arena.html"
+    },
+    {
+      "label": "the quests",
+      "href": "https://mages.city/arena.html#pw-chain-cards"
+    },
+    {
+      "label": "star of the chains",
+      "href": "https://mages.city/star.html"
+    },
+    {
+      "label": "sigil",
+      "href": "https://sigil.mages.city/"
     },
     {
       "label": "guide",

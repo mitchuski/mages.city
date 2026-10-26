@@ -48,3 +48,4 @@ details.more>summary::-webkit-details-marker{display:none}
 details.more>summary::before{content:"▸ ";}
 details.more[open]>summary::before{content:"▾ ";}
 details.more>summary small{color:var(--muted);letter-spacing:0;margin-left:8px}
+.apex-quest{max-width:64ch;margin:10px 0 0;color:var(--muted);font-size:15px}.apex-quest a{color:var(--cyan)}
