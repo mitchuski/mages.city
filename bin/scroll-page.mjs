@@ -32,7 +32,7 @@ h1{font:400 clamp(40px,6vw,68px)/1.02 "Cormorant Garamond",Georgia,serif;margin:
 .k{cursor:pointer;transition:color .35s,text-shadow .35s;color:#a9a294}
 .k.t{color:#6f7d86}
 .k.root{color:var(--gold);font-size:1.25em}
-.spell .bm{display:block;font:11px ui-monospace,monospace;color:var(--dim);letter-spacing:.05em;margin-bottom:.3em}.spell .sub{display:block;margin:.5em 0 .9em .4em;padding-left:.9em;border-left:1px solid rgba(232,200,115,.28)}.k.shut{text-decoration:underline dotted rgba(232,200,115,.5);text-underline-offset:.25em;cursor:pointer}.k.opened{color:var(--gold);cursor:pointer}.spell .sub.folded{display:none}.k.opened.folded{text-decoration:underline dotted rgba(232,200,115,.5);text-underline-offset:.25em}
+.spell .bm{display:block;font:11px ui-monospace,monospace;color:var(--dim);letter-spacing:.05em;margin-bottom:.3em}.spell .run,.spell .ch{display:block;content-visibility:auto;contain-intrinsic-size:auto 300px}.spell .ch:not(:last-child){text-align-last:justify}.spell .sub{display:block;margin:.5em 0 .9em .4em;padding-left:.9em;border-left:1px solid rgba(232,200,115,.28)}.k.shut{text-decoration:underline dotted rgba(232,200,115,.5);text-underline-offset:.25em;cursor:pointer}.k.opened{color:var(--gold);cursor:pointer}.spell .sub.folded{display:none}.k.opened.folded{text-decoration:underline dotted rgba(232,200,115,.5);text-underline-offset:.25em}
 .k:hover,.k.hl{color:#fff;text-shadow:0 0 10px rgba(232,200,115,.55)}
 .k.read{color:#cfc8b8}.k.t.read{color:#93a8b2}
 .sep{color:var(--faint);padding:0 .25em}
@@ -90,13 +90,27 @@ const cv=$("cv"),ctx=cv.getContext("2d");let W=0,H=0,DPR=1;
 function size(){DPR=Math.min(2,devicePixelRatio||1);W=cv.clientWidth;H=cv.clientHeight;cv.width=W*DPR;cv.height=H*DPR;ctx.setTransform(DPR,0,0,DPR,0,0)}
 function proj(p){const cy=Math.cos(ORB.yaw),sy=Math.sin(ORB.yaw),cp=Math.cos(ORB.pitch),sp=Math.sin(ORB.pitch);const x=p[0]*cy+p[2]*sy,z0=-p[0]*sy+p[2]*cy,y=p[1]*cp-z0*sp,z=p[1]*sp+z0*cp;const s=Math.min(W,H)*.2*(1/(1+z*.12));return{x:W/2+x*s,y:H/2+y*s,z}}
 let HOT=-1;
-function draw(){ctx.clearRect(0,0,W,H);
+// tens of thousands of hashes each frame: projected into typed arrays, then drawn in a few batched paths (one per colour,
+// glow and depth band) instead of one path per hash; a hash just unrolled fades in over its first second (p.born)
+let QX=new Float32Array(0),QY=QX,QZ=QX;const NC=BOOKCOL.length,BK=Array.from({length:(NC+1)*6},()=>[]),FADE=900;
+function draw(){ctx.clearRect(0,0,W,H);const now=performance.now();
   ctx.lineWidth=1;for(const [u,v] of STELLA){const a=proj(CV(u)),b=proj(CV(v));ctx.strokeStyle=par(u)?"rgba(229,164,156,.20)":"rgba(159,214,219,.20)";ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);ctx.stroke()}
-  const Q=PTS.map(p=>proj(p.p));
-  ctx.strokeStyle=LINKS.length>3000?"rgba(120,120,140,.035)":"rgba(120,120,140,.07)";ctx.lineWidth=.6;ctx.beginPath();for(const [s,t] of LINKS){if(PTS[s].lit||PTS[t].lit)continue;const a=Q[s],b=Q[t];ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y)}ctx.stroke();
-  for(const [s,t,bi] of LINKS){const l=Math.max(PTS[s].lit,PTS[t].lit);if(!l)continue;const a=Q[s],b=Q[t];ctx.strokeStyle=BOOKCOL[bi%BOOKCOL.length]+(l>1?"cc":"55");ctx.lineWidth=l>1?1.2:.6;ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);ctx.stroke()}
-  PTS.forEach((p,i)=>{const q=Q[i],r=p.t===2?3.4:p.t===1?1.1:1.7,a=p.lit>1?1:p.lit?.75:.28;ctx.globalAlpha=a*(.6+.4*Math.max(0,Math.min(1,.62-q.z*.3)));ctx.fillStyle=p.t===2?"#e8c873":BOOKCOL[p.b%BOOKCOL.length];ctx.beginPath();ctx.arc(q.x,q.y,p.lit>1?r+2.4:r,0,6.283);ctx.fill()});
-  ctx.globalAlpha=1;if(HOT>=0){const q=Q[HOT];ctx.strokeStyle="#fff";ctx.lineWidth=1;ctx.beginPath();ctx.arc(q.x,q.y,7,0,6.283);ctx.stroke()}}
+  const N=PTS.length;if(QX.length<N){const c=Math.max(N,QX.length*2);QX=new Float32Array(c);QY=new Float32Array(c);QZ=new Float32Array(c)}
+  const cy=Math.cos(ORB.yaw),sy=Math.sin(ORB.yaw),cp=Math.cos(ORB.pitch),sp=Math.sin(ORB.pitch),s0=Math.min(W,H)*.2,w2=W/2,h2=H/2;
+  for(let i=0;i<N;i++){const p=PTS[i].p,x=p[0]*cy+p[2]*sy,z0=-p[0]*sy+p[2]*cy,y=p[1]*cp-z0*sp,z=p[1]*sp+z0*cp,s=s0/(1+z*.12);QX[i]=w2+x*s;QY[i]=h2+y*s;QZ[i]=z}
+  const up=i=>!(PTS[i].born>now);
+  ctx.strokeStyle=LINKS.length>3000?"rgba(120,120,140,.035)":"rgba(120,120,140,.07)";ctx.lineWidth=.6;ctx.beginPath();for(const [s,t] of LINKS){if(PTS[s].lit||PTS[t].lit||!up(s)||!up(t))continue;ctx.moveTo(QX[s],QY[s]);ctx.lineTo(QX[t],QY[t])}ctx.stroke();
+  for(let c=0;c<NC;c++)for(const hi of [0,1]){let any=false;
+    for(const [s,t,bi] of LINKS){if(bi%NC!==c)continue;const l=Math.max(PTS[s].lit,PTS[t].lit);if(!l||(l>1)!==!!hi)continue;if(!any){ctx.strokeStyle=BOOKCOL[c]+(hi?"cc":"55");ctx.lineWidth=hi?1.2:.6;ctx.beginPath();any=true}ctx.moveTo(QX[s],QY[s]);ctx.lineTo(QX[t],QY[t])}
+    if(any)ctx.stroke()}
+  for(const b of BK)b.length=0;const one=[];
+  for(let i=0;i<N;i++){const P=PTS[i];if(P.born>now)continue;if(P.lit>1||now-P.born<FADE){one.push(i);continue}
+    const d=.6+.4*Math.max(0,Math.min(1,.62-QZ[i]*.3)),band=d<.73?0:d<.87?1:2;BK[((P.t===2?NC:P.b%NC)*2+(P.lit?1:0))*3+band].push(i)}
+  const R=P=>P.t===2?3.4:P.t===1?1.1:1.7;
+  BK.forEach((b,k)=>{if(!b.length)return;const band=k%3,lit=(k/3|0)%2,ci=(k/6|0);ctx.globalAlpha=(lit?.75:.28)*[.67,.8,.93][band];ctx.fillStyle=ci===NC?"#e8c873":BOOKCOL[ci];ctx.beginPath();
+    for(const i of b){const P=PTS[i],r=R(P);if(P.t===2){ctx.moveTo(QX[i]+r,QY[i]);ctx.arc(QX[i],QY[i],r,0,6.283)}else ctx.rect(QX[i]-r,QY[i]-r,2*r,2*r)}ctx.fill()});
+  for(const i of one){const P=PTS[i],r=R(P),f=Math.min(1,(now-P.born)/FADE),a=P.lit>1?1:P.lit?.75:.28;ctx.globalAlpha=a*f*(.6+.4*Math.max(0,Math.min(1,.62-QZ[i]*.3)));ctx.fillStyle=P.t===2?"#e8c873":BOOKCOL[P.b%NC];ctx.beginPath();ctx.arc(QX[i],QY[i],(P.lit>1?r+2.4:r)*(1.6-.6*f),0,6.283);ctx.fill()}
+  ctx.globalAlpha=1;if(HOT>=0&&HOT<N){ctx.strokeStyle="#fff";ctx.lineWidth=1;ctx.beginPath();ctx.arc(QX[HOT],QY[HOT],7,0,6.283);ctx.stroke()}}
 function tick(){const target=ORB.on?(ORB.over?ORB.base*.25:ORB.base):0;ORB.v+=(target-ORB.v)*.05;if(!target&&Math.abs(ORB.v)<ORB.base*.03)ORB.v=0;
   ORB.yaw+=ORB.v+ORB.fy;ORB.pitch=Math.max(-1.3,Math.min(1.3,ORB.pitch+ORB.fp));ORB.fy*=.92;ORB.fp*=.92;draw();requestAnimationFrame(tick)}
 let drag=null;cv.addEventListener("pointerdown",e=>{drag={x:e.clientX,y:e.clientY};ORB.fy=ORB.fp=0});
@@ -110,11 +124,11 @@ const books=$("books");
 DATA.books.forEach((B,bi)=>{const sec=document.createElement("section");sec.className="book";
   const n=B.objects.length,m=B.edges.length;
   sec.innerHTML='<div class="bh"><span class="n'+(String(B.n).length>4?' w':'')+'">'+B.n+'</span><span class="r"><div class="root-seal" title="sha256:'+B.root+'">'+seal(B.root)+'</div><div class="meta">'+(BOOKNAME[bi]?BOOKNAME[bi]+' · ':'')+(B.meta||(DATA.lazy?n+' sealed bundles · tap a bundle’s root to fold it':'sealed '+B.minted+' · '+n+' records · '+m+' threads'))+' · root sha256:'+B.root.slice(0,16)+'…'+(B.b3?' · BLAKE3 '+B.b3.slice(0,16)+'…':'')+'</div></span></div>';
-  const sp=document.createElement("div");sp.className="spell";
+  const sp0=document.createElement("div");sp0.className="spell";const sp=DATA.lazy?sp0.appendChild(Object.assign(document.createElement("div"),{className:"run"})):sp0;
   B.seq.forEach(([t,ix],j)=>{if(j)sp.appendChild(Object.assign(document.createElement("span"),{className:"sep",textContent:t?"·":"✦"}));
     sp.appendChild(t?span(B.edges[ix][0],B._eb+ix,"t"):span(B.objects[ix],B._base+ix,DATA.lazy?"shut":""))});
   sp.appendChild(Object.assign(document.createElement("span"),{className:"sep",textContent:"✦"}));sp.appendChild(span(B.root,B._root,"root"));
-  sec.appendChild(sp);books.appendChild(sec)});
+  sec.appendChild(sp0);books.appendChild(sec)});
 if(DATA.epochs.length){const sec=document.createElement("section");sec.className="book";sec.innerHTML='<div class="bh"><span class="n">V</span><span class="r"><div class="meta">the sealed epochs: earlier roots kept, never rewritten</div></span></div>';const sp=document.createElement("div");sp.className="spell";
   DATA.epochs.forEach((E,j)=>{sp.appendChild(span(E.root,PTS.length-DATA.epochs.length+j,"root"))});sec.appendChild(sp);books.appendChild(sec)}
 $("colo").innerHTML=${JSON.stringify(T.colophon)}.replace("{total}",DATA.total).replace("{books}",DATA.books.length).replace("{built}",DATA.built);
@@ -144,24 +158,36 @@ tip.addEventListener("click",async e=>{const b=e.target.closest("button");if(!b|
   setTimeout(()=>{b.textContent=was},1400)});
 addEventListener("keydown",e=>{if(e.key==="Escape"&&PIN)unpin()});
 // a lazy scroll's books are written as bundle roots; a click opens one in place (records, then the threads drawn from each)
-const OPENED=new Map();
-async function openBundle(el){const h=el.dataset.h;if(OPENED.has(h))return OPENED.get(h);
-  const p=fetch("b/"+h+".json").then(r=>r.json()).then(X=>{const bi=PTS[+el.dataset.i].b,base=PTS.length;
-    X.objects.forEach(k=>PTS.push({h:k,p:xyz(k),b:bi,t:0,lit:0}));const eb=PTS.length;
-    X.edges.forEach(([k,s,t])=>{PTS.push({h:k,p:xyz(k),b:bi,t:1,lit:0});LINKS.push([base+s,base+t,bi])});
-    const box=document.createElement("span");box.className="sub";
+// The bundle's file is fetched well ahead of the reader; its lines are then written a few hundred per frame, and its
+// hashes land on the star staggered over the same stretch, so a large bundle unrolls instead of stalling the page.
+const OPENED=new Map(),FILES=new Map(),PER=240;
+const fileOf=h=>{let p=FILES.get(h);if(!p){p=fetch("b/"+h+".json").then(r=>r.json());FILES.set(h,p)}return p};
+function openBundle(el){const h=el.dataset.h;if(OPENED.has(h))return OPENED.get(h);
+  const p=fileOf(h).then(X=>new Promise(done=>{const bi=PTS[+el.dataset.i].b,base=PTS.length,t0=performance.now(),frames=Math.ceil(X.seq.length/PER),span_ms=frames*16;
+    const at=new Map();X.seq.forEach(([t,ix],j)=>{if(!t)at.set(ix,j)});
+    const when=j=>t0+span_ms*j/Math.max(1,X.seq.length);
+    X.objects.forEach((k,ix)=>PTS.push({h:k,p:xyz(k),b:bi,t:0,lit:0,born:when(at.get(ix)||0)}));const eb=PTS.length;
+    X.edges.forEach(([k,s,t])=>{PTS.push({h:k,p:xyz(k),b:bi,t:1,lit:0,born:when(at.get(s)||0)});LINKS.push([base+s,base+t,bi])});
+    const box=document.createElement("div");box.className="sub";el._box=box;
     box.appendChild(Object.assign(document.createElement("span"),{className:"bm",textContent:(X.minted?"sealed "+X.minted+" · ":"")+X.objects.length+" records · "+X.edges.length+" threads"+(X.b3?" · BLAKE3 "+X.b3.slice(0,16)+"…":"")}));
-    X.seq.forEach(([t,ix],j)=>{if(j)box.appendChild(Object.assign(document.createElement("span"),{className:"sep",textContent:t?"·":"✦"}));
-      const sp=t?span(X.edges[ix][0],eb+ix,"t"):span(X.objects[ix],base+ix,"");box.appendChild(sp);io.observe(sp)});
-    el.after(box);el.classList.remove("shut");el.classList.add("opened");
-    $("skynote").textContent=PTS.length+" hashes on the 64 states · "+OPENED.size+" bundle(s) open · what you read glows";return box});
+    const run=el.parentElement;if(run.classList.contains("run")){const rest=document.createElement("div");rest.className="run";while(el.nextSibling)rest.appendChild(el.nextSibling);run.after(box);if(rest.firstChild)box.after(rest)}else el.after(box);
+    el.classList.remove("shut");el.classList.add("opened");
+    let j=0;const step=()=>{const fr=document.createElement("div");fr.className="ch";const end=Math.min(X.seq.length,j+PER),add=[];
+      for(;j<end;j++){const [t,ix]=X.seq[j];if(j)fr.appendChild(Object.assign(document.createElement("span"),{className:"sep",textContent:t?"·":"✦"}));
+        const sp=t?span(X.edges[ix][0],eb+ix,"t"):span(X.objects[ix],base+ix,"");fr.appendChild(sp);add.push(sp)}
+      box.appendChild(fr);add.forEach(s=>io.observe(s));
+      if(j<X.seq.length)requestAnimationFrame(step);
+      else{$("skynote").textContent=PTS.length+" hashes on the 64 states · "+OPENED.size+" bundle(s) open · what you read glows";done(box)}};
+    step()}));
   OPENED.set(h,p);return p}
+// along the way, one bundle unrolls at a time, in reading order
+let ROLL=Promise.resolve();const queueOpen=el=>{ROLL=ROLL.then(()=>openBundle(el))};
 // a tap selects; on a bundle root a second tap opens it, then folds and unfolds its records. Proving is the card's button.
 document.addEventListener("click",e=>{if(e.target.closest&&e.target.closest("#tip"))return;const s=e.target.closest&&e.target.closest(".k");if(!s)return;e.preventDefault();
   if(e.shiftKey){open("https://sigil.mages.city/?a=sha256:"+s.dataset.h,"_blank","noopener");return}
   const again=PIN===s;
   if(s.classList.contains("shut")&&(again||!matchMedia("(hover: none)").matches)){openBundle(s).then(()=>show(s,true));return}
-  if(s.classList.contains("opened")&&again){const box=s.nextElementSibling;if(box&&box.classList.contains("sub")){const shut=box.classList.toggle("folded");s.classList.toggle("folded",shut)}}
+  if(s.classList.contains("opened")&&again){const box=s._box;if(box){const shut=box.classList.toggle("folded");s.classList.toggle("folded",shut)}}
   show(s,true)});
 // ---- the switch: the whole scroll turns, line by line from where you are reading, into the other script
 function setMode(m){if(m===MODE)return;MODE=m;$("m-seal").classList.toggle("on",m==="seal");$("m-hex").classList.toggle("on",m==="hex");
@@ -175,7 +201,9 @@ async function goTo(){const m=location.hash.match(/^#k=(?:sha256:)?([0-9a-f]{64}
   s.scrollIntoView({block:"center"});s.dispatchEvent(new MouseEvent("pointerover",{bubbles:true}));}
 addEventListener("hashchange",goTo);setTimeout(goTo,60);
 // open every bundle as the reader nears it, so the scroll unrolls and the star fills along the way, as on the guide's scroll
-if(DATA.lazy&&${!!T.openAll}){const near=new IntersectionObserver(es=>{for(const e of es)if(e.isIntersecting){near.unobserve(e.target);openBundle(e.target)}},{rootMargin:"0px 0px 300px 0px"});document.querySelectorAll(".k.shut").forEach(s=>near.observe(s))}
+if(DATA.lazy&&${!!T.openAll}){const far=new IntersectionObserver(es=>{for(const e of es)if(e.isIntersecting){far.unobserve(e.target);fileOf(e.target.dataset.h)}},{rootMargin:"0px 0px 4000px 0px"});
+  const near=new IntersectionObserver(es=>{for(const e of es)if(e.isIntersecting){near.unobserve(e.target);queueOpen(e.target)}},{rootMargin:"0px 0px 900px 0px"});
+  document.querySelectorAll(".k.shut").forEach(s=>{far.observe(s);near.observe(s)})}
 $("skynote").textContent=PTS.length+" hashes on the 64 states · what you read glows · "+${JSON.stringify(T.skynote || "point at a hash to see its threads")};
 size();tick();})();
 </script></body></html>`;
