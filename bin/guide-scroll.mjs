@@ -46,9 +46,9 @@ const total = books.reduce((a, b) => a + b.objects.length + 1, 0) + epochs.lengt
 const DATA = { books, epochs, links, total, built: reg.snapshot };
 
 const html = scrollPage(DATA, {
-  title: "The Guide's Scroll · Mages City",
+  title: "Guide's Scroll · Mages City",
   desc: "Every page of the agentprivacy guide, named by the hash of its content and folded under one root.",
-  h1: "The Guide's <em>Scroll</em>",
+  h1: "Guide's <em>Scroll</em>",
   epi: "Every page of the agentprivacy guide, across all of its sites, named by the hash of its content and folded under one root. Edit a page and its name changes. The threads are the guide's own links from page to page. What the pages say is on the guide; here they are only their names.",
   colophon: '<b>{total}</b> hashes · {books} books · the snapshot of {built}<br>Each hash is one page\'s content (its title and story, without its journal), as published; each book folds its site\'s pages to a root, and the registry folds the sites. The guide\'s live wiki is compared against it: a page edited since the snapshot shows as a divergence until the next one. Seals are written with <a href="https://github.com/johnservil/sigil">Sigil</a>; a hash lands on the star by its first bits.<br><a href="https://guide.agentprivacy.ai/">the guide →</a> · <a href="https://sigil.mages.city/">check any of them at sigil.mages.city →</a> · <a href="https://soul.mages.city/">the soul mage\'s scroll →</a>',
   kinds: ["a page", "a thread", "a root"],

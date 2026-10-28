@@ -1,0 +1,80 @@
+{
+  "id": "hashsmash",
+  "home": "hashsmash.mages.city",
+  "path": "",
+  "store": "kappa_evidence_mage/out",
+  "label": "HashSmash, every lane",
+  "title": "HashSmash Scroll",
+  "h1": "HashSmash <em>Scroll</em>",
+  "epi": "Every try at breaking four hash functions, the judged ones and the refuted ones alike, sealed bundle by bundle. Seven lanes, each opened bundle by bundle: its root, then its records, each followed by the threads drawn from it. Nothing any try found is written here. Only their names, which are their hashes.",
+  "colours": [
+    "#9fd6db",
+    "#e8c873",
+    "#c1c8ef",
+    "#7fd1a8",
+    "#e5a49c",
+    "#b59be0",
+    "#f0b47a"
+  ],
+  "lanes": [
+    {
+      "name": "SHA-256, judged",
+      "project": "hashsmash_sha256"
+    },
+    {
+      "name": "BLAKE3, judged",
+      "project": "hashsmash_blake3"
+    },
+    {
+      "name": "Poseidon, judged",
+      "project": "hashsmash_poseidon"
+    },
+    {
+      "name": "SHA-256, Pareto",
+      "prefix": "pareto_sha256"
+    },
+    {
+      "name": "SHA-3, Pareto",
+      "prefix": "pareto_sha3"
+    },
+    {
+      "name": "BLAKE3, Pareto",
+      "prefix": "pareto_blake3"
+    },
+    {
+      "name": "Poseidon, Pareto",
+      "prefix": "pareto_poseidon"
+    }
+  ],
+  "quests": [
+    {
+      "name": "SHA-256, judged",
+      "href": "https://hashsmash.mages.city/sha256/?tab=scroll"
+    },
+    {
+      "name": "BLAKE3, judged",
+      "href": "https://hashsmash.mages.city/blake3/?tab=scroll"
+    },
+    {
+      "name": "Poseidon, judged",
+      "href": "https://hashsmash.mages.city/poseidon/?tab=scroll"
+    },
+    {
+      "name": "SHA-256, Pareto",
+      "href": "https://sha256.mages.city/?tab=scroll"
+    },
+    {
+      "name": "SHA-3, Pareto",
+      "href": "https://sha3.mages.city/?tab=scroll"
+    },
+    {
+      "name": "BLAKE3, Pareto",
+      "href": "https://blake3.mages.city/?tab=scroll"
+    },
+    {
+      "name": "Poseidon, Pareto",
+      "href": "https://poseidon.mages.city/?tab=scroll"
+    }
+  ],
+  "openAll": true
+}

@@ -1,0 +1,175 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>HashSmash Scroll · Mages City</title>
+<meta name="description" content="Every try at breaking four hash functions, the judged ones and the refuted ones alike, sealed bundle by bundle. Seven lanes, each opened bundle by bundle: its root, then its records, each followed by the threads drawn from it. Nothing any try found is written here. Only their names, which are their hashes.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../sigil/fonts.css">
+<style>
+:root{color-scheme:dark;--bg:#07090f;--ink:#d9d2c3;--dim:#7d7a72;--faint:#3a3a40;--gold:#e8c873;--cyan:#9fd6db;--coral:#e5a49c;--violet:#c1c8ef}
+*{box-sizing:border-box}html,body{margin:0;background:var(--bg);color:var(--ink)}
+body{font:15px/1.6 "Cormorant Garamond",Georgia,serif;background:radial-gradient(ellipse at 70% 0%,#11131d 0,var(--bg) 60%) fixed}
+a{color:var(--cyan);text-decoration:none}a:hover{text-decoration:underline}
+#sky{position:fixed;left:0;top:0;width:42vw;height:100vh}
+#sky canvas{width:100%;height:100%;display:block}
+.orbtog{position:absolute;left:18px;bottom:18px;width:32px;height:32px;border-radius:50%;border:1px solid #2a2d38;background:rgba(7,9,15,.7);color:var(--gold);cursor:pointer;font:15px/1 system-ui}
+.orbtog.off{color:var(--dim)}
+#skynote{position:absolute;left:62px;bottom:24px;font:11px/1.4 ui-monospace,monospace;color:var(--dim);letter-spacing:.04em;max-width:30vw}
+main{margin-left:42vw;max-width:880px;padding:64px 48px 160px 32px}
+.top{display:flex;justify-content:space-between;align-items:center;font:12px ui-monospace,monospace;color:var(--dim);letter-spacing:.06em}
+.mode{display:inline-flex;border:1px solid #2a2d38;border-radius:20px;overflow:hidden;position:fixed;top:16px;right:18px;z-index:6;background:rgba(7,9,15,.88)}
+.mode button{background:none;border:0;color:var(--dim);font:12px ui-monospace,monospace;padding:6px 12px;cursor:pointer}.mode button.on{background:#1a1c26;color:var(--gold)}
+h1{font:400 clamp(40px,6vw,68px)/1.02 "Cormorant Garamond",Georgia,serif;margin:46px 0 6px;color:var(--ink)}h1 em{color:var(--gold);font-style:italic}
+.epi{font-style:italic;font-size:19px;line-height:1.55;color:#bdb6a7;max-width:40em;margin:14px 0 40px}
+.book{margin:56px 0 0}.bh{display:flex;align-items:baseline;gap:18px;border-top:1px solid #23252e;padding-top:18px}
+.bh .n{font:400 44px/1 "Cormorant Garamond",Georgia,serif;color:var(--gold);min-width:1.6em}.bh .n.w{font-size:30px;min-width:0;white-space:nowrap}
+.bh .r{flex:1;min-width:0}.bh .meta{font:11px ui-monospace,monospace;color:var(--dim);letter-spacing:.05em}
+.spell{margin-top:16px;line-height:1.95;font-size:15px;text-align:justify;hyphens:none;word-break:break-all;overflow-wrap:anywhere}
+.k{cursor:pointer;transition:color .35s,text-shadow .35s;color:#a9a294}
+.k.t{color:#6f7d86}
+.k.root{color:var(--gold);font-size:1.25em}
+.spell .bm{display:block;font:11px ui-monospace,monospace;color:var(--dim);letter-spacing:.05em;margin-bottom:.3em}.spell .sub{display:block;margin:.5em 0 .9em .4em;padding-left:.9em;border-left:1px solid rgba(232,200,115,.28)}.k.shut{text-decoration:underline dotted rgba(232,200,115,.5);text-underline-offset:.25em;cursor:pointer}.k.opened{color:var(--gold);cursor:pointer}.spell .sub.folded{display:none}.k.opened.folded{text-decoration:underline dotted rgba(232,200,115,.5);text-underline-offset:.25em}
+.k:hover,.k.hl{color:#fff;text-shadow:0 0 10px rgba(232,200,115,.55)}
+.k.read{color:#cfc8b8}.k.t.read{color:#93a8b2}
+.sep{color:var(--faint);padding:0 .25em}
+body.seal .spell{font-family:"Noto Sans","Noto Sans Ethiopic","Noto Sans Canadian Aboriginal","Segoe UI Historic",system-ui,sans-serif;font-size:17px;letter-spacing:.06em;line-height:1.9;word-break:normal}
+body.seal .sep{display:none}
+body:not(.seal) .spell{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12.5px;letter-spacing:.02em}
+.root-seal{font-family:"Noto Sans","Noto Sans Ethiopic","Noto Sans Canadian Aboriginal",system-ui,sans-serif;font-size:22px;letter-spacing:.08em;color:var(--gold);overflow-wrap:anywhere}
+.colo{margin-top:80px;border-top:1px solid #23252e;padding-top:22px;font:12.5px/1.8 ui-monospace,monospace;color:var(--dim)}
+.colo b{color:var(--ink);font-weight:400}
+.lanes{font:12.5px/1.9 ui-monospace,monospace;color:var(--dim);margin-top:6px}.lanes a{color:var(--cyan)}
+.scrolls{font:12px/1.9 ui-monospace,monospace;color:var(--dim);margin-top:10px;max-width:60em}.scrolls a{color:var(--dim)}.scrolls a:hover{color:var(--cyan)}.scrolls b{color:var(--gold);font-weight:400}
+#tip{position:fixed;right:18px;bottom:18px;max-width:min(560px,52vw);background:rgba(10,12,18,.94);border:1px solid #2a2d38;border-radius:10px;padding:10px 14px;font:11.5px/1.5 ui-monospace,monospace;color:var(--dim);display:none;z-index:5}
+#tip.pin{border-color:#4a4330;color:var(--ink)}#tip.pin .s{padding-right:30px}#tip .h{overflow-wrap:anywhere;color:var(--ink);margin:2px 0}#tip .hint{margin-top:4px;color:var(--faint)}#tip .x{position:absolute;right:8px;top:6px;background:none;border:0;color:var(--dim);font:18px/1 system-ui;cursor:pointer;padding:4px 6px}
+#tip .acts{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}#tip .acts button,#tip .acts a{font:12px ui-monospace,monospace;padding:7px 12px;border-radius:16px;border:1px solid #2a2d38;background:#12141c;color:var(--ink);cursor:pointer;text-decoration:none}#tip .acts .prove{border-color:#5a4d2a;color:var(--gold)}#tip .acts button,#tip .acts a{font-size:18px;line-height:1;min-width:52px;text-align:center}
+#tip .s{font:17px/1.4 "Noto Sans","Noto Sans Ethiopic","Noto Sans Canadian Aboriginal",system-ui,sans-serif;color:var(--gold);letter-spacing:.06em;overflow-wrap:anywhere}
+@media(max-width:860px){#sky{position:sticky;width:100%;height:46vh;top:0;z-index:2;background:var(--bg)}main{margin-left:0;padding:24px 16px 120px}#skynote{max-width:60vw}#tip{left:10px;right:10px;bottom:10px;max-width:none;padding:12px 14px calc(12px + env(safe-area-inset-bottom))}#tip .acts button,#tip .acts a{flex:1;text-align:center;padding:10px 8px}.k{-webkit-tap-highlight-color:transparent}}
+</style></head><body class="seal">
+<div id="sky"><canvas id="cv"></canvas><button class="orbtog" id="orb" type="button" title="orbit on · click to hold the star still">⟳</button><div id="skynote"></div></div>
+<main>
+<div class="top"><span><a href="https://mages.city/">mages.city</a> · <a href="https://mages.city/arena.html">Evidence</a> · <a href="https://sigil.mages.city/">✍ Sigil</a></span>
+<span class="mode" role="group" aria-label="write the scroll as"><button id="m-seal" class="on" type="button">seals</button><button id="m-hex" type="button">hashes</button></span></div>
+<nav class="scrolls" aria-label="every scroll">the scrolls: <a href="https://soul.mages.city/">❦ soul mage</a> · <a href="https://guide.mages.city/">❦ guide</a> · <b>❦ HashSmash, every lane</b> · <a href="https://sha256.mages.city/?tab=scroll">SHA-256</a> · <a href="https://sha3.mages.city/?tab=scroll">SHA-3</a> · <a href="https://blake3.mages.city/?tab=scroll">BLAKE3</a> · <a href="https://poseidon.mages.city/?tab=scroll">Poseidon</a> · <a href="https://curve.mages.city/?tab=scroll">Curve · secp256k1</a> · <a href="https://ecrank.mages.city/?tab=scroll">EC rank</a> · <a href="https://falcon.mages.city/?tab=scroll">Falcon</a> · <a href="https://hashsmash.mages.city/blake3/?tab=scroll">HashSmash · BLAKE3</a> · <a href="https://hashsmash.mages.city/poseidon/?tab=scroll">HashSmash · Poseidon, first bundles</a> · <a href="https://hashsmash.mages.city/sha256/?tab=scroll">HashSmash · SHA-256</a> · <a href="https://mldsa.mages.city/?tab=scroll">Lattice · ML-DSA</a> · <a href="https://sig.mages.city/?tab=scroll">Sig golf</a></nav><nav class="lanes" aria-label="each lane's own scroll">each lane's own scroll: <a href="https://hashsmash.mages.city/sha256/?tab=scroll">SHA-256, judged ↗</a> · <a href="https://hashsmash.mages.city/blake3/?tab=scroll">BLAKE3, judged ↗</a> · <a href="https://hashsmash.mages.city/poseidon/?tab=scroll">Poseidon, judged ↗</a> · <a href="https://sha256.mages.city/?tab=scroll">SHA-256, Pareto ↗</a> · <a href="https://sha3.mages.city/?tab=scroll">SHA-3, Pareto ↗</a> · <a href="https://blake3.mages.city/?tab=scroll">BLAKE3, Pareto ↗</a> · <a href="https://poseidon.mages.city/?tab=scroll">Poseidon, Pareto ↗</a></nav>
+<h1>HashSmash <em>Scroll</em></h1>
+<p class="epi">Every try at breaking four hash functions, the judged ones and the refuted ones alike, sealed bundle by bundle. Seven lanes, each opened bundle by bundle: its root, then its records, each followed by the threads drawn from it. Nothing any try found is written here. Only their names, which are their hashes.</p>
+<div id="books"></div>
+<div class="colo" id="colo"></div>
+</main>
+<div id="tip"></div>
+<script src="../sigil/sigilcode.js"></script>
+<script>
+const DATA={"books":[{"n":"I","root":"ffdd561de3daca085307070236f93a2d61e8accb7c5d8aef76ecf8f238471641","minted":"2026-10-26","objects":["0a36d530b51f20e7c17c6c0c22e07046e4d57a5f41b9d586a49e14106705b26c","d467e8f7c0d2df1b91c8c179eeab1909ba108df8f1f0787702c1880b8de7145d","72d76eea7ac7094ed04a28565e6d31fe63124cac99d6e0383858310f402b0ba9","4c4f05e8ebba48160740cf6eacb24078d612f5c1b8aadcb37d41b5e51f02bf51","eb4a3ef34c92fe1dac65da547a1ec522ad83427324394c5194f23d185608b32d","c80b284c8df22d466ff50cc509205ecdd29fe3f91a2b00ac1bc19d9191509a81","ff54e4747bc3c4736a576ae38c97087c268ccadab904942588b5c659c505fad1","7e61cec2d9d87c489c8009493b4244eb4f2a281389d0396ab85186af0a02f474","7272bed90e253fb4fce5fe43819cea99f1226f274886ca8bd772af4bd001450c","e02685bbc6d353c070594591d71ac732b9feb873ef993515fa47b31d42a8ea43","746ec2a8746e77c34b96d11b22bac1bab0524f7e27d7f56cb806179a327117b4"],"edges":[],"seq":[[0,0],[0,1],[0,2],[0,3],[0,4],[0,5],[0,6],[0,7],[0,8],[0,9],[0,10]]},{"n":"II","root":"91b850982776750619fc4dafe2e8f9576274179e09372a2725d8c617c601e84b","minted":"2026-10-13","objects":["62d963d459e7201e2e5c02fae1c53176c121b73675099faab238dfd1e85dc5f0","1be1a0004bfaf7823d5af441c82a2b1020b5066d64daf0bea2e7a773bbb7f485","4332e53a401134db8f686ea02c74d231e8ab300ad331ee7a41d87e2fac3a2ecc","cbaa0b32662b187ce9a5a8ca199b7d775fb0c8e6fd55ad76f8952a40a2f926b9","862252facb93a83b81f4a065c738c1f293241d069fce35a24a65ab6bf4c88c08","6e5587c252709afed0036f88d7c42ec9e7d944b963929cda9e04c84c9200ca91","75847312091d9d42ef30718bef1c1c098602a83d557170ea0017b409e801645b","726d3e546e6730775613d78057ebf113bada725b9df19a13b193cb8404921570"],"edges":[],"seq":[[0,0],[0,1],[0,2],[0,3],[0,4],[0,5],[0,6],[0,7]]},{"n":"III","root":"d66ff076921bd098da941f7d1d7b7dc4a4169757ce0f310f7d513920fd01e659","minted":"2026-10-12","objects":["ce2218637dc37e66c057d94030b3aa60d4a4f147f47f4b6f17a7230ff89b9b75","fedd8e9c3667fc1140a75829084f879de629e2bd1a3e4519d9c78d4fc302e627","0066302d4629e9208d4ab6686c9fedd6f4dc9a39d64f5deea63062eb41ac3230"],"edges":[],"seq":[[0,0],[0,1],[0,2]]},{"n":"IV","root":"e752ef5a27ff5b6dcf2913b7d66245c011144d5923981e01ed5f06f019db86c5","minted":"2026-10-21","objects":["474e29013b521fc0f8011c7f7d8bd2f63216ffbe2b434e0b09221e2796c9ecc5","cfff6946a1e34a4c9ec6a7142e24e1cd692daf25744e87dea47d6da43f53a7c6","a04552f058ad76793fa09014a02d0d8873fa23450743038152b62410e793ee6f","0f4528aaf0520a3436a80d4303618cc08c03a292a89d0c4891c61422c543bd81","8e6748aa89d086e48a8141ba766d4d6e8e7bdf9caab27b2c1bb7623f0e09cf8f","10865915b627c2bb4c373aec90210160b54aabda71f1cdab802d01f2d9ac28e4","0a3680d00ecfcd228b261eb3572fea3c86e4ccd90f4d23abe167fa036666d060","7a44e20f7ec6e0dba300a360242a008574962df51fba5f3cde8686fba8177296","df52db2ed178cb18ea8606c2f5592efff37719a3b17e79996b00006054427b0f","37263751bb8a660d0244aabde7c938ca84e1d21aa45c6130588e7159dec7a823","b9e372c2b0b89591a9aecb7d2a0a82d98b99392b18adec1bf6ac7ab7ad8a7973","4683757810017ac65123911e70b90ebd065549a65232ab4122b7d90acc0132bb","e5cda6e77672d8e86fd96acf86ceaef6062e9139379abbc43ec19f57c702f556","8340cdecb1005d4dea22ac0404abdf1fae405ecf48ff64fe8332a41e0e9fbfc5","96d4b73c461b2fd4e5e9a4353c945a7be9b27020604e140f99ee0fb1641bd06b","a923a6f2ef5493dac75282dc84e0e205d5dd61dc6bbf57a9c89cbe3a47b4ede8","a6ba1fedc07a4166f418ca9ae5fa3a90afffa2e2788930c5547d84b855757add","e5cbd3026a991c13402fa14433b6943ffc430f69d414976984ec9d6feb013bd2","1583b1a3dc665ab00e819864b014dcfc0f7dce4f7ed409c7bba4dd234a4ca656","228430f9a34a677a805efb3347049b67894ba6cfe636435546738f188d2b4a72","c41a55de18a02f10f53f9b43257ec60c161fc22a6328897602aced7485730a42","6d8e4622a66e2e1ddc3e671a28d95eb8074108c77a8b34f5b072a83b9d213385","099428c5cc8de565128f338fa989cc55fb5acb3e0435b7c6550b272bf28ab3a8","de5878fe5ac7cddf24c110cf8c41ac6684fa6ecd0fe26522e969c256805961c8","8361652a67c511792d4f55da7f5d60296cf252578458ab2828ed7a2c669d3073","89e4eb479baa3bec34bcddd34ffc3d1e4569bfdc2627d853d3552c9d549ba419","8a1e1e62dbf3d3322e8aae778a9d60a8356e9f62bf46e8bcb49585e8e2928c2a","6d7d332f31bff5d68807d249717db8824269fbe434276500237d7dcefc660aa8","654c0681d1edf5fd4b477825eed7270821d63388c8b149f01592a5eaa2676f1a","b06dbbdef0037065e10a23e27ec5f7e35b1e2991735531a530dbd6441e85deb5","b0c455e3963fa0a3ca4332b9b3a0cd6d6b7cf9278fb83b9819e6b92cbeac0e12"],"edges":[],"seq":[[0,0],[0,1],[0,2],[0,3],[0,4],[0,5],[0,6],[0,7],[0,8],[0,9],[0,10],[0,11],[0,12],[0,13],[0,14],[0,15],[0,16],[0,17],[0,18],[0,19],[0,20],[0,21],[0,22],[0,23],[0,24],[0,25],[0,26],[0,27],[0,28],[0,29],[0,30]]},{"n":"V","root":"30ed77cbd9520b713325eabada90d09be96a2677f9cfb73969b4c2d89a48844c","minted":"2026-10-20","objects":["d009a5f7704b675e4cf6eaa299b57fdafa26f60bf58ae261a07b402ea8abe540","02a183d096ab1d01f02c29991ef26f7d0895d9ef04f0ba07a765acc12df7644b","23e1153e3618b78d555b275e5f457b09e4257816ab2ec9f46a84524ba16de9fa","6fbac6f76b8dd473e3e0da85eaef8c8bd5d13c6e92f3ae9d4bed33c3c23324cf","92cfba51860a1743921e455c50d2011999b231161c98b923b6370c567a1255f4","084867bde5dca89c30d21c3d582c0f1e0f6d105f5a79730c61011df467e39437","8d723f53f3cfd9c36a082e3cdc6fb88379f1c8cde146e1106c8c679fedc41423","bb1a97be0193434185452830a759acac28cf25a78907f66ff0b1fcfbd8771cea","14f775af8ba58e81d80974ef13af628ad141d182c2665ce510bdafc1369c6f4a","1e071cd5014930d26d203fe37b00bb01a500c41d2758ce391150331a07b25688","3d0c76daeeb6d541c0975a1a7cc5ce1a870a32dc06276c079ae39152cf6e8024","ee17c75ad4fce7e65700e1bfc01764b92d6f428bcd06c8ca4d55d646f49dd05a","683a9f065c98393aa430094fcb173835393c89f674880d9bbba1dadb6bcfe2f9","b513921b0c9255ca2cb29eab8090b0239c2ae4a3316e38fa8ae2970ad6f52735","068524a51f03c1350474276c47c8dfcc5827d8d3b1e2db74821035c0aee9f65e","d700fce070aef993804cc8d984f11df6e26a586e44e0381f18bac60c90b099ca","2dbbc118897c5b2f036f72bdafd3927b4386c9c60be82b4d03b551f4eb210f46","2e7bb6158f6d232cb9f50f1ddcb5342521c174b11af0631cf0562fd005e676a4","40e3e9dc72d270e28d6d40eff77b5a0bad3826c480886699f2b34741c7de10e9"],"edges":[],"seq":[[0,0],[0,1],[0,2],[0,3],[0,4],[0,5],[0,6],[0,7],[0,8],[0,9],[0,10],[0,11],[0,12],[0,13],[0,14],[0,15],[0,16],[0,17],[0,18]]},{"n":"VI","root":"af1b4910175dd77594484dfe6238d28482294aafc0f5f66f3e05f4ffe8022b6f","minted":"2026-10-19","objects":["3b108b6ac8b1c3b494fce838773541ccb1aabefc4d5ed41939a250f57ced214e","31588ffa4ad1879b2ee4b884bd62be96315fa94eca9432d3bfa6ddc77e13ec50","3e1cc1db19ddb2d417bd203a41bbf7549160a6367369a4191988dba78cbccdce","56edba4ad2844fc9ca7878ca77f972f544d0556e490cb0c923a016a9929468db","e96333c3492345c5ef9ea804bfd7aaf8265ecdeb9016c5b60ce36e8db1b97c90","93b7b661535b5ac59261133f3c31a057f519eb52cd204fc68f53381615518ca2","32ae0ee00907f9e40ae6c9f36d2f0af73f446e1328fbd44088734cde4509e1f2","23b40f7fa43d5f1e704eac7bcf4730b78d826d0ab5a04e5d7c46a12bd1735367","de09630987a80adfb1df525cfa3812820cfcbbd7be860c99f8ec749c597299ae","9feef168c8b9a92cf4b66f8948a4bce4bca6f2bba5fed22e34eb0088ec5831c9","dbc896050dfa56f3eabce266ef6ad24687bae7d149d6de627738283f385201c1"],"edges":[],"seq":[[0,0],[0,1],[0,2],[0,3],[0,4],[0,5],[0,6],[0,7],[0,8],[0,9],[0,10]]},{"n":"VII","root":"ee220ff79cc35c4aaa3c58a3df5cecd01ca0b1b2c23f3833cf721cc65f600757","minted":"2026-10-21","objects":["854a9f500d242b1988788d42bb4115e5dfb662b009ab46e5785082f94ccfdb4a","6dbf73f3fb90cfa588413f926c59fdd16d800fdfccd9975c1c8461ce009d0963","2dea9deac96e639c7990430534a1dbfccbad03594c7c1328facc287f15bedd3c","c1b443a06e103d1887a6e938e6ec3d01307d6a87e79be4ca7bba904f4a2b7f5b","1732dde4d1c2a1f1edd64bd79a929c0a8c5b1e42fb2b05ce4752c6da93c0b948","ffc28ac6550f648bc69b10f20005bf29ac376f6eaf803c1e197bdf0784d5ef6c","4a5272bab8ad1d0124d8c81a0df44bb9908ae4a9141ea4a007d3c68569a57567","0998f1243cbd91edcf7b250c690a503ff8c8e6662c9258512f2f6a48fb726522","dcdf23f56c99d9c3ba0b8dfdac2181ac480ee4506c9592ee8a091ce721ce41ef","580309d1bab6282e609b4e9a9d377671970afccc6d4d2147b29e47c59d74aea3","8ec4a472dbe214d5a92e893790bde805980779b65a6e2d673613ab6f2bbd2b20"],"edges":[],"seq":[[0,0],[0,1],[0,2],[0,3],[0,4],[0,5],[0,6],[0,7],[0,8],[0,9],[0,10]]}],"epochs":[],"total":19188,"built":"2026-10-27","lazy":true};
+(function(){"use strict";
+const S=globalThis.SigilCode,$=id=>document.getElementById(id);
+const bytes=h=>Uint8Array.from(h.match(/../g).map(x=>parseInt(x,16)));
+const SEAL=new Map(),seal=h=>{let s=SEAL.get(h);if(!s){try{s=S.encode(bytes(h))}catch(e){s=h}SEAL.set(h,s)}return s};
+let MODE="seal";
+// ---- the star: every hash placed by its bits, as on every star of the City
+const bits=(hx,from,n)=>{let v=0;for(let i=0;i<n;i++){const c=parseInt(hx[(from+i)>>2],16),b=(c>>(3-((from+i)&3)))&1;v=v*2+b}return v};
+const CV=b=>[(b&1)?1:-1,(b&2)?1:-1,(b&4)?1:-1],par=h=>(h^(h>>1)^(h>>2))&1;
+const xyz=hx=>{const house=bits(hx,0,3),sub=bits(hx,3,3),j=[bits(hx,6,3),bits(hx,9,3),bits(hx,12,3)],H=CV(house),Sv=CV(sub);return[0,1,2].map(i=>H[i]+Sv[i]*.3+(j[i]-3.5)*.02)};
+const STELLA=[[0,3],[0,5],[0,6],[3,5],[3,6],[5,6],[1,2],[1,4],[1,7],[2,4],[2,7],[4,7]];
+const BOOKNAME=["SHA-256, judged","BLAKE3, judged","Poseidon, judged","SHA-256, Pareto","SHA-3, Pareto","BLAKE3, Pareto","Poseidon, Pareto"];
+const BOOKCOL=["#9fd6db","#e8c873","#c1c8ef","#7fd1a8","#e5a49c","#b59be0","#f0b47a"];
+const PTS=[],LINKS=[];
+DATA.books.forEach((B,bi)=>{const base=PTS.length;B.objects.forEach(h=>PTS.push({h,p:xyz(h),b:bi,t:0,lit:0}));const eb=PTS.length;
+  B.edges.forEach(([h,s,t])=>{PTS.push({h,p:xyz(h),b:bi,t:1,lit:0});LINKS.push([base+s,base+t,bi])});B._base=base;B._eb=eb;
+  PTS.push({h:B.root,p:xyz(B.root),b:bi,t:2,lit:0});B._root=PTS.length-1});
+DATA.epochs.forEach(E=>PTS.push({h:E.root,p:xyz(E.root),b:0,t:2,lit:0,ep:1}));
+(DATA.links||[]).forEach(([b1,i1,b2,i2])=>{const A=DATA.books[b1],B=DATA.books[b2];if(A&&B)LINKS.push([A._base+i1,B._base+i2,b1])});
+const ORB={yaw:.6,pitch:-.32,v:0,on:true,base:.0016,fy:0,fp:0,over:false};
+try{const s=localStorage.getItem("mages.orbit");if(s)ORB.on=s==="on"}catch(e){}if(matchMedia("(prefers-reduced-motion: reduce)").matches&&!localStorage.getItem("mages.orbit"))ORB.on=false;
+const orb=$("orb");const setOrb=()=>{orb.className="orbtog"+(ORB.on?"":" off");orb.textContent=ORB.on?"⟳":"❚❚"};setOrb();
+orb.onclick=()=>{ORB.on=!ORB.on;try{localStorage.setItem("mages.orbit",ORB.on?"on":"off")}catch(e){}setOrb()};
+const cv=$("cv"),ctx=cv.getContext("2d");let W=0,H=0,DPR=1;
+function size(){DPR=Math.min(2,devicePixelRatio||1);W=cv.clientWidth;H=cv.clientHeight;cv.width=W*DPR;cv.height=H*DPR;ctx.setTransform(DPR,0,0,DPR,0,0)}
+function proj(p){const cy=Math.cos(ORB.yaw),sy=Math.sin(ORB.yaw),cp=Math.cos(ORB.pitch),sp=Math.sin(ORB.pitch);const x=p[0]*cy+p[2]*sy,z0=-p[0]*sy+p[2]*cy,y=p[1]*cp-z0*sp,z=p[1]*sp+z0*cp;const s=Math.min(W,H)*.2*(1/(1+z*.12));return{x:W/2+x*s,y:H/2+y*s,z}}
+let HOT=-1;
+function draw(){ctx.clearRect(0,0,W,H);
+  ctx.lineWidth=1;for(const [u,v] of STELLA){const a=proj(CV(u)),b=proj(CV(v));ctx.strokeStyle=par(u)?"rgba(229,164,156,.20)":"rgba(159,214,219,.20)";ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);ctx.stroke()}
+  const Q=PTS.map(p=>proj(p.p));
+  ctx.strokeStyle=LINKS.length>3000?"rgba(120,120,140,.035)":"rgba(120,120,140,.07)";ctx.lineWidth=.6;ctx.beginPath();for(const [s,t] of LINKS){if(PTS[s].lit||PTS[t].lit)continue;const a=Q[s],b=Q[t];ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y)}ctx.stroke();
+  for(const [s,t,bi] of LINKS){const l=Math.max(PTS[s].lit,PTS[t].lit);if(!l)continue;const a=Q[s],b=Q[t];ctx.strokeStyle=BOOKCOL[bi%BOOKCOL.length]+(l>1?"cc":"55");ctx.lineWidth=l>1?1.2:.6;ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);ctx.stroke()}
+  PTS.forEach((p,i)=>{const q=Q[i],r=p.t===2?3.4:p.t===1?1.1:1.7,a=p.lit>1?1:p.lit?.75:.28;ctx.globalAlpha=a*(.6+.4*Math.max(0,Math.min(1,.62-q.z*.3)));ctx.fillStyle=p.t===2?"#e8c873":BOOKCOL[p.b%BOOKCOL.length];ctx.beginPath();ctx.arc(q.x,q.y,p.lit>1?r+2.4:r,0,6.283);ctx.fill()});
+  ctx.globalAlpha=1;if(HOT>=0){const q=Q[HOT];ctx.strokeStyle="#fff";ctx.lineWidth=1;ctx.beginPath();ctx.arc(q.x,q.y,7,0,6.283);ctx.stroke()}}
+function tick(){const target=ORB.on?(ORB.over?ORB.base*.25:ORB.base):0;ORB.v+=(target-ORB.v)*.05;if(!target&&Math.abs(ORB.v)<ORB.base*.03)ORB.v=0;
+  ORB.yaw+=ORB.v+ORB.fy;ORB.pitch=Math.max(-1.3,Math.min(1.3,ORB.pitch+ORB.fp));ORB.fy*=.92;ORB.fp*=.92;draw();requestAnimationFrame(tick)}
+let drag=null;cv.addEventListener("pointerdown",e=>{drag={x:e.clientX,y:e.clientY};ORB.fy=ORB.fp=0});
+addEventListener("pointermove",e=>{if(!drag)return;const dx=e.clientX-drag.x,dy=e.clientY-drag.y;ORB.yaw+=dx*.008;ORB.pitch=Math.max(-1.3,Math.min(1.3,ORB.pitch+dy*.008));ORB.fy=dx*.004;ORB.fp=dy*.004;drag={x:e.clientX,y:e.clientY}});
+addEventListener("pointerup",()=>{drag=null});cv.addEventListener("pointerenter",()=>ORB.over=true);cv.addEventListener("pointerleave",()=>ORB.over=false);
+addEventListener("resize",size);
+// ---- the scroll: each record, then the threads drawn from it, book by book
+const SPANS=[];
+function span(h,i,cls){const el=document.createElement("span");el.className="k"+(cls?" "+cls:"");el.dataset.i=i;el.dataset.h=h;el.textContent=MODE==="seal"?seal(h):h;SPANS.push(el);return el}
+const books=$("books");
+DATA.books.forEach((B,bi)=>{const sec=document.createElement("section");sec.className="book";
+  const n=B.objects.length,m=B.edges.length;
+  sec.innerHTML='<div class="bh"><span class="n'+(String(B.n).length>4?' w':'')+'">'+B.n+'</span><span class="r"><div class="root-seal" title="sha256:'+B.root+'">'+seal(B.root)+'</div><div class="meta">'+(BOOKNAME[bi]?BOOKNAME[bi]+' · ':'')+(B.meta||(DATA.lazy?n+' sealed bundles · tap a bundle’s root to fold it':'sealed '+B.minted+' · '+n+' records · '+m+' threads'))+' · root sha256:'+B.root.slice(0,16)+'…'+(B.b3?' · BLAKE3 '+B.b3.slice(0,16)+'…':'')+'</div></span></div>';
+  const sp=document.createElement("div");sp.className="spell";
+  B.seq.forEach(([t,ix],j)=>{if(j)sp.appendChild(Object.assign(document.createElement("span"),{className:"sep",textContent:t?"·":"✦"}));
+    sp.appendChild(t?span(B.edges[ix][0],B._eb+ix,"t"):span(B.objects[ix],B._base+ix,DATA.lazy?"shut":""))});
+  sp.appendChild(Object.assign(document.createElement("span"),{className:"sep",textContent:"✦"}));sp.appendChild(span(B.root,B._root,"root"));
+  sec.appendChild(sp);books.appendChild(sec)});
+if(DATA.epochs.length){const sec=document.createElement("section");sec.className="book";sec.innerHTML='<div class="bh"><span class="n">V</span><span class="r"><div class="meta">the sealed epochs: earlier roots kept, never rewritten</div></span></div>';const sp=document.createElement("div");sp.className="spell";
+  DATA.epochs.forEach((E,j)=>{sp.appendChild(span(E.root,PTS.length-DATA.epochs.length+j,"root"))});sec.appendChild(sp);books.appendChild(sec)}
+$("colo").innerHTML="<b>{total}</b> hashes · 94 sealed bundles in {books} lanes · inscribed {built}<br>Each lane is written as the roots of its bundles, its own root folding them (sorted, paired, sha256(a|b), an odd one carried up); the seven lane roots fold to one: <code style=\"font-size:11px;overflow-wrap:anywhere\">sha256:1d85a2780a673627c7f2a3eefdf059a3e94cba53eba6105346ff500cbb4ee230</code>. A bundle sealed into two lanes (7 of them: casts that were judged on their own and also folded into a wave) is written once, in the first. Open a bundle and its records unroll, each followed by the threads drawn from it, with its BLAKE3 root beside the sha256 one where it was minted with both. This scroll is the inscription, not the proof: every bundle re-derives from its root. Seals are written with <a href=\"https://github.com/johnservil/sigil\">Sigil</a>.<br><a href=\"https://sigil.mages.city/\">Check any of them at sigil.mages.city →</a> · <a href=\"https://hashsmash.mages.city/\">the lanes as quests →</a>".replace("{total}",DATA.total).replace("{books}",DATA.books.length).replace("{built}",DATA.built);
+// ---- reading: what is on screen glows on the star
+const io=new IntersectionObserver(es=>{for(const e of es){const i=+e.target.dataset.i;if(e.isIntersecting){PTS[i].lit=Math.max(PTS[i].lit,1);e.target.classList.add("read")}}},{rootMargin:matchMedia("(max-width:860px)").matches?"-50% 0px -8% 0px":"-10% 0px -10% 0px"});
+SPANS.forEach(s=>io.observe(s));
+const tip=$("tip");let PIN=null;
+// what a hash is, in words, on this scroll
+function kindOf(s){if(s.classList.contains("shut"))return "a sealed bundle’s root · tap it again to open its records";
+  if(s.classList.contains("opened"))return s.classList.contains("folded")?"a sealed bundle’s root · tap it again to unfold its records":"a sealed bundle’s root · tap it again to fold its records away";
+  return s.classList.contains("t")?"a thread":s.classList.contains("root")?"a root":"a record"}
+// light one hash and its threads on the star; the card says what it is. A mouse previews on hover; a tap or click
+// selects it and pins the card with its three acts: copy the hash, copy the seal, prove it on Sigil.
+function show(s,pin){const i=+s.dataset.i,h=s.dataset.h;
+  document.querySelectorAll(".k.hl").forEach(x=>x.classList.remove("hl"));PTS.forEach(p=>{if(p.lit>1)p.lit=1});HOT=i;PTS[i].lit=2;
+  for(const [a,b] of LINKS){if(a===i)PTS[b].lit=2;if(b===i)PTS[a].lit=2}
+  document.querySelectorAll('.k[data-i="'+i+'"]').forEach(x=>x.classList.add("hl"));
+  const v=(parseInt(h.slice(0,2),16)>>2);PIN=pin?s:null;tip.style.display="block";tip.classList.toggle("pin",!!pin);
+  tip.innerHTML=(pin?'<button class="x" type="button" aria-label="close">×</button>':'')+'<div class="s">'+seal(h)+'</div><div class="h">sha256:'+h+'</div>sits at V'+v+' · '+kindOf(s)+
+    (pin?'<div class="acts"><button type="button" data-act="hash" title="copy the hash" aria-label="copy the hash">🔢</button><button type="button" data-act="seal" title="copy the seal" aria-label="copy the seal">🔏</button><a class="prove" href="https://sigil.mages.city/?a=sha256:'+h+'" target="_blank" rel="noopener" title="prove it on Sigil" aria-label="prove it on Sigil">✍</a></div>':'<div class="hint">click to select · 🔢 hash · 🔏 seal · ✍ prove on Sigil</div>')}
+function unpin(){PIN=null;tip.style.display="none";tip.classList.remove("pin");document.querySelectorAll(".k.hl").forEach(x=>x.classList.remove("hl"));PTS.forEach(p=>{if(p.lit>1)p.lit=1});HOT=-1}
+document.addEventListener("pointerover",e=>{if(e.pointerType!=="mouse"||PIN)return;const s=e.target.closest&&e.target.closest(".k");if(s)show(s,false)});
+tip.addEventListener("click",async e=>{const b=e.target.closest("button");if(!b||!PIN)return;e.stopPropagation();
+  if(b.classList.contains("x")){unpin();return}
+  const h=PIN.dataset.h,t=b.dataset.act==="seal"?seal(h):"sha256:"+h,was=b.textContent;
+  try{await navigator.clipboard.writeText(t);b.textContent="✓"}catch(_){const r=document.createRange(),q=tip.querySelector(b.dataset.act==="seal"?".s":".h");r.selectNodeContents(q);getSelection().removeAllRanges();getSelection().addRange(r);b.textContent="⧉"}
+  setTimeout(()=>{b.textContent=was},1400)});
+addEventListener("keydown",e=>{if(e.key==="Escape"&&PIN)unpin()});
+// a lazy scroll's books are written as bundle roots; a click opens one in place (records, then the threads drawn from each)
+const OPENED=new Map();
+async function openBundle(el){const h=el.dataset.h;if(OPENED.has(h))return OPENED.get(h);
+  const p=fetch("b/"+h+".json").then(r=>r.json()).then(X=>{const bi=PTS[+el.dataset.i].b,base=PTS.length;
+    X.objects.forEach(k=>PTS.push({h:k,p:xyz(k),b:bi,t:0,lit:0}));const eb=PTS.length;
+    X.edges.forEach(([k,s,t])=>{PTS.push({h:k,p:xyz(k),b:bi,t:1,lit:0});LINKS.push([base+s,base+t,bi])});
+    const box=document.createElement("span");box.className="sub";
+    box.appendChild(Object.assign(document.createElement("span"),{className:"bm",textContent:(X.minted?"sealed "+X.minted+" · ":"")+X.objects.length+" records · "+X.edges.length+" threads"+(X.b3?" · BLAKE3 "+X.b3.slice(0,16)+"…":"")}));
+    X.seq.forEach(([t,ix],j)=>{if(j)box.appendChild(Object.assign(document.createElement("span"),{className:"sep",textContent:t?"·":"✦"}));
+      const sp=t?span(X.edges[ix][0],eb+ix,"t"):span(X.objects[ix],base+ix,"");box.appendChild(sp);io.observe(sp)});
+    el.after(box);el.classList.remove("shut");el.classList.add("opened");
+    $("skynote").textContent=PTS.length+" hashes on the 64 states · "+OPENED.size+" bundle(s) open · what you read glows";return box});
+  OPENED.set(h,p);return p}
+// a tap selects; on a bundle root a second tap opens it, then folds and unfolds its records. Proving is the card's button.
+document.addEventListener("click",e=>{if(e.target.closest&&e.target.closest("#tip"))return;const s=e.target.closest&&e.target.closest(".k");if(!s)return;e.preventDefault();
+  if(e.shiftKey){open("https://sigil.mages.city/?a=sha256:"+s.dataset.h,"_blank","noopener");return}
+  const again=PIN===s;
+  if(s.classList.contains("shut")&&(again||!matchMedia("(hover: none)").matches)){openBundle(s).then(()=>show(s,true));return}
+  if(s.classList.contains("opened")&&again){const box=s.nextElementSibling;if(box&&box.classList.contains("sub")){const shut=box.classList.toggle("folded");s.classList.toggle("folded",shut)}}
+  show(s,true)});
+// ---- the switch: the whole scroll turns, line by line from where you are reading, into the other script
+function setMode(m){if(m===MODE)return;MODE=m;$("m-seal").classList.toggle("on",m==="seal");$("m-hex").classList.toggle("on",m==="hex");
+  const anchor=SPANS.find(s=>s.getBoundingClientRect().top>=0),at=anchor?anchor.getBoundingClientRect().top:0,vis=SPANS.map((s,i)=>[i,Math.abs(s.getBoundingClientRect().top)]).sort((a,b)=>a[1]-b[1]).map(x=>x[0]);
+  document.body.classList.toggle("seal",m==="seal");let k=0;const step=()=>{const n=Math.max(12,Math.ceil(vis.length/70));for(let j=0;j<n&&k<vis.length;j++,k++){const s=SPANS[vis[k]];s.textContent=m==="seal"?seal(s.dataset.h):s.dataset.h}if(anchor)scrollBy(0,anchor.getBoundingClientRect().top-at);if(k<vis.length)requestAnimationFrame(step)};step()}
+$("m-seal").onclick=()=>setMode("seal");$("m-hex").onclick=()=>setMode("hex");
+// a link to one hash (#k=<hex>, from the City's seal reader): open the scroll there, the hash lit with its threads
+async function goTo(){const m=location.hash.match(/^#k=(?:sha256:)?([0-9a-f]{64})(?:&b=(?:sha256:)?([0-9a-f]{64}))?$/);if(!m)return;
+  if(m[2]){const b=SPANS.find(x=>x.dataset.h===m[2]&&x.classList.contains("shut"));if(b)await openBundle(b)}
+  const s=SPANS.find(x=>x.dataset.h===m[1]);if(!s)return;
+  s.scrollIntoView({block:"center"});s.dispatchEvent(new MouseEvent("pointerover",{bubbles:true}));}
+addEventListener("hashchange",goTo);setTimeout(goTo,60);
+// open every bundle as the reader nears it, so the scroll unrolls and the star fills along the way, as on the guide's scroll
+if(DATA.lazy&&true){const near=new IntersectionObserver(es=>{for(const e of es)if(e.isIntersecting){near.unobserve(e.target);openBundle(e.target)}},{rootMargin:"0px 0px 300px 0px"});document.querySelectorAll(".k.shut").forEach(s=>near.observe(s))}
+$("skynote").textContent=PTS.length+" hashes on the 64 states · what you read glows · "+"point at a hash to see its threads · click a bundle to open it";
+size();tick();})();
+</script></body></html>

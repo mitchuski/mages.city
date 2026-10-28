@@ -36,9 +36,9 @@ const DATA = { books, epochs, total, built: new Date().toISOString().slice(0, 10
 })(DATA, "DATA");
 
 const html = scrollPage(DATA, {
-  title: "The Soul Mage's Scroll · Mages City",
+  title: "Soul Mage's Scroll · Mages City",
   desc: "An inscription of the spells the soul mage has cast to keep the agentprivacy universe coherent, written as nothing but their hashes.",
-  h1: "The Soul Mage's <em>Scroll</em>",
+  h1: "Soul Mage's <em>Scroll</em>",
   epi: "An inscription of the spells the soul mage has cast to keep the agentprivacy universe coherent: every record it read across the lanes, every thread it drew between them, each sealed under a root. Nothing of what they say is written here. Only their names, which are their hashes.",
   colophon: '<b>{total}</b> hashes · {books} books · inscribed {built}<br>Each hash names one record or one thread between two records, as the soul mage sealed it; the roots fold them. This scroll is the inscription, not the proof: the sealed bundles re-derive every root. Seals are written with <a href="https://github.com/johnservil/sigil">Sigil</a>; a hash lands on the star by its first bits.<br><a href="https://sigil.mages.city/">Check any of them at sigil.mages.city →</a> · <a href="https://guide.mages.city/">the guide\'s scroll →</a>',
   kinds: ["a record", "a thread", "a root"],

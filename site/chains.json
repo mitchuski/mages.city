@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-26",
+ "generated": "2026-10-27",
  "chains": [
   {
    "id": "sha256",
@@ -314,22 +314,30 @@
    "hash": "hashsmash_sha256",
    "sound": false,
    "axis": "entry",
-   "entries": 6,
-   "lever_leaves": 28,
-   "no_go": 11,
-   "work_root": "sha256:02a9f9c2b6d03068b210635cbcfb34ec6a30a8dfdb6a0551932ca2866252e00c",
-   "seal": "eɢᐔᕄѫᖤᒱዊⶉƶʞቓμኢሖʊዝҭᙻᣊᒠሐጊመፃቐ",
+   "entries": 11,
+   "lever_leaves": 47,
+   "no_go": 53,
+   "work_root": "sha256:61db89648a19d077f6fadadf2087fd4871c07a36811003ff1e9f10dcb24f858d",
+   "seal": "ጘⶵᒈbፘᓰᔳᑕᒡᒩዞᖮጁҭኃኾሤƪዡዃѿᙍᣊᐍᘥⷌ",
    "poaw_root": null,
    "step": null,
-   "minted": "2026-10-25",
+   "minted": "2026-10-26",
    "verdicts": [
     [
      "valid",
      4
     ],
     [
-     "validating",
-     2
+     "refuted",
+     3
+    ],
+    [
+     "not submitted",
+     1
+    ],
+    [
+     "not_evaluable",
+     3
     ]
    ]
   },
@@ -344,18 +352,18 @@
    "hash": "lattice",
    "sound": false,
    "axis": "step",
-   "entries": 31,
+   "entries": 34,
    "lever_leaves": 0,
    "no_go": 0,
-   "work_root": "sha256:8013d3e961861e4ea63eeedcc195352cb25be453536f577f5c10818ae2dcdd48",
-   "seal": "ᑕᓿᕩᕦፍϻᓪኘᖉጬᖹщᑘⷑኊᢾŧѭҝᒡᘖᓐᢾሕƙᘊ",
+   "work_root": "sha256:70d2f7fb2ef36dc3324b3abb8b0d5823115c28cc23f42c8e4751a80104d7452f",
+   "seal": "ᎍƨƙⶍrᔝᑭȸᓳᣭኛህᐕዴжҡᘉᓗᓁᒣᕿፎᘬᓇሔᔪ",
    "poaw_root": null,
    "step": null,
-   "minted": "2026-10-24",
+   "minted": "2026-10-26",
    "verdicts": [
     [
      "verified",
-     31
+     34
     ]
    ]
   },
@@ -370,11 +378,11 @@
    "hash": "sig_golf",
    "sound": false,
    "axis": "entry",
-   "entries": 4,
-   "lever_leaves": 0,
-   "no_go": 0,
-   "work_root": "sha256:b660d29bbad22a5fb674e4aca0cc7d9660625cdcce1f47b001c197d360b43d66",
-   "seal": "ᕿᑂᕪkᕇᒦᑃᒦᘉኁᔸᣙᐛɿᕞᙋያᕨᖡቮዌѽᔚᙥᗫⶠ",
+   "entries": 5,
+   "lever_leaves": 27,
+   "no_go": 12,
+   "work_root": "sha256:2b0da29fc8ec150b596135cbc696ed68ff9d8495d48564087fb3b1cd640743f0",
+   "seal": "ҥᐆዒɢᒊϛᔕᓪᐃԡᗩъᕞᣛኃᕖጨᕚᘕᎉᗔʀᐔኁᕤᘺ",
    "poaw_root": null,
    "step": null,
    "minted": "2026-10-20",
@@ -385,7 +393,7 @@
     ],
     [
      "not submitted",
-     1
+     2
     ]
    ]
   }
