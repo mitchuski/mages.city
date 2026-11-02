@@ -1,5 +1,5 @@
 // sealcheck.js — check two seals against each other, the same on mages.city (sigil.mages.city, /seal.html) and
-// soulbis.com/sigil. A seal is a 32-byte hash written as one word of 26 characters (Sigil, johnservil/sigil,
+// soulbis.com/sigil. A seal is a 32-byte hash written as one word of 25 letters (Sigil 0.1, johnservil/sigil,
 // pinned beside this file): the check means one changed character, or two swapped, no longer reads.
 // Each side takes a hash (64 hex, with or without sha256:/blake3:) or a seal; the comparison says what the two
 // share — characters in place, leading bits, the bits that differ, and where both sit on the City's 64 states
@@ -65,7 +65,7 @@
     const L = Object.assign({ a: "one", b: "two" }, opt.labels || {});
     let INDEX = null;
     const side = (id, col) => `<div class="sc-side ${id}"><div class="sc-tag"><i style="background:${col}"></i>${esc(L[id])}</div>
-      <textarea data-f="${id}" rows="2" placeholder="a hash (64 hex, sha256: or blake3: optional) or a seal (26 characters)"></textarea>
+      <textarea data-f="${id}" rows="2" placeholder="a hash (64 hex, sha256: or blake3: optional) or a seal (25 letters)"></textarea>
       <div class="sc-row"><button class="sc-btn" data-act="random" data-f="${id}" type="button">random</button><button class="sc-btn" data-act="flip" data-f="${id}" type="button" title="change one character of the seal, to see the check refuse it">change one character</button><button class="sc-btn" data-act="seal" data-f="${id}" type="button">copy seal</button><button class="sc-btn" data-act="hex" data-f="${id}" type="button">copy hash</button>${((opt.extra || {})[id] || []).map((x, i) => `<button class="sc-btn" data-act="extra" data-i="${i}" data-f="${id}" type="button">${esc(x.label)}</button>`).join("")}<span class="quiet" data-note="${id}"></span></div>
       <div class="sc-seal" data-seal="${id}"></div><div class="sc-hex" data-hex="${id}"></div><div class="sc-place" data-place="${id}"></div><div class="sc-v" data-v="${id}"></div><div data-found="${id}"></div></div>`;
     root.classList.add("sc");
@@ -151,7 +151,7 @@
       let diff = 0; for (let i = 0; i < 256; i++) if (ba[i] !== bb[i]) diff++;
       const d6 = pop(va ^ vb);
       const place = va === vb ? "<b>the same vertex</b>, V" + va : (va >> 3) === (vb >> 3) ? `the same house ${word(va >> 3)}, ${d6 === 1 ? "neighbouring places" : "different places"}` : d6 === 1 ? "neighbours: one dimension apart" : `${d6} of 6 dimensions apart (V${va} · V${vb})`;
-      out.innerHTML = `<span class="k">characters in place</span> ${same} of 26 <span class="quiet">(chance alone: about 0.02)</span><br><span class="k">leading bits shared</span> ${pre} <span class="quiet">(chance alone: about 1)</span><br><span class="k">bits that differ</span> ${diff} of 256 <span class="quiet">(two unrelated hashes: about 128)</span><br><span class="k">on the lattice</span> ${place}`;
+      out.innerHTML = `<span class="k">characters in place</span> ${same} of 25 <span class="quiet">(chance alone: about 0.01)</span><br><span class="k">leading bits shared</span> ${pre} <span class="quiet">(chance alone: about 1)</span><br><span class="k">bits that differ</span> ${diff} of 256 <span class="quiet">(two unrelated hashes: about 128)</span><br><span class="k">on the lattice</span> ${place}`;
       bits.innerHTML = pre ? `the shared prefix: <b>${ba.slice(0, pre)}</b>${ba.slice(pre, Math.min(256, pre + 24))}…` : "";
     }
     root.addEventListener("input", (e) => { const f = e.target.getAttribute && e.target.getAttribute("data-f"); if (f) read(f); });
