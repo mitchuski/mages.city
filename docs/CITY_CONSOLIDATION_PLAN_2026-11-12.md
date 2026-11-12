@@ -128,3 +128,15 @@ package) · 0 need attention** on 12 Nov.
 **Deploy order when you're ready:** prism.mages.city → scroll.mages.city → package.mages.city → switch the
 `/scrolls` line in `_redirects` → push mages_city main → the always-on host pulls join's config →
 `node bin/verify-hosts.mjs` (scroll/prism/package should flip from staged to live; update hosts.json).
+
+## 8. Live (12 November, late; Mitch: "everything in the tree")
+
+Deployed: prism.mages.city (with the reading: open, cross, cut, your face, hand on; the finder now loads only when a
+hash is held), research.mages.city (was package; never deployed under that name), scroll.mages.city. mages_city main
+pushed as 64cb15e (all of the tree, the other window's MyTerms/vti/star-experiment work included; `.tmp` left out).
+`/scrolls` -> scroll.mages.city and `/package` -> research.mages.city redirect; the apex Scriptorium stays at /arena with
+the Sigil and Prism drawings. `node bin/verify-hosts.mjs`: 35 hosts, 35 ok.
+
+Still open: the quest pages are heavy on a phone (ML-DSA 11.6 MB, SHA-256 3.2 MB, HashSmash sha256 2.3 MB, every
+hash inline); next is the lazy-book scroll tab the HashSmash home already uses, built in blake3-mage (WSL), then a
+quest deploy. The HashSmash home's deploy copy carries the research link but is not redeployed.
