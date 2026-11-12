@@ -1,1 +1,22 @@
 /connected/* / 302
+# the Scriptorium (was Evidence / the arena): /scrolls serves the page, /scriptorium points there; arena.html stays the file
+/scriptorium /scrolls 301
+# one source per page: the apex copies of the scrolls point at their own homes (the research package lives at research.mages.city)
+/soul https://soul.mages.city/ 301
+/soul/* https://soul.mages.city/:splat 301
+/guide-scroll https://guide.mages.city/ 301
+/guide-scroll/* https://guide.mages.city/:splat 301
+/hashsmash https://hashsmash.mages.city/ 301
+/hashsmash/* https://hashsmash.mages.city/:splat 301
+/flashprove https://flashprove.mages.city/ 301
+/flashprove/* https://flashprove.mages.city/:splat 301
+/near https://near.mages.city/ 301
+/near/* https://near.mages.city/:splat 301
+/formal https://formal.mages.city/ 301
+/formal/* https://formal.mages.city/:splat 301
+/poc https://poc.mages.city/ 301
+/poc/* https://poc.mages.city/:splat 301
+/package https://research.mages.city/ 301
+/package/* https://research.mages.city/:splat 301
+# the Scriptorium has its own home; the apex page stays at /arena
+/scrolls https://scroll.mages.city/ 301

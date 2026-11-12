@@ -19,9 +19,9 @@
       "id": "starkey",
       "glyph": "✦",
       "name": "Star Key",
-      "line": "Your wallet into the City, and your first invitation from the keeper.",
+      "line": "Carry yourself into the City without the City carrying you.",
       "vertex": 38,
-      "door": "starkey.md",
+      "door": "star-key.html",
       "reading": "starkey.md",
       "state": "live",
       "spell": "Read https://mages.city/starkey.md. Help me load Star Key, connect it to my own VTA, run the grant line with my pnm, lock it with a passkey, and prepare my request for a first invitation.",
@@ -29,9 +29,9 @@
     },
     {
       "id": "arena",
-      "glyph": "⛓️",
-      "name": "Evidence",
-      "line": "Work you can check: evidence ledgers, and the arenas that grow them.",
+      "glyph": "📜",
+      "name": "the Scriptorium",
+      "line": "Mages' scrolls, made for scrolling: every scroll, the arenas that grow them, and the Prism that reads them.",
       "vertex": 42,
       "door": "arena.html",
       "reading": "arena.md",
@@ -73,18 +73,6 @@
       "reading": "guide.md",
       "state": "live",
       "spell": "Read https://mages.city/guide.md and https://mages.city/community.md. We are doing Part <A|B|C|D>. Follow the rules for the agent. Start at phase 1 and wait for me after each phase.",
-      "group": "learn"
-    },
-    {
-      "id": "atlas",
-      "glyph": "🗺️",
-      "name": "the Atlas",
-      "line": "The lattice, the workshops, the seats and who holds them.",
-      "vertex": 24,
-      "door": "map.html",
-      "reading": "city-topology.json",
-      "state": "live",
-      "spell": "Read https://mages.city/city-topology.json and https://mages.city/arena.json (lattice, seats). Tell me which workshops sit where, which seats the Arena's instances hold, and what a bit flip from a vertex means.",
       "group": "learn"
     },
     {

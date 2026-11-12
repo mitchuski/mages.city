@@ -1,6 +1,6 @@
 # Get Star Key — the City's browser wallet
 
-> Status (21 October 2026): version 0.2.0, loaded unpacked. The fork is not on the Chrome Web Store: a Store listing of the wallet is the upstream publisher's to make, and the fork is taken from the City or the release. The same build, two places to take it from.
+> Status (12 November 2026): the download below is 0.2.0, loaded unpacked; the next release follows the wallet's catch-up with upstream (rooms, votes, notifications, the newer sign-in). New here? Start at [Your Star Key](star-key.html): why it exists, and the one next step for where you stand. The fork is not on the Chrome Web Store: a Store listing of the wallet is the upstream publisher's to make, and the fork is taken from the City or the release. The same build, two places to take it from.
 
 `machines qualify · humans admit · brokers release`
 
@@ -25,7 +25,7 @@ Or build it yourself: clone the fork, `npm install`, `npm run build`, and load `
 
 1. Unzip the file into a folder you will keep. Chrome loads the extension from that folder each start; delete it and the wallet is gone.
 2. Open `chrome://extensions`, switch on **Developer mode** (top right).
-3. **Load unpacked**, choose the folder. The extension is named **Star — Trust Experiment**; pin it from the puzzle-piece menu so the Star sits in your toolbar.
+3. **Load unpacked**, choose the folder. The extension is named **Star Key** (0.2.0 still shows *Star — Trust Experiment*); pin it from the puzzle-piece menu so the Star sits in your toolbar.
 4. Setup opens on its own. It asks for your VTA's DID first: continue on the [Star Key page](starkey.md), which walks the connection, the grant at your agent, and the passkey.
 
 Chrome asks for no permission at install. The wallet asks per site, in the click, the first time you use it there.
@@ -53,7 +53,8 @@ What a community sees of your Hold at the door today is the last line: a root an
 ## Then
 
 - **Connect it to your agent**: [starkey.md](starkey.md). You need a VTA of your own; the [VTA farm](https://vta.farm/) is the easiest.
-- **Join the City**: press the 🤝 in the Star's header on [join.mages.city](https://join.mages.city/) and give it the community's DID, or [walk in by the members door](https://join.mages.city/members/).
-- **Your agreements**: Options → Agreements, where you choose the terms you present at a door.
+- **Join the City**: press the 🤝 in the Star's header on [join.mages.city](https://join.mages.city/) and give it the community's DID, or [walk in by the members door](https://vtc.mages.city/members/).
+- **Your agreements**: Options → Agreements, where you choose the terms you present at a door. The City takes [SD-BASE-DP](https://agreements.info/r/sd-base-dp) and [SD-BASE](https://agreements.info/r/sd-base), from the MyTerms roster.
+- **What lights your Star**: [the star of the chains](star.html), where you compose a face of the City's evidence and fold it into your City Key.
 
 Related: [starkey.md](starkey.md) · [community.md](community.md) · [join.html](join.html) · [the upstream wallet](https://github.com/OpenVTC/vta-browser-plugin) · [OpenVTC](https://openvtc.net/)

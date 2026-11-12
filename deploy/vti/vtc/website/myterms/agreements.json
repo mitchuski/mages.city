@@ -5,15 +5,19 @@
       "code": "SD-BASE-DP",
       "title": "Service delivery, with data portability",
       "meaning": "Use my data only to deliver the service, and give it back to me when I ask.",
-      "url": "https://customercommons.org/agreements/SD-BASE-DP"
+      "url": "https://agreements.info/r/sd-base-dp",
+      "iri": "https://agreements.info/r/sd-base-dp/8b87b7aa45251a31d55c230d41b08a00.md",
+      "digestMultibase": "uEiBLRRH-TCx_K7izVLR7mCYC0VTFubHdV-whnmzQXGcaog"
     },
     {
       "code": "SD-BASE",
       "title": "Service delivery only",
       "meaning": "Use my data only to deliver the service. No analytics, tracking, profiling or sharing.",
-      "url": "https://customercommons.org/agreements/SD-BASE"
+      "url": "https://agreements.info/r/sd-base",
+      "iri": "https://agreements.info/r/sd-base/e6f67d5120e30b57118e764374651012.md",
+      "digestMultibase": "uEiCJYmDAIgaMC_gLo3FEPEG59hrt1EqvA462vcbvtSiQ0w"
     }
   ],
   "counterOffer": "SD-BASE-DP",
-  "configuration": "https://join.mages.city/.well-known/myterms-configuration"
+  "configuration": "https://join.mages.city/myterms/configuration.json"
 }

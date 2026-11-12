@@ -1,0 +1,203 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>The Proof-of-Control mage · Mages City</title>
+<meta name="description" content="One contribution to an open standard for verifying what AI agents did, held as nothing but its hashes: the proposal as committed, the suggestions made, every source it was checked against, every check, sealed under one root that anyone can recompute.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="sigil/fonts.css">
+<style>
+:root{color-scheme:dark;--bg:#07090f;--ink:#d9d2c3;--dim:#7d7a72;--faint:#3a3a40;--gold:#e8c873;--cyan:#9fd6db;--coral:#e5a49c;--violet:#c1c8ef}
+*{box-sizing:border-box}html,body{margin:0;background:var(--bg);color:var(--ink)}
+body{font:15px/1.6 "Cormorant Garamond",Georgia,serif;background:radial-gradient(ellipse at 70% 0%,#11131d 0,var(--bg) 60%) fixed}
+a{color:var(--cyan);text-decoration:none}a:hover{text-decoration:underline}
+#sky{position:fixed;left:0;top:0;width:42vw;height:100vh}
+#sky canvas{width:100%;height:100%;display:block}
+.orbtog{position:absolute;left:18px;bottom:18px;width:32px;height:32px;border-radius:50%;border:1px solid #2a2d38;background:rgba(7,9,15,.7);color:var(--gold);cursor:pointer;font:15px/1 system-ui}
+.orbtog.off{color:var(--dim)}
+#skynote{position:absolute;left:62px;bottom:24px;font:11px/1.4 ui-monospace,monospace;color:var(--dim);letter-spacing:.04em;max-width:30vw}
+main{margin-left:42vw;max-width:880px;padding:64px 48px 160px 32px}
+.top{display:flex;justify-content:space-between;align-items:center;font:12px ui-monospace,monospace;color:var(--dim);letter-spacing:.06em}
+.mode{display:inline-flex;border:1px solid #2a2d38;border-radius:20px;overflow:hidden;position:fixed;top:16px;right:18px;z-index:6;background:rgba(7,9,15,.88)}
+.mode button{background:none;border:0;color:var(--dim);font:12px ui-monospace,monospace;padding:6px 12px;cursor:pointer}.mode button.on{background:#1a1c26;color:var(--gold)}
+h1{font:400 clamp(40px,6vw,68px)/1.02 "Cormorant Garamond",Georgia,serif;margin:46px 0 6px;color:var(--ink)}h1 em{color:var(--gold);font-style:italic}
+.epi{font-style:italic;font-size:19px;line-height:1.55;color:#bdb6a7;max-width:40em;margin:14px 0 40px}
+.book{margin:56px 0 0;content-visibility:auto;contain-intrinsic-size:auto 700px}.bh{display:flex;align-items:baseline;gap:18px;border-top:1px solid #23252e;padding-top:18px}
+.bh .n{font:400 44px/1 "Cormorant Garamond",Georgia,serif;color:var(--gold);min-width:1.6em}.bh .n.w{font-size:30px;min-width:0;white-space:nowrap}
+.bh .r{flex:1;min-width:0}.bh .meta{font:11px ui-monospace,monospace;color:var(--dim);letter-spacing:.05em}
+.spell{margin-top:16px;line-height:1.95;font-size:15px;text-align:justify;hyphens:none;word-break:break-all;overflow-wrap:anywhere}
+.k{cursor:pointer;transition:color .35s,text-shadow .35s;color:#a9a294}
+.k.t{color:#6f7d86}
+.k.root{color:var(--gold);font-size:1.25em}
+.spell .bm{display:block;font:11px ui-monospace,monospace;color:var(--dim);letter-spacing:.05em;margin-bottom:.3em}.spell .run,.spell .ch{display:block;content-visibility:auto;contain-intrinsic-size:auto 300px}.spell .ch:not(:last-child){text-align-last:justify}.spell .sub{display:block;margin:.5em 0 .9em .4em;padding-left:.9em;border-left:1px solid rgba(232,200,115,.28)}.k.shut{text-decoration:underline dotted rgba(232,200,115,.5);text-underline-offset:.25em;cursor:pointer}.k.opened{color:var(--gold);cursor:pointer}.spell .sub.folded{display:none}.k.opened.folded{text-decoration:underline dotted rgba(232,200,115,.5);text-underline-offset:.25em}
+.k:hover,.k.hl{color:#fff;text-shadow:0 0 10px rgba(232,200,115,.55)}
+.k.read{color:#cfc8b8}.k.t.read{color:#93a8b2}
+.sep{color:var(--faint);padding:0 .25em}
+body.seal .spell{font-family:"Noto Sans","Noto Sans Ethiopic","Noto Sans Canadian Aboriginal","Segoe UI Historic",system-ui,sans-serif;font-size:17px;letter-spacing:.06em;line-height:1.9;word-break:break-all}
+body.seal .sep{display:none}
+body:not(.seal) .spell{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12.5px;letter-spacing:.02em}
+.root-seal{font-family:"Noto Sans","Noto Sans Ethiopic","Noto Sans Canadian Aboriginal",system-ui,sans-serif;font-size:22px;letter-spacing:.08em;color:var(--gold);overflow-wrap:anywhere}
+.colo{margin-top:80px;border-top:1px solid #23252e;padding-top:22px;font:12.5px/1.8 ui-monospace,monospace;color:var(--dim)}
+.colo b{color:var(--ink);font-weight:400}
+.lanes{font:12.5px/1.9 ui-monospace,monospace;color:var(--dim);margin-top:6px}.lanes a{color:var(--cyan)}
+.scrolls{font:12px/1.9 ui-monospace,monospace;color:var(--dim);margin-top:10px;max-width:60em}.scrolls a{color:var(--dim)}.scrolls a:hover{color:var(--cyan)}.scrolls b{color:var(--gold);font-weight:400}
+#tip{position:fixed;right:18px;bottom:18px;max-width:min(560px,52vw);background:rgba(10,12,18,.94);border:1px solid #2a2d38;border-radius:10px;padding:10px 14px;font:11.5px/1.5 ui-monospace,monospace;color:var(--dim);display:none;z-index:5}
+#tip.pin{border-color:#4a4330;color:var(--ink)}#tip.pin .s{padding-right:30px}#tip .h{overflow-wrap:anywhere;color:var(--ink);margin:2px 0}#tip .hint{margin-top:4px;color:var(--faint)}#tip .x{position:absolute;right:8px;top:6px;background:none;border:0;color:var(--dim);font:18px/1 system-ui;cursor:pointer;padding:4px 6px}
+#tip .acts{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}#tip .acts button,#tip .acts a{font:12px ui-monospace,monospace;padding:7px 12px;border-radius:16px;border:1px solid #2a2d38;background:#12141c;color:var(--ink);cursor:pointer;text-decoration:none}#tip .acts .prove{border-color:#5a4d2a;color:var(--gold)}#tip .acts button,#tip .acts a{font-size:18px;line-height:1;min-width:52px;text-align:center}
+#tip .s{font:17px/1.4 "Noto Sans","Noto Sans Ethiopic","Noto Sans Canadian Aboriginal",system-ui,sans-serif;color:var(--gold);letter-spacing:.06em;overflow-wrap:anywhere}
+@media(max-width:860px){#sky{position:sticky;width:100%;height:46vh;top:0;z-index:2;background:var(--bg)}main{margin-left:0;padding:24px 16px 120px}#skynote{max-width:60vw}#tip{left:10px;right:10px;bottom:10px;max-width:none;padding:12px 14px calc(12px + env(safe-area-inset-bottom))}#tip .acts button,#tip .acts a{flex:1;text-align:center;padding:10px 8px}.k{-webkit-tap-highlight-color:transparent}}
+</style></head><body class="seal">
+<div id="sky"><canvas id="cv"></canvas><button class="orbtog" id="orb" type="button" title="orbit on · click to hold the star still">⟳</button><div id="skynote"></div></div>
+<main>
+<div class="top"><span><a href="https://mages.city/">mages.city</a> · <a href="https://mages.city/arena.html">Evidence</a> · <a href="https://sigil.mages.city/">✍ Sigil</a></span>
+<span class="mode" role="group" aria-label="write the scroll as"><button id="m-seal" class="on" type="button">seals</button><button id="m-hex" type="button">hashes</button></span></div>
+<nav class="scrolls" aria-label="every scroll">the scrolls: <a href="https://soul.mages.city/">❦ soul mage</a> · <a href="https://guide.mages.city/">❦ guide</a> · <a href="https://hashsmash.mages.city/">❦ HashSmash, every lane</a> · <a href="https://flashprove.mages.city/">❦ provable inference</a> · <a href="https://research.mages.city/">❦ research package</a> · <a href="https://formal.mages.city/">❦ formal mage</a> · <a href="https://near.mages.city/">❦ near mage</a> · <b>❦ poc mage</b> · <a href="https://sha256.mages.city/?tab=scroll">SHA-256</a> · <a href="https://sha3.mages.city/?tab=scroll">SHA-3</a> · <a href="https://blake3.mages.city/?tab=scroll">BLAKE3</a> · <a href="https://poseidon.mages.city/?tab=scroll">Poseidon</a> · <a href="https://curve.mages.city/?tab=scroll">Curve · secp256k1</a> · <a href="https://ecrank.mages.city/?tab=scroll">EC rank</a> · <a href="https://falcon.mages.city/?tab=scroll">Falcon</a> · <a href="https://hashsmash.mages.city/blake3/?tab=scroll">HashSmash · BLAKE3</a> · <a href="https://hashsmash.mages.city/poseidon/?tab=scroll">HashSmash · Poseidon, first bundles</a> · <a href="https://hashsmash.mages.city/sha256/?tab=scroll">HashSmash · SHA-256</a> · <a href="https://mldsa.mages.city/?tab=scroll">Lattice · ML-DSA</a> · <a href="https://sig.mages.city/?tab=scroll">Sig golf</a></nav>
+<h1>The <em>Proof-of-Control</em> mage</h1>
+<p class="epi">One contribution to an open standard for verifying what AI agents did, held as nothing but its hashes: the proposal as committed, the suggestions made, every source it was checked against, every check, sealed under one root that anyone can recompute.</p>
+<div id="books"></div>
+<div class="colo" id="colo"></div>
+</main>
+<div id="tip"></div>
+<script src="sigil/sigilcode.js"></script>
+<script>
+const DATA={"books":[{"n":"I","root":"14bfa2cdd68cabe1d8b4fe576694f9d14ed05bfe0e694560ecd23041efd19eab","b3":"fb2ed291cc4987eb5761ae2c137cec08f756190e8ef4e9aa67d45691513a0efd","minted":"2026-11-12","objects":["333e8387a9978e06eeb2064151abf050a0455e9479215d489c851a77315aec3b","a224cbd64f670fb135b6421beabcc35322f55f81ace1ec347aca258afb5c9ad4","7fbed472667290bbd551dd0c61ae69dc76f20197e1b1427ea56057850d8ff184","c86dd0c030435c0f0f72f35e7b9eadfe51212a4f54e81c24ea35c868f3d55832","c315c7dc575661c6d5aba597c9a463ecd82e358a4140b948fe8e648b82603ab0","d89b31f30f2a4bded00cfacd6308abb53f14dd185b3ae217c851566aa72f43cf","1cb1f00dd8b51633c14ec1b23d234318183eee608732eec4a81fe71fcc5e105c","c6c62ceee0bfcd59b8686ca9252ab71e56ac92cebb46d91e8e4677cfbcdd7a9d","9b10e8bb5a6e5ecd741d3606bc7caa17acf79e7777f67766091f2da8d0a6209f","8d91d7b0a2709c231082dae3fe458e798964233dc397d48b6550c669ab159d0f","1ce4ae7de48c63654a6f23daa844c72b929975fb46a74406a78db48441a277e7","ecec40f6b3643a22eda388d046ae3862d99168f7c2708127abdb1dc61ebb0dc1","a077185abcf78202bdcecf29d0e537378211790cf2b99938a86c51066c5de692","dda5a64d4aa05934c15a551be2ce7f1cd194b787a9062e5b3a11fc6c75b41a64","d4981c91ccb1fca6d5251b8060090739db07a4f7d5346eb5c3ba16a70bd37776","4c27bcb4fb7d26a98b3b2b9b711303afe9296f61a973347a4311c5d27195b056","0df9bd33dd249632f0fa69a3291f628365ce4b94cd340e36dbed467c9a92c944","b0938a34727c44a7c54d3825c62904005b2de77bee5b9df9a738b85f5369be27","72014285777d9aa3ce54287951a7ed05ab9870df86c84564c67c64ba05d8153d","8c5f8c3aa8761415987e2fef0a728ab8b630055fedb7e44264dd131d050006c7","b7139748a0db7362ba38f4d07579d89fbab870b63224bb880eb9a1ce14e7ddd3","a8772e2451027c71566f68e2a8c1d9b3fc3873c836df4e3298398cdf682f2058","2b15d39ed1605dde8982e8630242b531aaaa28e673f6de3ced3a84643d2e818b","4e6e6e231e08d82f8afcf2f7afb0ba07eaf37b88462ec73ef3076d607e6aad15","bf98f6b27a21770ed14214fce2709d81c4174156ff43f2993c0670eac5157a36","25c23a3247d2179bbd83263bc03b85e53fbee0a0e5196acb1fb011e0b5f9d78c","19e5db0232c046e359e036cab7ef17c1b84b6d97bd9ea0b41f4aa79261b8f6ba","4881cebe6061073c28e207afbe03f376ff4942e3f0b479676c849084836a4921","5ef654ed7cda2921aecd3df69678ff808445103b8a245571b9bdcb120b868b28","98c3d5dd3c18dbf78bb0c5fb2eb471fdd006f1cd2e917e83bc91567bbeab5e92","db5a0f40639ed5be906e966767cb3ff969bce27ddb0a73395e929b1f7151fe52","547c51ca4fc54a52864318356c81f87a9dc017f7f390196d128c2a9c2f426982","0770b30853362047f61f7d05a7a7ba77ce2e9f144b70d1ffd86539f0e71454f7","593d79724b5d8bb1553af11b5b83cf1ec4b42bc75fa587df9d5719d6fb1fe0ec","748545aa8b8bfc82a1b105387d5888a7e33268a57821ea55895da07f6cf03b50","db2b8c89ba3bb2308b63683dc54aca6ccd5903f0d6097470c740e355c04bf890","25726d0427f07577ae97e4952c54f8094b061ba026236e5126ef6321b8ddd84c","7dc8630fe60f66bd133761b671b1416addbc14034fe9034d9569ed12b62a514c","04b9fcc4652c423038ab6276cfc47bb8776b67a91f3e79b4bfeeeebdc6da78ef","c28d7067a65a8ed4089ea8e51bc86afae0e04e776e05d9693164f5bb4993f500","f25db3bf636d734b2243d15fce8cf91cdfd1779c9f636c4a1804ff560d71cc1a","2e800ea5919bfca645195734fe0953ebad6de336bc3ecf834ea06eee2aa97c71","ebd6db0c337470432892843b2d8a5d35a3231630403766900450d920618bdeb8","10fb0fee7f841155cf398c107cbbb5a8d05496a00426d8e707190e0ada813a45","027d39b56ab9bd9e4c65be9fcf78a4602955bfc36cc08c61e8642cafdfb3be55","14bfa2cdd68cabe1d8b4fe576694f9d14ed05bfe0e694560ecd23041efd19eab"],"edges":[["df28586eeaefcece12f76b4b4a97cb71a324c4c71006eb361acda7e55d5e1938",1,0],["8744c35860885751f7064d654fdfae7f6cc9be4a8d27d1177bd6aa01086c471c",8,2],["926460643a861bf6b5d17b428c617ce6e60f143a93e1b8f248a4a7faf04fffc6",8,3],["89017a07f97210232e912f005eae181bbb6730410d0b21e3780f96db0beef652",8,4],["092aeef74c93393c4d6092a090dc4c510f2772df587ccff9e3c447be8bf7562d",8,5],["962514a4a5869d6256fd1fd49428d7ff59008ea8647dab82b85cd6825b34b117",8,6],["ec2a076eb6ac5d52effefc1bc354e83e8038defe9c3fb1acff0f459b4e8ea9b6",8,7],["8f3010e171b2446cd323ade19a37c0d3674b1a913771d87d8bbb8e0f41ea86e7",41,9],["d3d2454fd09421947709c83718342de131c29e40dc1ed948beae5df015ea8c25",41,10],["dbf9e9f11cbf9ce2a559534903526bb61c0dcd92b37864a53f3740be51ba997c",41,11],["e3cb4803837bda8f0a97da974840654c05588d2f4f85541cec1d549398863e05",41,12],["e058f71a06273e25ee68662b57cf1d07f60cd504ce1a0e402faad5861794d575",41,13],["90093cde140208ff932032ce547f714bfd647474e6ac4e7f2e8a4b4c6e0ecda1",41,14],["8ad139c389d8646276fe4f28ba59b86a6cbfe76424f4f0e8c9ff3c4790b9fac2",41,15],["7caf9724111c10da48ca71167260d48e6fcf39619c94182b7edbf3a459fbeb70",41,16],["931504446c36a81c23eae8165fadee7c257345a818723bbd6e80d3bd75ad73a1",41,17],["fcb64d9fba67f060dfc57c18e8bc8cb2c66b15ebd651de005cba448c0bf7beb3",41,18],["e468e99e02339182e08fd129dd4ee8c4e1af009d61b629b4c976eee9e336af78",41,19],["a73c5cd6f6339189ad5c404f751983ffb6fb5efd4456bda5b2f1f8c107872f3a",41,20],["b4e54e5de77e1e30c4baa2bdaa7bb054c66726c7892c111332f79620df585ad7",41,21],["5400c1e08f823545b6c4220e245ea2c9cf414cbf0d81276a894a9c52c3dfa5c8",41,22],["f830415ce753a49a8cdb5141b904ca854331f5e76004d083298445b7319e072c",41,23],["b644c632a37baf60b3a70c1270c113c8e06e588ec75661fb228fb8042f99ab89",41,24],["c81b47efdd1ff6900c5d402c1fd1f28138d4a621862edeb87761d608507b3e40",41,25],["018601acfbe67df35989d992d620c3528672ff5a08ae1156266762fe6e7f739e",41,26],["534d381e6fc6cac4ffab54aef67f7aba9ba3e2eecbaceffb2d6b21238f2db912",41,27],["51613e2c697a62a437e721e9e7cc3b20148b50cc14e7f02471e1ec0d94a6da06",41,28],["1b9d61de93e6fa733fb7db172250b1132d6f9aca52ad0710137e65c75a17595e",41,29],["a039e1ee84285402b30b01c21ac224cb2c58d262cbf464d0013da19fdd9ce7c2",41,30],["a59f6e5a913e39d11eea948ab0e89c79856ab53d67deefe849b5ddba249a6639",41,31],["90e6c9d0f1fa02705137c3ac4eea7eadf76f54dbb8c7225126c1e67cdb8bff18",41,32],["74193356b79c02936fd4de2a2d3e96ebeec52af0310d757df2728db276bfdc0d",41,33],["2300b13a1efd8528724d4a64c425cee4431b39c13e6615273bd5fece4d2b0836",41,34],["09bad55f5c7c14dd28992e20f53d80118de4f1b142fe86b7ed4a8d7712e0b1a9",41,35],["54db382531bccda368cc6675fb1a443f3ea1824790f123489de104ba0144d49d",41,36],["a75426f521987444ac05043bdce3bbdcfbf545ea22253f7d637f86d4029d91f2",41,37],["5c4eb96db81f16509a858cf06afbbca4b29d9982d161358536363fe34f4fdde8",41,38],["289d1ea618380bfdbd21637e10e5d27ae1b24226d337626e824ee4822a3e52fd",41,39],["8aca026fd230bf637b1ee6329f44423e410ab0ab26999fb5330f15c51e82acaf",41,40],["0b9627dbb4ccbc6faf4b4d1d505cfe7174db4f27a08620ff0522bac7bd3a7419",42,1],["a6889545680456c0179733ef44470f080992b41467dfb33e5a19b8ea95c38fbb",43,8],["a84ec916ddac81f11b0f89217bf81deb1790102abbeb15180d4624020755954e",44,41],["40e6878177b855277658beb9098296b4be68f8f445dca88f37f73d9021699644",45,41],["138949059f6287cc03b70d9e70704fe718e422be21503837020a58af2f32be6e",45,44],["5f6ab7e29dad4171630d0d8d99064c7effca50e341d617e38953f22abdbda283",45,1],["d507585e2658fef506456a56e139eb06b43373ab2daa427ed1d0f813fc778313",45,42],["784cb40c71903b9753609f3249513d4d7b549944a63f835f6710ac7157597229",45,8],["7f8377c45c3394e161490661736ee253da36c45107457547f6dfc745c4f05713",45,43]],"seq":[[0,0],[0,1],[1,0],[0,2],[0,3],[0,4],[0,5],[0,6],[0,7],[0,8],[1,1],[1,2],[1,3],[1,4],[1,5],[1,6],[0,9],[0,10],[0,11],[0,12],[0,13],[0,14],[0,15],[0,16],[0,17],[0,18],[0,19],[0,20],[0,21],[0,22],[0,23],[0,24],[0,25],[0,26],[0,27],[0,28],[0,29],[0,30],[0,31],[0,32],[0,33],[0,34],[0,35],[0,36],[0,37],[0,38],[0,39],[0,40],[0,41],[1,7],[1,8],[1,9],[1,10],[1,11],[1,12],[1,13],[1,14],[1,15],[1,16],[1,17],[1,18],[1,19],[1,20],[1,21],[1,22],[1,23],[1,24],[1,25],[1,26],[1,27],[1,28],[1,29],[1,30],[1,31],[1,32],[1,33],[1,34],[1,35],[1,36],[1,37],[1,38],[0,42],[1,39],[0,43],[1,40],[0,44],[1,41],[0,45],[1,42],[1,43],[1,44],[1,45],[1,46],[1,47]]}],"epochs":[],"total":95,"built":"2026-11-12"};
+(function(){"use strict";
+const S=globalThis.SigilCode,$=id=>document.getElementById(id);
+const bytes=h=>Uint8Array.from(h.match(/../g).map(x=>parseInt(x,16)));
+const SEAL=new Map(),seal=h=>{let s=SEAL.get(h);if(!s){try{s=S.encode(bytes(h))}catch(e){s=h}SEAL.set(h,s)}return s};
+let MODE="seal";
+// ---- the star: every hash placed by its bits, as on every star of the City
+const bits=(hx,from,n)=>{let v=0;for(let i=0;i<n;i++){const c=parseInt(hx[(from+i)>>2],16),b=(c>>(3-((from+i)&3)))&1;v=v*2+b}return v};
+const CV=b=>[(b&1)?1:-1,(b&2)?1:-1,(b&4)?1:-1],par=h=>(h^(h>>1)^(h>>2))&1;
+const xyz=hx=>{const house=bits(hx,0,3),sub=bits(hx,3,3),j=[bits(hx,6,3),bits(hx,9,3),bits(hx,12,3)],H=CV(house),Sv=CV(sub);return[0,1,2].map(i=>H[i]+Sv[i]*.3+(j[i]-3.5)*.02)};
+const STELLA=[[0,3],[0,5],[0,6],[3,5],[3,6],[5,6],[1,2],[1,4],[1,7],[2,4],[2,7],[4,7]];
+const BOOKNAME=[];
+const BOOKCOL=["#e8c873","#9fd6db","#c1c8ef","#e5a49c"];
+const PTS=[],LINKS=[];
+DATA.books.forEach((B,bi)=>{const base=PTS.length;B.objects.forEach(h=>PTS.push({h,p:xyz(h),b:bi,t:0,lit:0}));const eb=PTS.length;
+  B.edges.forEach(([h,s,t])=>{PTS.push({h,p:xyz(h),b:bi,t:1,lit:0});LINKS.push([base+s,base+t,bi])});B._base=base;B._eb=eb;
+  PTS.push({h:B.root,p:xyz(B.root),b:bi,t:2,lit:0});B._root=PTS.length-1});
+DATA.epochs.forEach(E=>PTS.push({h:E.root,p:xyz(E.root),b:0,t:2,lit:0,ep:1}));
+(DATA.links||[]).forEach(([b1,i1,b2,i2])=>{const A=DATA.books[b1],B=DATA.books[b2];if(A&&B)LINKS.push([A._base+i1,B._base+i2,b1])});
+const ORB={yaw:.6,pitch:-.32,v:0,on:true,base:.0016,fy:0,fp:0,over:false};
+try{const s=localStorage.getItem("mages.orbit");if(s)ORB.on=s==="on"}catch(e){}if(matchMedia("(prefers-reduced-motion: reduce)").matches&&!localStorage.getItem("mages.orbit"))ORB.on=false;
+const orb=$("orb");const setOrb=()=>{orb.className="orbtog"+(ORB.on?"":" off");orb.textContent=ORB.on?"⟳":"❚❚"};setOrb();
+orb.onclick=()=>{ORB.on=!ORB.on;try{localStorage.setItem("mages.orbit",ORB.on?"on":"off")}catch(e){}setOrb()};
+const cv=$("cv"),ctx=cv.getContext("2d");let W=0,H=0,DPR=1;
+function size(){DPR=Math.min(2,devicePixelRatio||1);W=cv.clientWidth;H=cv.clientHeight;cv.width=W*DPR;cv.height=H*DPR;ctx.setTransform(DPR,0,0,DPR,0,0)}
+function proj(p){const cy=Math.cos(ORB.yaw),sy=Math.sin(ORB.yaw),cp=Math.cos(ORB.pitch),sp=Math.sin(ORB.pitch);const x=p[0]*cy+p[2]*sy,z0=-p[0]*sy+p[2]*cy,y=p[1]*cp-z0*sp,z=p[1]*sp+z0*cp;const s=Math.min(W,H)*.2*(1/(1+z*.12));return{x:W/2+x*s,y:H/2+y*s,z}}
+let HOT=-1;
+// tens of thousands of hashes each frame: projected into typed arrays, then drawn in a few batched paths (one per colour,
+// glow and depth band) instead of one path per hash; a hash just unrolled fades in over its first second (p.born)
+let QX=new Float32Array(0),QY=QX,QZ=QX;const NC=BOOKCOL.length,BK=Array.from({length:(NC+1)*6},()=>[]),FADE=900;
+function draw(){ctx.clearRect(0,0,W,H);const now=performance.now();
+  ctx.lineWidth=1;for(const [u,v] of STELLA){const a=proj(CV(u)),b=proj(CV(v));ctx.strokeStyle=par(u)?"rgba(229,164,156,.20)":"rgba(159,214,219,.20)";ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);ctx.stroke()}
+  const N=PTS.length;if(QX.length<N){const c=Math.max(N,QX.length*2);QX=new Float32Array(c);QY=new Float32Array(c);QZ=new Float32Array(c)}
+  const cy=Math.cos(ORB.yaw),sy=Math.sin(ORB.yaw),cp=Math.cos(ORB.pitch),sp=Math.sin(ORB.pitch),s0=Math.min(W,H)*.2,w2=W/2,h2=H/2;
+  for(let i=0;i<N;i++){const p=PTS[i].p,x=p[0]*cy+p[2]*sy,z0=-p[0]*sy+p[2]*cy,y=p[1]*cp-z0*sp,z=p[1]*sp+z0*cp,s=s0/(1+z*.12);QX[i]=w2+x*s;QY[i]=h2+y*s;QZ[i]=z}
+  const up=i=>!(PTS[i].born>now);
+  ctx.strokeStyle=LINKS.length>3000?"rgba(120,120,140,.035)":"rgba(120,120,140,.07)";ctx.lineWidth=.6;ctx.beginPath();for(const [s,t] of LINKS){if(PTS[s].lit||PTS[t].lit||!up(s)||!up(t))continue;ctx.moveTo(QX[s],QY[s]);ctx.lineTo(QX[t],QY[t])}ctx.stroke();
+  for(let c=0;c<NC;c++)for(const hi of [0,1]){let any=false;
+    for(const [s,t,bi] of LINKS){if(bi%NC!==c)continue;const l=Math.max(PTS[s].lit,PTS[t].lit);if(!l||(l>1)!==!!hi)continue;if(!any){ctx.strokeStyle=BOOKCOL[c]+(hi?"cc":"55");ctx.lineWidth=hi?1.2:.6;ctx.beginPath();any=true}ctx.moveTo(QX[s],QY[s]);ctx.lineTo(QX[t],QY[t])}
+    if(any)ctx.stroke()}
+  for(const b of BK)b.length=0;const one=[];
+  for(let i=0;i<N;i++){const P=PTS[i];if(P.born>now)continue;if(P.lit>1||now-P.born<FADE){one.push(i);continue}
+    const d=.6+.4*Math.max(0,Math.min(1,.62-QZ[i]*.3)),band=d<.73?0:d<.87?1:2;BK[((P.t===2?NC:P.b%NC)*2+(P.lit?1:0))*3+band].push(i)}
+  const R=P=>P.t===2?3.4:P.t===1?1.1:1.7;
+  BK.forEach((b,k)=>{if(!b.length)return;const band=k%3,lit=(k/3|0)%2,ci=(k/6|0);ctx.globalAlpha=(lit?.75:.28)*[.67,.8,.93][band];ctx.fillStyle=ci===NC?"#e8c873":BOOKCOL[ci];ctx.beginPath();
+    for(const i of b){const P=PTS[i],r=R(P);if(P.t===2){ctx.moveTo(QX[i]+r,QY[i]);ctx.arc(QX[i],QY[i],r,0,6.283)}else ctx.rect(QX[i]-r,QY[i]-r,2*r,2*r)}ctx.fill()});
+  for(const i of one){const P=PTS[i],r=R(P),f=Math.min(1,(now-P.born)/FADE),a=P.lit>1?1:P.lit?.75:.28;ctx.globalAlpha=a*f*(.6+.4*Math.max(0,Math.min(1,.62-QZ[i]*.3)));ctx.fillStyle=P.t===2?"#e8c873":BOOKCOL[P.b%NC];ctx.beginPath();ctx.arc(QX[i],QY[i],(P.lit>1?r+2.4:r)*(1.6-.6*f),0,6.283);ctx.fill()}
+  ctx.globalAlpha=1;if(HOT>=0&&HOT<N){ctx.strokeStyle="#fff";ctx.lineWidth=1;ctx.beginPath();ctx.arc(QX[HOT],QY[HOT],7,0,6.283);ctx.stroke()}}
+function tick(){const target=ORB.on?(ORB.over?ORB.base*.25:ORB.base):0;ORB.v+=(target-ORB.v)*.05;if(!target&&Math.abs(ORB.v)<ORB.base*.03)ORB.v=0;
+  ORB.yaw+=ORB.v+ORB.fy;ORB.pitch=Math.max(-1.3,Math.min(1.3,ORB.pitch+ORB.fp));ORB.fy*=.92;ORB.fp*=.92;draw();requestAnimationFrame(tick)}
+let drag=null;cv.addEventListener("pointerdown",e=>{drag={x:e.clientX,y:e.clientY};ORB.fy=ORB.fp=0});
+addEventListener("pointermove",e=>{if(!drag)return;const dx=e.clientX-drag.x,dy=e.clientY-drag.y;ORB.yaw+=dx*.008;ORB.pitch=Math.max(-1.3,Math.min(1.3,ORB.pitch+dy*.008));ORB.fy=dx*.004;ORB.fp=dy*.004;drag={x:e.clientX,y:e.clientY}});
+addEventListener("pointerup",()=>{drag=null});cv.addEventListener("pointerenter",()=>ORB.over=true);cv.addEventListener("pointerleave",()=>ORB.over=false);
+addEventListener("resize",size);
+// ---- the scroll: each record, then the threads drawn from it, book by book
+const SPANS=[];
+function span(h,i,cls){const el=document.createElement("span");el.className="k"+(cls?" "+cls:"");el.dataset.i=i;el.dataset.h=h;el.textContent=MODE==="seal"?seal(h):h;SPANS.push(el);return el}
+const books=$("books");
+DATA.books.forEach((B,bi)=>{const sec=document.createElement("section");sec.className="book";
+  const n=B.objects.length,m=B.edges.length;
+  sec.innerHTML='<div class="bh"><span class="n'+(String(B.n).length>4?' w':'')+'">'+B.n+'</span><span class="r"><div class="root-seal" title="sha256:'+B.root+'">'+seal(B.root)+'</div><div class="meta">'+(BOOKNAME[bi]?BOOKNAME[bi]+' · ':'')+(B.meta||(DATA.lazy?n+' sealed bundles · tap a bundle’s root to fold it':'sealed '+B.minted+' · '+n+' records · '+m+' threads'))+' · root sha256:'+B.root.slice(0,16)+'…'+(B.b3?' · BLAKE3 '+B.b3.slice(0,16)+'…':'')+'</div></span></div>';
+  const sp0=document.createElement("div");sp0.className="spell";const sp=DATA.lazy?sp0.appendChild(Object.assign(document.createElement("div"),{className:"run"})):sp0;
+  B.seq.forEach(([t,ix],j)=>{if(j)sp.appendChild(Object.assign(document.createElement("span"),{className:"sep",textContent:t?"·":"✦"}));
+    sp.appendChild(t?span(B.edges[ix][0],B._eb+ix,"t"):span(B.objects[ix],B._base+ix,DATA.lazy?"shut":""))});
+  sp.appendChild(Object.assign(document.createElement("span"),{className:"sep",textContent:"✦"}));sp.appendChild(span(B.root,B._root,"root"));
+  sec.appendChild(sp0);books.appendChild(sec)});
+if(DATA.epochs.length){const sec=document.createElement("section");sec.className="book";sec.innerHTML='<div class="bh"><span class="n">V</span><span class="r"><div class="meta">the sealed epochs: earlier roots kept, never rewritten</div></span></div>';const sp=document.createElement("div");sp.className="spell";
+  DATA.epochs.forEach((E,j)=>{sp.appendChild(span(E.root,PTS.length-DATA.epochs.length+j,"root"))});sec.appendChild(sp);books.appendChild(sec)}
+$("colo").innerHTML="<b>{total}</b> hashes · {books} book(s) · inscribed {built}<br>Each hash names one record or one thread between two records, as the bundle sealed them; the root folds them. This scroll is the inscription, not the proof: the sealed bundle re-derives every root. Seals are written with <a href=\"https://github.com/johnservil/sigil\">Sigil</a>; a hash lands on the star by its first bits.<br><a href=\"https://sigil.mages.city/\">Check any of them at sigil.mages.city →</a>".replace("{total}",DATA.total).replace("{books}",DATA.books.length).replace("{built}",DATA.built);
+// ---- reading: what is on screen glows on the star
+const io=new IntersectionObserver(es=>{for(const e of es){const i=+e.target.dataset.i;if(e.isIntersecting){PTS[i].lit=Math.max(PTS[i].lit,1);e.target.classList.add("read")}}},{rootMargin:matchMedia("(max-width:860px)").matches?"-50% 0px -8% 0px":"-10% 0px -10% 0px"});
+SPANS.forEach(s=>io.observe(s));
+const tip=$("tip");let PIN=null;
+// what a hash is, in words, on this scroll
+function kindOf(s){if(s.classList.contains("shut"))return "a sealed bundle’s root · tap it again to open its records";
+  if(s.classList.contains("opened"))return s.classList.contains("folded")?"a sealed bundle’s root · tap it again to unfold its records":"a sealed bundle’s root · tap it again to fold its records away";
+  return s.classList.contains("t")?"a thread":s.classList.contains("root")?"a root":"a record"}
+// light one hash and its threads on the star; the card says what it is. A mouse previews on hover; a tap or click
+// selects it and pins the card with its three acts: copy the hash, copy the seal, prove it on Sigil.
+function show(s,pin){const i=+s.dataset.i,h=s.dataset.h;
+  document.querySelectorAll(".k.hl").forEach(x=>x.classList.remove("hl"));PTS.forEach(p=>{if(p.lit>1)p.lit=1});HOT=i;PTS[i].lit=2;
+  for(const [a,b] of LINKS){if(a===i)PTS[b].lit=2;if(b===i)PTS[a].lit=2}
+  document.querySelectorAll('.k[data-i="'+i+'"]').forEach(x=>x.classList.add("hl"));
+  const v=(parseInt(h.slice(0,2),16)>>2);PIN=pin?s:null;tip.style.display="block";tip.classList.toggle("pin",!!pin);
+  tip.innerHTML=(pin?'<button class="x" type="button" aria-label="close">×</button>':'')+'<div class="s">'+seal(h)+'</div><div class="h">sha256:'+h+'</div>sits at V'+v+' · '+kindOf(s)+
+    (pin?'<div class="acts"><button type="button" data-act="hash" title="copy the hash" aria-label="copy the hash">🔢</button><button type="button" data-act="seal" title="copy the seal" aria-label="copy the seal">🔏</button><a class="prove" href="https://sigil.mages.city/?a=sha256:'+h+'" target="_blank" rel="noopener" title="prove it on Sigil" aria-label="prove it on Sigil">✍</a></div>':'<div class="hint">click to select · 🔢 hash · 🔏 seal · ✍ prove on Sigil</div>')}
+function unpin(){PIN=null;tip.style.display="none";tip.classList.remove("pin");document.querySelectorAll(".k.hl").forEach(x=>x.classList.remove("hl"));PTS.forEach(p=>{if(p.lit>1)p.lit=1});HOT=-1}
+document.addEventListener("pointerover",e=>{if(e.pointerType!=="mouse"||PIN)return;const s=e.target.closest&&e.target.closest(".k");if(s)show(s,false)});
+tip.addEventListener("click",async e=>{const b=e.target.closest("button");if(!b||!PIN)return;e.stopPropagation();
+  if(b.classList.contains("x")){unpin();return}
+  const h=PIN.dataset.h,t=b.dataset.act==="seal"?seal(h):"sha256:"+h,was=b.textContent;
+  try{await navigator.clipboard.writeText(t);b.textContent="✓"}catch(_){const r=document.createRange(),q=tip.querySelector(b.dataset.act==="seal"?".s":".h");r.selectNodeContents(q);getSelection().removeAllRanges();getSelection().addRange(r);b.textContent="⧉"}
+  setTimeout(()=>{b.textContent=was},1400)});
+addEventListener("keydown",e=>{if(e.key==="Escape"&&PIN)unpin()});
+// a lazy scroll's books are written as bundle roots; a click opens one in place (records, then the threads drawn from each)
+// The bundle's file is fetched well ahead of the reader; its lines are then written a few hundred per frame, and its
+// hashes land on the star staggered over the same stretch, so a large bundle unrolls instead of stalling the page.
+const OPENED=new Map(),FILES=new Map(),PER=240;
+const fileOf=h=>{let p=FILES.get(h);if(!p){p=fetch("b/"+h+".json").then(r=>r.json());FILES.set(h,p)}return p};
+function openBundle(el){const h=el.dataset.h;if(OPENED.has(h))return OPENED.get(h);
+  const p=fileOf(h).then(X=>new Promise(done=>{const bi=PTS[+el.dataset.i].b,base=PTS.length,t0=performance.now(),frames=Math.ceil(X.seq.length/PER),span_ms=frames*16;
+    const at=new Map();X.seq.forEach(([t,ix],j)=>{if(!t)at.set(ix,j)});
+    const when=j=>t0+span_ms*j/Math.max(1,X.seq.length);
+    X.objects.forEach((k,ix)=>PTS.push({h:k,p:xyz(k),b:bi,t:0,lit:0,born:when(at.get(ix)||0)}));const eb=PTS.length;
+    X.edges.forEach(([k,s,t])=>{PTS.push({h:k,p:xyz(k),b:bi,t:1,lit:0,born:when(at.get(s)||0)});LINKS.push([base+s,base+t,bi])});
+    const box=document.createElement("div");box.className="sub";el._box=box;
+    box.appendChild(Object.assign(document.createElement("span"),{className:"bm",textContent:(X.minted?"sealed "+X.minted+" · ":"")+X.objects.length+" records · "+X.edges.length+" threads"+(X.b3?" · BLAKE3 "+X.b3.slice(0,16)+"…":"")}));
+    const run=el.parentElement;if(run.classList.contains("run")){const rest=document.createElement("div");rest.className="run";while(el.nextSibling)rest.appendChild(el.nextSibling);run.after(box);if(rest.firstChild)box.after(rest)}else el.after(box);
+    el.classList.remove("shut");el.classList.add("opened");
+    let j=0;const step=()=>{const fr=document.createElement("div");fr.className="ch";const end=Math.min(X.seq.length,j+PER),add=[];
+      for(;j<end;j++){const [t,ix]=X.seq[j];if(j)fr.appendChild(Object.assign(document.createElement("span"),{className:"sep",textContent:t?"·":"✦"}));
+        const sp=t?span(X.edges[ix][0],eb+ix,"t"):span(X.objects[ix],base+ix,"");fr.appendChild(sp);add.push(sp)}
+      box.appendChild(fr);add.forEach(s=>io.observe(s));
+      if(j<X.seq.length)requestAnimationFrame(step);
+      else{$("skynote").textContent=PTS.length+" hashes on the 64 states · "+OPENED.size+" bundle(s) open · what you read glows";done(box)}};
+    step()}));
+  OPENED.set(h,p);return p}
+// along the way, one bundle unrolls at a time, in reading order
+let ROLL=Promise.resolve();const queueOpen=el=>{ROLL=ROLL.then(()=>openBundle(el))};
+// a tap selects; on a bundle root a second tap opens it, then folds and unfolds its records. Proving is the card's button.
+document.addEventListener("click",e=>{if(e.target.closest&&e.target.closest("#tip"))return;const s=e.target.closest&&e.target.closest(".k");if(!s)return;e.preventDefault();
+  if(e.shiftKey){open("https://sigil.mages.city/?a=sha256:"+s.dataset.h,"_blank","noopener");return}
+  const again=PIN===s;
+  if(s.classList.contains("shut")&&(again||!matchMedia("(hover: none)").matches)){openBundle(s).then(()=>show(s,true));return}
+  if(s.classList.contains("opened")&&again){const box=s._box;if(box){const shut=box.classList.toggle("folded");s.classList.toggle("folded",shut)}}
+  show(s,true)});
+// ---- the switch: the whole scroll turns, line by line from where you are reading, into the other script
+function setMode(m){if(m===MODE)return;MODE=m;$("m-seal").classList.toggle("on",m==="seal");$("m-hex").classList.toggle("on",m==="hex");
+  const anchor=SPANS.find(s=>s.getBoundingClientRect().top>=0),at=anchor?anchor.getBoundingClientRect().top:0,vis=SPANS.map((s,i)=>[i,Math.abs(s.getBoundingClientRect().top)]).sort((a,b)=>a[1]-b[1]).map(x=>x[0]);
+  document.body.classList.toggle("seal",m==="seal");let k=0;const step=()=>{const n=Math.max(12,Math.ceil(vis.length/70));for(let j=0;j<n&&k<vis.length;j++,k++){const s=SPANS[vis[k]];s.textContent=m==="seal"?seal(s.dataset.h):s.dataset.h}if(anchor)scrollBy(0,anchor.getBoundingClientRect().top-at);if(k<vis.length)requestAnimationFrame(step)};step()}
+$("m-seal").onclick=()=>setMode("seal");$("m-hex").onclick=()=>setMode("hex");
+// a link to one hash (#k=<hex>, from the City's seal reader): open the scroll there, the hash lit with its threads
+async function goTo(){const m=location.hash.match(/^#k=(?:sha256:)?([0-9a-f]{64})(?:&b=(?:sha256:)?([0-9a-f]{64}))?$/);if(!m)return;
+  if(m[2]){const b=SPANS.find(x=>x.dataset.h===m[2]&&x.classList.contains("shut"));if(b)await openBundle(b)}
+  const s=SPANS.find(x=>x.dataset.h===m[1]);if(!s)return;
+  s.scrollIntoView({block:"center"});s.dispatchEvent(new MouseEvent("pointerover",{bubbles:true}));}
+addEventListener("hashchange",goTo);setTimeout(goTo,60);
+// open every bundle as the reader nears it, so the scroll unrolls and the star fills along the way, as on the guide's scroll
+if(DATA.lazy&&false){const far=new IntersectionObserver(es=>{for(const e of es)if(e.isIntersecting){far.unobserve(e.target);fileOf(e.target.dataset.h)}},{rootMargin:"0px 0px 4000px 0px"});
+  const near=new IntersectionObserver(es=>{for(const e of es)if(e.isIntersecting){near.unobserve(e.target);queueOpen(e.target)}},{rootMargin:"0px 0px 900px 0px"});
+  document.querySelectorAll(".k.shut").forEach(s=>{far.observe(s);near.observe(s)})}
+$("skynote").textContent=PTS.length+" hashes on the 64 states · what you read glows · "+"point at a hash to see its threads";
+size();tick();})();
+</script></body></html>

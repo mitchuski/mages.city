@@ -1,0 +1,8 @@
+// research.mages.city: The research package, nothing but hashes. Static assets only, no code.
+// Built by mages_city bin/bundle-scroll.mjs from its sealed κ-evidence bundle(s). Deploy (Mitch): npx wrangler deploy
+{
+  "name": "mages-city-research",
+  "compatibility_date": "2026-08-01",
+  "assets": { "directory": "./public", "html_handling": "auto-trailing-slash" },
+  "routes": [ { "pattern": "research.mages.city", "custom_domain": true } ]
+}

@@ -10,7 +10,7 @@ import { scrollPage } from "./scroll-page.mjs"; import { scrollsLine } from "./s
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), ".."), SITE = path.join(ROOT, "site");
 const argv = process.argv.slice(2), opt = {}, dirs = [];
 for (let i = 1; i < argv.length; i++) { if (argv[i].startsWith("--")) { opt[argv[i].slice(2)] = argv[i + 1]; i++; } else dirs.push(argv[i]); }
-const id = argv[0], domain = opt.domain || `${id}.mages.city`, label = opt.label || opt.title || id;
+const id = argv[0], LIST0 = path.join(SITE, "scrolls.json"), known = fs.existsSync(LIST0) ? (JSON.parse(fs.readFileSync(LIST0, "utf8")).find(s => s.id === id) || {}).href : "", domain = opt.domain || (known ? new URL(known).host : `${id}.mages.city`), label = opt.label || opt.title || id;
 if (!id || !dirs.length || !opt.title) { console.error("usage: node bin/bundle-scroll.mjs <id> <bundle dir>… --title … --h1 … --epi … [--domain …] [--label …]"); process.exit(2); }
 const NUM = ["I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X"], hx = k => String(k).split(":").pop();
 const books = [];

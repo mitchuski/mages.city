@@ -1,0 +1,104 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Star Key · Mages City</title><meta name="description" content="Star Key is how you carry yourself into the City without the City carrying you: knock with your terms, show a root not your record, keep every agreement."><link rel="stylesheet" href="style.css"><link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<style>
+.sk-hero{padding:56px 0 10px;max-width:44em}
+.sk-hero h1{font-weight:500;font-size:40px;margin:6px 0 12px}
+.sk-tag{font:11px monospace;letter-spacing:.14em;text-transform:uppercase;color:var(--cyan)}
+.sk-lede{font-size:21px;color:#eeeef2;margin:0 0 10px}
+.sk-sub{font-size:16px;color:var(--muted)}
+.sk-moments{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:22px 0 34px}
+@media(max-width:720px){.sk-moments{grid-template-columns:1fr}}
+.sk-m{border:1px solid var(--line);border-top:2px solid var(--cyan);padding:16px 18px}
+.sk-m .g{font-size:24px;display:block;margin-bottom:6px}.sk-m b{font-weight:500;font-size:17px;color:#eeeef2}
+.sk-m p{margin:6px 0 0;font-size:14px;color:var(--muted)}
+.sk-pick{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0 0}
+.sk-pick button{background:none;border:1px solid var(--line);color:var(--muted);font:13px monospace;padding:9px 14px;cursor:pointer}
+.sk-pick button[aria-selected="true"]{border-color:var(--cyan);color:var(--cyan);background:rgba(159,214,219,.06)}
+.sk-panel{border:1px solid var(--cyan);border-left-width:2px;padding:18px 22px;margin:10px 0 34px;max-width:46em}
+.sk-panel h3{margin:0 0 10px;font-weight:500;font-size:19px;color:#eeeef2}
+.sk-panel li{margin:7px 0}.sk-panel a,.sk-face a,.sk-note a{color:var(--cyan)}
+.sk-did code{word-break:break-all;font-size:13px}
+.sk-terms{list-style:none;padding-left:0}.sk-terms b{font:13px monospace;color:var(--cyan)}
+.sk-face{max-width:44em;margin:0 0 26px}
+.sk-note{font-size:14px;color:var(--muted)}
+</style></head><body><div class="wrap"><!--city-header--><nav aria-label="Main" class="city-nav"><a class="brand" href="index.html"><span aria-hidden="true">&#x1F9D9;</span> mages.city</a><div class="links"><span class="journey"><a href="become.html">Become</a><a href="guide.html">Guide</a><a href="arena.html">Scriptorium</a><a href="found.html">For your city</a></span><details class="city-menu"><summary aria-current="page"><span class="menu-wide">Discover</span><span class="menu-narrow">Menu</span></summary><div class="menu-panel"><div class="menu-col menu-journey"><p class="menu-h">Start here</p><a class="menu-item" href="become.html"><span class="menu-glyph" aria-hidden="true">🧙</span><span><b>Become a mage</b><small>Who the City is for, what you do, what you hold.</small></span></a><a class="menu-item" href="found.html"><span class="menu-glyph" aria-hidden="true">🌱</span><span><b>Give your city a mage</b><small>Found your trust community, with a mage at its side.</small></span></a></div><div class="menu-col"><p class="menu-h">The places</p><p class="menu-sub">Get in</p><a class="menu-item" href="https://join.mages.city/"><span class="menu-glyph" aria-hidden="true">🧙</span><span><b>The Community</b><small>Join the City; a human admits; hold your credentials in your own agent.</small></span></a><a class="menu-item" href="star-key.html" aria-current="page"><span class="menu-glyph" aria-hidden="true">✦</span><span><b>Star Key</b><small>Carry yourself into the City without the City carrying you.</small></span></a><p class="menu-sub">Work</p><a class="menu-item" href="arena.html"><span class="menu-glyph" aria-hidden="true">📜</span><span><b>The Scriptorium</b><small>Mages' scrolls, made for scrolling: every scroll, the arenas that grow them, and the Prism that reads them.</small></span></a><a class="menu-item" href="swarms.html"><span class="menu-glyph" aria-hidden="true">🐝</span><span><b>Swarms</b><small>A task, not an identity: a question, a window, seats, a seal.</small></span></a><a class="menu-item" href="hosting.html"><span class="menu-glyph" aria-hidden="true">📦</span><span><b>Hosting</b><small>Words in a registry, spells with their mages, mana on the edges.</small></span></a><p class="menu-sub">Learn</p><a class="menu-item" href="guide.html"><span class="menu-glyph" aria-hidden="true">📚</span><span><b>The Guide</b><small>Walk it with your agent: deploy, run a lane, join, attach.</small></span></a><a class="menu-item" href="spellbooks.html"><span class="menu-glyph" aria-hidden="true">📖</span><span><b>The Spellbook</b><small>The tellings: tomes, the chronicle, the reading shelf, the Spellspace.</small></span></a><a class="menu-item" href="setup.html"><span class="menu-glyph menu-glyph-wide" aria-hidden="true">⚔️⊥🧙</span><span><b>The Setup</b><small>Two seats, one keeper: the Swordsman and the Mage.</small></span></a></div><div class="menu-col"><p class="menu-h">Workshop</p><a class="menu-item" href="discover.html"><span class="menu-glyph" aria-hidden="true">🔭</span><span><b>Routes</b><small>Routes through the City by purpose.</small></span></a><a class="menu-item" href="board.html"><span class="menu-glyph" aria-hidden="true">✍️</span><span><b>Contribute</b><small>The board: speak, reply, open a thread.</small></span></a><a class="menu-item" href="join.html"><span class="menu-glyph" aria-hidden="true">🔗</span><span><b>Connect</b><small>The OpenVTC join, step by step.</small></span></a><a class="menu-item" href="space.html"><span class="menu-glyph" aria-hidden="true">🪪</span><span><b>Your space</b><small>What you hold, once you are in.</small></span></a><p class="menu-sub">The quests</p><div class="menu-hashes"><a href="https://sha256.mages.city/">SHA-256 ↗</a><a href="https://sha3.mages.city/">SHA-3 ↗</a><a href="https://blake3.mages.city/">BLAKE3 ↗</a><a href="https://poseidon.mages.city/">Poseidon ↗</a><a href="https://curve.mages.city/">Curve ↗</a><a href="https://hashsmash.mages.city/">HashSmash ↗</a><a href="https://sig.mages.city/">Sig golf ↗</a><a href="https://ecrank.mages.city/">EC rank ↗</a><a href="https://falcon.mages.city/">Falcon ↗</a><a href="https://mldsa.mages.city/">ML-DSA ↗</a></div><a class="menu-more" href="arena.html#scrolls">❦ the Scriptorium: every scroll, made for scrolling →</a><a class="menu-more" href="https://prism.mages.city/">◈ the Prism: the trinket that reads any scroll ↗</a><a class="menu-more" href="star.html">✦ the star of the chains: what lights your Star Key →</a><a class="menu-more" href="seal.html">✍ Sigil: check two seals →</a><a class="menu-join" href="https://join.mages.city/">Join the community →</a></div></div></details><a class="join-cta" href="https://join.mages.city/">Join →</a></div></nav><script src="nav.js" defer></script><div class="city-band" id="band"><span class="band-dot" aria-hidden="true">●</span> minted 2026-10-08 · <strong id="city-did" title="did:webvh:QmQ8GMNCTui2H9gjxQWByS1ScsWkByaeQHYnzhcET1UPne:dids.mages.city:vtc">did:webvh:QmQ8GMNC…:dids.mages.city:vtc</strong> · administered from a Star · <a href="https://join.mages.city/">get in</a> · <a href="community.md">terms</a></div><!--/city-header--><main>
+<section class="sk-hero">
+<p class="sk-tag">star key</p>
+<h1>Your Star Key</h1>
+<p class="star-family" style="font:12.5px ui-monospace,monospace;color:var(--muted,#a8b1c3);margin:6px 0 14px">✦ <a href="star.html">the star of the chains</a>, the evidence · ★ <a href="star-key.html">Star Key</a>, the wallet it lights · ✧ <a href="arena-sky.html">the sky of instances</a> · ◈ <a href="https://prism.mages.city/">the Prism</a>, to read a scroll</p>
+<p class="sk-lede">Star Key is how you carry yourself into the City without the City carrying you.</p>
+<p class="sk-sub">A browser wallet that holds your identities and talks to your own agent. It never holds a signing key, and the City keeps no custody of anything you carry.</p>
+</section>
+
+<div class="sk-moments">
+<div class="sk-m"><span class="g" aria-hidden="true">🤝</span><b>Knock</b><p>Arrive with your terms already chosen. The City says yes, offers its own, or says no, and both sides keep the record.</p></div>
+<div class="sk-m"><span class="g" aria-hidden="true">🪬</span><b>Show</b><p>The City sees a root and a count, never what's inside. Anything you later choose to show is provable against that root.</p></div>
+<div class="sk-m"><span class="g" aria-hidden="true">✦</span><b>Remember</b><p>Every door you pass is an agreement you hold, not one a site holds about you. Together they're where you've been trusted.</p></div>
+</div>
+
+<h2 id="which-h">Which is you?</h2>
+<div class="sk-pick" role="tablist" aria-labelledby="which-h">
+<button role="tab" data-p="take" aria-selected="true">I don't have it yet</button>
+<button role="tab" data-p="look" aria-selected="false">I have it, no agent yet</button>
+<button role="tab" data-p="knock" aria-selected="false">I'm connected, not a member</button>
+<button role="tab" data-p="home" aria-selected="false">I'm a member</button>
+</div>
+
+<section class="sk-panel" data-p="take" role="tabpanel">
+<h3>Take your Star Key</h3>
+<ol>
+<li><b>Download</b> the zip from the City or from the release. Both are the same file, with its SHA-256 published beside it: <a href="get-star-key.md#download">download and hash →</a></li>
+<li><b>Unzip</b> it into a folder you'll keep. Chrome loads the wallet from there on every start.</li>
+<li><b>Load it:</b> <code>chrome://extensions</code> → Developer mode → <em>Load unpacked</em> → choose the folder, then pin the Star to your toolbar.</li>
+</ol>
+<p class="sk-note">Chrome asks for no permission at install. The wallet asks per site, in the click, the first time you use it there.</p>
+</section>
+
+<section class="sk-panel" data-p="look" role="tabpanel" hidden>
+<h3>Look around first, then connect</h3>
+<p>Your Star Key already works on its own, and nothing leaves your browser:</p>
+<ul>
+<li><b>📤 Read a City Key:</b> its name, its palette, and the lit vertices only if you tick them. Try it on the <a href="star-experiment/">practice key</a>.</li>
+<li><b>🪬 Check a Hold:</b> every signature, ref and the root, re-verified in your browser.</li>
+</ul>
+<p>To knock, connect an agent of your own (a VTA). The <a href="https://vta.farm/">VTA farm</a> is the easiest way to get one. The City hosts no one's agent. <a href="starkey.md#connect-the-wallet-to-your-agent--you-type-your-agent-reads">Connect it, step by step →</a></p>
+</section>
+
+<section class="sk-panel" data-p="knock" role="tabpanel" hidden>
+<h3>Knock with your terms</h3>
+<p>Press <b>🤝</b> in your Star Key and give it the City's DID. Paste it, or point the camera at the code:</p>
+<p class="sk-did"><code>did:webvh:QmQ8GMNCTui2H9gjxQWByS1ScsWkByaeQHYnzhcET1UPne:dids.mages.city:vtc</code></p>
+<p>The City takes two sets of terms. Choose which you present in Options → Agreements:</p>
+<ul class="sk-terms">
+<li><b>SD-BASE-DP</b>: use my data only to deliver the service, and give it back when I ask. <a href="https://agreements.info/r/sd-base-dp">text →</a></li>
+<li><b>SD-BASE</b>: use my data only to deliver the service. No analytics, tracking, profiling or sharing. <a href="https://agreements.info/r/sd-base">text →</a></li>
+</ul>
+<p>Then a human admits you. Ask the keeper for an invitation and you're admitted on arrival. Without one, your request waits for a fellow mage, and waiting grants nothing. <a href="starkey.md#get-your-first-invitation-from-the-keeper--you-ask-a-human-admits">How to ask →</a> · <a href="https://join.mages.city/">the doors and criteria →</a></p>
+</section>
+
+<section class="sk-panel" data-p="home" role="tabpanel" hidden>
+<h3>Welcome home</h3>
+<ul>
+<li><b>Your door:</b> <a href="https://vtc.mages.city/members/">vtc.mages.city/members</a>. Sign in with your Star Key, and you'll see your rooms and the City's votes.</li>
+<li><b>Your agreement:</b> Options → Agreements shows the terms you joined under, and every other door you've agreed terms with.</li>
+<li><b>What the City sees of you:</b> a root and a count of your Hold, 92 bytes.</li>
+</ul>
+</section>
+
+<section class="sk-face">
+<h2>What lights your Star</h2>
+<p>The Star on your key has sixty-four states. <a href="star.html">The star of the chains</a> is where you compose its face from the City's evidence: choose the roots, export the face, fold it into your City Key. Open the key in Star Key's 📤 with the faces file kept beside it, and your Star lights where the faces landed: each face re-derived from its roots and order, all of them checked against the key. Vertices you only claimed are ringed, dimmer, apart. (From the next release; the 0.2.0 download counts the faces.)</p>
+<p class="sk-note"><b>Try it:</b> a practice key with one face folded in, composed from the SHA-256 quest's own roots, 37 states: <a href="star-experiment/practice-city-key-folded.json" download>the folded key</a> · <a href="star-experiment/practice-chain-faces.json" download>its faces file</a>. Open the key in 📤, add the faces file, and watch it light. Change a root or the order in the faces file, and nothing lights.</p>
+</section>
+
+<p class="sk-note">Star Key is agentprivacy's fork of <a href="https://github.com/OpenVTC/vta-browser-plugin">OpenVTC's browser wallet</a>, under the same licence. Source: <a href="https://github.com/mitchuski/star-key">mitchuski/star-key</a>. Reference: <a href="get-star-key.md">get-star-key</a> · <a href="starkey.md">starkey</a>.</p>
+</main>
+<script>
+(function(){
+  var KEY='sk-panel', tabs=[].slice.call(document.querySelectorAll('.sk-pick button')), panels=[].slice.call(document.querySelectorAll('.sk-panel'));
+  function show(p){tabs.forEach(function(t){t.setAttribute('aria-selected',String(t.dataset.p===p))});panels.forEach(function(s){s.hidden=s.dataset.p!==p});try{localStorage.setItem(KEY,p)}catch(e){}}
+  tabs.forEach(function(t){t.addEventListener('click',function(){show(t.dataset.p)})});
+  var saved=null;try{saved=localStorage.getItem(KEY)}catch(e){}
+  if(saved&&tabs.some(function(t){return t.dataset.p===saved}))show(saved);
+})();
+</script>
+</div></body></html>

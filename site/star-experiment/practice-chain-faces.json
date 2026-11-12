@@ -1,0 +1,279 @@
+{
+ "schema": "agentprivacy.chain-faces/1",
+ "faces": [
+  {
+   "schema": "agentprivacy.chain-face/1",
+   "name": "a face of the evidence",
+   "composed_on": "2026-11-12",
+   "source": "https://mages.city/star.html",
+   "states": {
+    "2": {
+     "k": "sha256:099428c5cc8de565128f338fa989cc55fb5acb3e0435b7c6550b272bf28ab3a8",
+     "chain": "SHA-256",
+     "kind": "entry root",
+     "label": "round 39 · r39t · rejected"
+    },
+    "3": {
+     "k": "sha256:0f4528aaf0520a3436a80d4303618cc08c03a292a89d0c4891c61422c543bd81",
+     "chain": "SHA-256",
+     "kind": "entry root",
+     "label": "round 49 · r49 · valid"
+    },
+    "4": {
+     "k": "sha256:10865915b627c2bb4c373aec90210160b54aabda71f1cdab802d01f2d9ac28e4",
+     "chain": "SHA-256",
+     "kind": "entry root",
+     "label": "round 51 · r51 · valid"
+    },
+    "5": {
+     "k": "sha256:1583b1a3dc665ab00e819864b014dcfc0f7dce4f7ed409c7bba4dd234a4ca656",
+     "chain": "SHA-256",
+     "kind": "entry root",
+     "label": "round 62 · r62 · valid"
+    },
+    "8": {
+     "k": "sha256:228430f9a34a677a805efb3347049b67894ba6cfe636435546738f188d2b4a72",
+     "chain": "SHA-256",
+     "kind": "entry root",
+     "label": "round 63 · r63 · valid"
+    },
+    "13": {
+     "k": "sha256:37263751bb8a660d0244aabde7c938ca84e1d21aa45c6130588e7159dec7a823",
+     "chain": "SHA-256",
+     "kind": "entry root",
+     "label": "round 55 · r55 · valid"
+    },
+    "15": {
+     "k": "sha256:3e1f3631cd6513d22853cde02ece7608316082fb07a7139cf822b4eee74b8673",
+     "chain": "SHA-256",
+     "kind": "step root",
+     "label": "step 7: two round leads: sha256 r39 by its tail, poseidon r56 by its loop"
+    },
+    "17": {
+     "k": "sha256:4683757810017ac65123911e70b90ebd065549a65232ab4122b7d90acc0132bb",
+     "chain": "SHA-256",
+     "kind": "entry root",
+     "label": "round 56 · r56 · rejected"
+    },
+    "18": {
+     "k": "sha256:483b9a069bfde31314d5cee2fd4a486b6ddbb4b8084997835a301dc36ae58593",
+     "chain": "SHA-256",
+     "kind": "step root",
+     "label": "step 6: poseidon leads rounds 6 to 8; a refutation answered, r46 twice not evaluable"
+    },
+    "23": {
+     "k": "sha256:5e0c82b19e341bbd4cacf1cfb36c9ead535b2b430f3a621a1be67574ff0fe8fe",
+     "chain": "SHA-256",
+     "kind": "step root",
+     "label": "step 9: three casts on one round: the bound is read over the program, not the design"
+    },
+    "25": {
+     "k": "sha256:654c0681d1edf5fd4b477825eed7270821d63388c8b149f01592a5eaa2676f1a",
+     "chain": "SHA-256",
+     "kind": "entry root",
+     "label": "round 45 · r45 · valid"
+    },
+    "26": {
+     "k": "sha256:69d14c21c6e3061a57c2c59d5c8d16504b4858f45649f186b0c10f8c9d14c917",
+     "chain": "SHA-256",
+     "kind": "work root",
+     "label": "step 11"
+    },
+    "27": {
+     "k": "sha256:6d7d332f31bff5d68807d249717db8824269fbe434276500237d7dcefc660aa8",
+     "chain": "SHA-256",
+     "kind": "entry root",
+     "label": "round 44 · r44 · valid"
+    },
+    "28": {
+     "k": "sha256:7272bed90e253fb4fce5fe43819cea99f1226f274886ca8bd772af4bd001450c",
+     "chain": "SHA-256",
+     "kind": "entry root",
+     "label": "round 38 · r38e · not_evaluable"
+    },
+    "29": {
+     "k": "sha256:746ec2a8746e77c34b96d11b22bac1bab0524f7e27d7f56cb806179a327117b4",
+     "chain": "SHA-256",
+     "kind": "entry root",
+     "label": "round 38 · r38g · refuted"
+    },
+    "30": {
+     "k": "sha256:7a44e20f7ec6e0dba300a360242a008574962df51fba5f3cde8686fba8177296",
+     "chain": "SHA-256",
+     "kind": "entry root",
+     "label": "round 53 · r53 · valid"
+    },
+    "31": {
+     "k": "sha256:7e61cec2d9d87c489c8009493b4244eb4f2a281389d0396ab85186af0a02f474",
+     "chain": "SHA-256",
+     "kind": "entry root",
+     "label": "round 38 · r38d · not_evaluable"
+    },
+    "32": {
+     "k": "sha256:8340cdecb1005d4dea22ac0404abdf1fae405ecf48ff64fe8332a41e0e9fbfc5",
+     "chain": "SHA-256",
+     "kind": "entry root",
+     "label": "round 58 · r58 · valid"
+    },
+    "33": {
+     "k": "sha256:84c6b23e28aaea8a11e1eb1570a2b4e905eb9696740e976f6d6fbf391ab04ce4",
+     "chain": "SHA-256",
+     "kind": "step root",
+     "label": "step 3: sha256 walks down, poseidon r56b lands"
+    },
+    "34": {
+     "k": "sha256:89e4eb479baa3bec34bcddd34ffc3d1e4569bfdc2627d853d3552c9d549ba419",
+     "chain": "SHA-256",
+     "kind": "entry root",
+     "label": "round 42 · r42 · valid"
+    },
+    "35": {
+     "k": "sha256:8e6748aa89d086e48a8141ba766d4d6e8e7bdf9caab27b2c1bb7623f0e09cf8f",
+     "chain": "SHA-256",
+     "kind": "entry root",
+     "label": "round 50 · r50 · valid"
+    },
+    "36": {
+     "k": "sha256:92af48886ee6f3f8d39f2bc46d4fb9f732989270182254bf8c20851bf998becb",
+     "chain": "SHA-256",
+     "kind": "step root",
+     "label": "step 2: the sweep verdicts fold in"
+    },
+    "37": {
+     "k": "sha256:96d4b73c461b2fd4e5e9a4353c945a7be9b27020604e140f99ee0fb1641bd06b",
+     "chain": "SHA-256",
+     "kind": "entry root",
+     "label": "round 59 · r59 · valid"
+    },
+    "40": {
+     "k": "sha256:a04552f058ad76793fa09014a02d0d8873fa23450743038152b62410e793ee6f",
+     "chain": "SHA-256",
+     "kind": "entry root",
+     "label": "round 48 · r48 · valid"
+    },
+    "41": {
+     "k": "sha256:a6ba1fedc07a4166f418ca9ae5fa3a90afffa2e2788930c5547d84b855757add",
+     "chain": "SHA-256",
+     "kind": "entry root",
+     "label": "round 61 · r61b · valid"
+    },
+    "42": {
+     "k": "sha256:a923a6f2ef5493dac75282dc84e0e205d5dd61dc6bbf57a9c89cbe3a47b4ede8",
+     "chain": "SHA-256",
+     "kind": "entry root",
+     "label": "round 60 · r60 · valid"
+    },
+    "44": {
+     "k": "sha256:b06dbbdef0037065e10a23e27ec5f7e35b1e2991735531a530dbd6441e85deb5",
+     "chain": "SHA-256",
+     "kind": "entry root",
+     "label": "round 46 · r46b · rejected"
+    },
+    "46": {
+     "k": "sha256:b850c01839a96e77efd4e671bcaa71de7332b91e6c6e19b6903f48c587a3403f",
+     "chain": "SHA-256",
+     "kind": "step root",
+     "label": "step 5: sha256 reaches r40, sha3 reaches r7, poseidon's collision at three rounds"
+    },
+    "47": {
+     "k": "sha256:bc1b0979a2233286e3bd23e87399143b404cfd72e9c8fdc65e9458648a42b05e",
+     "chain": "SHA-256",
+     "kind": "step root",
+     "label": "step 1: a Yukon wave as verdicts under gates"
+    },
+    "49": {
+     "k": "sha256:c41a55de18a02f10f53f9b43257ec60c161fc22a6328897602aced7485730a42",
+     "chain": "SHA-256",
+     "kind": "entry root",
+     "label": "round 64 · r64b · valid"
+    },
+    "50": {
+     "k": "sha256:c80b284c8df22d466ff50cc509205ecdd29fe3f91a2b00ac1bc19d9191509a81",
+     "chain": "SHA-256",
+     "kind": "entry root",
+     "label": "round 38 · r38b · refuted"
+    },
+    "51": {
+     "k": "sha256:cfff6946a1e34a4c9ec6a7142e24e1cd692daf25744e87dea47d6da43f53a7c6",
+     "chain": "SHA-256",
+     "kind": "entry root",
+     "label": "round 47 · r47 · valid"
+    },
+    "55": {
+     "k": "sha256:de5878fe5ac7cddf24c110cf8c41ac6684fa6ecd0fe26522e969c256805961c8",
+     "chain": "SHA-256",
+     "kind": "entry root",
+     "label": "round 40 · r40 · valid"
+    },
+    "56": {
+     "k": "sha256:e02685bbc6d353c070594591d71ac732b9feb873ef993515fa47b31d42a8ea43",
+     "chain": "SHA-256",
+     "kind": "entry root",
+     "label": "round 38 · r38f · not_evaluable"
+    },
+    "57": {
+     "k": "sha256:e5cbd3026a991c13402fa14433b6943ffc430f69d414976984ec9d6feb013bd2",
+     "chain": "SHA-256",
+     "kind": "entry root",
+     "label": "round 61 · r61 · rejected"
+    },
+    "58": {
+     "k": "sha256:ea0e0b5cd92f8cbceba877b2b83f10babb5708ae4d4ad02eeae35ffd1b89f8d5",
+     "chain": "SHA-256",
+     "kind": "step root",
+     "label": "step 10: fresh seeds answer the filters; the deep rate is the last borrowed number"
+    },
+    "63": {
+     "k": "sha256:ff54e4747bc3c4736a576ae38c97087c268ccadab904942588b5c659c505fad1",
+     "chain": "SHA-256",
+     "kind": "entry root",
+     "label": "round 38 · r38c · not submitted"
+    }
+   },
+   "trace": {
+    "mode": "composed",
+    "order": [
+     2,
+     3,
+     4,
+     5,
+     8,
+     13,
+     15,
+     17,
+     18,
+     23,
+     25,
+     26,
+     27,
+     28,
+     29,
+     30,
+     31,
+     32,
+     33,
+     34,
+     35,
+     36,
+     37,
+     40,
+     41,
+     42,
+     44,
+     46,
+     47,
+     49,
+     50,
+     51,
+     55,
+     56,
+     57,
+     58,
+     63
+    ]
+   },
+   "root": "sha256:853d6718ef747e1d07e9ff32ee9be83aa21c72911464e536468f3641c86683d7",
+   "count": 37
+  }
+ ]
+}

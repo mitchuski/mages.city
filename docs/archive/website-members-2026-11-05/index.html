@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Mages City · Members</title>
+<meta name="description" content="The member door of this Verifiable Trust Community. A member's wallet opens it; anyone else is shown how to ask to join.">
+<link rel="icon" href="/logo.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/site.css">
+<script src="/members/members.js" defer></script>
+</head>
+<body data-page="door">
+<!-- community-site template (deploy/vti/vtc/website/members). This is the page the community's DID document
+     names as its SignInPortal (https://join.mages.city/members/). The Star Key wallet answers
+     membership.status() only to this origin; a member is sent through to /members/home/, anyone else sees how
+     to ask to join. vtc-service 0.11.58 in strict host mode serves no member portal here; when vtc 0.12 does,
+     its portal replaces this page at the same address. -->
+<div class="wrap">
+<nav class="top">
+  <a class="brand" href="/"><img src="/logo.svg" alt="" width="22" height="22"><span>Mages City</span></a>
+  <div class="links"><a href="/">Community</a><a href="/myterms/">Your terms</a></div>
+</nav>
+
+<main>
+  <header class="hero">
+    <p class="tag">Verifiable Trust Community · OpenVTC</p>
+    <h1>Members</h1>
+    <p class="lede">The member door. Your wallet opens it; the page itself holds nothing.</p>
+    <p class="small muted">Community DID: <code id="did">reading…</code></p>
+  </header>
+
+  <section id="state-nowallet" hidden aria-labelledby="nowallet-h">
+    <h2 id="nowallet-h">Sign in</h2>
+    <p>With a <strong>Star Key</strong> wallet: allow the wallet on this site, then reload. No wallet yet? <a href="https://mages.city/get-star-key.md">Get Star Key</a>, the City's fork of the OpenVTC browser wallet, then connect it to your own agent. The wallet reads this community's DID document and answers this page only because the document names it. As the keeper: the <a href="https://vtc.mages.city/admin/">console</a>.</p>
+    <p class="small muted" id="wallet-note"></p>
+    <p class="muted">The full member portal (your credential, relationships and rooms, read from this community's own daemon) ships with the next release of the Verifiable Trust Infrastructure. This address stays.</p>
+  </section>
+
+  <section id="state-join" hidden aria-labelledby="join-h">
+    <h2 id="join-h">Ask to join</h2>
+    <p>Your wallet is here, and it holds no membership of this community yet. Press the 🤝 in the Star Key header and give it this community's DID; the wallet reads the join criteria and this community's terms, and nothing is sent until you say so.</p>
+    <p><button id="copy-did" type="button">copy the community DID</button></p>
+    <p class="small muted">This community takes <a href="/myterms/">terms</a>: your wallet will show the agreement it will join under.</p>
+  </section>
+
+  <section id="state-member" hidden aria-labelledby="member-h">
+    <h2 id="member-h">You are a member</h2>
+    <p>Opening the door…</p>
+  </section>
+</main>
+
+<footer>
+  <p class="small">Powered by the open-source <a href="https://github.com/OpenVTC/verifiable-trust-infrastructure">Verifiable Trust Infrastructure</a>. This page holds no keys. <a href="/">Community</a> · <a href="https://vtc.mages.city/admin/">Console</a></p>
+</footer>
+</div>
+</body>
+</html>

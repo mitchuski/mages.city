@@ -2,7 +2,7 @@
 # update-binaries.sh — refresh the core node's seven binaries to the current tagged release, with a rollback.
 #   1. snapshot ~/vti (configs + data) and the current binaries → ~/vti/rollback/<stamp>/
 #   2. stop the four units (vtc → vta → mediator → dids)
-#   3. run install-binaries.sh (downloads `latest`, re-pins SHA-256, prints versions; shows the drift vs the old pin)
+#   3. run install-binaries.sh (downloads $CHANNEL, default `latest`, re-pins SHA-256, prints versions; shows the drift vs the old pin)
 #   4. start the four units in order and probe local health
 # Roll back: bash update-binaries.sh --rollback <stamp>   (restores binaries AND ~/vti state from that snapshot)
 # Keys never leave the node; the snapshot stays in ~/vti/rollback (mode 700).
@@ -33,7 +33,7 @@ for b in "${BINS[@]}"; do [ -x "/usr/local/bin/$b" ] && cp "/usr/local/bin/$b" "
 for d in vta vtc mediator dids; do [ -d "$HOME/vti/$d" ] && cp -a "$HOME/vti/$d" "$S/state/$d"; done
 [ -f "$HOME/vti/BINARIES.sha256" ] && cp "$HOME/vti/BINARIES.sha256" "$S/BINARIES.sha256"
 echo "== stopping"; for u in "${UNITS_DOWN[@]}"; do sudo systemctl stop "$u" || true; done
-echo "== installing current tagged release"; bash "$HERE/install-binaries.sh"
+echo "== installing channel ${CHANNEL:-latest}"; bash "$HERE/install-binaries.sh"
 echo "== starting"; for u in "${UNITS_UP[@]}"; do sudo systemctl start "$u"; sleep 5; done
 sleep 10; echo "== health"; health
 echo "== if anything above is not active/200: bash $0 --rollback $STAMP"

@@ -5,11 +5,11 @@
   "community": "did:webvh:QmQ8GMNCTui2H9gjxQWByS1ScsWkByaeQHYnzhcET1UPne:dids.mages.city:vtc",
   "methods": ["on-demand"],
   "agreements": [
-    { "code": "SD-BASE-DP", "type": "service-delivery", "url": "https://customercommons.org/agreements/SD-BASE-DP" },
-    { "code": "SD-BASE", "type": "service-delivery", "url": "https://customercommons.org/agreements/SD-BASE" }
+    { "code": "SD-BASE-DP", "type": "service-delivery", "url": "https://agreements.info/r/sd-base-dp", "iri": "https://agreements.info/r/sd-base-dp/8b87b7aa45251a31d55c230d41b08a00.md", "digestMultibase": "uEiBLRRH-TCx_K7izVLR7mCYC0VTFubHdV-whnmzQXGcaog" },
+    { "code": "SD-BASE", "type": "service-delivery", "url": "https://agreements.info/r/sd-base", "iri": "https://agreements.info/r/sd-base/e6f67d5120e30b57118e764374651012.md", "digestMultibase": "uEiCJYmDAIgaMC_gLo3FEPEG59hrt1EqvA462vcbvtSiQ0w" }
   ],
   "counterOffer": "SD-BASE-DP",
   "agreementsUrl": "https://join.mages.city/myterms/",
-  "roster": "https://customercommons.org/agreements/",
+  "roster": "https://agreements.info/",
   "notes": "mages.city takes MyTerms (IEEE Std 7012-2025). No third-party tracking: no analytics, tracking, profiling or sharing of visitors' or members' data with anyone but the community itself; data portability on request. The site's community takes the same agreements at its join door (see the community's DID document, MyTerms service). Mages City is a member of the MyTerms alliance. This is the site's statement of what it accepts, not a claim of IEEE 7012 conformance."
 }

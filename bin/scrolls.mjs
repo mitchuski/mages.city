@@ -14,5 +14,9 @@ export function scrolls(here) {
 }
 export function scrollsLine(here) {
   const esc = t => String(t).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
-  return `<nav class="scrolls" aria-label="every scroll">the scrolls: ${scrolls(here).map(s => s.here ? `<b>${esc(s.label)}</b>` : `<a href="${esc(s.href)}">${esc(s.label)}</a>`).join(" · ")}</nav>`;
+  // one way home and one step either side, instead of the whole list: every scroll lives in the Scriptorium
+  const L = scrolls(here), i = L.findIndex(s => s.here);
+  const prev = i > 0 ? L[i - 1] : null, next = i >= 0 && i < L.length - 1 ? L[i + 1] : null;
+  const a = (s, t) => `<a href="${esc(s.href)}">${t}</a>`;
+  return `<nav class="scrolls" aria-label="every scroll"><a href="https://scroll.mages.city/">❦ the Scriptorium</a>, every scroll${prev ? " · " + a(prev, "‹ " + esc(prev.label)) : ""}${i >= 0 ? " · <b>" + esc(L[i].label) + "</b>" : ""}${next ? " · " + a(next, esc(next.label) + " ›") : ""}</nav>`;
 }

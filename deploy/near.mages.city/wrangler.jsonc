@@ -1,0 +1,8 @@
+// near.mages.city: The NEAR mage, nothing but hashes. Static assets only, no code.
+// Built by mages_city bin/bundle-scroll.mjs from its sealed κ-evidence bundle(s). Deploy (Mitch): npx wrangler deploy
+{
+  "name": "mages-city-near",
+  "compatibility_date": "2026-08-01",
+  "assets": { "directory": "./public", "html_handling": "auto-trailing-slash" },
+  "routes": [ { "pattern": "near.mages.city", "custom_domain": true } ]
+}

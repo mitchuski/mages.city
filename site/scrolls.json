@@ -3,5 +3,30 @@
   "id": "hashsmash",
   "label": "❦ HashSmash, every lane",
   "href": "https://hashsmash.mages.city/"
+ },
+ {
+  "id": "flashprove",
+  "label": "❦ provable inference",
+  "href": "https://flashprove.mages.city/"
+ },
+ {
+  "id": "package",
+  "label": "❦ research package",
+  "href": "https://research.mages.city/"
+ },
+ {
+  "id": "formal",
+  "label": "❦ formal mage",
+  "href": "https://formal.mages.city/"
+ },
+ {
+  "id": "near",
+  "label": "❦ near mage",
+  "href": "https://near.mages.city/"
+ },
+ {
+  "id": "poc",
+  "label": "❦ poc mage",
+  "href": "https://poc.mages.city/"
  }
 ]

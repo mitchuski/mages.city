@@ -4,7 +4,7 @@
 // Third-party plugins get no signing helper from window.VtcPluginApi, so signed reads (join-request list) stay there.
 const BASE = '/admin/plugins/mages-city/';
 const SITE = 'https://join.mages.city/';
-const TT_MANIFEST = 'https://trusttasks.org/spec/vtc/join-requests/manifest/0.3';
+const TT_MANIFEST = 'https://trusttasks.org/spec/vtc/join-requests/manifest/0.4';
 
 const h = (tag, attrs = {}, ...kids) => {
   const n = document.createElement(tag);

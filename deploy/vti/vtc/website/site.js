@@ -1,6 +1,6 @@
 // community-site template · renders community.config.json + this daemon's live state. No keys, no third parties.
 // Live reads: /v1/community/public-profile · /health · the join manifest (POST /v1/trust-tasks,
-// vtc/join-requests/manifest/0.3, public, unauthenticated) · /v1/community/did-qr.svg (in the HTML).
+// vtc/join-requests/manifest/0.4, public, unauthenticated) · /v1/community/did-qr.svg (in the HTML).
 (() => {
   const $ = id => document.getElementById(id);
   const el = (tag, attrs = {}, ...kids) => {
@@ -11,7 +11,7 @@
   };
   const text = (id, v) => { if (v != null && $(id)) $(id).textContent = v; };
   const getJSON = async (url, opt) => { const r = await fetch(url, opt); if (!r.ok) throw new Error(url + ' ' + r.status); return r.json(); };
-  const TT = 'https://trusttasks.org/spec/vtc/join-requests/manifest/0.3';
+  const TT = 'https://trusttasks.org/spec/vtc/join-requests/manifest/0.4';
   // API base: '' when the site is served by the daemon on the API's own origin; the API host (e.g.
   // https://vtc.mages.city) when it has a dedicated website host, as a filesystem website must (CORS + CSP set for it).
   let API = '';
@@ -56,6 +56,12 @@
       doors.append(el('article', { class: 'door', id: 'door-' + d.id },
         el('p', { class: 'tag' }, d.kicker || ''), el('h3', {}, d.title), el('p', { class: 'who' }, d.who), ol,
         d.criterion ? el('p', { class: 'crit', 'data-criterion': d.criterion }, 'criterion ', el('b', {}, d.criterion)) : null));
+    }
+    // The doors exist only now, after the config arrived, so a link that arrived with a hash
+    // (#door-agent from the City's front) found nothing to jump to. Honour it here, once.
+    if (location.hash && location.hash.startsWith('#door-')) {
+      const target = document.getElementById(location.hash.slice(1));
+      if (target) { target.scrollIntoView({ block: 'start' }); target.classList.add('door-lit'); }
     }
     const f = cfg.found;
     if (f) {

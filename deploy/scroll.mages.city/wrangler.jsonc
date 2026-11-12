@@ -1,0 +1,8 @@
+// scroll.mages.city: the Scriptorium. Static assets only, no code.
+// Built by mages_city bin/scriptorium.mjs from site/chains.json and the scroll list. Deploy (Mitch): npx wrangler deploy
+{
+  "name": "mages-city-scroll",
+  "compatibility_date": "2026-08-01",
+  "assets": { "directory": "./public", "html_handling": "auto-trailing-slash" },
+  "routes": [ { "pattern": "scroll.mages.city", "custom_domain": true } ]
+}

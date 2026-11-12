@@ -21,12 +21,12 @@
       "href": "https://mages.city/become.html"
     },
     {
-      "label": "evidence",
-      "href": "https://mages.city/arena.html"
+      "label": "the scriptorium",
+      "href": "https://mages.city/scrolls"
     },
     {
-      "label": "the quests",
-      "href": "https://mages.city/arena.html#pw-chain-cards"
+      "label": "the prism",
+      "href": "https://prism.mages.city/"
     },
     {
       "label": "star of the chains",
@@ -99,7 +99,7 @@
           "text": "An administrator reviews and decides."
         },
         {
-          "text": "Admitted: your membership credential arrives in your own agent. (Member sign-in on the web opens when this node carries the OpenVTC member portal.)"
+          "text": "Admitted: your membership credential arrives in your own agent. Members sign in on the web at join.mages.city/sign-in/."
         }
       ]
     }

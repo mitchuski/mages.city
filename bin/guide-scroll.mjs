@@ -46,6 +46,7 @@ const total = books.reduce((a, b) => a + b.objects.length + 1, 0) + epochs.lengt
 const DATA = { books, epochs, links, total, built: reg.snapshot };
 
 const html = scrollPage(DATA, {
+  noPrism: true,   // the guide's books are registry roots, not evidence scrolls the Prism holds
   title: "Guide's Scroll · Mages City",
   desc: "Every page of the agentprivacy guide, named by the hash of its content and folded under one root.",
   h1: "Guide's <em>Scroll</em>",
