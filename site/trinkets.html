@@ -1,0 +1,81 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Trinkets · Mages City</title><meta name="description" content="Trinkets: the small things a mage carries. Each does one thing to a scroll, in your browser, and adds nothing of its own: the Prism reads any scroll's threads, Sigil writes and checks its seal."><link rel="stylesheet" href="style.css"><link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<style>
+.tk-hero{padding:56px 0 8px;max-width:46em}
+.tk-hero h1{font-weight:500;font-size:40px;margin:6px 0 12px}
+.tk-lede{font-size:19px}
+.tk-hero a,.tk-after a{color:var(--cyan)}
+.tk-shelf{display:grid;grid-template-columns:1fr;gap:18px;margin:18px 0 34px;max-width:860px}
+.tk-after{max-width:46em;font-size:15px}
+.pw-cta{display:inline-block;border:1px solid var(--cyan);color:var(--cyan)!important;padding:9px 16px;font:13px monospace;text-decoration:none;margin:6px 12px 6px 0}
+.pw-tag{font:11px monospace;letter-spacing:.14em;text-transform:uppercase;color:var(--cyan)}
+.pw-arenas{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;margin:14px 0 34px}
+.pw-arena{border:1px solid var(--line);padding:16px 18px;display:flex;flex-direction:column}
+.prism-fig{width:100%;max-width:640px;height:auto;margin:6px 0 12px;display:block}
+.prism-fig text{font:11px ui-monospace,monospace;fill:#8b8f9c}
+.prism-fig .pf-cap{font-size:11.5px;fill:#a8b1c3}
+.pf-t{stroke-dasharray:240;stroke-dashoffset:0;animation:pf-walk 6s ease-in-out infinite}
+.pf-p{animation-name:pf-walk-cut}
+.pf-c{animation-delay:.15s}.pf-d{animation-delay:.3s}
+.pf-cut{opacity:0;animation:pf-cut 6s ease-in-out infinite}
+.pf-beam{animation:pf-beam 6s ease-in-out infinite}
+@keyframes pf-beam{0%,30%{opacity:1}36%{opacity:.25}46%,100%{opacity:1}}
+@keyframes pf-walk{0%,30%{stroke-dashoffset:0}38%{stroke-dashoffset:240}62%,100%{stroke-dashoffset:0}}
+@keyframes pf-walk-cut{0%,30%{stroke-dashoffset:0}38%{stroke-dashoffset:240}62%,70%{stroke-dashoffset:0}76%,94%{stroke-dashoffset:115}100%{stroke-dashoffset:0}}
+@keyframes pf-cut{0%,70%{opacity:0}76%,94%{opacity:1}100%{opacity:0}}
+@media (prefers-reduced-motion:reduce){.pf-t,.pf-cut,.pf-beam{animation:none}.pf-t{stroke-dashoffset:0}.pf-cut{opacity:0}}
+.sigil-fig{width:100%;max-width:640px;height:auto;margin:6px 0 12px;display:block}
+.sigil-fig text{font:11px ui-monospace,monospace;fill:#8b8f9c}
+.sigil-fig .pf-cap{font-size:11.5px;fill:#a8b1c3}
+.sigil-fig .sg-hex{font-size:10.5px;fill:#cfd2dc;letter-spacing:.02em}
+.sigil-fig .sg-l,.sigil-fig .sg-bad{font:17px "Noto Sans","Noto Sans Vai","Noto Sans Ethiopic","Noto Sans Canadian Aboriginal","Noto Sans Tifinagh","Segoe UI","Segoe UI Historic","Ebrima","Gadugi",system-ui,sans-serif;fill:#9fd6db}
+.sigil-fig .sg-bad{fill:#ff5d5d}.sigil-fig .sg-okt{fill:#9fd6db;font-size:12px}.sigil-fig .sg-not{fill:#ff5d5d;font-size:12px}
+.sg-l{opacity:0;animation:sg-write 8s ease-out infinite}
+.sg-ink{animation:sg-ink 8s ease-in-out infinite}
+.sg-ok{opacity:0;animation:sg-ok 8s ease-in-out infinite}
+.sg-orig{animation:sg-orig 8s ease-in-out infinite}
+.sg-mis,.sg-no{opacity:0;animation:sg-no 8s ease-in-out infinite}
+@keyframes sg-write{0%{opacity:0}5%,92%{opacity:1}97%,100%{opacity:0}}
+@keyframes sg-ink{0%,25%{opacity:1}35%,100%{opacity:.35}}
+@keyframes sg-ok{0%,30%{opacity:0}35%,52%{opacity:1}56%,100%{opacity:0}}
+@keyframes sg-orig{0%,58%{opacity:1}62%,90%{opacity:0}95%,100%{opacity:1}}
+@keyframes sg-no{0%,58%{opacity:0}62%,90%{opacity:1}95%,100%{opacity:0}}
+@media (prefers-reduced-motion:reduce){.sg-l,.sg-ink,.sg-ok,.sg-mis,.sg-no,.sg-orig{animation:none}.sg-l,.sg-ok{opacity:1}.sg-mis,.sg-no{opacity:0}}
+.pw-arena h3{margin:0 0 4px;font-weight:500;font-size:17px}
+.pw-arena p{margin:0 0 10px;font-size:14px;color:var(--muted)}
+.proof-line{font-size:13px!important;border-left:2px solid var(--line);padding-left:10px}
+.read-how{margin:10px 0 6px;font-size:13.5px}.read-how>summary{cursor:pointer;font:13px ui-monospace,monospace;color:var(--cyan,#9fd6db);list-style:none}.read-how>summary::-webkit-details-marker{display:none}.read-how>summary::before{content:"▸ "}.read-how[open]>summary::before{content:"▾ "}.read-how p{margin:8px 0}
+.pw-arena .count{margin-top:auto;font:12px monospace;color:var(--cyan)}
+.pw-arena a{color:var(--cyan)}
+.quiet-note{font-size:14px;color:var(--muted)}
+</style><link rel="stylesheet" href="sigil/fonts.css"></head><body><div class="wrap"><!--city-header--><nav aria-label="Main" class="city-nav"><a class="brand" href="index.html"><span aria-hidden="true">&#x1F9D9;</span> mages.city</a><div class="links"><span class="journey"><a href="become.html">Become</a><a href="guide.html">Guide</a><a href="arena.html">Scriptorium</a><a href="found.html">For your city</a></span><details class="city-menu"><summary><span class="menu-wide">Discover</span><span class="menu-narrow">Menu</span></summary><div class="menu-panel"><div class="menu-col menu-journey"><p class="menu-h">Start here</p><a class="menu-item" href="become.html"><span class="menu-glyph" aria-hidden="true">🧙</span><span><b>Become a mage</b><small>Who the City is for, what you do, what you hold.</small></span></a><a class="menu-item" href="found.html"><span class="menu-glyph" aria-hidden="true">🌱</span><span><b>Give your city a mage</b><small>Found your trust community, with a mage at its side.</small></span></a></div><div class="menu-col"><p class="menu-h">The places</p><p class="menu-sub">Get in</p><a class="menu-item" href="https://join.mages.city/"><span class="menu-glyph" aria-hidden="true">🧙</span><span><b>The Community</b><small>Join the City; a human admits; hold your credentials in your own agent.</small></span></a><a class="menu-item" href="star-key.html"><span class="menu-glyph" aria-hidden="true">✦</span><span><b>Star Key</b><small>Carry yourself into the City without the City carrying you.</small></span></a><p class="menu-sub">Work</p><a class="menu-item" href="arena.html"><span class="menu-glyph" aria-hidden="true">📜</span><span><b>The Scriptorium</b><small>Mages' scrolls, made for scrolling: every scroll, the arenas that grow them, and the Prism that reads them.</small></span></a><a class="menu-item" href="swarms.html"><span class="menu-glyph" aria-hidden="true">🐝</span><span><b>Swarms</b><small>A task, not an identity: a question, a window, seats, a seal.</small></span></a><a class="menu-item" href="hosting.html"><span class="menu-glyph" aria-hidden="true">📦</span><span><b>Hosting</b><small>Words in a registry, spells with their mages, mana on the edges.</small></span></a><p class="menu-sub">Learn</p><a class="menu-item" href="guide.html"><span class="menu-glyph" aria-hidden="true">📚</span><span><b>The Guide</b><small>Walk it with your agent: deploy, run a lane, join, attach.</small></span></a><a class="menu-item" href="spellbooks.html"><span class="menu-glyph" aria-hidden="true">📖</span><span><b>The Spellbook</b><small>The tellings: tomes, the chronicle, the reading shelf, the Spellspace.</small></span></a><a class="menu-item" href="setup.html"><span class="menu-glyph menu-glyph-wide" aria-hidden="true">⚔️⊥🧙</span><span><b>The Setup</b><small>Two seats, one keeper: the Swordsman and the Mage.</small></span></a></div><div class="menu-col"><p class="menu-h">Workshop</p><a class="menu-item" href="discover.html"><span class="menu-glyph" aria-hidden="true">🔭</span><span><b>Routes</b><small>Routes through the City by purpose.</small></span></a><a class="menu-item" href="board.html"><span class="menu-glyph" aria-hidden="true">✍️</span><span><b>Contribute</b><small>The board: speak, reply, open a thread.</small></span></a><a class="menu-item" href="join.html"><span class="menu-glyph" aria-hidden="true">🔗</span><span><b>Connect</b><small>The OpenVTC join, step by step.</small></span></a><a class="menu-item" href="space.html"><span class="menu-glyph" aria-hidden="true">🪪</span><span><b>Your space</b><small>What you hold, once you are in.</small></span></a><p class="menu-sub">The quests</p><div class="menu-hashes"><a href="https://sha256.mages.city/">SHA-256 ↗</a><a href="https://sha3.mages.city/">SHA-3 ↗</a><a href="https://blake3.mages.city/">BLAKE3 ↗</a><a href="https://poseidon.mages.city/">Poseidon ↗</a><a href="https://curve.mages.city/">Curve ↗</a><a href="https://hashsmash.mages.city/">HashSmash ↗</a><a href="https://sig.mages.city/">Sig golf ↗</a><a href="https://ecrank.mages.city/">EC rank ↗</a><a href="https://falcon.mages.city/">Falcon ↗</a><a href="https://mldsa.mages.city/">ML-DSA ↗</a></div><a class="menu-more" href="arena.html#scrolls">❦ the Scriptorium: every scroll, made for scrolling →</a><a class="menu-more" href="trinkets.html">◈ Trinkets: the Prism and Sigil, things a mage carries →</a><a class="menu-more" href="star.html">✦ the star of the chains: what lights your Star Key →</a><a class="menu-join" href="https://join.mages.city/">Join the community →</a></div></div></details><a class="join-cta" href="https://join.mages.city/">Join →</a></div></nav><script src="nav.js" defer></script><div class="city-band" id="band"><span class="band-dot" aria-hidden="true">●</span> minted 2026-10-08 · <strong id="city-did" title="did:webvh:QmQ8GMNCTui2H9gjxQWByS1ScsWkByaeQHYnzhcET1UPne:dids.mages.city:vtc">did:webvh:QmQ8GMNC…:dids.mages.city:vtc</strong> · administered from a Star · <a href="https://join.mages.city/">get in</a> · <a href="community.md">terms</a></div><!--/city-header--><main>
+<section class="tk-hero">
+<p class="pw-tag">the trinkets · things a mage carries</p>
+<h1>Trinkets</h1>
+<p class="tk-lede"><b>Small things a mage carries.</b> Each does one thing to a scroll, in your browser, and adds nothing of its own. Every scroll in <a href="arena.html">the Scriptorium</a> is nothing but hashes under one root; the trinkets are how you hold one up and read it.</p>
+</section>
+<div class="tk-shelf" id="trinkets">
+<div class="pw-arena pw-trinket"><h3>◈ The Prism</h3><svg class="prism-fig" viewBox="0 0 600 176" role="img" aria-label="A scroll's root enters the Prism as white light and splits into three threads: composed-of in gold, provenance in teal, derived-from in violet. The swordsman cuts one thread and the light stops at a red mark where the scroll breaks.">
+<defs><linearGradient id="pf-beam" gradientUnits="userSpaceOnUse" x1="66" y1="0" x2="222" y2="0"><stop offset="0" stop-color="#e6e3d8" stop-opacity=".15"/><stop offset="1" stop-color="#e6e3d8" stop-opacity=".9"/></linearGradient></defs>
+<g class="pf-scroll"><rect x="18" y="38" width="46" height="94" rx="6" fill="none" stroke="#3a4055"/>
+<circle cx="41" cy="56" r="3.2" fill="#e8c873"/><circle cx="33" cy="72" r="1.8" fill="#9fd6db"/><circle cx="48" cy="80" r="1.8" fill="#cfd2dc"/><circle cx="36" cy="94" r="1.8" fill="#e5a49c"/><circle cx="50" cy="104" r="1.8" fill="#9fd6db"/><circle cx="32" cy="116" r="1.8" fill="#c1c8ef"/>
+<text x="41" y="152" text-anchor="middle">scroll</text></g>
+<line class="pf-beam" x1="66" y1="85" x2="222" y2="85" stroke="url(#pf-beam)" stroke-width="3"/>
+<polygon class="pf-glass" points="214,40 270,130 158,130" transform="translate(30 -0)" fill="rgba(193,200,239,.06)" stroke="#c1c8ef" stroke-width="1.2"/>
+<text x="244" y="152" text-anchor="middle">the Prism</text>
+<g class="pf-threads" fill="none" stroke-width="2.2" stroke-linecap="round">
+<path class="pf-t pf-c" d="M272 84 C330 60 380 44 452 40" stroke="#e8c873"/>
+<path class="pf-t pf-p" d="M274 86 C330 86 390 86 452 85" stroke="#9fd6db"/>
+<path class="pf-t pf-d" d="M272 88 C330 112 380 126 452 130" stroke="#c1c8ef"/>
+</g>
+<circle cx="458" cy="40" r="4" fill="#e8c873"/><circle cx="458" cy="85" r="4" fill="#9fd6db"/><circle cx="458" cy="130" r="4" fill="#c1c8ef"/>
+<text x="470" y="44">composed-of</text><text x="470" y="89">provenance</text><text x="470" y="134">derived-from</text>
+<g class="pf-cut"><text x="350" y="78" text-anchor="middle" font-size="15">⚔️</text><circle cx="392" cy="86" r="7" fill="none" stroke="#ff5d5d" stroke-width="2"/></g>
+<text class="pf-cap" x="18" y="20">🧙 cast: the light walks every thread</text><text class="pf-cap" x="300" y="20">⚔️ cut: it stops where the scroll breaks</text>
+</svg><p><b>The trinket that reads any mage's scroll.</b> Hold a scroll to it and the white light of one root splits into the threads that hold it. Hold a hash, a seal, or a face of the evidence, and it finds the scrolls that carry it. Two hands work it: 🧙 the mage casts, and the light walks the threads from the root; ⚔️ the swordsman cuts a thread, and the light stops where the scroll breaks. Where a cut does not break it, the Prism has found a gap, a thread no rule yet guards, and a gap is where a mage can build.</p><p class="proof-line">◈ <b>Proven with UOR's Prism.</b> The rule table behind the light is <a href="https://mitchuski.github.io/scroll-thread-check/">scroll-thread-check ↗</a>: Lean proved six <i>never ok</i> rules, the sixth found by cutting, and its holo <code>22161e68…</code> agrees with the Prism's light on 1,792 of 1,792 test scrolls. The walk and the hashing stay with the page; UOR rates the holo P0 until its format carries the proof inside it.</p><details class="read-how"><summary>How to read with it</summary><p><b>Hold.</b> A hash, a <code>sha256:</code> or <code>blake3:</code> label, a seal (a root written in Sigil; a misread letter is named, never accepted), or a face of the evidence composed on the star of the chains. The Prism finds every scroll that carries it.</p><p><b>The star.</b> Each hash sits where its own bits place it: a corner of the cube by bits 0 to 2, rose or teal by parity, and a place within it by bits 3 to 5, sixty-four states in all. Hash bits are uniform, so where a hash sits says nothing about the work.</p><p><b>The light.</b> 🧙 Cast, and the light walks six rules in order: the root is a run-root; the walk from the root stays inside the scroll; each ledger's rows match its threads; every row carries provenance to a blob; every fact derives from its ledger; every record is tied in. Gold is composed-of, teal is provenance, violet is derived-from, and red is where the first broken rule points.</p><p><b>Open, read, hand it on.</b> Click a hash to see what ties it in and what it ties to, and cross into another mage's scroll where the same hash lives. Every hash you open and every cut you make is a step of your reading, folded into a root of your own and written as one seal. Hand the reading on as a link: the Prism that receives it re-derives every step and says whether it checks. The scrolls you reached are your face.</p><p><b>Cut, and the gap.</b> ⚔️ Cut the threads into a hash and cast again. If the scroll breaks, a rule guards that thread; if it holds, the cut has found a gap. Cutting every hash of all 252 sealed scrolls found 2,054 gaps, and a sixth rule written from them closed 1,241. The 813 left are blobs no rule can tell from honest ones: only the seal guards them.</p><p><b>The panels.</b> ◧ and ◨ hide the side panels (or <code>[</code> and <code>]</code>); ◐ focus leaves the star alone. Nothing but hashes, seals, dates and numerals leaves the Prism.</p></details><span class="count"><a href="https://prism.mages.city/">carry the Prism →</a></span></div>
+<div class="pw-arena pw-trinket"><h3>✍ Sigil</h3><svg class="sigil-fig" viewBox="0 0 600 176" role="img" aria-label="A scroll's root, thirty-two bytes in hexadecimal, is written by Sigil as one word of twenty-five letters from many scripts, and the word checks. Then one letter is misread, marked in red, and the check fails: the seal says so.">
+</div>
+<section class="tk-after">
+<p class="quiet-note">Both trinkets light up on <a href="star.html">the star of the chains</a>, the sky your <a href="star-key.html">Star Key</a> carries. Nothing but hashes, seals, dates and numerals leaves either one.</p>
+<p><a class="pw-cta" href="https://prism.mages.city/">carry the Prism →</a><a class="pw-cta" href="https://sigil.mages.city/">open Sigil →</a><a class="pw-cta" href="arena.html#scrolls">find a scroll to read →</a></p>
+</section>
+</main><footer>City of Mages · machines qualify · humans admit · brokers release<br>Carry your knowledge. Choose what to reveal. Come find your constellation.</footer></div><script src="status.js"></script></body></html>
