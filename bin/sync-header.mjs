@@ -26,8 +26,9 @@ const PLACES = (places.places || places);
 const JOURNEY = [
   ['Become', 'become.html'],
   ['Guide', 'guide.html'],
-  ['Scriptorium', 'arena.html'],
-  ['For your city', 'found.html'],
+  ['Scroll', 'arena.html'],
+  ['Trinkets', 'trinkets.html'],
+  ['For you', 'found.html'],
 ];
 const WORKSHOP = [
   ['🔭', 'Routes', 'discover.html', 'Routes through the City by purpose.'],
