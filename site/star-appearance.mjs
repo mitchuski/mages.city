@@ -19,19 +19,29 @@ export async function appearanceFromJSON(text){
   const derived='sha256:'+Array.from(new Uint8Array(hash),b=>b.toString(16).padStart(2,'0')).join('');
   if(key.kappa!==derived)throw Error('City Key commitment does not match its content');
  }
- // Nothing else crosses this boundary: no DID, commitment, evidence or private extension.
+ // Nothing else crosses this boundary: no DID, commitment, evidence or private extension —
+ // except the Hold's COUNT (a number). Its root is a commitment and stays behind.
+ const holds=Number.isInteger(key.holds?.count)&&key.holds.count>=0?{count:key.holds.count}:null;
  const palette={};
  for(const name of Object.keys(defaults)){
   const color=key.palette?.[name];
   if(color!==undefined&&(typeof color!=='string'||!/^#[a-f0-9]{6}$/i.test(color)))throw Error('Palette colours must use six-digit hex values');
   palette[name]=color?.toLowerCase()??defaults[name];
  }
- return {kind:'vta-star.appearance/1',palette};
+ const geometry=shapeOf(key.geometry);
+ const out={kind:'vta-star.appearance/1',palette};if(holds)out.holds=holds;if(geometry)out.geometry=geometry;return out;
 }
+// The manifold SHAPE (City Key v1 additive 'geometry', written by soulbis /star): numbers only, clamped to /star's ranges.
+const clampNum=(v,lo,hi)=>typeof v==='number'&&Number.isFinite(v)?Math.min(hi,Math.max(lo,v)):undefined;
+function shapeOf(g){if(!object(g))return null;const o={eps:clampNum(g.eps,0,0.6),m:clampNum(g.m,1,10),n:clampNum(g.n,1,10),core:clampNum(g.core,0.25,0.85)};
+ if(o.m!==undefined)o.m=Math.round(o.m);if(o.n!==undefined)o.n=Math.round(o.n);
+ for(const k of Object.keys(o))if(o[k]===undefined)delete o[k];return Object.keys(o).length?o:null;}
 export function readAppearance(value){
  if(value?.kind!=='vta-star.appearance/1'||!object(value.palette))return null;
  const palette={};for(const name of Object.keys(defaults)){
   const c=value.palette[name];if(typeof c!=='string'||!/^#[a-f0-9]{6}$/i.test(c))return null;palette[name]=c.toLowerCase();
  }
- return {kind:'vta-star.appearance/1',palette};
+ const holds=Number.isInteger(value.holds?.count)&&value.holds.count>=0?{count:value.holds.count}:null;
+ const geometry=shapeOf(value.geometry);
+ const out={kind:'vta-star.appearance/1',palette};if(holds)out.holds=holds;if(geometry)out.geometry=geometry;return out;
 }

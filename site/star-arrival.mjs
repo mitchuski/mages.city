@@ -23,8 +23,10 @@ input.addEventListener('change',async()=>{
  const file=input.files[0];if(!file)return;
  input.disabled=forget.disabled=true;error.textContent='';
  try{
-  if(file.size>2*1024*1024)throw Error('Choose a JSON key smaller than 2 MiB');
-  const appearance=await appearanceFromJSON(await file.text());
+  const isPng=file.type==='image/png'||/\.png$/i.test(file.name);
+  if(file.size>(isPng?16:2)*1024*1024)throw Error(isPng?'Choose a PNG smaller than 16 MiB':'Choose a key smaller than 2 MiB');
+  const raw=isPng?keyFromPng(new Uint8Array(await file.arrayBuffer())):await file.text();
+  const appearance=await appearanceFromJSON(raw);
   sessionStorage.setItem(slot,JSON.stringify(appearance));render(appearance);
  }catch(e){error.textContent=e.message;}
  finally{input.value='';input.disabled=forget.disabled=false;}
@@ -37,3 +39,13 @@ forget.addEventListener('click',()=>{
 const sceneColours=document.getElementById('star-scene-colours');
 function syncSceneColours(){document.body.classList.toggle('star-scene-colours',sceneColours.checked);}
 sceneColours.addEventListener('change',syncSceneColours);syncSceneColours();
+
+// 2026-11-17: a City Key PNG from soulbis /star carries the key in a tEXt chunk named cityKey (base64 JSON)
+function keyFromPng(u){
+ if(u.length<20||u[0]!==0x89||u[1]!==0x50||u[2]!==0x4e||u[3]!==0x47)throw Error('That is not a PNG');
+ const lat=b=>{let s='';for(const c of b)s+=String.fromCharCode(c);return s;};
+ for(let p=8;p+12<=u.length;){const len=((u[p]<<24)|(u[p+1]<<16)|(u[p+2]<<8)|u[p+3])>>>0,type=lat(u.subarray(p+4,p+8));
+  if(type==='tEXt'){const d=u.subarray(p+8,p+8+len),z=d.indexOf(0);if(z>0&&lat(d.subarray(0,z))==='cityKey'){const bin=atob(lat(d.subarray(z+1)));return new TextDecoder().decode(Uint8Array.from(bin,c=>c.charCodeAt(0)));}}
+  if(type==='IEND')break;p+=12+len;}
+ throw Error('No City Key inside this PNG');
+}
