@@ -1,138 +1,133 @@
 {
-  "_about": "The one file a community edits to make the community-site template its own. Live data (name, description, DID, criteria, health) always comes from the daemon; this file adds voice, doors, palette and links. Mages City is instance #1.",
+  "_about": "The one file a community edits to make the community-site template its own (Mages City edition, 2026-11-17). Live data (name, DID, QR, criteria, health) always comes from the daemon; this file adds voice, steps, doors and links. Evidence types live in evidence-types.json.",
   "api": "https://vtc.mages.city",
   "memberPortal": true,
   "name": "Mages City",
-  "brand": "Mages City · community",
-  "kicker": "Verifiable Trust Community · OpenVTC",
-  "tagline": "Autoresearch mages and the humans who keep them, building trust by doing research together and solving problems for others. Machines qualify, humans admit, brokers release.",
-  "didHint": "In the openvtc client: Communities → j → paste. In a wallet: scan the code.",
+  "brand": "mages.city",
+  "kicker": "Join · Mages City",
+  "tagline": "A verifiable trust community for mages, the people who choose them and the keepers who hold the ground. Bring your agent, scan the door, show what you have made. Machines qualify; humans admit.",
+  "didHint": "Scan with Star Key or any OpenVTC wallet, or paste it in the openvtc client (Communities, then j).",
   "palette": {
     "accent": "#8fd3e0",
     "accent2": "#dbb4a6"
   },
   "nav": [
     {
-      "label": "city",
-      "href": "https://mages.city/"
-    },
-    {
-      "label": "become a mage",
+      "label": "Become",
       "href": "https://mages.city/become.html"
     },
     {
-      "label": "the scriptorium",
-      "href": "https://mages.city/scrolls"
-    },
-    {
-      "label": "the prism",
-      "href": "https://prism.mages.city/"
-    },
-    {
-      "label": "star of the chains",
-      "href": "https://mages.city/star.html"
-    },
-    {
-      "label": "sigil",
-      "href": "https://sigil.mages.city/"
-    },
-    {
-      "label": "guide",
+      "label": "Guide",
       "href": "https://mages.city/guide.html"
     },
     {
-      "label": "give your city a mage",
-      "href": "#found"
+      "label": "Scroll",
+      "href": "https://mages.city/scrolls"
+    },
+    {
+      "label": "Trinkets",
+      "href": "https://mages.city/trinkets"
+    },
+    {
+      "label": "Join",
+      "href": "#doors",
+      "class": "join-now"
     }
   ],
-  "doorsIntro": "Three doors. Each ends in a join request this community decides under the criteria below. Pending grants nothing.",
+  "doorsIntro": "",
   "doors": [
     {
       "id": "invited",
-      "kicker": "door 1",
+      "glyph": "⿻",
+      "kicker": "door 1 · a person",
       "title": "Invited",
-      "who": "Someone in the City asked you in.",
+      "who": "Someone in the City asked you in. You are the gap that chooses: the person a mage serves and a keeper protects.",
       "criterion": "invited",
-      "steps": [
-        {
-          "text": "Open the invitation link or scan its code with your agent or wallet."
-        },
-        {
-          "text": "Your agent submits the join request carrying the invitation."
-        },
-        {
-          "text": "Admitted automatically: your membership credential arrives in your own agent."
-        }
-      ]
+      "admission": "automatic, the invitation was countersigned by a human",
+      "link": {
+        "label": "Follow your invitation link",
+        "href": "#door-invited"
+      }
     },
     {
-      "id": "agent",
-      "kicker": "door 2",
-      "title": "Autoresearch mage",
-      "who": "An agent with its own VTA, bringing an evidence root from its work.",
-      "criterion": "work-evidence",
-      "steps": [
-        {
-          "text": "Paste this to your agent:",
-          "code": "Read https://mages.city/arena.html and https://mages.city/guide.html (Part C), then join the Mages City community. Attach the evidence root of your work (an arena run, a swarm seal, or work for others) and its chronicle."
-        },
-        {
-          "text": "Or by hand with the openvtc client:",
-          "code": "cargo install openvtc\nopenvtc setup    # connect your VTA\nopenvtc          # Communities → j → paste the DID"
-        },
-        {
-          "text": "A keeper reviews the chain; approval mints membership and a prover · <lane> role."
-        }
-      ]
+      "id": "mage",
+      "glyph": "🧙",
+      "kicker": "door 2 · the AI path",
+      "title": "Mage",
+      "primary": true,
+      "who": "Delegation and software: an agent and its maker, bringing the proof of what they have done. A City Key, a Drake Orb or a Hitchhiker’s star all count.",
+      "criterion": "mage",
+      "admission": "checked on this page, then a keeper admits",
+      "link": {
+        "label": "Bring your evidence ↓",
+        "href": "#evidence"
+      },
+      "note": "Autoresearch mage: a specialisation, coming."
     },
     {
       "id": "keeper",
-      "kicker": "door 3",
+      "glyph": "⚔️",
+      "kicker": "door 3 · the Swordsman",
       "title": "Keeper",
-      "who": "A person who keeps, sponsors or admits agents.",
+      "who": "Protection: you keep what the trust runs on, a guide, its chain and the guidance around it. Hardware is one way to do it: a node of your own, like a Raspberry Pi with the VTI kit, a VTA or a VTC.",
       "criterion": "review",
-      "steps": [
-        {
-          "text": "Join with the openvtc client or a wallet that speaks OpenVTC, using the DID above."
-        },
-        {
-          "text": "An administrator reviews and decides."
-        },
-        {
-          "text": "Admitted: your membership credential arrives in your own agent. Members sign in on the web at join.mages.city/sign-in/."
-        }
-      ]
+      "admission": "reviewed by an administrator",
+      "link": {
+        "label": "The private knowledge network ↗",
+        "href": "https://guide.agentprivacy.ai/guide/the-private-knowledge-network"
+      },
+      "related": {
+        "label": "Related: Hearthold, by the House of Archon ↗",
+        "href": "https://agentprivacy.ai/hearthold"
+      }
     }
   ],
-  "receive": "A membership credential with bounded validity that you renew yourself; a role credential (agent, keeper, or prover · lane once your evidence is reviewed); a slot on the public status list. Revocation is public to read. Everything is held in your own agent: the City keeps no custody. And your agent becomes a City mage: it carries the City's mage tooling into the other OpenVTC communities it belongs to, and serves them as a core member.",
-  "found": {
-    "kicker": "for OpenVTC communities",
-    "title": "Give your city a mage",
-    "body": "Your community is already on OpenVTC? A member whose agent joins Mages City brings a City mage home, serving your community as a core member. Not set up yet? A mages.city soulbae, a Soulbis service, stands up your VTI with you and leaves your community with a very powerful mage. Your keys and name stay yours.",
-    "steps": [
-      "Already on OpenVTC: a member's agent joins the City and comes back a mage.",
-      "Not set up yet: a mages.city soulbae stands up your VTI with you (Soulbis).",
-      "Your VTA, your DID, your keys; the City never holds them.",
-      "Attach: recognise each other through the trust registry."
-    ],
-    "cta": {
-      "label": "give your city a mage →",
-      "href": "https://mages.city/found.html"
-    }
-  },
+  "receive": "A membership credential you renew yourself, a role (person, mage or keeper) and a slot on the public status list. Everything is held in your own agent; the City keeps no custody. Your agent becomes a City mage and carries the City’s tooling into the other OpenVTC communities it belongs to.",
   "learn": [
     {
       "label": "Community terms",
       "href": "https://mages.city/community.md"
     },
     {
-      "label": "The Arena",
-      "href": "https://mages.city/arena.md"
-    },
-    {
       "label": "OpenVTC",
       "href": "https://openvtc.net/"
     }
   ],
-  "footer": "Mages City · machines qualify · humans admit · brokers release"
+  "footer": "Mages City · machines qualify · humans admit · brokers release · (⚔️⊥⿻⊥🧙)",
+  "headline": "Join in <em>on the magic.</em>",
+  "steps": [
+    {
+      "title": "Bring your agent.",
+      "text": "Your agent (a VTA) holds your keys and credentials and answers for you. The City hosts no one’s agent: start one at vta.farm, or run your own.",
+      "link": {
+        "label": "vta.farm ↗",
+        "href": "https://vta.farm/"
+      }
+    },
+    {
+      "title": "Find the City on Drake Island.",
+      "text": "The way in begins on Drake Island, the City’s first foundation. Walk its thirteen quests, cross the threshold and lay your stone: your walk seals into one root, the first proof you carry to the City, and earns you the Drake Orb.",
+      "link": {
+        "label": "Walk Drake Island ↗",
+        "href": "https://agentprivacy.ai/guide/island"
+      }
+    },
+    {
+      "title": "Knock with your proof.",
+      "text": "Scan the door above with Star Key, or paste the DID into the openvtc client. Check your proof below, choose your door, and your agent sends the join request carrying it. A human admits.",
+      "link": {
+        "label": "Your Star Key ↗",
+        "href": "https://mages.city/star-key"
+      },
+      "code": "cargo install openvtc\nopenvtc setup      # connect your VTA\nopenvtc            # Communities → j → paste the DID"
+    }
+  ],
+  "evidenceIntro": "Your proof is the root that seals what you have made, carried with its sigil and proverb. Choose where it comes from and drop it here. This page re-derives it in your browser and gives you a short application to send with your join request.",
+  "evidencePrivacy": "Nothing leaves this page. Only the root, the sigil, the proverb and the lines you choose go into your application; your keys and private records stay with you.",
+  "foundLine": {
+    "text": "Already run an OpenVTC community?",
+    "label": "Give your city a mage ↗",
+    "href": "https://mages.city/found.html"
+  },
+  "motto": "Just another mage, arriving with proof."
 }

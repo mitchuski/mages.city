@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Mages City · Sign in</title>
+<meta name="description" content="Sign in to Mages City: the members page lives at vtc.mages.city/members/, opened by your own wallet.">
+<link rel="icon" href="/logo.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/site.css">
+<script src="/sign-in/sign-in.js" defer></script>
+</head>
+<body>
+<!-- community-site template (deploy/vti/vtc/website/sign-in). The sign-in door on the website host. Since
+     vtc 0.15 the OpenVTC member portal is served at the API origin (https://vtc.mages.city/members/) and
+     /members/ is reserved there, so this host carries the door and the portal carries the members page.
+     The DID document's SignInPortal names the portal, which is the origin wallets accept sign-in from. -->
+<div class="wrap">
+<nav class="top">
+  <a class="brand" href="/"><img src="/logo.svg" alt="" width="22" height="22"><span>Mages City</span></a>
+  <div class="links"><a href="/">Community</a><a href="/myterms/">Your terms</a><a href="https://vtc.mages.city/members/">Members</a></div>
+</nav>
+<main>
+  <header class="hero">
+    <p class="tag">Verifiable Trust Community · OpenVTC</p>
+    <h1>Sign in</h1>
+    <p class="lede">Members sign in with their own wallet. The page holds nothing; your wallet and the community's daemon do the work.</p>
+    <p class="small muted">Community DID: <code id="did">reading…</code></p>
+  </header>
+  <section aria-labelledby="member-h">
+    <h2 id="member-h">I am a member</h2>
+    <p><a class="cta" href="https://vtc.mages.city/members/">open the members page</a></p>
+    <p>The members page shows your credential, your relationships and your rooms, read from the City's own daemon. Your <strong>Star Key</strong> wallet signs you in there because the City's DID document names it as the community's sign-in portal.</p>
+  </section>
+  <section aria-labelledby="join-h">
+    <h2 id="join-h">Not a member yet</h2>
+    <p>Press the 🤝 in the Star Key header and give it this community's DID. The wallet reads the join criteria and the City's <a href="/myterms/">terms</a>, and nothing is sent until you say so.</p>
+    <p><button id="copy-did" type="button" hidden>copy the community DID</button></p>
+    <p>No wallet yet? <a href="https://mages.city/get-star-key.md">Get Star Key</a>, the City's fork of the OpenVTC browser wallet, then connect it to your own agent.</p>
+  </section>
+</main>
+<footer>
+  <p class="small">Powered by the open-source <a href="https://github.com/OpenVTC/verifiable-trust-infrastructure">Verifiable Trust Infrastructure</a>. This page holds no keys. <a href="/">Community</a> · <a href="https://vtc.mages.city/admin/">Console</a></p>
+</footer>
+</div>
+</body>
+</html>

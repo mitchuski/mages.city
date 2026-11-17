@@ -1,0 +1,8 @@
+// grimoire.mages.city: The grimoire scroll, nothing but hashes. Static assets only, no code.
+// Built by mages_city bin/bundle-scroll.mjs from its sealed κ-evidence bundle(s). Deploy (Mitch): npx wrangler deploy
+{
+  "name": "mages-city-grimoire",
+  "compatibility_date": "2026-08-01",
+  "assets": { "directory": "./public", "html_handling": "auto-trailing-slash" },
+  "routes": [ { "pattern": "grimoire.mages.city", "custom_domain": true } ]
+}

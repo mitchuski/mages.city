@@ -28,5 +28,15 @@
   "id": "poc",
   "label": "❦ poc mage",
   "href": "https://poc.mages.city/"
+ },
+ {
+  "id": "moon",
+  "label": "❦ moon scroll",
+  "href": "https://moon.mages.city/"
+ },
+ {
+  "id": "grimoire",
+  "label": "❦ the privacy mage's grimoires",
+  "href": "https://grimoire.mages.city/"
  }
 ]

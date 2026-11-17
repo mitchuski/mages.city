@@ -1,6 +1,6 @@
 {
   "_about": "Every host the City answers on: what it is, who builds it, how it deploys, and what state it should be in. bin/verify-hosts.mjs probes each one against this. States: live (must answer 200), staged (built, awaiting the keeper's deploy), parked (planned; must NOT be linked from the site as live). Kept at the repo root, not in site/, so builder notes never publish.",
-  "updated": "2026-11-12",
+  "updated": "2026-11-16",
   "hosts": [
     { "host": "mages.city", "kind": "the City", "builder": "mages_city/site + bin/sync-header.mjs", "deploy": "push to main (Workers Builds)", "state": "live" },
     { "host": "www.mages.city", "kind": "the City", "builder": "same worker", "deploy": "push to main", "state": "live" },
@@ -14,6 +14,7 @@
     { "host": "poc.mages.city", "kind": "a mage's scroll", "builder": "mages_city bin/bundle-scroll.mjs", "deploy": "cd deploy/poc.mages.city && npx wrangler deploy", "state": "live" },
     { "host": "near.mages.city", "kind": "a mage's scroll", "builder": "mages_city bin/bundle-scroll.mjs", "deploy": "cd deploy/near.mages.city && npx wrangler deploy", "state": "live" },
     { "host": "research.mages.city", "kind": "a mage's scroll", "builder": "mages_city bin/bundle-scroll.mjs", "deploy": "cd deploy/research.mages.city && npx wrangler deploy", "state": "live" },
+    { "host": "moon.mages.city", "kind": "a scroll of the stars chain (one book per sealed moon)", "builder": "mages_city bin/moon-scroll.mjs (local only: no moon sealed yet, first seals 2026-12-09; host name not yet chosen)", "deploy": "cd deploy/moon.mages.city && npx wrangler deploy", "state": "staged" },
     { "host": "hashsmash.mages.city", "kind": "a quest home", "builder": "blake3-mage levers (WSL) + deploy_copies.py", "deploy": "cd blake3-mage/blake3-mage/deploy/hashsmash.mages.city && npx wrangler deploy", "state": "live" },
     { "host": "sha256.mages.city", "kind": "a quest", "builder": "blake3-mage levers", "deploy": "blake3-mage deploy/sha256.mages.city", "state": "live" },
     { "host": "sha3.mages.city", "kind": "a quest", "builder": "blake3-mage levers", "deploy": "blake3-mage deploy/sha3.mages.city", "state": "live" },

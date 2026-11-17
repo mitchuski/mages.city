@@ -1,0 +1,15 @@
+// join-fallback: Mages City's front door while the node rests. See src/worker.js and README.md.
+// Deploy (Mitch): create the KV namespace once (npx wrangler kv namespace create HELD), put its id below,
+// then: npx wrangler deploy
+{
+  "name": "mages-city-join-fallback",
+  "main": "src/worker.js",
+  "compatibility_date": "2026-08-01",
+  "assets": { "directory": "./public", "binding": "ASSETS", "run_worker_first": true },
+  "kv_namespaces": [ { "binding": "HELD", "id": "82e1001178a04ab5a162680ae63b2027" } ],
+  "routes": [
+    { "pattern": "join.mages.city/*", "zone_name": "mages.city" },
+    { "pattern": "vtc.mages.city/v1/trust-tasks*", "zone_name": "mages.city" },
+    { "pattern": "vtc.mages.city/v1/community/*", "zone_name": "mages.city" }
+  ]
+}

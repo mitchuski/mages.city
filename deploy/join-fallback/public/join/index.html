@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Mages City · Verifiable Trust Community</title>
+<meta name="description" content="A Verifiable Trust Community on OpenVTC. Read live from this community's own daemon.">
+<link rel="icon" href="/logo.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/site.css">
+<script src="/site.js" defer></script>
+</head>
+<body>
+<!-- community-site template (deploy/vti/vtc/website). Everything community-specific is in community.config.json;
+     everything live comes from this daemon: /v1/community/public-profile, /health, the join manifest
+     (POST /v1/trust-tasks, vtc/join-requests/manifest/0.4), /v1/community/did-qr.svg. Served under default-src 'self'. -->
+<div class="wrap">
+<nav class="top">
+  <a class="brand" href="/"><img src="/logo.svg" alt="" width="22" height="22"><span id="brand">Community</span></a>
+  <div class="links" id="nav"></div>
+</nav>
+
+<main>
+  <header class="hero">
+    <p class="tag" id="kicker">Verifiable Trust Community · OpenVTC</p>
+    <h1 id="name">Community</h1>
+    <p class="lede" id="tagline"></p>
+    <p class="status" id="status"><span class="dot"></span><span id="status-text">checking the node…</span></p>
+  </header>
+
+  <section class="did" aria-label="Community DID">
+    <div>
+      <p class="tag">Community DID · public, nothing secret</p>
+      <code id="did">reading…</code>
+      <button id="copy" type="button" hidden>copy DID</button>
+      <p class="small muted" id="did-hint"></p>
+    </div>
+    <img id="qr" alt="QR code of the community DID" width="180" height="180">
+  </section>
+
+  <section aria-labelledby="doors-h">
+    <h2 id="doors-h">Ways in</h2>
+    <p class="muted" id="doors-intro"></p>
+    <div class="doors" id="doors"></div>
+  </section>
+
+  <section aria-labelledby="criteria-h">
+    <h2 id="criteria-h">How joining is decided</h2>
+    <p class="muted small">Read live from this community's join manifest. The first criterion an application meets, in this order, decides it.</p>
+    <div class="table"><table>
+      <thead><tr><th>#</th><th>criterion</th><th>admission</th><th>requires</th></tr></thead>
+      <tbody id="criteria"><tr><td colspan="4" class="muted">reading the manifest…</td></tr></tbody>
+    </table></div>
+  </section>
+
+  <section aria-labelledby="receive-h">
+    <h2 id="receive-h">What you hold</h2>
+    <p id="receive"></p>
+  </section>
+
+  <section class="found" id="found" hidden aria-labelledby="found-h">
+    <p class="tag" id="found-kicker"></p>
+    <h2 id="found-h"></h2>
+    <p id="found-body"></p>
+    <ol id="found-steps"></ol>
+    <p><a class="cta" id="found-cta" href="#"></a></p>
+  </section>
+
+  <section aria-labelledby="about-h">
+    <h2 id="about-h">About</h2>
+    <p class="muted" id="desc"></p>
+    <p class="links-row" id="learn"></p>
+  </section>
+</main>
+
+<footer>
+  <p id="footer"></p>
+  <p class="small">Powered by the open-source <a href="https://github.com/OpenVTC/verifiable-trust-infrastructure">Verifiable Trust Infrastructure</a>. This page holds no keys; it reads this community's own daemon. <a href="/sign-in/">Member sign-in</a> · <a href="/admin/" data-api-path="/admin/">Console</a></p>
+</footer>
+</div>
+</body>
+</html>

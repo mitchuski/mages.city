@@ -1,9 +1,11 @@
 // ring.js — the apex as a ring of places on the Star. Reads places.json, seats each place at its
 // vertex on the Star figure's lattice (the `places` layer), shows a card on hover, teleports on click.
 // The strip of chips beneath is the same nine doors for keyboards and phones. Nothing here is a score.
-import { createStarFigure } from "./star-figure.js";
+import { createStarFigure } from "./city-figure.js";
 
 const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+// back/forward cache: the page returns with the teleport blur still on; clear it whenever it is shown again
+window.addEventListener("pageshow", () => document.body.classList.remove("teleporting"));
 const reduce = typeof matchMedia === "function" && matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 (async () => {

@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-13",
+ "generated": "2026-11-17",
  "chains": [
   {
    "id": "sha256",
@@ -314,14 +314,14 @@
    "hash": "hashsmash_sha256",
    "sound": false,
    "axis": "entry",
-   "entries": 26,
-   "lever_leaves": 102,
-   "no_go": 347,
-   "work_root": "sha256:1b73113dab889245af948f6e4e54c777cd0df495a6d65786e0e422e9e499a160",
-   "seal": "ఈᗩᒪⵙሌሁᓨᐭጩዏଳꢇୟꨍꕽꕔቛᕥᒽᘀᘶꛇఔᑣᓝ",
+   "entries": 27,
+   "lever_leaves": 103,
+   "no_go": 367,
+   "work_root": "sha256:3071bebc79749aedc79651b646d7cbb56b0d09493487b323a87f4997a158e8dd",
+   "seal": "ለᕹළቾዓሉቕখᗒⵀꗠꕫᐽᗬᖸፊᗑᕏമᒈᒕⷓᗚᑵॹ",
    "poaw_root": null,
    "step": null,
-   "minted": "2026-11-13",
+   "minted": "2026-11-17",
    "verdicts": [
     [
      "valid",
@@ -342,6 +342,10 @@
     [
      "rejected",
      2
+    ],
+    [
+     "validating",
+     1
     ]
    ]
   },

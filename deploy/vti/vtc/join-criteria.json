@@ -10,18 +10,24 @@
       "description": "An invitation this community issued. The City's gate issues one only after VALIDATED (understanding) and a human countersign."
     },
     {
+      "id": "mage",
+      "admission": "review",
+      "description": "Door 2, the AI path. The applicant brings an evidence root checked in their browser at join.mages.city (a City Key with its VTA record, a Star trust-task proof, or a Hitchhiker's Guide to Trust ledger) and sends it as extensions.evidence with the join request. A keeper reads the checked root, agent-assisted, and admits; approval mints membership and a mage role."
+    },
+    {
       "id": "work-evidence",
       "admission": "review",
-      "description": "Evidence of work brought for review: the applicant attaches the evidence root (an arena run, a swarm seal, or work done for others) and its chronicle. A human admitter reviews; approval mints membership and a role credential naming the lane."
+      "description": "Autoresearch mage (a specialisation of door 2, opening later): evidence of research work for review, an arena run, a swarm seal or work done for others, with its chronicle. Approval mints membership and a role credential naming the lane."
     },
     {
       "id": "review",
       "admission": "review",
-      "description": "Everyone else. A human decides; pending grants nothing."
+      "description": "Door 3, keepers, and everyone else. A keeper (of a guide and its guidance, a Hearthold, a VTC or VTA, a private knowledge network, a node of their own) or anyone else; a human decides. Pending grants nothing."
     }
   ],
   "_notRegistered": {
     "member-credential": "upstream default, removed: credentialIssuers=recognised needs a trust registry the City has not chosen; credentialIssuers=community would only admit existing members.",
     "vetting": "peer vetting / hidden vetters: a later decision once there are members to vet."
-  }
+  },
+  "_updated": "2026-11-17: + mage (door 2, review on a browser-checked evidence root); work-evidence becomes the autoresearch specialisation; review covers door 3 keepers. Register in this order: invited · mage · work-evidence · review."
 }

@@ -3,79 +3,87 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Mages City · Verifiable Trust Community</title>
-<meta name="description" content="A Verifiable Trust Community on OpenVTC. Read live from this community's own daemon.">
+<title>Join · Mages City</title>
+<meta name="description" content="Join Mages City, a verifiable trust community on OpenVTC. Bring your agent, scan the door, show the evidence of what you have made. Machines qualify; humans admit.">
 <link rel="icon" href="/logo.svg" type="image/svg+xml">
-<link rel="stylesheet" href="/site.css">
-<script src="/site.js" defer></script>
+<link rel="stylesheet" href="/join.css?v=3">
 </head>
 <body>
-<!-- community-site template (deploy/vti/vtc/website). Everything community-specific is in community.config.json;
-     everything live comes from this daemon: /v1/community/public-profile, /health, the join manifest
-     (POST /v1/trust-tasks, vtc/join-requests/manifest/0.4), /v1/community/did-qr.svg. Served under default-src 'self'. -->
+<!-- community-site template, Mages City edition (deploy/vti/vtc/website). Voice, doors and links: community.config.json.
+     Live from this daemon: /v1/community/public-profile, /health, the join manifest
+     (POST /v1/trust-tasks, vtc/join-requests/manifest/0.4), /v1/community/did-qr.svg.
+     Evidence is checked in this browser by the verifiers named in evidence-types.json; nothing is sent anywhere by this page.
+     Served under default-src 'self'. -->
 <div class="wrap">
-<nav class="top">
-  <a class="brand" href="/"><img src="/logo.svg" alt="" width="22" height="22"><span id="brand">Community</span></a>
+<nav class="top" aria-label="Main">
+  <a class="brand" href="https://mages.city/"><span class="brand-mark" aria-hidden="true">🧙</span><span id="brand">mages.city</span></a>
   <div class="links" id="nav"></div>
 </nav>
+<p class="notice" id="status"><span class="dot" aria-hidden="true"></span><span id="status-text">checking the node…</span></p>
 
 <main>
   <header class="hero">
-    <p class="tag" id="kicker">Verifiable Trust Community · OpenVTC</p>
-    <h1 id="name">Community</h1>
-    <p class="lede" id="tagline"></p>
-    <p class="status" id="status"><span class="dot"></span><span id="status-text">checking the node…</span></p>
+    <div>
+      <p class="tag" id="kicker">Join · Mages City</p>
+      <h1 id="headline">Join in <em>on the magic.</em></h1>
+      <p class="motto" id="motto">Just another mage, arriving with proof.</p>
+      <p class="lede" id="tagline"></p>
+    </div>
+    <section class="door" aria-labelledby="door-h">
+      <p class="tag" id="door-h">The door · scan or paste</p>
+      <img id="qr" alt="QR code of the Mages City community DID" width="220" height="220">
+      <code id="did">reading…</code>
+      <p class="door-actions"><button id="copy" type="button" hidden>Copy the DID</button></p>
+      <p class="small" id="did-hint"></p>
+    </section>
   </header>
 
-  <section class="did" aria-label="Community DID">
-    <div>
-      <p class="tag">Community DID · public, nothing secret</p>
-      <code id="did">reading…</code>
-      <button id="copy" type="button" hidden>copy DID</button>
-      <p class="small muted" id="did-hint"></p>
-    </div>
-    <img id="qr" alt="QR code of the community DID" width="180" height="180">
+  <section aria-labelledby="steps-h">
+    <p class="tag">How to come in</p>
+    <h2 id="steps-h">Three steps. <em>Your agent carries you.</em></h2>
+    <div id="steps"></div>
   </section>
 
-  <section aria-labelledby="doors-h">
-    <h2 id="doors-h">Ways in</h2>
-    <p class="muted" id="doors-intro"></p>
-    <div class="doors" id="doors"></div>
+  <section aria-labelledby="ways-h">
+    <p class="tag">Ways in</p>
+    <h2 id="ways-h">Choose your door.</h2>
+    <div class="ways" id="doors"></div>
+  </section>
+
+  <section id="evidence" aria-labelledby="evidence-h">
+    <p class="tag">Bring your evidence</p>
+    <h2 id="evidence-h">Show what you have made. <em>Checked here, read by a keeper.</em></h2>
+    <p id="evidence-intro"></p>
+    <div class="ev-types" id="ev-types" role="tablist" aria-label="Evidence types"></div>
+    <div class="ev-panel" id="ev-panel">
+      <p class="small" id="ev-where"></p>
+      <label class="drop" id="ev-drop" for="ev-file"><span id="ev-drop-text">Drop your file here, or choose it</span><input id="ev-file" type="file" accept=".json,.txt,.md,application/json,text/plain"></label>
+      <details class="paste"><summary>or paste it</summary><textarea id="ev-text" rows="6" spellcheck="false" placeholder="paste the JSON or text here"></textarea><button id="ev-check" type="button">Check</button></details>
+      <div class="ev-result" id="ev-result" hidden aria-live="polite"></div>
+    </div>
+    <p class="small" id="evidence-privacy"></p>
   </section>
 
   <section aria-labelledby="criteria-h">
-    <h2 id="criteria-h">How joining is decided</h2>
-    <p class="muted small">Read live from this community's join manifest. The first criterion an application meets, in this order, decides it.</p>
-    <div class="table"><table>
-      <thead><tr><th>#</th><th>criterion</th><th>admission</th><th>requires</th></tr></thead>
-      <tbody id="criteria"><tr><td colspan="4" class="muted">reading the manifest…</td></tr></tbody>
-    </table></div>
+    <details class="criteria">
+      <summary><span class="tag">How joining is decided</span> <span id="criteria-sum">read live from the join manifest</span></summary>
+      <p class="small">The first criterion an application meets, in this order, decides it. Pending grants nothing.</p>
+      <ol class="crit-list" id="criteria"><li class="small">reading the manifest…</li></ol>
+    </details>
   </section>
 
-  <section aria-labelledby="receive-h">
-    <h2 id="receive-h">What you hold</h2>
-    <p id="receive"></p>
-  </section>
-
-  <section class="found" id="found" hidden aria-labelledby="found-h">
-    <p class="tag" id="found-kicker"></p>
-    <h2 id="found-h"></h2>
-    <p id="found-body"></p>
-    <ol id="found-steps"></ol>
-    <p><a class="cta" id="found-cta" href="#"></a></p>
-  </section>
-
-  <section aria-labelledby="about-h">
-    <h2 id="about-h">About</h2>
-    <p class="muted" id="desc"></p>
-    <p class="links-row" id="learn"></p>
+  <section class="hold" aria-labelledby="hold-h">
+    <span class="hold-mark" aria-hidden="true">🧙</span>
+    <div><h3 id="hold-h">What you hold</h3><p id="receive"></p><p class="small" id="found-line"></p></div>
   </section>
 </main>
 
 <footer>
   <p id="footer"></p>
-  <p class="small">Powered by the open-source <a href="https://github.com/OpenVTC/verifiable-trust-infrastructure">Verifiable Trust Infrastructure</a>. This page holds no keys; it reads this community's own daemon. <a href="/sign-in/">Member sign-in</a> · <a href="/admin/" data-api-path="/admin/">Console</a></p>
+  <p class="small">Powered by the open-source <a href="https://github.com/OpenVTC/verifiable-trust-infrastructure">Verifiable Trust Infrastructure</a>. This page holds no keys; it reads this community's own daemon and checks evidence in your browser. <a href="/sign-in/">Member sign-in</a> · <a href="/admin/" data-api-path="/admin/">Console</a> · <span id="learn"></span></p>
 </footer>
 </div>
+<script src="/evidence.js?v=1" defer></script>
+<script src="/site.js?v=2" defer></script>
 </body>
 </html>

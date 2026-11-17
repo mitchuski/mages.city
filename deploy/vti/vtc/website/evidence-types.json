@@ -1,0 +1,56 @@
+{
+  "_about": "The Mages City evidence registry. One entry per kind of evidence a mage can bring. To add a kind (for example a shared autoresearch scroll): add an entry here and a verifier module under /evidence/ that registers CityEvidence.verifiers[<verifier>]. status: live | soon | hidden.",
+  "types": [
+    {
+      "id": "city-key",
+      "label": "City Key",
+      "status": "live",
+      "verifier": "cityKey",
+      "module": "/evidence/city-key.js",
+      "where": "Your City Key from agentprivacy.ai, carrying the trinkets and artefacts you gathered on Spellweb and the Star.",
+      "whereLink": {
+        "label": "agentprivacy.ai/city ↗",
+        "href": "https://agentprivacy.ai/city"
+      },
+      "deps": [
+        "/evidence/sigilcode.js",
+        "/evidence/common.js"
+      ],
+      "dropText": "Drop your City Key (.json), or the key with its VTA record"
+    },
+    {
+      "id": "star-trust-task",
+      "label": "Drake Orb",
+      "status": "live",
+      "verifier": "starTrustTask",
+      "module": "/evidence/star-trust-task.js",
+      "where": "The stone you laid at the threshold of Drake Island: export your stone proof from the Star at agentprivacy.ai. It carries every quest you walked, sealed into one root.",
+      "deps": [
+        "/evidence/sigilcode.js",
+        "/evidence/common.js"
+      ],
+      "dropText": "Drop your Drake Orb: the stone proof from Drake Island (.json)",
+      "whereLink": {
+        "label": "Drake Island ↗",
+        "href": "https://agentprivacy.ai/guide/island"
+      }
+    },
+    {
+      "id": "hh-ledger",
+      "label": "Hitchhiker’s star",
+      "status": "live",
+      "verifier": "hhLedger",
+      "module": "/evidence/hh-ledger.js",
+      "where": "Your entry in the Hitchhiker’s Guide to Trust evidence ledger.",
+      "whereLink": {
+        "label": "trust.mages.city ↗",
+        "href": "https://trust.mages.city/"
+      },
+      "deps": [
+        "/evidence/sigilcode.js",
+        "/evidence/common.js"
+      ],
+      "dropText": "Drop the star ledger JSON from the guide’s evidence page, or paste the note"
+    }
+  ]
+}

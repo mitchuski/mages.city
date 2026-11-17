@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Leave your DID · Mages City</title>
+<link rel="icon" href="/logo.svg">
+<link rel="stylesheet" href="/site.css">
+<style>
+.rest{max-width:640px;margin:0 auto;padding:40px 16px 80px;font:16px/1.55 system-ui,sans-serif}
+.rest h1{font-size:30px;margin:0 0 10px}.rest p{margin:0 0 14px}.rest label{display:block;font-weight:600;margin:16px 0 6px}
+.rest input,.rest textarea{width:100%;box-sizing:border-box;font:15px ui-monospace,monospace;padding:10px;border:1.5px solid #8EA4FF;border-radius:6px;background:transparent;color:inherit}
+.rest button{margin-top:16px;font:600 15px system-ui,sans-serif;padding:10px 18px;border-radius:22px;border:0;background:#1F4BFF;color:#fff;cursor:pointer}
+.rest small,.rest .msg{display:block;opacity:.75;font-size:13px;margin-top:6px}.rest .msg{opacity:1;font-weight:600;margin-top:14px}
+.rest code{font-size:13px}
+</style>
+</head>
+<body>
+<main class="rest">
+  <p><a href="/">← Mages City</a></p>
+  <h1>Leave your DID</h1>
+  <p>When the City's node is resting, it cannot take a join request: a request has to be checked by the community itself, live. Leave your DID here, and the City's keeper will send you an invitation when the node is back. Your request then goes through as usual, with a keeper's review.</p>
+  <p>If the City is awake when you read this, you can <a href="/">join directly</a> instead.</p>
+  <form id="f">
+    <label for="did">Your DID</label>
+    <input id="did" required placeholder="did:webvh:… or did:key:…" autocomplete="off" spellcheck="false">
+    <small>From your wallet or agent (Star Key: your persona's DID). Don't have one yet? <a href="https://vta.farm/">VTA Farm</a> gets you one.</small>
+    <label for="note">A note for the keeper <span style="font-weight:400">(optional)</span></label>
+    <textarea id="note" rows="3" maxlength="1500" placeholder="Who you are, where you met the City, or how to reach you."></textarea>
+    <small>Sealed in your browser to the City's holding key before it is sent. Only the keeper can open it; the server stores ciphertext and keeps it at most 120 days.</small>
+    <button type="submit">Leave my DID</button>
+    <div class="msg" id="msg" role="status"></div>
+  </form>
+</main>
+<script>
+const b64 = u => { let s = ''; for (let i = 0; i < u.length; i += 8192) s += String.fromCharCode(...u.subarray(i, i + 8192)); return btoa(s); };
+document.getElementById('f').onsubmit = async ev => {
+  ev.preventDefault();
+  const msg = document.getElementById('msg'), btn = ev.target.querySelector('button'), did = document.getElementById('did').value.trim(), note = document.getElementById('note').value.trim();
+  if (!/^did:[a-z0-9]+:[A-Za-z0-9._:%-]+$/.test(did) || did.length > 600) { msg.textContent = 'That does not look like a DID. It starts with did: and has no spaces.'; return; }
+  btn.disabled = true; msg.textContent = 'Sealing…';
+  try {
+    const jwk = await (await fetch('/city-join.pub.jwk', { cache: 'no-store' })).json();
+    const pub = await crypto.subtle.importKey('jwk', jwk, { name: 'RSA-OAEP', hash: 'SHA-256' }, false, ['encrypt']);
+    const key = await crypto.subtle.generateKey({ name: 'AES-GCM', length: 256 }, true, ['encrypt']), iv = crypto.getRandomValues(new Uint8Array(12));
+    const body = new TextEncoder().encode(JSON.stringify({ did, note, at: new Date().toISOString() }));
+    const ct = new Uint8Array(await crypto.subtle.encrypt({ name: 'AES-GCM', iv }, key, body));
+    const wrapped = new Uint8Array(await crypto.subtle.encrypt({ name: 'RSA-OAEP' }, pub, await crypto.subtle.exportKey('raw', key)));
+    const r = await fetch('/api/held', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ iv: b64(iv), ct: b64(ct), wrapped: b64(wrapped) }) });
+    const d = await r.json().catch(() => ({}));
+    if (!r.ok) { msg.textContent = d.error || 'That did not go through. Try again later.'; btn.disabled = false; return; }
+    msg.textContent = 'Left, sealed. The keeper will invite ' + did.slice(0, 40) + (did.length > 40 ? '…' : '') + ' when the node is back.';
+    ev.target.reset();
+  } catch (e) { msg.textContent = 'Your browser could not seal it. Try another browser.'; btn.disabled = false; }
+};
+</script>
+</body>
+</html>
