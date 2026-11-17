@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Join variants · workshop</title>
+<link rel="stylesheet" href="join.css">
+<style>
+/* sketch-only styles: four ways to express joining, side by side. Not deployed. */
+.variant{border-top:2px solid var(--coral);padding:56px 0 64px}
+.vhead{display:flex;gap:16px;align-items:baseline;flex-wrap:wrap}
+.vtag{font:11px var(--mono);color:var(--bg);background:var(--coral);padding:3px 9px;letter-spacing:.1em}
+.vnote{font-size:13px;color:var(--muted);max-width:70ch}
+.roads{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin:18px 0 26px}
+.road{border:1px solid var(--line);padding:16px;background:var(--panel)}
+.road .g{font-size:22px}.road h3{font-size:15px;margin:8px 0 4px}.road p{font-size:12.5px;margin:0}
+.road .yields{font:10.5px var(--mono);color:var(--cyan);margin-top:10px}
+.road.soon{opacity:.55}
+.dropbar{display:flex;gap:18px;align-items:center;border:1px dashed var(--cyan);padding:20px 22px;background:#9fd6db08}
+.dropbar b{font:400 24px var(--serif);color:var(--ink)}
+.dropbar span{font-size:13px;color:var(--muted)}
+.result{margin-top:14px;font:12px var(--mono);color:var(--ok)}
+.doors4{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:22px}
+.d4{border:1px solid #3b4a63;padding:18px;display:flex;flex-direction:column;gap:6px}
+.d4 .force{font:10px var(--mono);letter-spacing:.16em;text-transform:uppercase}
+.d4 .glyph{font-size:30px}
+.d4 h3{margin:0}.d4 p{font-size:13px;margin:0}
+.d4 .bring{font:11px var(--mono);color:var(--cyan);margin-top:auto;padding-top:10px}
+.d4 .ws{font-size:12.5px;color:var(--ink);border-top:1px solid var(--line);padding-top:8px;margin-top:6px}
+.d4.lit{border-color:var(--cyan);background:#9fd6db0c}
+.f-protect{color:var(--coral)}.f-project{color:var(--cyan)}.f-reflect{color:var(--warn)}.f-connect{color:var(--violet)}
+/* B: diamond around the gap */
+.diamond{display:grid;grid-template-columns:1fr 1fr 1fr;grid-template-rows:auto auto auto;gap:14px;max-width:900px;margin:22px auto 0}
+.diamond .d4{min-height:170px}
+.diamond .n{grid-column:2;grid-row:1}.diamond .w{grid-column:1;grid-row:2}.diamond .e{grid-column:3;grid-row:2}.diamond .s{grid-column:2;grid-row:3}
+.gap{grid-column:2;grid-row:2;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;border:1px dashed var(--violet);color:var(--violet)}
+.gap b{font:400 44px var(--serif)}.gap span{font:11px var(--mono)}
+/* C: workshops */
+.wsrow{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:22px}
+.wsc{border:1px solid var(--line);padding:18px;background:var(--panel)}
+.wsc ol{margin:10px 0 0;padding-left:18px;font-size:13px;color:var(--muted)}
+.wsc ol li{padding:3px 0}
+.wsc .grad{font:11px var(--mono);color:var(--ok);margin-top:12px}
+@media(max-width:1000px){.roads,.doors4,.wsrow{grid-template-columns:1fr 1fr}.diamond{grid-template-columns:1fr;}.diamond>*{grid-column:1!important;grid-row:auto!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<nav class="top"><span class="brand"><span class="brand-mark">🧙</span>join · workshop</span><div class="links"><a href="#A">A · roads</a><a href="#B">B · elements</a><a href="#C">C · workshops</a><a href="#D">D · blend</a></div></nav>
+<p class="notice">Sketch only, not deployed: four ways to express joining. Shared ground in all four: any chain that re-derives counts · four doors · a human admits.</p>
+
+<!-- ============================ A ============================ -->
+<section class="variant" id="A">
+  <div class="vhead"><span class="vtag">A</span><h2>Many roads, <em>one rule.</em></h2></div>
+  <p class="vnote">Step 02 becomes “Find your way to the City”. Every road ends in a chain; any chain that re-derives counts. Then you drop what you carry, and the proof picks your door.</p>
+  <div class="roads">
+    <div class="road"><span class="g">🥚</span><h3>Drake Island</h3><p>Walk thirteen quests, lay your stone at the threshold.</p><p class="yields">yields · a stone proof</p></div>
+    <div class="road"><span class="g">🛠️</span><h3>A workshop</h3><p>Learn a craft with others; the workshop seals what you made.</p><p class="yields">yields · a workshop chain</p></div>
+    <div class="road"><span class="g">🌌</span><h3>A Hitchhiker’s night</h3><p>Add to the guide’s evidence chain from your phone.</p><p class="yields">yields · a ledger root</p></div>
+    <div class="road"><span class="g">🗝️</span><h3>Your City Key</h3><p>Grow it on Spellweb and the Star: trinkets, artefacts, walks.</p><p class="yields">yields · a key κ + VTA record</p></div>
+    <div class="road soon"><span class="g">📜</span><h3>A scroll</h3><p>Seal autoresearch with other mages. Opening later.</p><p class="yields">yields · a scroll root</p></div>
+  </div>
+  <div class="dropbar"><b>Drop what you carry.</b><span>Stone, ledger, key or invitation: this page reads it and finds your door.</span></div>
+  <p class="result">✓ a Drake Island stone · 13 quests · root re-derives  →  your door: 🧙 Project · Mage</p>
+  <div class="doors4">
+    <div class="d4"><span class="force f-protect">Protect</span><span class="glyph">⚔️</span><h3>Keeper</h3><p>You hold the ground.</p></div>
+    <div class="d4 lit"><span class="force f-project">Project</span><span class="glyph">🧙</span><h3>Mage</h3><p>You do the work.</p></div>
+    <div class="d4"><span class="force f-reflect">Reflect</span><span class="glyph">📜</span><h3>Scribe</h3><p>You keep the knowledge.</p></div>
+    <div class="d4"><span class="force f-connect">Connect</span><span class="glyph">⿻</span><h3>Person</h3><p>You choose and are chosen.</p></div>
+  </div>
+</section>
+
+<!-- ============================ B ============================ -->
+<section class="variant" id="B">
+  <div class="vhead"><span class="vtag">B</span><h2>Four forces, <em>one gap.</em></h2></div>
+  <p class="vnote">The doors are the four forces of the tetrahedron, set around the gap they all bound. Each says what you bring. The person sits at the meeting point as well as at the Connect door: every member is chosen by a human.</p>
+  <div class="diamond">
+    <div class="d4 n"><span class="force f-project">Project</span><span class="glyph">🧙</span><h3>Mage</h3><p>Delegation and software: an agent and its maker, acting outward.</p><p class="bring">bring · a stone, a City Key, a scroll</p></div>
+    <div class="d4 w"><span class="force f-protect">Protect</span><span class="glyph">⚔️</span><h3>Keeper</h3><p>Protection and hardware: a node the trust runs on, like the City’s Pi that hosts the Hitchhiker’s Guide. The VTI Raspberry Pi kit; the harness keeper tends it.</p><p class="bring">bring · your node’s DID</p></div>
+    <div class="gap"><b>⿻</b><span>the gap · a human admits</span></div>
+    <div class="d4 e"><span class="force f-reflect">Reflect</span><span class="glyph">📜</span><h3>Scribe</h3><p>Knowledge and memory: a data room on your VTA’s Pi, shared fedwiki-style over the tailnet; guides, chronicles, the Hitchhiker’s ledger.</p><p class="bring">bring · a data room’s root, a ledger root</p></div>
+    <div class="d4 s"><span class="force f-connect">Connect</span><span class="glyph">⿻</span><h3>Person</h3><p>Someone in the City asked you in. You choose and are chosen.</p><p class="bring">bring · an invitation</p></div>
+  </div>
+</section>
+
+<!-- ============================ C ============================ -->
+<section class="variant" id="C">
+  <div class="vhead"><span class="vtag">C</span><h2>Learn a craft. <em>Graduate in.</em></h2></div>
+  <p class="vnote">Each door is a workshop that ends in a chain. Joining is graduating: the chain you finish with is your proof. Matches “Workshops · learn a craft” on agentprivacy.ai.</p>
+  <div class="wsrow">
+    <div class="wsc"><p class="tag f-protect">⚔️ the Swordsman’s workshop</p><h3>Keep the ground</h3><ol><li>Build a Raspberry Pi with the VTI kit</li><li>Stand up your VTA (or a VTC) on it</li><li>Let the harness keeper tend it; publish its DID</li></ol><p class="grad">graduate as · Keeper</p></div>
+    <div class="wsc"><p class="tag f-project">🧙 the Mage’s workshop</p><h3>Do the work</h3><ol><li>Walk Drake Island, lay your stone</li><li>Equip an agent with skills</li><li>Run a quest, seal a scroll</li></ol><p class="grad">graduate as · Mage</p></div>
+    <div class="wsc"><p class="tag f-reflect">📜 the Scribe’s workshop</p><h3>Keep what the community knows</h3><ol><li>Deploy a VTA private knowledge node (the agentprivacy kit)</li><li>Share it fedwiki-style over the tailnet</li><li>Seal its pages under one root</li></ol><p class="grad">graduate as · Scribe</p></div>
+    <div class="wsc"><p class="tag f-connect">⿻ the Gathering</p><h3>Walk with others</h3><ol><li>Come to a workshop or a night</li><li>Be met by a member</li><li>Receive an invitation</li></ol><p class="grad">graduate as · Person</p></div>
+  </div>
+</section>
+
+<!-- ============================ D ============================ -->
+<section class="variant" id="D">
+  <div class="vhead"><span class="vtag">D</span><h2>Show what you carry. <em>Your door finds you.</em></h2></div>
+  <p class="vnote">The blend: proof first, then four element doors. Each door names the workshop that leads to it and the proofs it accepts, so someone with nothing yet sees where to start.</p>
+  <div class="dropbar"><b>Drop what you carry.</b><span>Any chain that re-derives: a stone, a ledger, a City Key, a node’s DID, an invitation.</span></div>
+  <p class="result">✓ a Hitchhiker’s ledger · 7 stars · root re-derives  →  your door: 📜 Reflect · Scribe</p>
+  <div class="doors4">
+    <div class="d4"><span class="force f-protect">Protect</span><span class="glyph">⚔️</span><h3>Keeper</h3><p>You hold the ground the trust runs on.</p><p class="bring">accepts · a node’s DID, a VTA or VTC</p><p class="ws">Nothing yet? The Swordsman’s workshop →</p></div>
+    <div class="d4"><span class="force f-project">Project</span><span class="glyph">🧙</span><h3>Mage</h3><p>You and your agent do the work.</p><p class="bring">accepts · a stone, a City Key, a scroll</p><p class="ws">Nothing yet? Walk Drake Island →</p></div>
+    <div class="d4 lit"><span class="force f-reflect">Reflect</span><span class="glyph">📜</span><h3>Scribe</h3><p>You keep and share what the community knows: a data room on your Pi.</p><p class="bring">accepts · a data room’s root, a ledger root</p><p class="ws">Nothing yet? The Scribe’s workshop →</p></div>
+    <div class="d4"><span class="force f-connect">Connect</span><span class="glyph">⿻</span><h3>Person</h3><p>You choose and are chosen.</p><p class="bring">accepts · an invitation</p><p class="ws">Nothing yet? Come to a gathering →</p></div>
+  </div>
+</section>
+<footer><p>Sketch · mages_city/drafts/join-variants · (⚔️⊥⿻⊥🧙)</p></footer>
+</div>
+</body>
+</html>
