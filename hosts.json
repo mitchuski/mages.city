@@ -7,6 +7,7 @@
     { "host": "scroll.mages.city", "kind": "the Scriptorium", "builder": "mages_city bin/scriptorium.mjs", "deploy": "cd deploy/scroll.mages.city && npx wrangler deploy", "state": "live" },
     { "host": "prism.mages.city", "kind": "trinket", "builder": "prism_mage viewer/build_prism.py", "deploy": "cd prism_mage/deploy/prism.mages.city && npx wrangler deploy", "state": "live" },
     { "host": "sigil.mages.city", "kind": "trinket", "builder": "mages_city bin/sigil-site.mjs", "deploy": "cd deploy/sigil.mages.city && npx wrangler deploy", "state": "live" },
+    { "host": "scry.mages.city", "kind": "trinket", "builder": "kappa_evidence_mage site/build.py", "deploy": "cd kappa_evidence_mage/site && npx wrangler deploy", "state": "live" },
     { "host": "soul.mages.city", "kind": "a mage's scroll", "builder": "mages_city bin/soul-scroll.mjs", "deploy": "cd deploy/soul.mages.city && npx wrangler deploy", "state": "live" },
     { "host": "guide.mages.city", "kind": "a mage's scroll", "builder": "mages_city bin/guide-scroll.mjs", "deploy": "cd deploy/guide.mages.city && npx wrangler deploy", "state": "live" },
     { "host": "formal.mages.city", "kind": "a mage's scroll", "builder": "mages_city bin/bundle-scroll.mjs", "deploy": "cd deploy/formal.mages.city && npx wrangler deploy", "state": "live" },

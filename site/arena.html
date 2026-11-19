@@ -129,6 +129,7 @@ fetch("chains.json",{cache:"no-store"}).then(function(r){return r.json()}).then(
 <h2>Check a root yourself</h2>
 <pre class="pw-cmd">git clone https://github.com/mitchuski/kappa-evidence-mage
 python kappa-evidence-mage/verify_bundle.py &lt;bundle&gt;     # Python 3, no packages, no network</pre>
+<p class="quiet-note">To see what that verifier checks, on a bundle you can alter in your browser, look into <a href="https://scry.mages.city/">the Scrying Stone</a>.</p>
 <p class="quiet-note">A pass means the bytes you hold are the ones the root names, under the rules the chain states. It does not say the work was good; that is what a review is for.</p>
 <p class="quiet-note">To walk a scroll's threads without cloning anything, hold its root to <a href="https://prism.mages.city/">the Prism</a>: it reads the shape, the verifier above re-derives the bytes.</p>
 
