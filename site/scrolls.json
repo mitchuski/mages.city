@@ -38,5 +38,10 @@
   "id": "grimoire",
   "label": "❦ the privacy mage's grimoires",
   "href": "https://grimoire.mages.city/"
+ },
+ {
+  "id": "commit",
+  "label": "❦ commit mage",
+  "href": "https://commit.mages.city/"
  }
 ]

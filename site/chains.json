@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-17",
+ "generated": "2026-11-19",
  "chains": [
   {
    "id": "sha256",
@@ -12,34 +12,34 @@
    "hash": "sha256",
    "sound": true,
    "axis": "round",
-   "entries": 38,
-   "lever_leaves": 73,
-   "no_go": 305,
-   "work_root": "sha256:deefbe8b10e9ed2849c36d3d37ae9073ac2fa05f6ff2a86bbffb5c7696b3a344",
-   "seal": "ꖾᐨꕯᒲᕏᕮᔏⷄጆᐺⷐⷁખከᖉꛜዹጕᙙቾභꕤꨜꖯጷ",
-   "poaw_root": "sha256:69d14c21c6e3061a57c2c59d5c8d16504b4858f45649f186b0c10f8c9d14c917",
-   "step": 11,
-   "minted": "2026-10-26",
+   "entries": 56,
+   "lever_leaves": 105,
+   "no_go": 659,
+   "work_root": "sha256:4d626c008ee2c7b984c6b98915fede3437f6cf4a20b5688e4a4b6c0fc0b67abf",
+   "seal": "ጃআꛖጩदᐨॾᔢঝᘎᔴᓓᐽඛᓘꗀꢒⵙቱᖺꛖጇᘁግꘔ",
+   "poaw_root": "sha256:a39182671c7c8aa42fe62e2ae752c138d9f5ec8749ecb02deee21e5021cab024",
+   "step": 12,
+   "minted": "2026-11-17",
    "verdicts": [
     [
      "refuted",
-     3
-    ],
-    [
-     "not submitted",
-     1
-    ],
-    [
-     "not_evaluable",
-     3
-    ],
-    [
-     "rejected",
      5
     ],
     [
+     "not submitted",
+     3
+    ],
+    [
+     "not_evaluable",
+     10
+    ],
+    [
      "valid",
-     26
+     31
+    ],
+    [
+     "rejected",
+     7
     ],
     [
      "not minted",
@@ -63,9 +63,9 @@
    "no_go": 66,
    "work_root": "sha256:e219aad8b85a96634676a48aeb513694da73a4901949b05850d2b898ce70e4e0",
    "seal": "ꗗᛢᎊᒳᣧᑧᕶꨛᓥሽबገઔᒈᕾᚠጘରᓟᚣᗕꢩኮమᕠ",
-   "poaw_root": "sha256:69d14c21c6e3061a57c2c59d5c8d16504b4858f45649f186b0c10f8c9d14c917",
-   "step": 11,
-   "minted": "2026-10-26",
+   "poaw_root": "sha256:a39182671c7c8aa42fe62e2ae752c138d9f5ec8749ecb02deee21e5021cab024",
+   "step": 12,
+   "minted": "2026-11-17",
    "verdicts": [
     [
      "not submitted",
@@ -93,9 +93,9 @@
    "no_go": 64,
    "work_root": "sha256:af9037b2f34063eca8383a50504ab67d38d8b15686a3f2aeff78b26fa91a350c",
    "seal": "ᢷᒃᒎꛔᣉᙻᘚꘐጵጐጵᐂᗅരᕻኹᙹᘜᣭᘜኟⷆⵚᢿጯ",
-   "poaw_root": "sha256:69d14c21c6e3061a57c2c59d5c8d16504b4858f45649f186b0c10f8c9d14c917",
-   "step": 11,
-   "minted": "2026-10-26",
+   "poaw_root": "sha256:a39182671c7c8aa42fe62e2ae752c138d9f5ec8749ecb02deee21e5021cab024",
+   "step": 12,
+   "minted": "2026-11-17",
    "verdicts": [
     [
      "not submitted",
@@ -122,14 +122,14 @@
    "hash": "poseidon",
    "sound": true,
    "axis": "round",
-   "entries": 11,
-   "lever_leaves": 85,
-   "no_go": 362,
-   "work_root": "sha256:12f70a221f32690398aeab8a3b2694110e70d7b4dac216f6ed8915309519a1b6",
-   "seal": "બᣨሙꗠᖲጞइꕃᓾⵆഋꔁᗬእⵀᕄઐఅᑐꢉథⴵचଉય",
-   "poaw_root": "sha256:69d14c21c6e3061a57c2c59d5c8d16504b4858f45649f186b0c10f8c9d14c917",
-   "step": 11,
-   "minted": "2026-10-26",
+   "entries": 12,
+   "lever_leaves": 86,
+   "no_go": 403,
+   "work_root": "sha256:524488db669c93d71923b10a9e65f6f3ec04f6c9494f19355355a817f19051ae",
+   "seal": "ጭପᚾꨠૐঠꩇᓼꘛহᖟጥቨꔗᣒᗶጹᙤడꖋᎏᙴᗙഡఐ",
+   "poaw_root": "sha256:a39182671c7c8aa42fe62e2ae752c138d9f5ec8749ecb02deee21e5021cab024",
+   "step": 12,
+   "minted": "2026-11-17",
    "verdicts": [
     [
      "rejected",
@@ -137,7 +137,7 @@
     ],
     [
      "valid",
-     8
+     9
     ],
     [
      "not submitted",
@@ -155,8 +155,8 @@
   },
   {
    "id": "curve_secp256k1",
-   "name": "Curve · secp256k1",
-   "brand": "Curve · secp256k1 · Mages City",
+   "name": "Curve · curvesmash",
+   "brand": "Curve · curvesmash · Mages City",
    "domain": "curve.mages.city",
    "url": "https://curve.mages.city/",
    "local": "../curve_secp256k1/",
@@ -164,18 +164,26 @@
    "hash": "curve_secp256k1",
    "sound": false,
    "axis": "entry",
-   "entries": 15,
+   "entries": 23,
    "lever_leaves": 1509,
    "no_go": 62,
-   "work_root": "sha256:ad656bf523fff4bb3123f9e2735b34015220c1d32697018dc412f65759ded153",
-   "seal": "ᛠબꚢᔡলᐟᖿሡⶣᓵঠꔵᚱଷኊꛤሬꔪꕑᕏॾᛈⵣኣᕕ",
+   "work_root": "sha256:7ea57d186fce609857263b80b12fabfcf33aadade0b32ac19a197bb490dd05de",
+   "seal": "ᔳଷꔦᔌॐⵘᗓଖፀඣഗዷᒪታഭᘒමሺᘥഓॺᕰᔍꖠᑫ",
    "poaw_root": null,
    "step": null,
-   "minted": "2026-10-25",
+   "minted": "2026-11-18",
    "verdicts": [
     [
      "not submitted",
-     15
+     16
+    ],
+    [
+     "verified",
+     6
+    ],
+    [
+     "valid",
+     1
     ]
    ]
   },
@@ -239,8 +247,8 @@
    "id": "hashsmash_blake3",
    "name": "HashSmash · BLAKE3",
    "brand": "HashSmash · BLAKE3 · Mages City",
-   "domain": "hashsmash.mages.city/blake3",
-   "url": "https://hashsmash.mages.city/blake3/",
+   "domain": "blake3.mages.city/chain",
+   "url": "https://blake3.mages.city/chain/",
    "local": "../hashsmash_blake3/",
    "lane": "hashsmash/blake3-r2",
    "hash": "hashsmash_blake3",
@@ -277,8 +285,8 @@
    "id": "hashsmash_poseidon",
    "name": "HashSmash · Poseidon, first bundles",
    "brand": "HashSmash · Poseidon · Mages City",
-   "domain": "hashsmash.mages.city/poseidon",
-   "url": "https://hashsmash.mages.city/poseidon/",
+   "domain": "poseidon.mages.city/chain",
+   "url": "https://poseidon.mages.city/chain/",
    "local": "../hashsmash_poseidon/",
    "lane": "hashsmash-pareto/poseidon/first",
    "hash": "hashsmash_poseidon",
@@ -307,25 +315,25 @@
    "id": "hashsmash_sha256",
    "name": "HashSmash · SHA-256",
    "brand": "HashSmash · SHA-256 · Mages City",
-   "domain": "hashsmash.mages.city/sha256",
-   "url": "https://hashsmash.mages.city/sha256/",
+   "domain": "sha256.mages.city/chain",
+   "url": "https://sha256.mages.city/chain/",
    "local": "../hashsmash_sha256/",
    "lane": "hashsmash/sha256",
    "hash": "hashsmash_sha256",
    "sound": false,
    "axis": "entry",
-   "entries": 27,
-   "lever_leaves": 103,
-   "no_go": 367,
-   "work_root": "sha256:3071bebc79749aedc79651b646d7cbb56b0d09493487b323a87f4997a158e8dd",
-   "seal": "ለᕹළቾዓሉቕখᗒⵀꗠꕫᐽᗬᖸፊᗑᕏമᒈᒕⷓᗚᑵॹ",
+   "entries": 29,
+   "lever_leaves": 105,
+   "no_go": 407,
+   "work_root": "sha256:f8420c04d052915f418ecdf6c519404207612a374a8dab939e6dc16f73ee4d28",
+   "seal": "ꢩꚵᣲረꔺꢖꔳኸꢉሕᣍᙘঞઝऔᑞሽඩᙺⵜसᢳⶽⵥም",
    "poaw_root": null,
    "step": null,
    "minted": "2026-11-17",
    "verdicts": [
     [
      "valid",
-     8
+     9
     ],
     [
      "refuted",
@@ -337,7 +345,7 @@
     ],
     [
      "not_evaluable",
-     9
+     10
     ],
     [
      "rejected",
